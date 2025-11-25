@@ -23,4 +23,22 @@ const registerUser = async (req, res) => {
   res.status(201).json({ message: 'User registered successfully' })
 }
 
-module.exports = { registerUser }
+const loginUser = async (req, res) => {
+  const { emailID, password } = req.body
+
+  const user = await User.findOne({ emailID })
+
+  if (!user) {
+    return res.status(400).json({ message: 'Invalid email or password' })
+  }
+
+  const isSame = await bcrypt.compare(password, user.password)
+
+  if (!isSame) {
+    return res.status(400).json({ message: 'Invalid email or password' })
+  }
+
+  return res.status(200).json({ message: 'Login successful' })
+}
+
+module.exports = { registerUser, loginUser }
