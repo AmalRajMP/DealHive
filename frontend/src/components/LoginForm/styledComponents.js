@@ -46,6 +46,11 @@ export const InputEle = styled.input`
     -webkit-text-fill-color: #000 !important;
   }
 `
+export const ErrorMsg = styled.p`
+  color: red;
+  font-size: 20px;
+  margin-top: 8px;
+`
 export const Button = styled.button`
   width: 100%;
   padding: 12px 20px;
