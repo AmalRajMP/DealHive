@@ -48,7 +48,7 @@ export const InputEle = styled.input`
 `
 export const ErrorMsg = styled.p`
   color: red;
-  font-size: 20px;
+  font-size: 13px;
   margin-top: 8px;
 `
 export const Button = styled.button`

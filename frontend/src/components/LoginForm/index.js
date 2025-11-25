@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FaRegUser } from 'react-icons/fa'
-import { MdLockOutline } from 'react-icons/md'
+import { MdLockOutline, MdEmail } from 'react-icons/md'
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
 import {
@@ -22,8 +21,14 @@ const LoginForm = () => {
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
   const [errorMsg, setErrorMsg] = useState('')
 
-  const onChangeEmailID = (event) => setEmailID(event.target.value)
-  const onChangePassword = (event) => setPassword(event.target.value)
+  const onChangeEmailID = (event) => {
+    setErrorMsg('')
+    setEmailID(event.target.value)
+  }
+  const onChangePassword = (event) => {
+    setErrorMsg('')
+    setPassword(event.target.value)
+  }
 
   const navigate = useNavigate()
 
@@ -60,7 +65,7 @@ const LoginForm = () => {
 
   return (
     <>
-      {apiStatus === apiStatusConstants.initial && (
+      {apiStatus !== apiStatusConstants.inProgress && (
         <FormContainer onSubmit={submitForm}>
           <input
             type="text"
@@ -77,10 +82,10 @@ const LoginForm = () => {
           />
 
           <Heading>Login</Heading>
-          <Label htmlFor="username">Username</Label>
+          <Label htmlFor="emailID">Email ID</Label>
           <InputContainer>
             <Icon>
-              <FaRegUser />
+              <MdEmail />
             </Icon>
             <InputEle
               id="emailID"
@@ -90,6 +95,9 @@ const LoginForm = () => {
               onChange={onChangeEmailID}
               autoComplete="off"
             />
+            {emailID && !emailID.includes('@') && (
+              <ErrorMsg>Please enter a valid email</ErrorMsg>
+            )}
           </InputContainer>
 
           <Label htmlFor="password">Password</Label>

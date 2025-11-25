@@ -135,11 +135,10 @@ const RegistrationForm = () => {
               required
               autoComplete="off"
             />
+            {emailID && !emailID.includes('@') && (
+              <ErrorMsg>Please enter a valid email</ErrorMsg>
+            )}
           </InputContainer>
-          {emailID && !emailID.includes('@') && (
-            <ErrorMsg>Please enter a valid email</ErrorMsg>
-          )}
-
           <Label htmlFor="contactNo">Contact No</Label>
           <InputContainer>
             <Icon>
