@@ -7,13 +7,14 @@ export const MainContainer = styled.div`
   flex-direction: column;
 `
 export const Navbar = styled.nav`
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 15px 0px 15px;
+  padding: 8px 15px 0px 15px;
 `
 export const WebsiteLogo = styled.img`
-  height: 100px;
+  height: 90px;
   min-width: 110px;
   max-width: 200px;
   margin-top: -15px;
@@ -30,4 +31,69 @@ export const AuthButton = styled.button`
   font-weight: 500;
   border-width: 0px;
   margin-top: -20px;
+`
+export const SectionWrapper = styled.div`
+  flex: 1;
+  background: linear-gradient(180deg, #1e88e5 0%, #42a5f5 50%, #e3f2fd 100%);
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  margin-top: -6px;
+`
+
+export const HeroSection = styled.div`
+  min-height: 40%;
+  max-height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+`
+export const HeroImage = styled.img`
+  height: 200px;
+  width: 200px;
+  margin: -40px;
+`
+
+export const HeroTitle = styled.h1`
+  font-size: 26px;
+`
+export const HeroSubTitle = styled.p`
+  width: 240px;
+  font-size: 12px;
+`
+export const HeroButton = styled.button`
+  background-color: #003a79;
+  color: #ffffff;
+  padding: 12px 26px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+
+  &:hover {
+    background-color: #002f63; /* Slightly darker shade */
+  }
+`
+export const HeroLink = styled.a`
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block; /* ensures margin-top applies properly */
+  opacity: 0.9;
+  cursor: pointer;
+  margin-top: 3px;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
 `
