@@ -4,6 +4,7 @@ import FeatureItem from '../../components/FeatureItem'
 
 import Logo from '../../assets/Logo.png'
 import CartImage from '../../assets/CartImage.png'
+import Testimonial_Avatar from '../../assets/Testimonial_Avatar.jpg'
 
 import { FiSearch } from 'react-icons/fi'
 import { BiBrain } from 'react-icons/bi'
@@ -23,8 +24,15 @@ import {
   HeroButton,
   HeroLink,
   FeaturesSection,
-  FeaturesTitle,
   FeaturesList,
+  SectionHeading,
+  TestimonialSection,
+  TestimonialAvatar,
+  TestimonialDetails,
+  TestimonialName,
+  TestimonialDescription,
+  TestimonialSubtext,
+  ProfileName,
 } from './styledComponents'
 
 const featuresList = [
@@ -75,12 +83,28 @@ const LandingPage = () => {
           <HeroLink>Learn More</HeroLink>
         </HeroSection>
         <FeaturesSection>
-          <FeaturesTitle>Features</FeaturesTitle>
+          <SectionHeading>Features</SectionHeading>
           <FeaturesList>
             {featuresList.map((eachItem) => (
               <FeatureItem key={eachItem.id} featureDetails={eachItem} />
             ))}
           </FeaturesList>
+          <SectionHeading>Testimonial</SectionHeading>
+          <TestimonialSection>
+            <TestimonialAvatar
+              src={Testimonial_Avatar}
+              alt="testimonial avatar"
+            />
+            <TestimonialDetails>
+              <TestimonialName>Sarah K</TestimonialName>
+              <TestimonialDescription>
+                DealHive changed how I shop! save much
+              </TestimonialDescription>
+              <TestimonialSubtext>
+                <ProfileName>--Sarra K</ProfileName>, Frequent Shopper
+              </TestimonialSubtext>
+            </TestimonialDetails>
+          </TestimonialSection>
         </FeaturesSection>
       </SectionWrapper>
     </MainContainer>

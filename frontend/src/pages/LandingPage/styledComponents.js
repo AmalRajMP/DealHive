@@ -110,14 +110,55 @@ export const FeaturesSection = styled.div`
   border-top-right-radius: 16px;
   padding: 20px;
 `
-export const FeaturesTitle = styled.h2`
+export const SectionHeading = styled.h2`
   color: #262626;
   font-size: 20px;
 `
+
 export const FeaturesList = styled.ul`
   width: 100%;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 15px;
+`
+/* Testimonial Section */
+
+export const TestimonialSection = styled.div`
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+`
+export const TestimonialAvatar = styled.img`
+  height: 40px;
+  width: 40px;
+  margin-right: 15px;
+  border-radius: 50%;
+`
+export const TestimonialDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`
+export const TestimonialName = styled.p`
+  color: #262626;
+  font-size: 12.5px;
+  font-weight: 600;
+`
+export const TestimonialDescription = styled.p`
+  color: #262626;
+  font-size: 12px;
+  font-weight: 600;
+`
+export const TestimonialSubtext = styled.p`
+  color: #525252;
+  font-size: 12px;
+`
+export const ProfileName = styled.span`
+  color: #1e88e5;
+  font-size: 12px;
+  font-weight: 500;
 `
