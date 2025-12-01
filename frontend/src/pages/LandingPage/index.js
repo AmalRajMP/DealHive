@@ -1,7 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 
+import FeatureItem from '../../components/FeatureItem'
+
 import Logo from '../../assets/Logo.png'
 import CartImage from '../../assets/CartImage.png'
+
+import { FiSearch } from 'react-icons/fi'
+import { BiBrain } from 'react-icons/bi'
+import { AiFillStar } from 'react-icons/ai'
 
 import {
   MainContainer,
@@ -16,7 +22,31 @@ import {
   HeroSubTitle,
   HeroButton,
   HeroLink,
+  FeaturesSection,
+  FeaturesTitle,
+  FeaturesList,
 } from './styledComponents'
+
+const featuresList = [
+  {
+    id: 1,
+    icon: <FiSearch />,
+    title: 'Smart Search',
+    description: 'Find products instantly',
+  },
+  {
+    id: 2,
+    icon: <BiBrain />,
+    title: 'AI Recommendations',
+    description: 'Smarter choices every day',
+  },
+  {
+    id: 3,
+    icon: <AiFillStar />,
+    title: 'Personalized Deals',
+    description: 'Offers tailored for you',
+  },
+]
 
 const LandingPage = () => {
   const navigate = useNavigate()
@@ -44,6 +74,14 @@ const LandingPage = () => {
           <HeroButton>Get Started</HeroButton>
           <HeroLink>Learn More</HeroLink>
         </HeroSection>
+        <FeaturesSection>
+          <FeaturesTitle>Features</FeaturesTitle>
+          <FeaturesList>
+            {featuresList.map((eachItem) => (
+              <FeatureItem key={eachItem.id} featureDetails={eachItem} />
+            ))}
+          </FeaturesList>
+        </FeaturesSection>
       </SectionWrapper>
     </MainContainer>
   )

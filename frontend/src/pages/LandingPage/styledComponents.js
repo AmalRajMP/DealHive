@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #f7f8fc;
   display: flex;
   flex-direction: column;
 `
@@ -41,6 +41,7 @@ export const SectionWrapper = styled.div`
   border-top-right-radius: 16px;
   margin-top: -6px;
 `
+/* Hero Section */
 
 export const HeroSection = styled.div`
   min-height: 40%;
@@ -58,7 +59,6 @@ export const HeroImage = styled.img`
   width: 200px;
   margin: -40px;
 `
-
 export const HeroTitle = styled.h1`
   font-size: 26px;
 `
@@ -96,4 +96,28 @@ export const HeroLink = styled.a`
     opacity: 1;
     text-decoration: underline;
   }
+`
+/* Features Section */
+
+export const FeaturesSection = styled.div`
+  height: 50%;
+  width: 100%;
+  background-color: #f7f8fc;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 20px;
+`
+export const FeaturesTitle = styled.h2`
+  color: #262626;
+  font-size: 20px;
+`
+export const FeaturesList = styled.ul`
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 `
