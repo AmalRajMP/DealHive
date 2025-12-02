@@ -9,6 +9,10 @@ import Testimonial_Avatar from '../../assets/Testimonial_Avatar.jpg'
 import { FiSearch } from 'react-icons/fi'
 import { BiBrain } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
+import { FaRegCopyright } from 'react-icons/fa'
+import { FaFacebook } from 'react-icons/fa'
+import { FaInstagram } from 'react-icons/fa'
+import { FaSquareXTwitter } from 'react-icons/fa6'
 
 import {
   MainContainer,
@@ -33,6 +37,10 @@ import {
   TestimonialDescription,
   TestimonialSubtext,
   ProfileName,
+  Footer,
+  FooterText,
+  SocialLinks,
+  SocialIcon,
 } from './styledComponents'
 
 const featuresList = [
@@ -106,6 +114,38 @@ const LandingPage = () => {
             </TestimonialDetails>
           </TestimonialSection>
         </FeaturesSection>
+        <Footer>
+          <FooterText>
+            <FaRegCopyright />
+            2025 DealHive | Terms of Service | Contact Us
+          </FooterText>
+
+          <SocialLinks>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SocialIcon>
+                <FaFacebook />
+              </SocialIcon>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SocialIcon>
+                <FaInstagram />
+              </SocialIcon>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+              <SocialIcon>
+                <FaSquareXTwitter />
+              </SocialIcon>
+            </a>
+          </SocialLinks>
+        </Footer>
       </SectionWrapper>
     </MainContainer>
   )

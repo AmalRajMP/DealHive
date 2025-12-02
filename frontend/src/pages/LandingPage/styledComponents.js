@@ -6,6 +6,8 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+/* Header */
+
 export const Navbar = styled.nav`
   height: 60px;
   display: flex;
@@ -112,7 +114,7 @@ export const FeaturesSection = styled.div`
 `
 export const SectionHeading = styled.h2`
   color: #262626;
-  font-size: 20px;
+  font-size: 18px;
 `
 
 export const FeaturesList = styled.ul`
@@ -161,4 +163,51 @@ export const ProfileName = styled.span`
   color: #1e88e5;
   font-size: 12px;
   font-weight: 500;
+`
+/* Footer */
+
+export const Footer = styled.footer`
+  width: 100%;
+  background: #ffffff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 12px;
+  color: #6b7280; /* subtle text */
+  border-top: 1px solid #e5e7eb; /* light gray top border */
+`
+
+export const FooterText = styled.p`
+  margin: 8px 0;
+  font-weight: 500;
+
+  a {
+    margin: 0 4px;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+      color: #111827;
+      transition: 0.2s;
+    }
+  }
+`
+
+export const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 8px;
+`
+
+export const SocialIcon = styled.div`
+  color: #1e88e5;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.12);
+    transition: 0.2s ease-in-out;
+  }
 `
