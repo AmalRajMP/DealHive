@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import FeatureItem from '../../components/FeatureItem'
 
-import Logo from '../../assets/Logo.png'
+import Website_Logo from '../../assets/Website_Logo.png'
 import CartImage from '../../assets/CartImage.png'
 import Testimonial_Avatar from '../../assets/Testimonial_Avatar.jpg'
 
@@ -19,7 +19,8 @@ import {
   Navbar,
   WebsiteLogo,
   AuthContainer,
-  AuthButton,
+  LoginButton,
+  SignUpButton,
   SectionWrapper,
   HeroSection,
   HeroImage,
@@ -73,11 +74,14 @@ const LandingPage = () => {
   return (
     <MainContainer>
       <Navbar>
-        <WebsiteLogo src={Logo} alt="website-logo" />
+        <WebsiteLogo src={Website_Logo} alt="website-logo" />
         <AuthContainer>
-          <AuthButton color="#525252" onClick={goToLogin}>
+          <LoginButton onClick={goToLogin}>
             Login
-          </AuthButton>
+          </LoginButton>
+           <SignUpButton onClick={goToLogin}>
+            Sign Up
+          </SignUpButton>
         </AuthContainer>
       </Navbar>
       <SectionWrapper>
