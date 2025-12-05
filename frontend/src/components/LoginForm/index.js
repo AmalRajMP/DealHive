@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MdLockOutline, MdEmail } from 'react-icons/md'
 import apiStatusConstants from '../../constants/apiStatusConstants'
@@ -32,12 +32,6 @@ const LoginForm = () => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    if (apiStatus === apiStatusConstants.success) {
-      navigate('/')
-    }
-  }, [apiStatus, navigate])
-
   const submitForm = async (event) => {
     event.preventDefault()
     setApiStatus(apiStatusConstants.inProgress)
@@ -56,7 +50,9 @@ const LoginForm = () => {
     const data = await response.json()
     if (response.ok) {
       setApiStatus(apiStatusConstants.success)
-      console.log(data.message)
+      localStorage.setItem('authToken', data.token)
+      console.log(data.token)
+      navigate('/home')
     } else {
       setApiStatus(apiStatusConstants.failure)
       setErrorMsg(data.message)

@@ -1,5 +1,6 @@
 import {
   FeatureCard,
+  FeatureImage,
   FeatureIcon,
   FeatureInfo,
   FeatureInfoTitle,
@@ -8,11 +9,13 @@ import {
 
 const FeatureItem = (props) => {
   const { featureDetails } = props
-  const { icon, title, description } = featureDetails
+  const { mobileIcon, desktopIcon, title, description } = featureDetails
+
   return (
     <li>
       <FeatureCard>
-        <FeatureIcon>{icon}</FeatureIcon>
+        <FeatureImage src={desktopIcon} alt={title} />
+        <FeatureIcon>{mobileIcon}</FeatureIcon>
         <FeatureInfo>
           <FeatureInfoTitle>{title}</FeatureInfoTitle>
           <FeatureInfoSubTitle>{description}</FeatureInfoSubTitle>

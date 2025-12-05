@@ -4,7 +4,11 @@ import FeatureItem from '../../components/FeatureItem'
 
 import Website_Logo from '../../assets/Website_Logo.png'
 import CartImage from '../../assets/CartImage.png'
+import Desktop_CartImage from '../../assets/Desktop_CartImage.jpg'
 import Testimonial_Avatar from '../../assets/Testimonial_Avatar.jpg'
+import SearchIcon from '../../assets/SearchIcon.jpg'
+import Brain from '../../assets/Brain.jpg'
+import Ribbon from '../../assets/Ribbon.jpg'
 
 import { FiSearch } from 'react-icons/fi'
 import { BiBrain } from 'react-icons/bi'
@@ -24,8 +28,11 @@ import {
   SectionWrapper,
   HeroSection,
   HeroImage,
+  HeroDesktopImage,
+  HeroSectionDetails,
   HeroTitle,
   HeroSubTitle,
+  HeroButtonContainer,
   HeroButton,
   HeroLink,
   FeaturesSection,
@@ -47,19 +54,22 @@ import {
 const featuresList = [
   {
     id: 1,
-    icon: <FiSearch />,
+    mobileIcon: <FiSearch />,
+    desktopIcon: SearchIcon,
     title: 'Smart Search',
     description: 'Find products instantly',
   },
   {
     id: 2,
-    icon: <BiBrain />,
+    mobileIcon: <BiBrain />,
+    desktopIcon: Brain,
     title: 'AI Recommendations',
     description: 'Smarter choices every day',
   },
   {
     id: 3,
-    icon: <AiFillStar />,
+    mobileIcon: <AiFillStar />,
+    desktopIcon: Ribbon,
     title: 'Personalized Deals',
     description: 'Offers tailored for you',
   },
@@ -71,29 +81,36 @@ const LandingPage = () => {
   const goToLogin = () => {
     navigate('/login')
   }
+
+  const goToRegiter = () => {
+    navigate('/register')
+  }
+
   return (
     <MainContainer>
       <Navbar>
         <WebsiteLogo src={Website_Logo} alt="website-logo" />
         <AuthContainer>
-          <LoginButton onClick={goToLogin}>
-            Login
-          </LoginButton>
-           <SignUpButton onClick={goToLogin}>
-            Sign Up
-          </SignUpButton>
+          <LoginButton onClick={goToLogin}>Login</LoginButton>
+          <SignUpButton onClick={goToRegiter}>Sign Up</SignUpButton>
         </AuthContainer>
       </Navbar>
       <SectionWrapper>
         <HeroSection>
           <HeroImage src={CartImage} alt="cart" />
-          <HeroTitle>Shop Smarter With AI</HeroTitle>
-          <HeroSubTitle>
-            Personalized deals and recommendations for every shopper.
-          </HeroSubTitle>
-          <HeroButton>Get Started</HeroButton>
-          <HeroLink>Learn More</HeroLink>
+          <HeroSectionDetails>
+            <HeroTitle>Shop Smarter With AI</HeroTitle>
+            <HeroSubTitle>
+              Personalized deals and recommendations for every shopper.
+            </HeroSubTitle>
+            <HeroButtonContainer>
+              <HeroButton onClick={goToRegiter}>Get Started</HeroButton>
+              <HeroLink>Learn More</HeroLink>
+            </HeroButtonContainer>
+          </HeroSectionDetails>
+          <HeroDesktopImage src={Desktop_CartImage} alt="cart" />
         </HeroSection>
+
         <FeaturesSection>
           <SectionHeading>Features</SectionHeading>
           <FeaturesList>
@@ -110,7 +127,7 @@ const LandingPage = () => {
             <TestimonialDetails>
               <TestimonialName>Sarah K</TestimonialName>
               <TestimonialDescription>
-                DealHive changed how I shop! save much
+                DealHive changed how I shop! Save much time and money!
               </TestimonialDescription>
               <TestimonialSubtext>
                 <ProfileName>--Sarra K</ProfileName>, Frequent Shopper

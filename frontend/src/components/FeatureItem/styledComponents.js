@@ -8,6 +8,13 @@ export const FeatureCard = styled.div`
   flex: 1 0 100%;
   gap: 20px;
   border-radius: 10px;
+
+  @media screen and (min-width: 768px) {
+    height: 180px;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 export const FeatureIcon = styled.div`
@@ -18,17 +25,44 @@ export const FeatureIcon = styled.div`
   align-items: center;
   color: #1e88e5;
   font-size: 22px;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
+export const FeatureImage = styled.img`
+  height: 160px;
+  width: 160px;
+  margin-top: -46px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+
 export const FeatureInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    margin-top: -40px;
+  }
 `
 export const FeatureInfoTitle = styled.h2`
   color: #262626;
   font-size: 14px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `
 export const FeatureInfoSubTitle = styled.p`
   color: #525252;
   font-size: 12px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
 `
