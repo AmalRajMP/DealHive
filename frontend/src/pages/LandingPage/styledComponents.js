@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const MainContainer = styled.div`
   min-height: 100vh;
@@ -47,6 +47,7 @@ export const LoginButton = styled.button`
   font-weight: 500;
   border-width: 0px;
   margin-top: -10px;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -61,6 +62,7 @@ export const SignUpButton = styled.button`
   margin-top: -10px;
   border-radius: 25px;
   padding: 8px 16px;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     display: none;
@@ -104,6 +106,19 @@ export const HeroSection = styled.div`
     padding: 30px 90px;
   }
 `
+
+const floatAnimation = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`
+
 export const HeroImage = styled.img`
   height: 200px;
   width: 200px;
@@ -120,6 +135,7 @@ export const HeroDesktopImage = styled.img`
   margin: -30px -30px 0px 0px;
   z-index: -1;
   pointer-events: none;
+  animation: ${floatAnimation} 4s ease-in-out infinite;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -173,6 +189,9 @@ export const HeroButton = styled.button`
     #0070ea 75%,
     #0098f7 100%
   );
+  background-size: 200% auto; /* For gradient movement */
+  background-position: left center;
+
   color: #ffffff;
   padding: 12px 26px;
   font-size: 12px;
@@ -180,15 +199,18 @@ export const HeroButton = styled.button`
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: 0.25s ease-in-out;
+  transition: background-position 0.4s ease-in-out, transform 0.2s;
 
   &:hover {
-    background-color: #002f63;
+    background-position: right center; /* Slide effect */
+    transform: scale(1.04); /* Small lift */
   }
+
   @media screen and (min-width: 768px) {
     font-size: 13px;
   }
 `
+
 export const HeroLink = styled.a`
   font-size: 12px;
   font-weight: 400;

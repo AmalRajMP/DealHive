@@ -9,6 +9,13 @@ export const FeatureCard = styled.div`
   gap: 20px;
   border-radius: 10px;
 
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
+
   @media screen and (min-width: 768px) {
     height: 180px;
     width: 400px;
