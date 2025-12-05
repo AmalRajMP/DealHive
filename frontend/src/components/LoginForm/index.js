@@ -12,6 +12,8 @@ import {
   InputEle,
   ErrorMsg,
   Button,
+  SignupPrompt,
+  SignupLink,
 } from './styledComponents'
 import { ThreeDots } from 'react-loader-spinner'
 
@@ -114,6 +116,9 @@ const LoginForm = () => {
             <ErrorMsg>{errorMsg}</ErrorMsg>
           )}
           <Button type="submit">LOGIN</Button>
+          <SignupPrompt>
+            Don’t have an account? <SignupLink href="/register">Sign up</SignupLink>
+          </SignupPrompt>
         </FormContainer>
       )}
 

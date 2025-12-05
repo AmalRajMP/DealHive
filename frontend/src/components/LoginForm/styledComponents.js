@@ -74,3 +74,23 @@ export const Button = styled.button`
     transform: scale(0.97);
   }
 `
+export const SignupPrompt = styled.p`
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #555;
+
+  @media screen and (min-width: 768px) {
+    font-size: 13px;
+  }
+`
+
+export const SignupLink = styled.a`
+  color: #4a86e7;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
