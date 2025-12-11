@@ -1,0 +1,2968 @@
+[
+  {
+    "id": 1,
+    "title": "Essence Mascara Lash Princess",
+    "description": "Essence Mascara Lash Princess - gives bold and voluminous lashes for daily wear.",
+    "brand": "Essence",
+    "category": "beauty",
+    "rating": 4.1,
+    "thumbnail": "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg"
+    ],
+    "originalPrice": 799,
+    "discountPrice": 549,
+    "discountPercent": 31,
+    "reviews": [
+      {
+        "reviewerName": "Aisha",
+        "rating": 4,
+        "comment": "Good mascara for daily use — lasts well."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 2,
+    "title": "Eyeshadow Palette with Mirror",
+    "description": "Versatile eyeshadow palette with rich pigment and a built-in mirror for touchups.",
+    "brand": "Glamify",
+    "category": "beauty",
+    "rating": 4.0,
+    "thumbnail": "https://images.pexels.com/photos/7290697/pexels-photo-7290697.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/7290697/pexels-photo-7290697.jpeg"
+    ],
+    "originalPrice": 1299,
+    "discountPrice": 899,
+    "discountPercent": 31,
+    "reviews": [
+      {
+        "reviewerName": "Meera",
+        "rating": 3,
+        "comment": "Nice colours; a bit powdery but good value."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 3,
+    "title": "Powder Canister",
+    "description": "Compact powder with smooth finish and long-lasting coverage.",
+    "brand": "PowderCo",
+    "category": "beauty",
+    "rating": 4.5,
+    "thumbnail": "https://images.pexels.com/photos/1749452/pexels-photo-1749452.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/1749452/pexels-photo-1749452.jpeg"
+    ],
+    "originalPrice": 999,
+    "discountPrice": 699,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Nimisha",
+        "rating": 5,
+        "comment": "Very premium feel and finishes well."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 4,
+    "title": "Red Lipstick",
+    "description": "Long-lasting red matte lipstick with intense pigmentation.",
+    "brand": "Rouge",
+    "category": "beauty",
+    "rating": 4.3,
+    "thumbnail": "https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg"
+    ],
+    "originalPrice": 699,
+    "discountPrice": 499,
+    "discountPercent": 29,
+    "reviews": [
+      {
+        "reviewerName": "Sara",
+        "rating": 4,
+        "comment": "Beautiful colour and lasts through meals."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 5,
+    "title": "Red Nail Polish",
+    "description": "Fast-drying red nail polish with glossy finish.",
+    "brand": "NailArt",
+    "category": "beauty",
+    "rating": 4.8,
+    "thumbnail": "https://images.pexels.com/photos/27596312/pexels-photo-27596312.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/27596312/pexels-photo-27596312.jpeg"
+    ],
+    "originalPrice": 399,
+    "discountPrice": 249,
+    "discountPercent": 38,
+    "reviews": [
+      {
+        "reviewerName": "Riya",
+        "rating": 5,
+        "comment": "Dries fast and shines beautifully."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 6,
+    "title": "Royal Oud Perfume",
+    "description": "A luxurious oud-based perfume with warm, long-lasting notes.",
+    "brand": "AromaLux",
+    "category": "fragrances",
+    "rating": 4.6,
+    "thumbnail": "https://images.pexels.com/photos/10786706/pexels-photo-10786706.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/10786706/pexels-photo-10786706.jpeg"
+    ],
+    "originalPrice": 2499,
+    "discountPrice": 1899,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Rohit",
+        "rating": 5,
+        "comment": "Very premium and long-lasting fragrance!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 7,
+    "title": "Floral Bliss Eau de Parfum",
+    "description": "A sweet and energetic floral fragrance perfect for daily wear.",
+    "brand": "BloomScents",
+    "category": "fragrances",
+    "rating": 4.2,
+    "thumbnail": "https://images.pexels.com/photos/1961785/pexels-photo-1961785.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/1961785/pexels-photo-1961785.jpeg"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Pooja",
+        "rating": 4,
+        "comment": "Lovely floral smell; fades after a few hours."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 8,
+    "title": "Ocean Mist Cologne",
+    "description": "Fresh aquatic cologne inspired by sea breeze and clean notes.",
+    "brand": "WaveEssence",
+    "category": "fragrances",
+    "rating": 4.4,
+    "thumbnail": "https://images.pexels.com/photos/3640668/pexels-photo-3640668.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/3640668/pexels-photo-3640668.jpeg"
+    ],
+    "originalPrice": 1799,
+    "discountPrice": 1299,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Aman",
+        "rating": 4,
+        "comment": "Very refreshing and perfect for summer!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 9,
+    "title": "Classic Musk Perfume",
+    "description": "A bold musk fragrance that stays strong throughout the day.",
+    "brand": "Muskora",
+    "category": "fragrances",
+    "rating": 4.1,
+    "thumbnail": "https://images.pexels.com/photos/3059609/pexels-photo-3059609.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/3059609/pexels-photo-3059609.jpeg"
+    ],
+    "originalPrice": 2299,
+    "discountPrice": 1699,
+    "discountPercent": 26,
+    "reviews": [
+      {
+        "reviewerName": "Divya",
+        "rating": 4,
+        "comment": "Strong scent, lasts extremely long. Great for evenings."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 10,
+    "title": "Citrus Zest Spray",
+    "description": "A vibrant citrus fragrance perfect for energetic mornings.",
+    "brand": "FreshTone",
+    "category": "fragrances",
+    "rating": 4.0,
+    "thumbnail": "https://images.pexels.com/photos/1961791/pexels-photo-1961791.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/1961791/pexels-photo-1961791.jpeg"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 999,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Sneha",
+        "rating": 4,
+        "comment": "Love the citrus punch! Very refreshing."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 11,
+    "title": "Modern Fabric Sofa",
+    "description": "Comfortable 3-seater fabric sofa with a minimalist modern design.",
+    "brand": "HomeComfort",
+    "category": "furniture",
+    "rating": 4.5,
+    "thumbnail": "https://images.pexels.com/photos/4352247/pexels-photo-4352247.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/4352247/pexels-photo-4352247.jpeg"
+    ],
+    "originalPrice": 15999,
+    "discountPrice": 11999,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Rakesh",
+        "rating": 5,
+        "comment": "Very comfortable and stylish. Worth the price!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 12,
+    "title": "Wooden Dining Table Set",
+    "description": "6-seater solid wood dining table set with a polished finish.",
+    "brand": "OakCraft",
+    "category": "furniture",
+    "rating": 4.3,
+    "thumbnail": "https://images.pexels.com/photos/14099418/pexels-photo-14099418.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/14099418/pexels-photo-14099418.jpeg"
+    ],
+    "originalPrice": 20999,
+    "discountPrice": 16999,
+    "discountPercent": 19,
+    "reviews": [
+      {
+        "reviewerName": "Maria",
+        "rating": 4,
+        "comment": "Good quality wood and very sturdy build."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 13,
+    "title": "Ergonomic Office Chair",
+    "description": "Adjustable office chair with lumbar support and breathable mesh.",
+    "brand": "ErgoFlex",
+    "category": "furniture",
+    "rating": 4.6,
+    "thumbnail": "https://images.pexels.com/photos/1957477/pexels-photo-1957477.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/1957477/pexels-photo-1957477.jpeg"
+    ],
+    "originalPrice": 8999,
+    "discountPrice": 6999,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Akhil",
+        "rating": 5,
+        "comment": "Best chair for long working hours!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 14,
+    "title": "Wooden Bed Frame",
+    "description": "King-size premium wooden bed frame with a classic headboard.",
+    "brand": "SleepWell",
+    "category": "furniture",
+    "rating": 4.4,
+    "thumbnail": "https://images.pexels.com/photos/5390711/pexels-photo-5390711.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/5390711/pexels-photo-5390711.jpeg"
+    ],
+    "originalPrice": 25999,
+    "discountPrice": 19999,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Nisha",
+        "rating": 4,
+        "comment": "Strong build and beautiful finish. Recommended!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 15,
+    "title": "Minimalist Coffee Table",
+    "description": "Compact center table made of engineered wood with a sleek matte finish.",
+    "brand": "UrbanLiving",
+    "category": "furniture",
+    "rating": 4.2,
+    "thumbnail": "https://images.pexels.com/photos/29971358/pexels-photo-29971358.jpeg",
+    "images": [
+      "https://images.pexels.com/photos/29971358/pexels-photo-29971358.jpeg"
+    ],
+    "originalPrice": 4999,
+    "discountPrice": 3499,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Balu",
+        "rating": 4,
+        "comment": "Looks premium and fits perfectly in small spaces."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 16,
+    "title": "Organic Brown Rice",
+    "description": "High-quality organic brown rice rich in fibre and nutrients.",
+    "brand": "NatureGrain",
+    "category": "groceries",
+    "rating": 4.5,
+    "thumbnail": "https://i5.walmartimages.com/asr/792ac3a7-2843-4dc1-bb47-e313c7e7935a.7077aa330972dcb6769f01dacb666780.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/792ac3a7-2843-4dc1-bb47-e313c7e7935a.7077aa330972dcb6769f01dacb666780.jpeg"
+    ],
+    "originalPrice": 249,
+    "discountPrice": 199,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Anjali",
+        "rating": 5,
+        "comment": "Clean grains and great taste!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 17,
+    "title": "Premium Basmati Rice",
+    "description": "Long-grain aromatic basmati rice perfect for biryani.",
+    "brand": "RoyalHarvest",
+    "category": "groceries",
+    "rating": 4.6,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.VKVmpu7kLhXknto8A1JjhgHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.VKVmpu7kLhXknto8A1JjhgHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 299,
+    "discountPrice": 239,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Raj",
+        "rating": 5,
+        "comment": "Very flavourful and authentic."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 18,
+    "title": "Raw Almonds 500g",
+    "description": "Premium raw almonds rich in protein and healthy fats.",
+    "brand": "NutriBox",
+    "category": "groceries",
+    "rating": 4.7,
+    "thumbnail": "https://graze.co.nz/wp-content/uploads/GRZ_Bulk_Raw-Almonds-e1634785390387.png",
+    "images": [
+      "https://graze.co.nz/wp-content/uploads/GRZ_Bulk_Raw-Almonds-e1634785390387.png"
+    ],
+    "originalPrice": 699,
+    "discountPrice": 549,
+    "discountPercent": 21,
+    "reviews": [
+      {
+        "reviewerName": "Lakshmi",
+        "rating": 4,
+        "comment": "Good quality and fresh."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 19,
+    "title": "Organic Honey",
+    "description": "Pure organic honey sourced from forest beehives.",
+    "brand": "BeePure",
+    "category": "groceries",
+    "rating": 4.3,
+    "thumbnail": "https://i5.walmartimages.com/asr/aa72341b-6b4d-4c7f-8f94-dbdabb63bfa7_1.49ff3c12754e36d85452829da4877406.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/aa72341b-6b4d-4c7f-8f94-dbdabb63bfa7_1.49ff3c12754e36d85452829da4877406.jpeg"
+    ],
+    "originalPrice": 349,
+    "discountPrice": 279,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Meena",
+        "rating": 4,
+        "comment": "Thick consistency and nice aroma."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 20,
+    "title": "Whole Wheat Flour",
+    "description": "Stone-ground whole wheat flour for soft and nutritious chapatis.",
+    "brand": "GrainMill",
+    "category": "groceries",
+    "rating": 4.2,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.lC-VXZOArAJo5-JZijhsGQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.lC-VXZOArAJo5-JZijhsGQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 199,
+    "discountPrice": 159,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Vishnu",
+        "rating": 4,
+        "comment": "Good quality flour, makes soft rotis."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 21,
+    "title": "Extra Virgin Olive Oil",
+    "description": "Cold-pressed olive oil ideal for salads and cooking.",
+    "brand": "OlivaPure",
+    "category": "groceries",
+    "rating": 4.4,
+    "thumbnail": "https://i5.walmartimages.com/asr/8a244702-7b16-407a-ae41-a223c1b91272.d1b827a2d79b1ac933eb7a907089323d.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+    "images": [
+      "https://i5.walmartimages.com/asr/8a244702-7b16-407a-ae41-a223c1b91272.d1b827a2d79b1ac933eb7a907089323d.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff"
+    ],
+    "originalPrice": 499,
+    "discountPrice": 399,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Sana",
+        "rating": 4,
+        "comment": "Good aroma and healthy choice."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 22,
+    "title": "Black Chia Seeds",
+    "description": "Rich in omega-3, protein, and fibre. Great for smoothies.",
+    "brand": "NutriSeeds",
+    "category": "groceries",
+    "rating": 4.5,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.MbfJW3_njHwmEREzWaEADAHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.MbfJW3_njHwmEREzWaEADAHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 249,
+    "discountPrice": 189,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Farhan",
+        "rating": 5,
+        "comment": "Very clean and fresh seeds!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 23,
+    "title": "Whole Cashews 250g",
+    "description": "Premium whole cashews packed with healthy fats and minerals.",
+    "brand": "NutriBox",
+    "category": "groceries",
+    "rating": 4.6,
+    "thumbnail": "https://m.media-amazon.com/images/I/410amHEHcOL._SX300_SY300_QL70_ML2_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/410amHEHcOL._SX300_SY300_QL70_ML2_.jpg"
+    ],
+    "originalPrice": 599,
+    "discountPrice": 449,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Suresh",
+        "rating": 5,
+        "comment": "Crispy and very fresh!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 24,
+    "title": "Organic Turmeric Powder",
+    "description": "Pure turmeric powder with strong colour and aroma.",
+    "brand": "SpiceRoot",
+    "category": "groceries",
+    "rating": 4.3,
+    "thumbnail": "https://5.imimg.com/data5/ECOM/Default/2023/4/302547532/KF/WT/DB/150204133/aashirvaad-turmeric-powder-100-gm-pouch-seasonings-spices-34636901187782-500x500.jpg",
+    "images": [
+      "https://5.imimg.com/data5/ECOM/Default/2023/4/302547532/KF/WT/DB/150204133/aashirvaad-turmeric-powder-100-gm-pouch-seasonings-spices-34636901187782-500x500.jpg"
+    ],
+    "originalPrice": 149,
+    "discountPrice": 119,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Jasmine",
+        "rating": 4,
+        "comment": "Very aromatic and pure."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 25,
+    "title": "Fresh Black Pepper",
+    "description": "Strong and aromatic black peppercorns freshly packed.",
+    "brand": "SpiceRoot",
+    "category": "groceries",
+    "rating": 4.7,
+    "thumbnail": "https://5.imimg.com/data5/SELLER/Default/2023/6/319346222/EN/GS/PB/191800603/black-pepper-f-500x500.png",
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2023/6/319346222/EN/GS/PB/191800603/black-pepper-f-500x500.png"
+    ],
+    "originalPrice": 199,
+    "discountPrice": 159,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Aravind",
+        "rating": 5,
+        "comment": "Perfect aroma, great for cooking!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 26,
+    "title": "Organic Cumin Seeds",
+    "description": "Aromatic cumin seeds ideal for seasoning and Indian dishes.",
+    "brand": "SpiceRoot",
+    "category": "groceries",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.C1DKQaZzVUqQLLicTaGtKAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.C1DKQaZzVUqQLLicTaGtKAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 159,
+    "discountPrice": 129,
+    "discountPercent": 19,
+    "reviews": [
+      {
+        "reviewerName": "Mehul",
+        "rating": 4,
+        "comment": "Smells fresh and authentic!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 27,
+    "title": "Green Tea Bags",
+    "description": "Premium green tea bags rich in antioxidants and freshness.",
+    "brand": "TeaLeaf",
+    "category": "groceries",
+    "rating": 4.2,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.tximELcRbYKpYexcuqL0VQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.tximELcRbYKpYexcuqL0VQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 249,
+    "discountPrice": 189,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Haritha",
+        "rating": 4,
+        "comment": "A refreshing and light flavour!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 28,
+    "title": "Roasted Peanuts Salted",
+    "description": "Crunchy salted peanuts roasted to perfection.",
+    "brand": "Snackify",
+    "category": "groceries",
+    "rating": 4.1,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.0RD8RaJwPaRvykVlU1EvQwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.0RD8RaJwPaRvykVlU1EvQwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 99,
+    "discountPrice": 79,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Ravi",
+        "rating": 4,
+        "comment": "Crispy and tasty snack!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 29,
+    "title": "Breakfast Oats",
+    "description": "Nutritious rolled oats perfect for a healthy breakfast.",
+    "brand": "HealthyBite",
+    "category": "groceries",
+    "rating": 4.3,
+    "thumbnail": "https://atlantisdecora.com/public/products/prod-6506056.kelloggs-oats-breakfast-cereal-900-gm.jpg",
+    "images": [
+      "https://atlantisdecora.com/public/products/prod-6506056.kelloggs-oats-breakfast-cereal-900-gm.jpg"
+    ],
+    "originalPrice": 179,
+    "discountPrice": 139,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Asha",
+        "rating": 4,
+        "comment": "Good texture and cooks quickly."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 30,
+    "title": "Sunflower Oil 1L",
+    "description": "Refined sunflower oil suitable for daily cooking.",
+    "brand": "PureDrop",
+    "category": "groceries",
+    "rating": 4.1,
+    "thumbnail": "https://www.gosupps.com/media/catalog/product/7/1/71-D6kliuQL.jpg",
+    "images": [
+      "https://www.gosupps.com/media/catalog/product/7/1/71-D6kliuQL.jpg"
+    ],
+    "originalPrice": 179,
+    "discountPrice": 139,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Saleena",
+        "rating": 4,
+        "comment": "Good quality oil for regular use."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 31,
+    "title": "Coconut Oil Pure",
+    "description": "Cold-pressed coconut oil extracted from fresh coconuts.",
+    "brand": "CocoPure",
+    "category": "groceries",
+    "rating": 4.6,
+    "thumbnail": "https://m.media-amazon.com/images/I/4146usSvhbL.jpg",
+    "images": ["https://m.media-amazon.com/images/I/4146usSvhbL.jpg"],
+    "originalPrice": 199,
+    "discountPrice": 159,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Nidhi",
+        "rating": 5,
+        "comment": "Pure and smells amazing!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 32,
+    "title": "Toor Dal",
+    "description": "Premium toor dal packed with protein and essential nutrients.",
+    "brand": "DalHouse",
+    "category": "groceries",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.PPVlwsPNU5Peiy6NKOTurwHaIW?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.PPVlwsPNU5Peiy6NKOTurwHaIW?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 229,
+    "discountPrice": 179,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Vinod",
+        "rating": 4,
+        "comment": "Clean and cooks evenly."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 33,
+    "title": "Moong Dal Yellow",
+    "description": "High-quality yellow moong dal for light and healthy meals.",
+    "brand": "DalHouse",
+    "category": "groceries",
+    "rating": 4.5,
+    "thumbnail": "https://hallans.co.uk/wp-content/uploads/2013/04/top-op_moong_dal_yellow_500gartboard_1-1024x1024.jpg",
+    "images": [
+      "https://hallans.co.uk/wp-content/uploads/2013/04/top-op_moong_dal_yellow_500gartboard_1-1024x1024.jpg"
+    ],
+    "originalPrice": 199,
+    "discountPrice": 159,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Saira",
+        "rating": 5,
+        "comment": "Very clean dal. No stones!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 34,
+    "title": "Chilli Powder",
+    "description": "Bright red chilli powder with strong flavour and aroma.",
+    "brand": "SpiceRoot",
+    "category": "groceries",
+    "rating": 4.2,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP._mf4x3UKuCbNA8r26JX0VAHaI8?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.mm.bing.net/th/id/OIP._mf4x3UKuCbNA8r26JX0VAHaI8?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 159,
+    "discountPrice": 129,
+    "discountPercent": 19,
+    "reviews": [
+      {
+        "reviewerName": "Hari",
+        "rating": 4,
+        "comment": "Good colour and heat level."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 35,
+    "title": "Garam Masala Mix",
+    "description": "Fragrant mixture of premium Indian spices for rich flavour.",
+    "brand": "SpiceRoot",
+    "category": "groceries",
+    "rating": 4.3,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.C52Wm2cb_VEO0lTUKVPU2wHaJf?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.C52Wm2cb_VEO0lTUKVPU2wHaJf?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 199,
+    "discountPrice": 159,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Jithu",
+        "rating": 4,
+        "comment": "Nice blend, enhances taste."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 36,
+    "title": "Stainless Steel Water Bottle",
+    "description": "Durable double-layer stainless steel bottle that keeps drinks hot or cold.",
+    "brand": "SteelPro",
+    "category": "kitchen-accessories",
+    "rating": 4.4,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.XimIb0lTQJcOAEdL8b6SwgHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.XimIb0lTQJcOAEdL8b6SwgHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 699,
+    "discountPrice": 499,
+    "discountPercent": 29,
+    "reviews": [
+      {
+        "reviewerName": "Rahul",
+        "rating": 4,
+        "comment": "Keeps water cool for hours!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 37,
+    "title": "Multi-Purpose Kitchen Scissors",
+    "description": "Heavy-duty kitchen scissors ideal for cutting vegetables, meat, and packaging.",
+    "brand": "ChefTools",
+    "category": "kitchen-accessories",
+    "rating": 4.3,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.XrDJVhCiFP4VxnbS-3JuegHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.XrDJVhCiFP4VxnbS-3JuegHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 299,
+    "discountPrice": 199,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Sneha",
+        "rating": 4,
+        "comment": "Sharp and very useful!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 38,
+    "title": "Wooden Chopping Board",
+    "description": "Premium antibacterial wooden chopping board ideal for all kitchen tasks.",
+    "brand": "CookMate",
+    "category": "kitchen-accessories",
+    "rating": 4.6,
+    "thumbnail": "https://m.media-amazon.com/images/I/81-ZwFmPe+L._AC_.jpg",
+    "images": ["https://m.media-amazon.com/images/I/81-ZwFmPe+L._AC_.jpg"],
+    "originalPrice": 799,
+    "discountPrice": 599,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Ammu",
+        "rating": 5,
+        "comment": "Excellent quality wood!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 39,
+    "title": "Non-Stick Frying Pan",
+    "description": "Durable non-stick frying pan with even heat distribution.",
+    "brand": "PanCraft",
+    "category": "kitchen-accessories",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/81VNlrpKnaL._AC_.jpg",
+    "images": ["https://m.media-amazon.com/images/I/81VNlrpKnaL._AC_.jpg"],
+    "originalPrice": 999,
+    "discountPrice": 749,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Renu",
+        "rating": 4,
+        "comment": "Good non-stick coating and feels sturdy."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 40,
+    "title": "Glass Spice Jars Set",
+    "description": "Set of premium glass spice jars with airtight bamboo lids.",
+    "brand": "KitchenJoy",
+    "category": "kitchen-accessories",
+    "rating": 4.5,
+    "thumbnail": "https://www.kitchenstuffplus.com/media/catalog/product/8/4/84777_KSP_Chalkboard_Glass_Spice_Jar___Set_of_6_2.jpg?width=2000&height=&canvas=2000,&optimize=high&fit=bounds",
+    "images": [
+      "https://www.kitchenstuffplus.com/media/catalog/product/8/4/84777_KSP_Chalkboard_Glass_Spice_Jar___Set_of_6_2.jpg?width=2000&height=&canvas=2000,&optimize=high&fit=bounds"
+    ],
+    "originalPrice": 799,
+    "discountPrice": 599,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Deepthi",
+        "rating": 5,
+        "comment": "Looks aesthetic and seals well!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 41,
+    "title": "UltraBook Slim 14",
+    "description": "Lightweight 14-inch ultrabook with long battery life and fast SSD storage.",
+    "brand": "TechPro",
+    "category": "laptops",
+    "rating": 4.5,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.2r3SomW6Dz6d0vMtZNYMOgHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.2r3SomW6Dz6d0vMtZNYMOgHaFj?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 49999,
+    "discountPrice": 42999,
+    "discountPercent": 14,
+    "reviews": [
+      {
+        "reviewerName": "Adarsh",
+        "rating": 5,
+        "comment": "Super light and very fast boot time!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 42,
+    "title": "Gaming Laptop GTX Series",
+    "description": "High-performance gaming laptop with GTX graphics and RGB keyboard.",
+    "brand": "GameMax",
+    "category": "laptops",
+    "rating": 4.4,
+    "thumbnail": "https://rog.asus.com/media/1471342709525.jpg",
+    "images": ["https://rog.asus.com/media/1471342709525.jpg"],
+    "originalPrice": 74999,
+    "discountPrice": 66999,
+    "discountPercent": 11,
+    "reviews": [
+      {
+        "reviewerName": "Nirmal",
+        "rating": 4,
+        "comment": "Smooth gaming performance and great cooling!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 43,
+    "title": "Business Pro Notebook",
+    "description": "Powerful business laptop with fingerprint login and metal body.",
+    "brand": "BizCore",
+    "category": "laptops",
+    "rating": 4.6,
+    "thumbnail": "https://m.media-amazon.com/images/I/6131ZgIFn1L._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/6131ZgIFn1L._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 55999,
+    "discountPrice": 47999,
+    "discountPercent": 14,
+    "reviews": [
+      {
+        "reviewerName": "Rishi",
+        "rating": 5,
+        "comment": "Perfect for office use. Premium feel!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 44,
+    "title": "Student Laptop 15.6",
+    "description": "Affordable laptop ideal for students, online classes, and browsing.",
+    "brand": "EduTech",
+    "category": "laptops",
+    "rating": 4.1,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.Ete288f5ndZWctGgdaqU9wHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.Ete288f5ndZWctGgdaqU9wHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 34999,
+    "discountPrice": 29999,
+    "discountPercent": 14,
+    "reviews": [
+      {
+        "reviewerName": "Keerthana",
+        "rating": 4,
+        "comment": "Good laptop for study and daily use."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 45,
+    "title": "CreatorBook 4K Touch",
+    "description": "4K touchscreen creator laptop built for designers and video editors.",
+    "brand": "VisionPro",
+    "category": "laptops",
+    "rating": 4.7,
+    "thumbnail": "https://static1.xdaimages.com/wordpress/wp-content/uploads/2021/04/ASUS-ZenBook-Pro-Duo-15-OLED.jpg",
+    "images": [
+      "https://static1.xdaimages.com/wordpress/wp-content/uploads/2021/04/ASUS-ZenBook-Pro-Duo-15-OLED.jpg"
+    ],
+    "originalPrice": 99999,
+    "discountPrice": 89999,
+    "discountPercent": 10,
+    "reviews": [
+      {
+        "reviewerName": "Joel",
+        "rating": 5,
+        "comment": "Amazing display quality and super smooth performance!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 46,
+    "title": "Men’s Casual Cotton Shirt",
+    "description": "Soft and breathable cotton shirt suitable for daily casual wear.",
+    "brand": "NeoWear",
+    "category": "mens-shirts",
+    "rating": 4.3,
+    "thumbnail": "https://5.imimg.com/data5/SELLER/Default/2022/7/VN/UY/HO/23374730/mens-casual-shirts-500x500-500x500.jpg",
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2022/7/VN/UY/HO/23374730/mens-casual-shirts-500x500-500x500.jpg"
+    ],
+    "originalPrice": 999,
+    "discountPrice": 699,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Arun",
+        "rating": 4,
+        "comment": "Comfortable fabric and nice fit!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 47,
+    "title": "Men’s Slim Fit Denim Shirt",
+    "description": "Stylish slim-fit denim shirt with strong stitching.",
+    "brand": "UrbanEdge",
+    "category": "mens-shirts",
+    "rating": 4.4,
+    "thumbnail": "https://i5.walmartimages.com/asr/d415941d-d02a-4bc8-b60d-d23acfe6b731.7b1da16917734f797688d4bb3227a872.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff",
+    "images": [
+      "https://i5.walmartimages.com/asr/d415941d-d02a-4bc8-b60d-d23acfe6b731.7b1da16917734f797688d4bb3227a872.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 1099,
+    "discountPercent": 27,
+    "reviews": [
+      {
+        "reviewerName": "Kishore",
+        "rating": 5,
+        "comment": "Looks premium and fits great!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 48,
+    "title": "Men’s Checkered Shirt",
+    "description": "Classic checkered shirt made with wrinkle-resistant fabric.",
+    "brand": "CheckMate",
+    "category": "mens-shirts",
+    "rating": 4.2,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/91hidYZaBBL._UY879_.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/91hidYZaBBL._UY879_.jpg"
+    ],
+    "originalPrice": 1199,
+    "discountPrice": 899,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Faizal",
+        "rating": 4,
+        "comment": "Good colours and comfortable material."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 49,
+    "title": "Formal White Shirt",
+    "description": "Premium quality white formal shirt perfect for office and events.",
+    "brand": "FormLine",
+    "category": "mens-shirts",
+    "rating": 4.5,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.qg6P0d-WMPZ6vloSa5aHyQHaJ4?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://cdnb.lystit.com/photos/ddaa-2014/12/20/remus-uomo-white-plain-classic-fit-long-sleeve-formal-shirt-product-1-26311523-0-742535509-normal.jpeg"
+    ],
+    "originalPrice": 1299,
+    "discountPrice": 999,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Naveen",
+        "rating": 5,
+        "comment": "Perfect fit and crisp look!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 50,
+    "title": "Men’s Linen Summer Shirt",
+    "description": "Lightweight linen shirt ideal for hot weather and casual outings.",
+    "brand": "CoolBreeze",
+    "category": "mens-shirts",
+    "rating": 4.3,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/61IYLEfiTLS._AC_UX679_.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/61IYLEfiTLS._AC_UX679_.jpg"
+    ],
+    "originalPrice": 1599,
+    "discountPrice": 1299,
+    "discountPercent": 18,
+    "reviews": [
+      {
+        "reviewerName": "Joel",
+        "rating": 4,
+        "comment": "Very breathable and stylish!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 51,
+    "title": "Men’s Running Shoes",
+    "description": "Lightweight running shoes with breathable mesh and cushioned sole.",
+    "brand": "RunMax",
+    "category": "mens-shoes",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.6xMSv2x5k-l6Xp7p_n8WwAHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.6xMSv2x5k-l6Xp7p_n8WwAHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Ajay",
+        "rating": 5,
+        "comment": "Super comfortable, great for jogging!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 52,
+    "title": "Men’s Casual Sneakers",
+    "description": "Everyday sneakers with stylish design and durable outsole.",
+    "brand": "StreetWalk",
+    "category": "mens-shoes",
+    "rating": 4.2,
+    "thumbnail": "https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/20743/182602/AODLEE-Fashion-Men-Sneakers-for-Men-Casual-Shoes-Breathable-Lace-up-Mens-Casual-Shoes-Spring-Leather__46717.1545973953.jpg?c=2?imbypass=on",
+    "images": [
+      "https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/20743/182602/AODLEE-Fashion-Men-Sneakers-for-Men-Casual-Shoes-Breathable-Lace-up-Mens-Casual-Shoes-Spring-Leather__46717.1545973953.jpg?c=2?imbypass=on"
+    ],
+    "originalPrice": 1799,
+    "discountPrice": 1299,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Vivek",
+        "rating": 4,
+        "comment": "Looks great and fits well!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 53,
+    "title": "Men’s Formal Leather Shoes",
+    "description": "Premium leather formal shoes perfect for office and events.",
+    "brand": "ClassicStep",
+    "category": "mens-shoes",
+    "rating": 4.5,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/811dduxFXYL._AC_UL1500_.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/811dduxFXYL._AC_UL1500_.jpg"
+    ],
+    "originalPrice": 2499,
+    "discountPrice": 1899,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Sandeep",
+        "rating": 5,
+        "comment": "Premium feel and classy look!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 54,
+    "title": "Men’s Slip-On Loafers",
+    "description": "Comfortable slip-on loafers with soft cushioning and flexible design.",
+    "brand": "EaseWear",
+    "category": "mens-shoes",
+    "rating": 4.1,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.gH4uEw_7DMp3oB_F70QR6wHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.mm.bing.net/th/id/OIP.gH4uEw_7DMp3oB_F70QR6wHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1699,
+    "discountPrice": 1299,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Rohit",
+        "rating": 4,
+        "comment": "Lightweight and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 55,
+    "title": "Men’s High-Top Sneakers",
+    "description": "Trendy high-top sneakers with ankle support and strong sole grip.",
+    "brand": "UrbanFeet",
+    "category": "mens-shoes",
+    "rating": 4.3,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.RdjrsScdmluPycie3JsNCAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.RdjrsScdmluPycie3JsNCAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 2299,
+    "discountPrice": 1699,
+    "discountPercent": 26,
+    "reviews": [
+      {
+        "reviewerName": "Mahesh",
+        "rating": 4,
+        "comment": "Stylish and feels premium!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 56,
+    "title": "Classic Analog Watch",
+    "description": "Elegant analog wristwatch with leather strap and stainless steel dial.",
+    "brand": "TimeCraft",
+    "category": "mens-watches",
+    "rating": 4.4,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81P4k199brL._AC_UL1500_.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/81P4k199brL._AC_UL1500_.jpg"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Anand",
+        "rating": 5,
+        "comment": "Premium finish and classy look!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 57,
+    "title": "Digital Sports Watch",
+    "description": "Feature-packed digital watch with stopwatch, alarm, and LED backlight.",
+    "brand": "SportX",
+    "category": "mens-watches",
+    "rating": 4.1,
+    "thumbnail": "https://m.media-amazon.com/images/I/61mmwLzic5L._AC_UL1020_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/61mmwLzic5L._AC_UL1020_.jpg"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 999,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Vishal",
+        "rating": 4,
+        "comment": "Great for gym and daily use."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 58,
+    "title": "Chronograph Stainless Steel Watch",
+    "description": "Stylish chronograph watch with metal strap and scratch-resistant glass.",
+    "brand": "SteelMaster",
+    "category": "mens-watches",
+    "rating": 4.6,
+    "thumbnail": "https://i5.walmartimages.com/asr/885e2320-646e-49b1-aeb6-a9b515d2663b_1.b7f477ea4c15dfcab06b39e1239557b3.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/885e2320-646e-49b1-aeb6-a9b515d2663b_1.b7f477ea4c15dfcab06b39e1239557b3.jpeg"
+    ],
+    "originalPrice": 3999,
+    "discountPrice": 2999,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Ranjith",
+        "rating": 5,
+        "comment": "Looks expensive and works perfectly!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 59,
+    "title": "Minimalist Leather Strap Watch",
+    "description": "Simple and elegant minimalist design with a soft leather strap.",
+    "brand": "MonoTime",
+    "category": "mens-watches",
+    "rating": 4.3,
+    "thumbnail": "https://n.nordstrommedia.com/id/sr3/cb8555d6-40f9-4d60-9a90-5efe16ae0e3b.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196",
+    "images": [
+      "https://n.nordstrommedia.com/id/sr3/cb8555d6-40f9-4d60-9a90-5efe16ae0e3b.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196"
+    ],
+    "originalPrice": 2499,
+    "discountPrice": 1799,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Jithu",
+        "rating": 4,
+        "comment": "Very classy and lightweight!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 60,
+    "title": "Analog-Digital Hybrid Watch",
+    "description": "Hybrid watch with analog hands and digital features like alarm and timer.",
+    "brand": "DualGear",
+    "category": "mens-watches",
+    "rating": 4.2,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.GION7W-MrnLD9VpQJRzynAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.GION7W-MrnLD9VpQJRzynAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 2999,
+    "discountPrice": 2299,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Sanjay",
+        "rating": 4,
+        "comment": "Strong build and useful features."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 61,
+    "title": "Fast Charging USB-C Cable",
+    "description": "Durable USB-C fast charging cable with reinforced connectors.",
+    "brand": "ChargePro",
+    "category": "mobile-accessories",
+    "rating": 4.3,
+    "thumbnail": "https://m.media-amazon.com/images/I/71EgDyQRLAL._AC_SL1409_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/71EgDyQRLAL._AC_SL1409_.jpg"
+    ],
+    "originalPrice": 399,
+    "discountPrice": 249,
+    "discountPercent": 38,
+    "reviews": [
+      {
+        "reviewerName": "Rohit",
+        "rating": 4,
+        "comment": "Fast charging and great build quality!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 62,
+    "title": "Bluetooth Wireless Earbuds",
+    "description": "Compact wireless earbuds with clear audio and long battery life.",
+    "brand": "SoundBeat",
+    "category": "mobile-accessories",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.iHWAPUI5CTb2XGFRZnK5nwHaHn?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.iHWAPUI5CTb2XGFRZnK5nwHaHn?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1299,
+    "discountPercent": 35,
+    "reviews": [
+      {
+        "reviewerName": "Savan",
+        "rating": 5,
+        "comment": "Bass is great and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 63,
+    "title": "Mobile Tempered Glass",
+    "description": "Scratch-resistant tempered glass screen protector with edge-to-edge coverage.",
+    "brand": "ShieldX",
+    "category": "mobile-accessories",
+    "rating": 4.2,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.IlszUOfj6pz95mnxfTzl4AHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.IlszUOfj6pz95mnxfTzl4AHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 299,
+    "discountPrice": 149,
+    "discountPercent": 50,
+    "reviews": [
+      {
+        "reviewerName": "Faisal",
+        "rating": 4,
+        "comment": "Good protection and perfect fit!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 64,
+    "title": "Portable Power Bank 10000mAh",
+    "description": "Fast-charging 10000mAh power bank with dual USB output.",
+    "brand": "PowerPlus",
+    "category": "mobile-accessories",
+    "rating": 4.5,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/61mEjaQTPQL._AC_SL1500_.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/61mEjaQTPQL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Navin",
+        "rating": 5,
+        "comment": "Charges phone multiple times. Very reliable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 65,
+    "title": "Magnetic Phone Holder",
+    "description": "360° adjustable magnetic phone holder for cars and desks.",
+    "brand": "GripMate",
+    "category": "mobile-accessories",
+    "rating": 4.1,
+    "thumbnail": "https://m.media-amazon.com/images/I/71og6RdMhDL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/71og6RdMhDL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 499,
+    "discountPrice": 349,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Arjun",
+        "rating": 4,
+        "comment": "Strong grip and convenient for driving!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 66,
+    "title": "Motorcycle Helmet Matte Black",
+    "description": "Durable matte black helmet with scratch-resistant visor and strong protection.",
+    "brand": "RideSafe",
+    "category": "motorcycle",
+    "rating": 4.5,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/0588/9471/3038/products/Demon1tint_1024x1024.jpg?v=1656455389",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0588/9471/3038/products/Demon1tint_1024x1024.jpg?v=1656455389"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1599,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Sujith",
+        "rating": 5,
+        "comment": "Very comfortable and stylish!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 67,
+    "title": "Motorcycle Riding Gloves",
+    "description": "Breathable and durable riding gloves with knuckle protection.",
+    "brand": "GripGuard",
+    "category": "motorcycle",
+    "rating": 4.3,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/71a8bAeg0DL._AC_UL1500_.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/71a8bAeg0DL._AC_UL1500_.jpg"
+    ],
+    "originalPrice": 999,
+    "discountPrice": 749,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Nirmal",
+        "rating": 4,
+        "comment": "Good grip and comfortable for long rides!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 68,
+    "title": "LED Motorcycle Headlight",
+    "description": "Bright LED headlight with long lifespan and wide beam coverage.",
+    "brand": "BrightRide",
+    "category": "motorcycle",
+    "rating": 4.4,
+    "thumbnail": "https://m.media-amazon.com/images/I/710zZhz3r8L._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/710zZhz3r8L._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 1199,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Asif",
+        "rating": 5,
+        "comment": "Super bright and works well at night!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 69,
+    "title": "Motorcycle Mobile Holder",
+    "description": "Adjustable and shock-proof mobile holder for safe riding navigation.",
+    "brand": "RideFix",
+    "category": "motorcycle",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/51QSo5fdLOL.jpg",
+    "images": ["https://m.media-amazon.com/images/I/51QSo5fdLOL.jpg"],
+    "originalPrice": 499,
+    "discountPrice": 349,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Kiran",
+        "rating": 4,
+        "comment": "Holds the phone very steady!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 70,
+    "title": "Motorcycle Tank Bag",
+    "description": "Magnetic tank bag with waterproof cover and multiple compartments.",
+    "brand": "TourMaster",
+    "category": "motorcycle",
+    "rating": 4.3,
+    "thumbnail": "https://m.media-amazon.com/images/I/71i4PGfej+L._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/71i4PGfej+L._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 1599,
+    "discountPrice": 1299,
+    "discountPercent": 19,
+    "reviews": [
+      {
+        "reviewerName": "Deepak",
+        "rating": 4,
+        "comment": "Very useful for long rides and touring!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 71,
+    "title": "Aloe Vera Moisturizing Gel",
+    "description": "Hydrating aloe vera gel suitable for all skin types. Soothes and refreshes skin.",
+    "brand": "PureGlow",
+    "category": "skin-care",
+    "rating": 4.4,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.lfi7LbsZesrDpvfBqJdAPQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.lfi7LbsZesrDpvfBqJdAPQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 299,
+    "discountPrice": 199,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Meera",
+        "rating": 5,
+        "comment": "Very soothing and good for daily use!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 72,
+    "title": "Vitamin C Face Serum",
+    "description": "Brightening face serum formulated with Vitamin C for glowing skin.",
+    "brand": "SkinLift",
+    "category": "skin-care",
+    "rating": 4.5,
+    "thumbnail": "https://images-static.nykaa.com/media/catalog/product/7/7/776a7148904311901778_0712239.jpg",
+    "images": [
+      "https://images-static.nykaa.com/media/catalog/product/7/7/776a7148904311901778_0712239.jpg"
+    ],
+    "originalPrice": 699,
+    "discountPrice": 549,
+    "discountPercent": 21,
+    "reviews": [
+      {
+        "reviewerName": "Ananya",
+        "rating": 5,
+        "comment": "Makes the skin glow and feels very light!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 73,
+    "title": "SPF 50 Sunscreen",
+    "description": "Broad-spectrum SPF 50 sunscreen with non-greasy, lightweight formula.",
+    "brand": "SunGuard",
+    "category": "skin-care",
+    "rating": 4.3,
+    "thumbnail": "https://i5.walmartimages.com/asr/b4f5203a-34b9-4f79-9cdc-e232fa96ddb8.9e5ff4b670a55a677ab506f574f9762a.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/b4f5203a-34b9-4f79-9cdc-e232fa96ddb8.9e5ff4b670a55a677ab506f574f9762a.jpeg"
+    ],
+    "originalPrice": 499,
+    "discountPrice": 379,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Ranjini",
+        "rating": 4,
+        "comment": "Doesn’t leave a white cast. Very nice!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 74,
+    "title": "Charcoal Face Wash",
+    "description": "Deep cleansing charcoal face wash removes dirt and oil effectively.",
+    "brand": "PureMen",
+    "category": "skin-care",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/51PFBpAMMBL._SL1440_.jpg",
+    "images": ["https://m.media-amazon.com/images/I/51PFBpAMMBL._SL1440_.jpg"],
+    "originalPrice": 249,
+    "discountPrice": 179,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Arjun",
+        "rating": 4,
+        "comment": "Good for oily skin and daily use!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 75,
+    "title": "Hydrating Night Cream",
+    "description": "Nourishing night cream that repairs and moisturizes skin overnight.",
+    "brand": "GlowNite",
+    "category": "skin-care",
+    "rating": 4.4,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.PTegJjEblol_bqoT4DHjCAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.mm.bing.net/th/id/OIP.PTegJjEblol_bqoT4DHjCAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 799,
+    "discountPrice": 599,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Lakshmi",
+        "rating": 5,
+        "comment": "Skin feels soft and refreshed in the morning!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 76,
+    "title": "Samsung Galaxy A54 5G",
+    "description": "Super AMOLED display, 5G support, and long battery life.",
+    "brand": "Samsung",
+    "category": "smartphones",
+    "rating": 4.6,
+    "thumbnail": "https://m.media-amazon.com/images/I/71d36o5kqEL._SL1500_.jpg",
+    "images": ["https://m.media-amazon.com/images/I/71d36o5kqEL._SL1500_.jpg"],
+    "originalPrice": 38999,
+    "discountPrice": 31999,
+    "discountPercent": 18,
+    "reviews": [
+      {
+        "reviewerName": "Aravind",
+        "rating": 5,
+        "comment": "Amazing camera and display quality!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 77,
+    "title": "iPhone 13",
+    "description": "Dual-camera system, A15 Bionic chip, and excellent performance.",
+    "brand": "Apple",
+    "category": "smartphones",
+    "rating": 4.7,
+    "thumbnail": "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-13-Pro_iPhone-13-Pro-Max_09142021_inline.jpg.large_2x.jpg",
+    "images": [
+      "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-13-Pro_iPhone-13-Pro-Max_09142021_inline.jpg.large_2x.jpg"
+    ],
+    "originalPrice": 59999,
+    "discountPrice": 52999,
+    "discountPercent": 12,
+    "reviews": [
+      {
+        "reviewerName": "Vikram",
+        "rating": 5,
+        "comment": "Super smooth and reliable device!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 78,
+    "title": "Google Pixel 6a",
+    "description": "Pixel Camera with Tensor chip and clean Android UI.",
+    "brand": "Google",
+    "category": "smartphones",
+    "rating": 4.5,
+    "thumbnail": "https://i5.walmartimages.com/seo/Restored-Google-Pixel-6a-GX7AS-Fully-Unlocked-128GB-Charcoal_f2ba0764-4403-4ada-82f7-ba7d119eb964.8cae5dad467608d5a826c45a2c8d06c6.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/seo/Restored-Google-Pixel-6a-GX7AS-Fully-Unlocked-128GB-Charcoal_f2ba0764-4403-4ada-82f7-ba7d119eb964.8cae5dad467608d5a826c45a2c8d06c6.jpeg"
+    ],
+    "originalPrice": 43999,
+    "discountPrice": 29999,
+    "discountPercent": 32,
+    "reviews": [
+      {
+        "reviewerName": "Jishnu",
+        "rating": 4,
+        "comment": "Camera is unbelievable for the price!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 79,
+    "title": "OnePlus Nord CE 3 Lite",
+    "description": "108MP camera, smooth performance, and fast charging.",
+    "brand": "OnePlus",
+    "category": "smartphones",
+    "rating": 4.4,
+    "thumbnail": "https://oasis.opstatics.com/content/dam/oasis/page/2023/global/product/larry/specs/product-black.png",
+    "images": [
+      "https://oasis.opstatics.com/content/dam/oasis/page/2023/global/product/larry/specs/product-black.png"
+    ],
+    "originalPrice": 21999,
+    "discountPrice": 18999,
+    "discountPercent": 14,
+    "reviews": [
+      {
+        "reviewerName": "Sameer",
+        "rating": 4,
+        "comment": "Great display and very smooth UI!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 80,
+    "title": "Redmi Note 12 5G",
+    "description": "AMOLED display, Snapdragon processor, and 5G connectivity.",
+    "brand": "Xiaomi",
+    "category": "smartphones",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/81ZZPvIWnYL.jpg",
+    "images": ["https://m.media-amazon.com/images/I/81ZZPvIWnYL.jpg"],
+    "originalPrice": 18999,
+    "discountPrice": 15999,
+    "discountPercent": 16,
+    "reviews": [
+      {
+        "reviewerName": "Hari",
+        "rating": 4,
+        "comment": "Good value for money and solid build."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 81,
+    "title": "Adjustable Dumbbell Set",
+    "description": "Durable steel dumbbells with adjustable weight plates for home workouts.",
+    "brand": "FitPro",
+    "category": "sports-accessories",
+    "rating": 4.5,
+    "thumbnail": "https://m.media-amazon.com/images/I/71zYmTLGQCL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/71zYmTLGQCL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Nithin",
+        "rating": 5,
+        "comment": "Perfect for home workouts, super sturdy!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 82,
+    "title": "Skipping Rope with Foam Handles",
+    "description": "Lightweight skipping rope with comfortable anti-slip foam handles.",
+    "brand": "JumpX",
+    "category": "sports-accessories",
+    "rating": 4.3,
+    "thumbnail": "https://m.media-amazon.com/images/I/71wm42EtoNL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/71wm42EtoNL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 299,
+    "discountPrice": 199,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Aisha",
+        "rating": 4,
+        "comment": "Great for cardio, smooth rotation!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 83,
+    "title": "Yoga Mat 6mm",
+    "description": "Anti-slip yoga mat with soft cushioning for comfortable workouts.",
+    "brand": "BalanceFit",
+    "category": "sports-accessories",
+    "rating": 4.4,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/1728/2157/products/05-63314_6MM-GAIAM-ESSENTIALS-YOGAMAT-NAVY_A.jpg?v=1668557105",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/1728/2157/products/05-63314_6MM-GAIAM-ESSENTIALS-YOGAMAT-NAVY_A.jpg?v=1668557105"
+    ],
+    "originalPrice": 799,
+    "discountPrice": 599,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Keerthi",
+        "rating": 5,
+        "comment": "Soft, thick, and perfect grip!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 84,
+    "title": "Resistance Bands Set",
+    "description": "Set of 5 resistance bands with varying tension levels for strength workouts.",
+    "brand": "FlexiCore",
+    "category": "sports-accessories",
+    "rating": 4.2,
+    "thumbnail": "https://kintafitness.com.au/wp-content/uploads/2023/10/Resistance-bands-set-website-600x600.jpg",
+    "images": [
+      "https://kintafitness.com.au/wp-content/uploads/2023/10/Resistance-bands-set-website-600x600.jpg"
+    ],
+    "originalPrice": 499,
+    "discountPrice": 349,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Manu",
+        "rating": 4,
+        "comment": "Good variety of tension options!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 85,
+    "title": "Sports Water Bottle 1L",
+    "description": "BPA-free sports bottle with flip-top lid and measurement markings.",
+    "brand": "HydroMax",
+    "category": "sports-accessories",
+    "rating": 4.1,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.phB73VxMhlEz36LX4prAYQHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.phB73VxMhlEz36LX4prAYQHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 399,
+    "discountPrice": 299,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Rakesh",
+        "rating": 4,
+        "comment": "Very handy and good build quality!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 86,
+    "title": "Classic Aviator Sunglasses",
+    "description": "Stylish metal-frame aviator sunglasses with UV400 protection.",
+    "brand": "ShadeLux",
+    "category": "sunglasses",
+    "rating": 4.4,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/0193/6253/products/3797154791472_1200x.jpg?v=1575932138",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0193/6253/products/3797154791472_1200x.jpg?v=1575932138"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 999,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Anwar",
+        "rating": 5,
+        "comment": "Classic look and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 87,
+    "title": "Round Retro Sunglasses",
+    "description": "Retro-style round sunglasses with lightweight frames and UV protection.",
+    "brand": "RetroVision",
+    "category": "sunglasses",
+    "rating": 4.2,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.JERTXaIdwcb2sRVLCRfX9AHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.mm.bing.net/th/id/OIP.JERTXaIdwcb2sRVLCRfX9AHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1299,
+    "discountPrice": 899,
+    "discountPercent": 31,
+    "reviews": [
+      {
+        "reviewerName": "Veda",
+        "rating": 4,
+        "comment": "Trendy design and good quality lenses!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 88,
+    "title": "Polarized Sports Sunglasses",
+    "description": "Polarized wrap-around sports sunglasses for cycling and running.",
+    "brand": "SportShield",
+    "category": "sunglasses",
+    "rating": 4.5,
+    "thumbnail": "https://i5.walmartimages.com/seo/Polarized-Sports-Sunglasses-for-Men-Women-Youth_436997f9-0872-423a-962d-d339b3205b96.fb0e87e82c5d3ab7795162304f10a3b8.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/seo/Polarized-Sports-Sunglasses-for-Men-Women-Youth_436997f9-0872-423a-962d-d339b3205b96.fb0e87e82c5d3ab7795162304f10a3b8.jpeg"
+    ],
+    "originalPrice": 1799,
+    "discountPrice": 1299,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Dinesh",
+        "rating": 5,
+        "comment": "Perfect for outdoor sports. Great visibility!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 89,
+    "title": "Square Frame Sunglasses",
+    "description": "Bold square-frame unisex sunglasses with UV400 protection.",
+    "brand": "UrbanEyes",
+    "category": "sunglasses",
+    "rating": 4.3,
+    "thumbnail": "https://tse2.explicit.bing.net/th/id/OIP.ztoImaaPpiHIhyE0TfmhCgHaLz?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.explicit.bing.net/th/id/OIP.ztoImaaPpiHIhyE0TfmhCgHaLz?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1399,
+    "discountPrice": 999,
+    "discountPercent": 29,
+    "reviews": [
+      {
+        "reviewerName": "Mithun",
+        "rating": 4,
+        "comment": "Good fit and stylish!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 90,
+    "title": "Wayfarer Classic Sunglasses",
+    "description": "Timeless wayfarer-style sunglasses with durable plastic frame.",
+    "brand": "VisionWear",
+    "category": "sunglasses",
+    "rating": 4.4,
+    "thumbnail": "https://cdnd.lystit.com/photos/2013/04/08/ray-ban-dark-tortoise-classic-wayfarer-sunglasses-product-2-7702143-224782403.jpeg",
+    "images": [
+      "https://cdnd.lystit.com/photos/2013/04/08/ray-ban-dark-tortoise-classic-wayfarer-sunglasses-product-2-7702143-224782403.jpeg"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 1099,
+    "discountPercent": 27,
+    "reviews": [
+      {
+        "reviewerName": "Jagan",
+        "rating": 5,
+        "comment": "Premium feel and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Delhi"]
+  },
+  {
+    "id": 91,
+    "title": "Apple iPad 10th Gen",
+    "description": "Powerful A14 Bionic chip, 10.9-inch Liquid Retina display, perfect for work & entertainment.",
+    "brand": "Apple",
+    "category": "tablets",
+    "rating": 4.7,
+    "thumbnail": "https://m.media-amazon.com/images/G/02/Apple/CompCharts/10th_gen._CB606154559_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/G/02/Apple/CompCharts/10th_gen._CB606154559_.jpg"
+    ],
+    "originalPrice": 44999,
+    "discountPrice": 39999,
+    "discountPercent": 11,
+    "reviews": [
+      {
+        "reviewerName": "Aswin",
+        "rating": 5,
+        "comment": "Very smooth performance and excellent display!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 92,
+    "title": "Samsung Galaxy Tab S6 Lite",
+    "description": "10.4-inch display with S-Pen support, ideal for students and creators.",
+    "brand": "Samsung",
+    "category": "tablets",
+    "rating": 4.5,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.kNzaGIiSRvz9UyuE3jN0TgHaF7?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.kNzaGIiSRvz9UyuE3jN0TgHaF7?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 31999,
+    "discountPrice": 26999,
+    "discountPercent": 16,
+    "reviews": [
+      {
+        "reviewerName": "Megha",
+        "rating": 5,
+        "comment": "Great value and the S-Pen is amazing!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 93,
+    "title": "Lenovo Tab M10 HD",
+    "description": "Budget-friendly 10.1-inch Android tablet suitable for entertainment & learning.",
+    "brand": "Lenovo",
+    "category": "tablets",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/71sfODG+c+L._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/71sfODG+c+L._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 14999,
+    "discountPrice": 11999,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Vishnu",
+        "rating": 4,
+        "comment": "Decent performance for the price."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 94,
+    "title": "Xiaomi Pad 6",
+    "description": "High-performance tablet with Snapdragon 870 and 11-inch 2.8K display.",
+    "brand": "Xiaomi",
+    "category": "tablets",
+    "rating": 4.6,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.5vOLm8AgPoQsPrfxHEt2_AHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.5vOLm8AgPoQsPrfxHEt2_AHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 28999,
+    "discountPrice": 24999,
+    "discountPercent": 14,
+    "reviews": [
+      {
+        "reviewerName": "Arjun",
+        "rating": 5,
+        "comment": "Amazing display and very smooth performance!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 95,
+    "title": "Realme Pad Mini",
+    "description": "Compact and lightweight 8.7-inch tablet with long battery life.",
+    "brand": "Realme",
+    "category": "tablets",
+    "rating": 4.1,
+    "thumbnail": "https://www.gizmochina.com/wp-content/uploads/2022/04/Realme-Pad-Mini-Featured-B.jpg",
+    "images": [
+      "https://www.gizmochina.com/wp-content/uploads/2022/04/Realme-Pad-Mini-Featured-B.jpg"
+    ],
+    "originalPrice": 12999,
+    "discountPrice": 9999,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Hari",
+        "rating": 4,
+        "comment": "Portable and perfect for media consumption!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad", "Mumbai"]
+  },
+  {
+    "id": 96,
+    "title": "Women's Floral Print Top",
+    "description": "Lightweight floral print top with breathable fabric, perfect for casual outings.",
+    "brand": "StyleBloom",
+    "category": "tops",
+    "rating": 4.3,
+    "thumbnail": "https://i5.walmartimages.com/asr/c55932a3-522c-4d54-9304-7e19a6eec046.4ecbd0ae5fe16205bdd57aa405e83e25.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/c55932a3-522c-4d54-9304-7e19a6eec046.4ecbd0ae5fe16205bdd57aa405e83e25.jpeg"
+    ],
+    "originalPrice": 899,
+    "discountPrice": 649,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Ananya",
+        "rating": 4,
+        "comment": "Very pretty and comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 97,
+    "title": "Women's Full Sleeve Cotton Top",
+    "description": "Soft cotton full-sleeve top ideal for everyday wear.",
+    "brand": "CottonEase",
+    "category": "tops",
+    "rating": 4.2,
+    "thumbnail": "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/30148594/2024/7/8/c5e5a0ef-ad40-4d44-8a1f-aa555772e3ba1720417893281KaltCottonTop1.jpg",
+    "images": [
+      "https://assets.myntassets.com/h_200,w_200,c_fill,g_auto/h_1440,q_100,w_1080/v1/assets/images/30148594/2024/7/8/c5e5a0ef-ad40-4d44-8a1f-aa555772e3ba1720417893281KaltCottonTop1.jpg"
+    ],
+    "originalPrice": 799,
+    "discountPrice": 559,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Nisha",
+        "rating": 4,
+        "comment": "Good fabric quality and fits well!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 98,
+    "title": "Women's Sleeveless Summer Top",
+    "description": "Light and airy sleeveless top designed for hot summer weather.",
+    "brand": "SunGlow",
+    "category": "tops",
+    "rating": 4.1,
+    "thumbnail": "https://i5.walmartimages.com/seo/Fantaslook-Tank-Tops-for-Women-Pleated-Square-Neck-Sleeveless-Summer-Tops-Curved-Hem-Flowy-Shirts_1bea8f13-dbb3-47f9-94dd-7dd87d386f17.53cc46c45ad34e8149c4282119db2e7d.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/seo/Fantaslook-Tank-Tops-for-Women-Pleated-Square-Neck-Sleeveless-Summer-Tops-Curved-Hem-Flowy-Shirts_1bea8f13-dbb3-47f9-94dd-7dd87d386f17.53cc46c45ad34e8149c4282119db2e7d.jpeg"
+    ],
+    "originalPrice": 699,
+    "discountPrice": 499,
+    "discountPercent": 29,
+    "reviews": [
+      {
+        "reviewerName": "Rhea",
+        "rating": 4,
+        "comment": "Very comfortable for daily use!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 99,
+    "title": "Women's Party Wear Top",
+    "description": "Stylish party-wear top with shimmer detailing and comfortable lining.",
+    "brand": "GlamVibe",
+    "category": "tops",
+    "rating": 4.4,
+    "thumbnail": "https://tse4.explicit.bing.net/th/id/OIP.oX_x9pAAOccpZ1yYtik4SQAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.explicit.bing.net/th/id/OIP.oX_x9pAAOccpZ1yYtik4SQAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1299,
+    "discountPrice": 999,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Tanya",
+        "rating": 5,
+        "comment": "Looks amazing and perfect for parties!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 100,
+    "title": "Women's Striped Casual Top",
+    "description": "Classic striped top with soft stretchable fabric for a relaxed fit.",
+    "brand": "UrbanChic",
+    "category": "tops",
+    "rating": 4.2,
+    "thumbnail": "https://i5.walmartimages.com/seo/Timegard-Long-Sleeve-Tops-for-Women-Striped-Round-Neck-Blouse-Fall-Winter-Casual-Loose-Comfy-Shirts-Tops_3f713d21-faf1-4942-bb14-6740342055c8.091688e8801d04954641589fd84e3963.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/seo/Timegard-Long-Sleeve-Tops-for-Women-Striped-Round-Neck-Blouse-Fall-Winter-Casual-Loose-Comfy-Shirts-Tops_3f713d21-faf1-4942-bb14-6740342055c8.091688e8801d04954641589fd84e3963.jpeg"
+    ],
+    "originalPrice": 899,
+    "discountPrice": 699,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Deepa",
+        "rating": 4,
+        "comment": "Simple and stylish. Good quality!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 101,
+    "title": "Car Vacuum Cleaner",
+    "description": "Portable high-suction vacuum cleaner for car interiors with multiple nozzles.",
+    "brand": "AutoClean",
+    "category": "vehicle",
+    "rating": 4.3,
+    "thumbnail": "https://m.media-amazon.com/images/I/71Kd5Sd9hyL._SL1500_.jpg",
+    "images": ["https://m.media-amazon.com/images/I/71Kd5Sd9hyL._SL1500_.jpg"],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Sameer",
+        "rating": 4,
+        "comment": "Strong suction and very handy!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 102,
+    "title": "Car Dashboard Mobile Holder",
+    "description": "Adjustable dashboard mount for holding smartphones securely while driving.",
+    "brand": "DriveGrip",
+    "category": "vehicle",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/81oehGW5OLL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/81oehGW5OLL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 599,
+    "discountPrice": 399,
+    "discountPercent": 33,
+    "reviews": [
+      {
+        "reviewerName": "Ajith",
+        "rating": 4,
+        "comment": "Very stable and easy to use."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 103,
+    "title": "Car Sunshade Set",
+    "description": "Foldable sunshade set that blocks UV rays and keeps the car cool.",
+    "brand": "SunBlocker",
+    "category": "vehicle",
+    "rating": 4.1,
+    "thumbnail": "https://m.media-amazon.com/images/I/61My-mqfYZL.jpg",
+    "images": ["https://m.media-amazon.com/images/I/61My-mqfYZL.jpg"],
+    "originalPrice": 799,
+    "discountPrice": 549,
+    "discountPercent": 31,
+    "reviews": [
+      {
+        "reviewerName": "George",
+        "rating": 4,
+        "comment": "Good coverage and easy to fold."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 104,
+    "title": "Car Seat Neck Pillow",
+    "description": "Soft memory foam neck pillow for comfortable long drives.",
+    "brand": "ComfortDrive",
+    "category": "vehicle",
+    "rating": 4.4,
+    "thumbnail": "https://m.media-amazon.com/images/I/811mObNkAEL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/811mObNkAEL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 999,
+    "discountPrice": 799,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Mehul",
+        "rating": 5,
+        "comment": "Very soft and perfect support!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 105,
+    "title": "Car Air Freshener",
+    "description": "Long-lasting gel-based air freshener that keeps the car smelling fresh.",
+    "brand": "FreshRide",
+    "category": "vehicle",
+    "rating": 4.2,
+    "thumbnail": "https://m.media-amazon.com/images/I/81Ky5BmwvPL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/81Ky5BmwvPL._AC_SL1500_.jpg"
+    ],
+    "originalPrice": 499,
+    "discountPrice": 349,
+    "discountPercent": 30,
+    "reviews": [
+      {
+        "reviewerName": "Naseer",
+        "rating": 4,
+        "comment": "Smells great and lasts long!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Hyderabad"]
+  },
+  {
+    "id": 106,
+    "title": "Women's Leather Handbag",
+    "description": "Premium leather handbag with spacious compartments and durable strap.",
+    "brand": "LuxeCarry",
+    "category": "womens-bags",
+    "rating": 4.5,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.YBzxeFlOxzuL8ukeHgVEHwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.YBzxeFlOxzuL8ukeHgVEHwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 2499,
+    "discountPrice": 1899,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Aparna",
+        "rating": 5,
+        "comment": "Elegant and high-quality finish!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 107,
+    "title": "Women's Shoulder Bag",
+    "description": "Lightweight shoulder bag suitable for daily use with adjustable strap.",
+    "brand": "UrbanStyle",
+    "category": "womens-bags",
+    "rating": 4.2,
+    "thumbnail": "https://i5.walmartimages.com/seo/Shoulder-bag-for-women-Shoulder-bag-for-women-Leather-handbag-Black_ab1b760b-30fb-4e0b-b9ca-0177a1444ca4.f57a30cd64e6ecefb39e786fb10fea3c.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/seo/Shoulder-bag-for-women-Shoulder-bag-for-women-Leather-handbag-Black_ab1b760b-30fb-4e0b-b9ca-0177a1444ca4.f57a30cd64e6ecefb39e786fb10fea3c.jpeg"
+    ],
+    "originalPrice": 1599,
+    "discountPrice": 1199,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Roshni",
+        "rating": 4,
+        "comment": "Good space and stylish look!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 108,
+    "title": "Women's Sling Bag",
+    "description": "Compact sling bag with metal chain strap and premium finish.",
+    "brand": "VibeWear",
+    "category": "womens-bags",
+    "rating": 4.3,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.QWSD3xwm4X_tyRkmDPIH_wHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.mm.bing.net/th/id/OIP.QWSD3xwm4X_tyRkmDPIH_wHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1299,
+    "discountPrice": 899,
+    "discountPercent": 31,
+    "reviews": [
+      {
+        "reviewerName": "Sneha",
+        "rating": 4,
+        "comment": "Cute and perfect for outings!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 109,
+    "title": "Women's Tote Bag",
+    "description": "Large tote bag ideal for office, shopping, and travel.",
+    "brand": "CarryAll",
+    "category": "womens-bags",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.UU_4HVpeWUNdD0A6SB8CjQHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.UU_4HVpeWUNdD0A6SB8CjQHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Divya",
+        "rating": 5,
+        "comment": "Very spacious and strong material!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 110,
+    "title": "Women's Travel Backpack",
+    "description": "Stylish travel backpack with multiple pockets and water-resistant material.",
+    "brand": "TravelChic",
+    "category": "womens-bags",
+    "rating": 4.3,
+    "thumbnail": "https://m.media-amazon.com/images/I/51YK+sM3duL.jpg",
+    "images": ["https://m.media-amazon.com/images/I/51YK+sM3duL.jpg"],
+    "originalPrice": 2199,
+    "discountPrice": 1699,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Kripa",
+        "rating": 4,
+        "comment": "Looks trendy and very practical!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 111,
+    "title": "Women's Floral Midi Dress",
+    "description": "Elegant floral midi dress with a flowy silhouette, perfect for outings.",
+    "brand": "BloomWear",
+    "category": "womens-dresses",
+    "rating": 4.4,
+    "thumbnail": "https://i.pinimg.com/originals/7c/05/25/7c052579112694f094b19529a2c92b28.jpg",
+    "images": [
+      "https://i.pinimg.com/originals/7c/05/25/7c052579112694f094b19529a2c92b28.jpg"
+    ],
+    "originalPrice": 1899,
+    "discountPrice": 1399,
+    "discountPercent": 26,
+    "reviews": [
+      {
+        "reviewerName": "Anu",
+        "rating": 5,
+        "comment": "Beautiful and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 112,
+    "title": "Women's A-Line Casual Dress",
+    "description": "Soft cotton A-line dress ideal for everyday comfort and style.",
+    "brand": "SoftStyle",
+    "category": "womens-dresses",
+    "rating": 4.2,
+    "thumbnail": "https://i.etsystatic.com/13553739/r/il/bb226e/1268143721/il_300x300.1268143721_4cdz.jpg",
+    "images": [
+      "https://i.etsystatic.com/13553739/r/il/bb226e/1268143721/il_300x300.1268143721_4cdz.jpg"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 1099,
+    "discountPercent": 27,
+    "reviews": [
+      {
+        "reviewerName": "Sangeetha",
+        "rating": 4,
+        "comment": "Nice fit and breathable fabric!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 113,
+    "title": "Women's Party Wear Dress",
+    "description": "Stylish party dress with shimmer finish and flattering fit.",
+    "brand": "GlamShine",
+    "category": "womens-dresses",
+    "rating": 4.3,
+    "thumbnail": "https://i5.walmartimages.com/asr/a75a9755-92e3-45a6-89da-ccfad696a798.4b175929ee12c1d4a9ca84b9728173c7.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/a75a9755-92e3-45a6-89da-ccfad696a798.4b175929ee12c1d4a9ca84b9728173c7.jpeg"
+    ],
+    "originalPrice": 2499,
+    "discountPrice": 1799,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Lakshmi",
+        "rating": 4,
+        "comment": "Gorgeous look and great for events!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 114,
+    "title": "Women's Maxi Dress",
+    "description": "Long flowy maxi dress with lightweight fabric for relaxed comfort.",
+    "brand": "FlowWear",
+    "category": "womens-dresses",
+    "rating": 4.5,
+    "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81Bt3JwfjeL.jpg",
+    "images": [
+      "https://images-na.ssl-images-amazon.com/images/I/81Bt3JwfjeL.jpg"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1599,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Devika",
+        "rating": 5,
+        "comment": "Perfect for summer and very elegant!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 115,
+    "title": "Women's Bodycon Dress",
+    "description": "Stylish bodycon dress with stretchable fabric for a perfect fit.",
+    "brand": "FitCurve",
+    "category": "womens-dresses",
+    "rating": 4.3,
+    "thumbnail": "https://tse4.mm.bing.net/th/id/OIP.IJJDt4G9IKZN3W85LaxbSQAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse4.mm.bing.net/th/id/OIP.IJJDt4G9IKZN3W85LaxbSQAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 2299,
+    "discountPrice": 1799,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Tanya",
+        "rating": 4,
+        "comment": "Great material and looks amazing!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai"]
+  },
+  {
+    "id": 116,
+    "title": "Gold-Plated Pendant Necklace",
+    "description": "Elegant gold-plated necklace with a minimalist pendant design.",
+    "brand": "GlowJewels",
+    "category": "womens-jewellery",
+    "rating": 4.5,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.4XqPnjrfMN6zFHfc7LzPBQHaHW?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.4XqPnjrfMN6zFHfc7LzPBQHaHW?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1299,
+    "discountPrice": 999,
+    "discountPercent": 23,
+    "reviews": [
+      {
+        "reviewerName": "Nayana",
+        "rating": 5,
+        "comment": "Delicate and looks very premium!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Kozhikode"]
+  },
+  {
+    "id": 117,
+    "title": "Pearl Drop Earrings",
+    "description": "Classic pearl drop earrings with a lightweight and elegant design.",
+    "brand": "PearlMist",
+    "category": "womens-jewellery",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.explicit.bing.net/th/id/OIP.c12E1T7brcXG2uH4GFVocAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.explicit.bing.net/th/id/OIP.c12E1T7brcXG2uH4GFVocAHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 899,
+    "discountPrice": 649,
+    "discountPercent": 28,
+    "reviews": [
+      {
+        "reviewerName": "Meghna",
+        "rating": 4,
+        "comment": "Beautiful and perfect for parties!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Kozhikode"]
+  },
+  {
+    "id": 118,
+    "title": "Rose Gold Bracelet",
+    "description": "Stylish rose gold bracelet with adjustable chain and classy finish.",
+    "brand": "Rosetta",
+    "category": "womens-jewellery",
+    "rating": 4.3,
+    "thumbnail": "https://i5.walmartimages.com/asr/682259f5-2ff5-4596-90cd-0f1291f2effb_1.bdc169fc938fd15c40a4527a5aa70f2b.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/682259f5-2ff5-4596-90cd-0f1291f2effb_1.bdc169fc938fd15c40a4527a5aa70f2b.jpeg"
+    ],
+    "originalPrice": 1499,
+    "discountPrice": 1099,
+    "discountPercent": 27,
+    "reviews": [
+      {
+        "reviewerName": "Anjali",
+        "rating": 4,
+        "comment": "Elegant and comfortable on the wrist."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Kozhikode"]
+  },
+  {
+    "id": 119,
+    "title": "Traditional Jhumka Earrings",
+    "description": "Beautifully crafted traditional jhumka earrings with intricate detailing.",
+    "brand": "EthnicGold",
+    "category": "womens-jewellery",
+    "rating": 4.6,
+    "thumbnail": "https://www.tanishq.co.in/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dw916bc2d7/images/hi-res/511618JZRABAP1_1.jpg",
+    "images": [
+      "https://www.tanishq.co.in/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dw916bc2d7/images/hi-res/511618JZRABAP1_1.jpg"
+    ],
+    "originalPrice": 1799,
+    "discountPrice": 1399,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Remya",
+        "rating": 5,
+        "comment": "Traditional and stunning design!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Kozhikode"]
+  },
+  {
+    "id": 120,
+    "title": "Diamond-Cut Ring",
+    "description": "Elegant diamond-cut ring with sparkling finish for all occasions.",
+    "brand": "CrystalNova",
+    "category": "womens-jewellery",
+    "rating": 4.5,
+    "thumbnail": "https://www.brides.com/thmb/kvx0c_MuM_CVlklXFQy0C6-WNrA=/2000x2000/filters:no_upscale():max_bytes(150000):strip_icc()/il_fullxfull.1852208181_6mbc_2400x-a3b790cc79e04e73b00351b79b2008a2.jpg",
+    "images": [
+      "https://www.brides.com/thmb/kvx0c_MuM_CVlklXFQy0C6-WNrA=/2000x2000/filters:no_upscale():max_bytes(150000):strip_icc()/il_fullxfull.1852208181_6mbc_2400x-a3b790cc79e04e73b00351b79b2008a2.jpg"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1599,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Pooja",
+        "rating": 5,
+        "comment": "Sparkles beautifully and feels premium!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Kozhikode"]
+  },
+  {
+    "id": 121,
+    "title": "Women's Casual Sneakers",
+    "description": "Comfortable and stylish sneakers perfect for casual outings.",
+    "brand": "StyleStep",
+    "category": "womens-shoes",
+    "rating": 4.3,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.Ur-aYfLgcdPUPzHsjgc0-AHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.Ur-aYfLgcdPUPzHsjgc0-AHaHa?o=7&cb=ucfimg2&rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Anjali",
+        "rating": 4,
+        "comment": "Comfortable and looks trendy!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 122,
+    "title": "Women's Block Heel Sandals",
+    "description": "Elegant block heel sandals with cushioned footbed.",
+    "brand": "HeelCharm",
+    "category": "womens-shoes",
+    "rating": 4.2,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.i01wX7OeX941S-Bwg7vVeQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.i01wX7OeX941S-Bwg7vVeQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1599,
+    "discountPrice": 1199,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Riya",
+        "rating": 4,
+        "comment": "Very pretty and comfortable all-day!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 123,
+    "title": "Women's Running Shoes",
+    "description": "Lightweight running shoes with breathable mesh upper.",
+    "brand": "FitStride",
+    "category": "womens-shoes",
+    "rating": 4.4,
+    "thumbnail": "https://cdn.shopify.com/s/files/1/0312/2921/products/IMG_9092_e64715e3-c84b-4237-a4a4-a8e7a1dd2b55.JPG?v=1468912950",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0312/2921/products/IMG_9092_e64715e3-c84b-4237-a4a4-a8e7a1dd2b55.JPG?v=1468912950"
+    ],
+    "originalPrice": 2299,
+    "discountPrice": 1799,
+    "discountPercent": 22,
+    "reviews": [
+      {
+        "reviewerName": "Sneha",
+        "rating": 5,
+        "comment": "Perfect cushioning and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 124,
+    "title": "Women's Flat Sandals",
+    "description": "Comfortable and stylish flat sandals suitable for daily wear.",
+    "brand": "SoftWalk",
+    "category": "womens-shoes",
+    "rating": 4.1,
+    "thumbnail": "https://img.tatacliq.com/images/i26//437Wx649H/MP000000027641350_437Wx649H_202508021444331.jpeg",
+    "images": [
+      "https://img.tatacliq.com/images/i26//437Wx649H/MP000000027641350_437Wx649H_202508021444331.jpeg"
+    ],
+    "originalPrice": 999,
+    "discountPrice": 749,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Lakshmi",
+        "rating": 4,
+        "comment": "Comfortable and good quality straps."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 125,
+    "title": "Women's Ankle Boots",
+    "description": "Stylish ankle-length boots with a smooth finish and sturdy heels.",
+    "brand": "UrbanBoot",
+    "category": "womens-shoes",
+    "rating": 4.5,
+    "thumbnail": "https://tse2.mm.bing.net/th/id/OIP.dAG42a-t04YTjHOmGQra6QHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse2.mm.bing.net/th/id/OIP.dAG42a-t04YTjHOmGQra6QHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 2999,
+    "discountPrice": 2399,
+    "discountPercent": 20,
+    "reviews": [
+      {
+        "reviewerName": "Tanya",
+        "rating": 5,
+        "comment": "Looks premium and feels very solid!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Bangalore", "Chennai", "Mumbai"]
+  },
+  {
+    "id": 126,
+    "title": "Women's Rose Gold Analog Watch",
+    "description": "Elegant rose gold analog watch with a slim strap and minimalist dial.",
+    "brand": "FemiTime",
+    "category": "womens-watches",
+    "rating": 4.5,
+    "thumbnail": "https://m.media-amazon.com/images/I/71+wPnK3AWL._SL1500_.jpg",
+    "images": ["https://m.media-amazon.com/images/I/71+wPnK3AWL._SL1500_.jpg"],
+    "originalPrice": 2499,
+    "discountPrice": 1899,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Meera",
+        "rating": 5,
+        "comment": "Beautiful design and feels premium!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Bangalore"]
+  },
+  {
+    "id": 127,
+    "title": "Women's Silver Bracelet Watch",
+    "description": "Stylish bracelet-style analog watch with crystal accents.",
+    "brand": "CrystalTime",
+    "category": "womens-watches",
+    "rating": 4.3,
+    "thumbnail": "https://i5.walmartimages.com/asr/d7b06ce4-2f0b-47d0-9c38-958c09b65583_1.2f54fb1860a8444b7bf99e290d3d3a78.jpeg",
+    "images": [
+      "https://i5.walmartimages.com/asr/d7b06ce4-2f0b-47d0-9c38-958c09b65583_1.2f54fb1860a8444b7bf99e290d3d3a78.jpeg"
+    ],
+    "originalPrice": 2799,
+    "discountPrice": 2199,
+    "discountPercent": 21,
+    "reviews": [
+      {
+        "reviewerName": "Shreya",
+        "rating": 4,
+        "comment": "Shiny and elegant. Perfect for parties!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Bangalore"]
+  },
+  {
+    "id": 128,
+    "title": "Women's Digital Fitness Watch",
+    "description": "Modern digital watch with step tracking, calorie counter, and soft silicone strap.",
+    "brand": "FitLady",
+    "category": "womens-watches",
+    "rating": 4.2,
+    "thumbnail": "https://tse3.mm.bing.net/th/id/OIP.Pk99BSvUqr3pH3QadsXSsQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse3.mm.bing.net/th/id/OIP.Pk99BSvUqr3pH3QadsXSsQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1999,
+    "discountPrice": 1499,
+    "discountPercent": 25,
+    "reviews": [
+      {
+        "reviewerName": "Riya",
+        "rating": 4,
+        "comment": "Feature-packed and very comfortable!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Bangalore"]
+  },
+  {
+    "id": 129,
+    "title": "Women's Leather Strap Watch",
+    "description": "Classic leather-strapped analog watch perfect for daily wear.",
+    "brand": "ClassicFemme",
+    "category": "womens-watches",
+    "rating": 4.4,
+    "thumbnail": "https://tse1.mm.bing.net/th/id/OIP.hy157qMPk6pyQfqYSgD6KQHaLH?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.mm.bing.net/th/id/OIP.hy157qMPk6pyQfqYSgD6KQHaLH?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1699,
+    "discountPrice": 1299,
+    "discountPercent": 24,
+    "reviews": [
+      {
+        "reviewerName": "Divya",
+        "rating": 5,
+        "comment": "Simple, classy, and great quality!"
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Bangalore"]
+  },
+  {
+    "id": 130,
+    "title": "Women's Minimalist Mesh Watch",
+    "description": "Sleek mesh-strap analog watch with minimalist design.",
+    "brand": "UrbanLite",
+    "category": "womens-watches",
+    "rating": 4.3,
+    "thumbnail": "https://tse1.explicit.bing.net/th/id/OIP.0aR2SkhXpy0TAXiZ_9bBAwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "images": [
+      "https://tse1.explicit.bing.net/th/id/OIP.0aR2SkhXpy0TAXiZ_9bBAwHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+    ],
+    "originalPrice": 1899,
+    "discountPrice": 1499,
+    "discountPercent": 21,
+    "reviews": [
+      {
+        "reviewerName": "Neha",
+        "rating": 4,
+        "comment": "Very stylish and comfortable to wear."
+      }
+    ],
+    "serviceCenters": ["Kochi", "Mumbai", "Bangalore"]
+  }
+]
