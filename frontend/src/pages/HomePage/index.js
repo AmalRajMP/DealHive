@@ -1,6 +1,7 @@
 import FilterItem from '../../components/FilterItem'
 
 import Website_Logo from '../../assets/Website_Logo.png'
+import home_page_hero_image from '../../assets/home_page_hero_image.png'
 
 import { filterCategories } from '../../constants/filterCategories'
 
@@ -15,6 +16,7 @@ import {
   SearchIcon,
   SearchInput,
   FiltersWrapper,
+  HeroImage,
 } from './styledComponents'
 
 const HomePage = () => (
@@ -35,6 +37,7 @@ const HomePage = () => (
         <FilterItem key={eachItem.id} filterItemDetails={eachItem} />
       ))}
     </FiltersWrapper>
+    <HeroImage src={home_page_hero_image} alt="hero image" />
   </MainContainer>
 )
 

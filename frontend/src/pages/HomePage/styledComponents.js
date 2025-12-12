@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MainContainer = styled.div`
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #e8f3ff 0%, #d4e7ff 40%, #b5d7ff 100%);
+  background-color: #abdfffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,17 +35,20 @@ export const SearchbarWrapper = styled.div`
   align-items: center;
   gap: 10px;
   border-radius: 20px;
-  padding: 10px 20px 10px 20px;
+  padding: 6px 20px 6px 20px;
+  box-shadow: 0px 2px 6px rgba(94, 169, 250, 1);
 `
 export const SearchIcon = styled.div`
   height: 30px;
   width: 20px;
+  color: #005bbaff;
   align-self: center;
   padding-top: 6px;
 `
 export const SearchInput = styled.input`
   height: 100%;
   width: 100%;
+  color: #005bbaff;
   font-size: 14px;
   border: none;
   outline: none;
@@ -53,7 +56,6 @@ export const SearchInput = styled.input`
 // Filters Section
 export const FiltersWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   overflow-x: auto;
   gap: 12px;
@@ -62,7 +64,7 @@ export const FiltersWrapper = styled.div`
   margin-top: 8px;
   width: 100%;
 
-  white-space: nowrap; /* prevents items from breaking into new lines */
+  white-space: nowrap;
 
   /* Hide scrollbar on Chrome, Safari, Edge (WebKit browsers) */
   &::-webkit-scrollbar {
@@ -74,4 +76,11 @@ export const FiltersWrapper = styled.div`
 
   /* Hide scrollbar on IE, Edge Legacy */
   -ms-overflow-style: none;
+`
+export const HeroImage = styled.img`
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0px 2px 6px rgba(124, 236, 251, 1);
 `

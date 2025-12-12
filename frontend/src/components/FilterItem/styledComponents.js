@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const FilterPill = styled.button`
+  height: 78px;
   min-width: 70px;
   max-width: 70px;
-  height: 78px;
 
   padding: 8px 6px;
 
@@ -13,14 +13,14 @@ export const FilterPill = styled.button`
   justify-content: center;
   gap: 6px;
 
-  background-color: #e6f0ff;
+  background-color: #ffffffff;
   border: none;
   border-radius: 12px;
 
-  color: #005bba;
+  color: #005bbaff;
   cursor: pointer;
 
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 2px 6px rgba(94, 169, 250, 1);
   transition: all 0.2s ease;
 
   &:active {
