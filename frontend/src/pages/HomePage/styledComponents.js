@@ -9,6 +9,7 @@ export const MainContainer = styled.div`
   align-items: center;
   padding: 10px;
 `
+// Navbar
 export const Navbar = styled.nav`
   width: 100%;
   display: flex;
@@ -48,4 +49,29 @@ export const SearchInput = styled.input`
   font-size: 14px;
   border: none;
   outline: none;
+`
+// Filters Section
+export const FiltersWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  gap: 12px;
+
+  padding: 12px 16px;
+  margin-top: 8px;
+  width: 100%;
+
+  white-space: nowrap; /* prevents items from breaking into new lines */
+
+  /* Hide scrollbar on Chrome, Safari, Edge (WebKit browsers) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar on Firefox */
+  scrollbar-width: none;
+
+  /* Hide scrollbar on IE, Edge Legacy */
+  -ms-overflow-style: none;
 `

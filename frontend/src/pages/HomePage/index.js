@@ -1,4 +1,8 @@
+import FilterItem from '../../components/FilterItem'
+
 import Website_Logo from '../../assets/Website_Logo.png'
+
+import { filterCategories } from '../../constants/filterCategories'
 
 import { BsSearch } from 'react-icons/bs'
 
@@ -10,6 +14,7 @@ import {
   SearchbarWrapper,
   SearchIcon,
   SearchInput,
+  FiltersWrapper,
 } from './styledComponents'
 
 const HomePage = () => (
@@ -25,6 +30,11 @@ const HomePage = () => (
         </SearchbarWrapper>
       </NavWrapper>
     </Navbar>
+    <FiltersWrapper>
+      {filterCategories.map((eachItem) => (
+        <FilterItem key={eachItem.id} filterItemDetails={eachItem} />
+      ))}
+    </FiltersWrapper>
   </MainContainer>
 )
 
