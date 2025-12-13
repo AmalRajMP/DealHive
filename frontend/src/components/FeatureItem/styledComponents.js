@@ -1,19 +1,26 @@
 import styled from 'styled-components'
 
 export const FeatureCard = styled.div`
-  height: 60px;
+  min-height: 64px;
+  height: auto;
+  padding: 10px 14px;
+
   background-color: #ffffff;
+
   display: flex;
   align-items: center;
   flex: 1 0 100%;
   gap: 20px;
   border-radius: 10px;
+  border: 1px solid rgba(30, 136, 229, 0.08);
 
   transition: transform 0.3s, box-shadow 0.3s;
 
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  @media screen and (min-width: 768px) {
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -35,12 +42,14 @@ export const FeatureIcon = styled.div`
 
   @media screen and (min-width: 768px) {
     display: none;
+    opacity: 0.95;
   }
 `
 export const FeatureImage = styled.img`
   height: 160px;
   width: 160px;
-  margin-top: -46px;
+  position: relative;
+  top: -36px;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -60,6 +69,7 @@ export const FeatureInfo = styled.div`
 export const FeatureInfoTitle = styled.h2`
   color: #262626;
   font-size: 14px;
+  font-weight: 600;
 
   @media screen and (min-width: 768px) {
     font-size: 20px;
@@ -68,6 +78,7 @@ export const FeatureInfoTitle = styled.h2`
 export const FeatureInfoSubTitle = styled.p`
   color: #525252;
   font-size: 12px;
+  line-height: 1.4;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
