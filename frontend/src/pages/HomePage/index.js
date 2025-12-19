@@ -28,37 +28,44 @@ import {
 
 const productsList = productsData
 
-const HomePage = () => (
-  <MainContainer>
-    <Navbar>
-      <NavWrapper>
-        <WebsiteLogo src={Website_Logo} alt="website-logo" />
-      </NavWrapper>
-    </Navbar>
-    <HeroImage src={home_page_hero_image} alt="hero image" />
-    <SearchbarWrapper>
-      <SearchIcon>
-        <BsSearch />
-      </SearchIcon>
-      <SearchInput type="search" placeholder="Search" />
-    </SearchbarWrapper>
-    <FiltersWrapper>
-      {filterCategories.map((eachItem) => (
-        <FilterItem key={eachItem.id} filterItemDetails={eachItem} />
-      ))}
-    </FiltersWrapper>
-    <RecommendationsSection>
-      <RecommendationTitle>Recommended for you</RecommendationTitle>
-      <RecommendationExplanation>
-        Curated using AI to match your interests
-      </RecommendationExplanation>
-      <ProductsList>
-        {productsList.map((eachItem) => (
-          <ProductItem key={eachItem.id} productDetails={eachItem} />
+const HomePage = () => {
+  const recommendedProducts = productsList.slice(0, 6).map((eachItem) => ({
+    ...eachItem,
+    isAiPick: true,
+  }))
+
+  return (
+    <MainContainer>
+      <Navbar>
+        <NavWrapper>
+          <WebsiteLogo src={Website_Logo} alt="website-logo" />
+        </NavWrapper>
+      </Navbar>
+      <HeroImage src={home_page_hero_image} alt="hero image" />
+      <SearchbarWrapper>
+        <SearchIcon>
+          <BsSearch />
+        </SearchIcon>
+        <SearchInput type="search" placeholder="Search" />
+      </SearchbarWrapper>
+      <FiltersWrapper>
+        {filterCategories.map((eachItem) => (
+          <FilterItem key={eachItem.id} filterItemDetails={eachItem} />
         ))}
-      </ProductsList>
-    </RecommendationsSection>
-  </MainContainer>
-)
+      </FiltersWrapper>
+      <RecommendationsSection>
+        <RecommendationTitle>Recommended for you</RecommendationTitle>
+        <RecommendationExplanation>
+          Curated using AI to match your interests
+        </RecommendationExplanation>
+        <ProductsList>
+          {recommendedProducts.map((eachItem) => (
+            <ProductItem key={eachItem.id} productDetails={eachItem} />
+          ))}
+        </ProductsList>
+      </RecommendationsSection>
+    </MainContainer>
+  )
+}
 
 export default HomePage

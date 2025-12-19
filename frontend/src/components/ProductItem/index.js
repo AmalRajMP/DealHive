@@ -12,15 +12,21 @@ import {
 
 const ProductItem = (props) => {
   const { productDetails } = props
-  const { title, thumbnail, originalPrice, discountPrice, discountPercent } =
-    productDetails
+  const {
+    title,
+    thumbnail,
+    originalPrice,
+    discountPrice,
+    discountPercent,
+    isAiPick,
+  } = productDetails
 
   return (
     <ProductCard>
       <ImageWrapper>
         <ProductImage src={thumbnail} alt={title} />
         <DiscountBadge>{discountPercent}% OFF</DiscountBadge>
-        <AIPickBadge>AI Pick</AIPickBadge>
+        {isAiPick && <AIPickBadge>AI Pick</AIPickBadge>}
       </ImageWrapper>
 
       <ProductTitle>{title}</ProductTitle>

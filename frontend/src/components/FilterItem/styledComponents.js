@@ -1,27 +1,36 @@
 import styled from 'styled-components'
 
 export const FilterPill = styled.button`
-  height: 78px;
-  min-width: 70px;
-  max-width: 70px;
+  min-height: 82px;
 
-  padding: 8px 6px;
+  min-width: 87px;
+  max-width: 90px;
+
+  padding: 10px 8px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
 
-  background-color: #ffffffff;
-  border: none;
-  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #f6faff);
+  border: 1px solid rgba(0, 91, 186, 0.12);
+  border-radius: 14px;
 
-  color: #005bbaff;
+  color: #005bba;
   cursor: pointer;
 
-  box-shadow: 0px 2px 6px rgba(94, 169, 250, 1);
-  transition: all 0.2s ease;
+  box-sizing: border-box;
+
+  box-shadow: 0px 3px 8px rgba(94, 169, 250, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 14px rgba(94, 169, 250, 0.35);
+    background: linear-gradient(180deg, #ffffff, #eef5ff);
+  }
 
   &:active {
     transform: scale(0.96);
@@ -29,25 +38,23 @@ export const FilterPill = styled.button`
 `
 
 export const FilterIcon = styled.div`
-  font-size: 22px;
+  font-size: 24px;
   color: #005bba;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  line-height: 1;
 `
 
 export const FilterLabel = styled.span`
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   color: #005bba;
   text-align: center;
-  line-height: 1.1;
+  line-height: 1.2;
 
-  /* Prevent overflow + enable 2-line wrap */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* show max 2 lines */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal; /* allow text wrapping */
+  white-space: normal;
+  word-break: break-word;
 `

@@ -17,17 +17,17 @@ export const FeatureCard = styled.div`
   transition: transform 0.3s, box-shadow 0.3s;
 
   @media screen and (min-width: 768px) {
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    }
-  }
-
-  @media screen and (min-width: 768px) {
     height: 180px;
     width: 400px;
     flex-direction: column;
     justify-content: center;
+    gap: 30px;
+    padding: 20px;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
   }
 `
 
@@ -46,10 +46,10 @@ export const FeatureIcon = styled.div`
   }
 `
 export const FeatureImage = styled.img`
-  height: 160px;
-  width: 160px;
+  height: 130px;
+  width: 130px;
   position: relative;
-  top: -36px;
+  margin-top: -35px;
 
   @media screen and (max-width: 768px) {
     display: none;
