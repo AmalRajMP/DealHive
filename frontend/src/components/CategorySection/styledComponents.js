@@ -21,13 +21,16 @@ export const SectionSubtitle = styled.p`
 `
 export const ProductsList = styled.div`
   display: flex;
-  gap: 12px;
-  padding: 4px 2px 10px 2px;
-
-  overflow-x: auto;
-  scroll-behavior: smooth;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  gap: 16px;
+  width: 100%;
+  ${({ layout }) =>
+    layout === 'grid'
+      ? `
+        flex-wrap: wrap;
+        overflow-x: unset;
+      `
+      : `
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      `}
 `

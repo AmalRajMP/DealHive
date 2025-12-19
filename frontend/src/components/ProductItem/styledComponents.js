@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 
 export const ProductCard = styled.div`
-  min-width: 160px;
-  max-width: 160px;
+  min-width: 155px;
+  max-width: 155px;
+
   background-color: #ffffff;
   border-radius: 14px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 6px 18px rgba(30, 64, 175, 0.08);
+  box-sizing: border-box;
 `
 
 export const ImageWrapper = styled.div`

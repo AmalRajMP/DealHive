@@ -7,12 +7,12 @@ import {
   ProductsList,
 } from './styledComponents'
 
-const ProductSection = ({ title, subtitle, products }) => (
+const CategorySection = ({ title, subtitle, products, layout = 'row' }) => (
   <SectionContainer>
     <SectionTitle>{title}</SectionTitle>
     {subtitle && <SectionSubtitle>{subtitle}</SectionSubtitle>}
 
-    <ProductsList>
+    <ProductsList layout={layout}>
       {products.map((eachItem) => (
         <ProductItem key={eachItem.id} productDetails={eachItem} />
       ))}
@@ -20,4 +20,4 @@ const ProductSection = ({ title, subtitle, products }) => (
   </SectionContainer>
 )
 
-export default ProductSection
+export default CategorySection
