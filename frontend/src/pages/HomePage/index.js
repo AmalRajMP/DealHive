@@ -1,10 +1,15 @@
 import FilterItem from '../../components/FilterItem'
-import ProductItem from '../../components/ProductItem'
+import CategorySection from '../../components/CategorySection'
 
 import Website_Logo from '../../assets/Website_Logo.png'
 import home_page_hero_image from '../../assets/home_page_hero_image.png'
 
 import { filterCategories } from '../../constants/filterCategories'
+import {
+  ELECTRONICS_CATEGORIES,
+  FASHION_CATEGORIES,
+  GROCERIES_CATEGORIES,
+} from '../../constants/categories'
 
 import { BsSearch } from 'react-icons/bs'
 
@@ -20,16 +25,35 @@ import {
   SearchInput,
   FiltersWrapper,
   HeroImage,
-  RecommendationsSection,
-  RecommendationTitle,
-  RecommendationExplanation,
-  ProductsList,
 } from './styledComponents'
 
-const productsList = productsData
+const allProducts = productsData
 
 const HomePage = () => {
-  const recommendedProducts = productsList.slice(0, 6).map((eachItem) => ({
+  const getProductsByCategories = (products, categories) =>
+    products.filter((product) => categories.includes(product.category))
+
+  // Category-based filtering
+  const beautyProducts = allProducts.filter(
+    (product) => product.category === 'beauty'
+  )
+
+  const electronicsProducts = getProductsByCategories(
+    allProducts,
+    ELECTRONICS_CATEGORIES
+  )
+
+  const fashionProducts = getProductsByCategories(
+    allProducts,
+    FASHION_CATEGORIES
+  )
+
+  const groceriesProducts = getProductsByCategories(
+    allProducts,
+    GROCERIES_CATEGORIES
+  )
+
+  const recommendedProducts = allProducts.slice(0, 6).map((eachItem) => ({
     ...eachItem,
     isAiPick: true,
   }))
@@ -53,17 +77,20 @@ const HomePage = () => {
           <FilterItem key={eachItem.id} filterItemDetails={eachItem} />
         ))}
       </FiltersWrapper>
-      <RecommendationsSection>
-        <RecommendationTitle>Recommended for you</RecommendationTitle>
-        <RecommendationExplanation>
-          Curated using AI to match your interests
-        </RecommendationExplanation>
-        <ProductsList>
-          {recommendedProducts.map((eachItem) => (
-            <ProductItem key={eachItem.id} productDetails={eachItem} />
-          ))}
-        </ProductsList>
-      </RecommendationsSection>
+
+      <CategorySection title="Beauty Picks" products={beautyProducts} />
+
+      <CategorySection title="Electronics" products={electronicsProducts} />
+
+      <CategorySection title="Fashion" products={fashionProducts} />
+
+      <CategorySection title="Groceries" products={groceriesProducts} />
+
+      <CategorySection
+        title="Recommended for you"
+        subtitle="Curated using AI to match your interests"
+        products={recommendedProducts}
+      />
     </MainContainer>
   )
 }
