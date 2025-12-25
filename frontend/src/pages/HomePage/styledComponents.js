@@ -65,7 +65,6 @@ export const FiltersWrapper = styled.div`
 
   padding: 12px 16px;
   margin-top: 8px;
-  margin-bottom: 8px;
   width: 100%;
 
   white-space: nowrap;

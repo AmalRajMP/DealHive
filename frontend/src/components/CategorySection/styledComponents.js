@@ -10,7 +10,7 @@ export const SectionTitle = styled.h2`
   font-size: 18px;
   font-weight: 600;
   color: #1e40af;
-  margin-bottom: 4px;
+  margin: 7px 0px;
 `
 
 export const SectionSubtitle = styled.p`

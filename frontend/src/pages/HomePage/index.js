@@ -33,10 +33,16 @@ const allProducts = productsData
 
 const HomePage = () => {
   const [searchInput, setSearchInput] = useState('')
+  const [activeFilterId, setActiveFilterId] = useState('all')
 
   const onSearchProduct = (event) => {
     setSearchInput(event.target.value)
   }
+
+  const onChangeActiveFilter = (filterId) => {
+    setActiveFilterId(filterId)
+  }
+
   const getProductsByCategories = (products, categories) =>
     products.filter((product) => categories.includes(product.category))
 
@@ -66,10 +72,24 @@ const HomePage = () => {
   }))
 
   const isSearching = searchInput.trim() !== ''
+  const isFiltering = activeFilterId !== 'all'
 
-  const searchResults = allProducts.filter((product) =>
-    product.title.toLowerCase().includes(searchInput.trim().toLowerCase())
-  )
+  const showFilteredResults = isSearching || isFiltering
+
+  let filteredProducts = allProducts
+
+  if (isFiltering) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === activeFilterId
+    )
+  }
+
+  if (isSearching) {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.title.toLowerCase().includes(searchInput.trim().toLowerCase())
+    )
+  }
+
   return (
     <MainContainer>
       <Navbar>
@@ -95,14 +115,18 @@ const HomePage = () => {
 
       <FiltersWrapper>
         {filterCategories.map((eachItem) => (
-          <FilterItem key={eachItem.id} filterItemDetails={eachItem} />
+          <FilterItem
+            key={eachItem.id}
+            filterItemDetails={eachItem}
+            onChangeActiveFilter={onChangeActiveFilter}
+          />
         ))}
       </FiltersWrapper>
 
-      {isSearching ? (
+      {showFilteredResults ? (
         <CategorySection
           title={`Search results for "${searchInput}"`}
-          products={searchResults}
+          products={filteredProducts}
           layout="grid"
         />
       ) : (
