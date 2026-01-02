@@ -34,6 +34,7 @@ export const SearchbarWrapper = styled.div`
   width: 100%;
   background-color: #ffffff;
   color: #000000;
+  margin: 20px;
   display: flex;
   align-items: center;
   gap: 10px;

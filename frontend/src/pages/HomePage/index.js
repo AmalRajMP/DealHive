@@ -90,6 +90,20 @@ const HomePage = () => {
     )
   }
 
+  const formatTitle = (text) => text.charAt(0).toUpperCase() + text.slice(1)
+
+  let resultsTitle = ''
+
+  if (isSearching && isFiltering) {
+    resultsTitle = `Results for "${searchInput}" in ${formatTitle(
+      activeFilterId
+    )}`
+  } else if (isSearching) {
+    resultsTitle = `Search results for "${searchInput}"`
+  } else if (isFiltering) {
+    resultsTitle = `Deals on ${formatTitle(activeFilterId)}`
+  }
+
   return (
     <MainContainer>
       <Navbar>
@@ -97,7 +111,7 @@ const HomePage = () => {
           <WebsiteLogo src={Website_Logo} alt="website-logo" />
         </NavWrapper>
       </Navbar>
-      {!isSearching && (
+      {!showFilteredResults && (
         <HeroImage src={home_page_hero_image} alt="hero image" />
       )}
 
@@ -125,7 +139,7 @@ const HomePage = () => {
 
       {showFilteredResults ? (
         <CategorySection
-          title={`Search results for "${searchInput}"`}
+          title={resultsTitle}
           products={filteredProducts}
           layout="grid"
         />
