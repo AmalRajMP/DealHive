@@ -4,7 +4,7 @@ import FilterItem from '../../components/FilterItem'
 import CategorySection from '../../components/CategorySection'
 
 import Website_Logo from '../../assets/Website_Logo.png'
-import home_page_hero_image from '../../assets/home_page_hero_image.png'
+import ai_banner_icon from '../../assets/shopping.svg'
 
 import { filterCategories } from '../../constants/filterCategories'
 import {
@@ -26,7 +26,13 @@ import {
   SearchIcon,
   SearchInput,
   FiltersWrapper,
-  HeroImage,
+  Banner,
+  BannerTitle,
+  BannerSubtitle,
+  BannerLeft,
+  BannerRight,
+  BannerIcon,
+  BannerButton,
 } from './styledComponents'
 
 const allProducts = productsData
@@ -46,7 +52,6 @@ const HomePage = () => {
   const getProductsByCategories = (products, categories) =>
     products.filter((product) => categories.includes(product.category))
 
-  // Category-based filtering
   const beautyProducts = allProducts.filter(
     (product) => product.category === 'beauty'
   )
@@ -73,7 +78,6 @@ const HomePage = () => {
 
   const isSearching = searchInput.trim() !== ''
   const isFiltering = activeFilterId !== 'all'
-
   const showFilteredResults = isSearching || isFiltering
 
   let filteredProducts = allProducts
@@ -111,8 +115,19 @@ const HomePage = () => {
           <WebsiteLogo src={Website_Logo} alt="website-logo" />
         </NavWrapper>
       </Navbar>
+
       {!showFilteredResults && (
-        <HeroImage src={home_page_hero_image} alt="hero image" />
+        <Banner>
+          <BannerLeft>
+            <BannerTitle>Find Deals Tailored Just For You</BannerTitle>
+            <BannerSubtitle>Powered by AI recommendations</BannerSubtitle>
+            <BannerButton>Explore Deals</BannerButton>
+          </BannerLeft>
+
+          <BannerRight>
+            <BannerIcon src={ai_banner_icon} alt="ai illustration" />
+          </BannerRight>
+        </Banner>
       )}
 
       <SearchbarWrapper>
