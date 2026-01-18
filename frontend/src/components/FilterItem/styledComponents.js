@@ -2,10 +2,8 @@ import styled from 'styled-components'
 
 export const FilterPill = styled.button`
   min-height: 82px;
-
   min-width: 87px;
   max-width: 90px;
-
   padding: 10px 8px;
 
   display: flex;
@@ -20,7 +18,6 @@ export const FilterPill = styled.button`
 
   color: #005bba;
   cursor: pointer;
-
   box-sizing: border-box;
 
   box-shadow: 0px 3px 8px rgba(94, 169, 250, 0.25);
@@ -35,17 +32,34 @@ export const FilterPill = styled.button`
   &:active {
     transform: scale(0.96);
   }
+
+  /* Tablet */
+  @media screen and (max-width: 1023px) {
+    min-height: 70px;
+    min-width: 78px;
+    gap: 6px;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 767px) {
+    min-height: 64px;
+    min-width: 72px;
+    padding: 8px 6px;
+    border-radius: 12px;
+  }
 `
 
 export const FilterIcon = styled.div`
   font-size: 24px;
   color: #005bba;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   line-height: 1;
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
 `
 
 export const FilterLabel = styled.span`
@@ -57,4 +71,8 @@ export const FilterLabel = styled.span`
 
   white-space: normal;
   word-break: break-word;
+
+  @media screen and (max-width: 767px) {
+    font-size: 10.5px;
+  }
 `

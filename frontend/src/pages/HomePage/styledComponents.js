@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
   background: linear-gradient(180deg, #e8f3ff 0%, #dbeeff 50%, #f5faff 100%);
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 15px;
 
   @media screen and (max-width: 767px) {
@@ -84,9 +83,8 @@ export const FiltersWrapper = styled.div`
   align-items: center;
   overflow-x: auto;
   gap: 12px;
-
   padding: 10px 12px;
-  margin-top: 8px;
+
   width: 100%;
   white-space: nowrap;
 
