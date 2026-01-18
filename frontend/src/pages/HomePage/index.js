@@ -2,8 +2,8 @@ import { useState, useRef } from 'react'
 
 import FilterItem from '../../components/FilterItem'
 import CategorySection from '../../components/CategorySection'
+import Header from '../../components/Navbar'
 
-import Website_Logo from '../../assets/Website_Logo.png'
 import ai_banner_icon from '../../assets/shopping.svg'
 
 import { filterCategories } from '../../constants/filterCategories'
@@ -19,9 +19,6 @@ import productsData from '../../data/products.json'
 
 import {
   MainContainer,
-  Navbar,
-  NavWrapper,
-  WebsiteLogo,
   SearchbarWrapper,
   SearchIcon,
   SearchInput,
@@ -115,71 +112,73 @@ const HomePage = () => {
   }
 
   return (
-    <MainContainer>
-      <Navbar>
-        <NavWrapper>
-          <WebsiteLogo src={Website_Logo} alt="website-logo" />
-        </NavWrapper>
-      </Navbar>
+    <>
+      <Header />
+      <MainContainer>
+        {!showFilteredResults && (
+          <Banner>
+            <BannerLeft>
+              <BannerTitle>Find Deals Tailored Just For You</BannerTitle>
+              <BannerSubtitle>Powered by AI recommendations</BannerSubtitle>
+              <BannerButton onClick={onExploreDeals}>
+                Explore Deals
+              </BannerButton>
+            </BannerLeft>
 
-      {!showFilteredResults && (
-        <Banner>
-          <BannerLeft>
-            <BannerTitle>Find Deals Tailored Just For You</BannerTitle>
-            <BannerSubtitle>Powered by AI recommendations</BannerSubtitle>
-            <BannerButton onClick={onExploreDeals}>Explore Deals</BannerButton>
-          </BannerLeft>
+            <BannerRight>
+              <BannerIcon src={ai_banner_icon} alt="ai illustration" />
+            </BannerRight>
+          </Banner>
+        )}
 
-          <BannerRight>
-            <BannerIcon src={ai_banner_icon} alt="ai illustration" />
-          </BannerRight>
-        </Banner>
-      )}
-
-      <SearchbarWrapper>
-        <SearchIcon>
-          <BsSearch />
-        </SearchIcon>
-        <SearchInput
-          type="search"
-          value={searchInput}
-          placeholder="Search"
-          onChange={onSearchProduct}
-        />
-      </SearchbarWrapper>
-
-      <FiltersWrapper>
-        {filterCategories.map((eachItem) => (
-          <FilterItem
-            key={eachItem.id}
-            filterItemDetails={eachItem}
-            onChangeActiveFilter={onChangeActiveFilter}
+        <SearchbarWrapper>
+          <SearchIcon>
+            <BsSearch />
+          </SearchIcon>
+          <SearchInput
+            type="search"
+            value={searchInput}
+            placeholder="Search"
+            onChange={onSearchProduct}
           />
-        ))}
-      </FiltersWrapper>
+        </SearchbarWrapper>
 
-      {showFilteredResults ? (
-        <CategorySection
-          title={resultsTitle}
-          products={filteredProducts}
-          layout="grid"
-        />
-      ) : (
-        <>
-          <div ref={dealsRef}>
-            <CategorySection title="Beauty Picks" products={beautyProducts} />
-          </div>
-          <CategorySection title="Electronics" products={electronicsProducts} />
-          <CategorySection title="Fashion" products={fashionProducts} />
-          <CategorySection title="Groceries" products={groceriesProducts} />
+        <FiltersWrapper>
+          {filterCategories.map((eachItem) => (
+            <FilterItem
+              key={eachItem.id}
+              filterItemDetails={eachItem}
+              onChangeActiveFilter={onChangeActiveFilter}
+            />
+          ))}
+        </FiltersWrapper>
+
+        {showFilteredResults ? (
           <CategorySection
-            title="Recommended for you"
-            subtitle="Curated using AI to match your interests"
-            products={recommendedProducts}
+            title={resultsTitle}
+            products={filteredProducts}
+            layout="grid"
           />
-        </>
-      )}
-    </MainContainer>
+        ) : (
+          <>
+            <div ref={dealsRef}>
+              <CategorySection title="Beauty Picks" products={beautyProducts} />
+            </div>
+            <CategorySection
+              title="Electronics"
+              products={electronicsProducts}
+            />
+            <CategorySection title="Fashion" products={fashionProducts} />
+            <CategorySection title="Groceries" products={groceriesProducts} />
+            <CategorySection
+              title="Recommended for you"
+              subtitle="Curated using AI to match your interests"
+              products={recommendedProducts}
+            />
+          </>
+        )}
+      </MainContainer>
+    </>
   )
 }
 

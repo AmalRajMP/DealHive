@@ -13,35 +13,6 @@ export const MainContainer = styled.div`
   }
 `
 
-// Navbar
-export const Navbar = styled.nav`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 8px;
-`
-
-export const NavWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-`
-
-export const WebsiteLogo = styled.img`
-  height: 160px;
-  width: 160px;
-  margin: -70px;
-  outline: none;
-
-  @media screen and (max-width: 767px) {
-    height: 130px;
-    width: 130px;
-    margin: -52px;
-  }
-`
-
 export const SearchbarWrapper = styled.div`
   width: 100%;
   max-width: 720px;
