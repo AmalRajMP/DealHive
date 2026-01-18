@@ -44,7 +44,7 @@ export const WebsiteLogo = styled.img`
 
 export const SearchbarWrapper = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 720px;
   background-color: #ffffff;
   margin: 12px auto;
   display: flex;
