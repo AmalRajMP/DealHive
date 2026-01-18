@@ -23,6 +23,7 @@ export const ProductsList = styled.div`
   display: flex;
   gap: 16px;
   width: 100%;
+
   ${({ layout }) =>
     layout === 'grid'
       ? `
@@ -32,5 +33,12 @@ export const ProductsList = styled.div`
       : `
         flex-wrap: nowrap;
         overflow-x: auto;
+
+        /* Hide scrollbar but keep scroll */
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       `}
 `
