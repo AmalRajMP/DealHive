@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 import FilterItem from '../../components/FilterItem'
 import CategorySection from '../../components/CategorySection'
@@ -38,8 +38,14 @@ import {
 const allProducts = productsData
 
 const HomePage = () => {
+  const dealsRef = useRef(null)
+
   const [searchInput, setSearchInput] = useState('')
   const [activeFilterId, setActiveFilterId] = useState('all')
+
+  const onExploreDeals = () => {
+    dealsRef.current?.scrollIntoView({ behaviour: 'smooth' })
+  }
 
   const onSearchProduct = (event) => {
     setSearchInput(event.target.value)
@@ -71,7 +77,7 @@ const HomePage = () => {
     GROCERIES_CATEGORIES
   )
 
-  const recommendedProducts = allProducts.slice(0, 6).map((eachItem) => ({
+  const recommendedProducts = allProducts.slice(0, 10).map((eachItem) => ({
     ...eachItem,
     isAiPick: true,
   }))
@@ -121,7 +127,7 @@ const HomePage = () => {
           <BannerLeft>
             <BannerTitle>Find Deals Tailored Just For You</BannerTitle>
             <BannerSubtitle>Powered by AI recommendations</BannerSubtitle>
-            <BannerButton>Explore Deals</BannerButton>
+            <BannerButton onClick={onExploreDeals}>Explore Deals</BannerButton>
           </BannerLeft>
 
           <BannerRight>
@@ -160,7 +166,9 @@ const HomePage = () => {
         />
       ) : (
         <>
-          <CategorySection title="Beauty Picks" products={beautyProducts} />
+          <div ref={dealsRef}>
+            <CategorySection title="Beauty Picks" products={beautyProducts} />
+          </div>
           <CategorySection title="Electronics" products={electronicsProducts} />
           <CategorySection title="Fashion" products={fashionProducts} />
           <CategorySection title="Groceries" products={groceriesProducts} />

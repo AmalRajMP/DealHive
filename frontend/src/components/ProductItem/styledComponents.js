@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ProductCard = styled.div`
-  width: 160px;
+  width: 158px;
   flex-shrink: 0;
   background-color: #ffffff;
   border-radius: 14px;

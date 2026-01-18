@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const FilterPill = styled.button`
   min-height: 82px;
-  min-width: 87px;
+  min-width: 90px;
   max-width: 90px;
   padding: 10px 8px;
 
