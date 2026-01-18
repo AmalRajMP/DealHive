@@ -4,11 +4,14 @@ export const MainContainer = styled.div`
   min-height: 100vh;
   width: 100%;
   background: linear-gradient(180deg, #e8f3ff 0%, #dbeeff 50%, #f5faff 100%);
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
+
+  @media screen and (max-width: 767px) {
+    padding: 10px;
+  }
 `
 
 // Navbar
@@ -28,23 +31,34 @@ export const NavWrapper = styled.div`
 `
 
 export const WebsiteLogo = styled.img`
-  height: 130px;
-  width: 130px;
-  margin: -50px;
-  outline: none; /* ✅ fixed syntax */
+  height: 160px;
+  width: 160px;
+  margin: -70px;
+  outline: none;
+
+  @media screen and (max-width: 767px) {
+    height: 130px;
+    width: 130px;
+    margin: -52px;
+  }
 `
 
 export const SearchbarWrapper = styled.div`
   width: 100%;
+  max-width: 800px;
   background-color: #ffffff;
-  color: #000000;
-  margin: 20px;
+  margin: 12px auto;
   display: flex;
   align-items: center;
   gap: 10px;
   border-radius: 20px;
-  padding: 6px 20px;
+  padding: 6px 16px;
   box-shadow: 0px 4px 12px rgba(94, 169, 250, 0.35);
+
+  @media screen and (max-width: 767px) {
+    max-width: 100%;
+    margin: 10px;
+  }
 `
 
 export const SearchIcon = styled.div`
@@ -71,7 +85,7 @@ export const FiltersWrapper = styled.div`
   overflow-x: auto;
   gap: 12px;
 
-  padding: 12px 16px;
+  padding: 10px 12px;
   margin-top: 8px;
   width: 100%;
   white-space: nowrap;
@@ -86,27 +100,23 @@ export const FiltersWrapper = styled.div`
 
 // Banner
 export const Banner = styled.div`
-  height: 200px;
   background: linear-gradient(135deg, #25c0eb, #5b9aff);
   border-radius: 20px;
   padding: 28px 20px;
-  margin: 16px;
+  margin: 16px auto;
   color: #ffffff;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* NEW: Full width on large screens */
   width: 100%;
-  max-width: 1200px; /* keeps content nicely contained */
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1200px;
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
     text-align: center;
-    max-width: 100%; /* full width on mobile */
+    padding: 22px 16px;
   }
 `
 
@@ -115,19 +125,22 @@ export const BannerLeft = styled.div`
 `
 
 export const BannerTitle = styled.h1`
-  font-size: 22px;
+  font-size: 26px;
   margin: 0;
   font-weight: 700;
 
-  @media screen and (min-width: 1024px) {
-    font-size: 28px;
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
   }
 `
 
 export const BannerSubtitle = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   margin: 8px 0 18px;
-  opacity: 0.9;
+
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 `
 
 export const BannerButton = styled.button`
@@ -151,6 +164,10 @@ export const BannerRight = styled.div`
 `
 
 export const BannerIcon = styled.img`
-  width: 200px;
+  width: 220px;
   opacity: 0.9;
+
+  @media screen and (max-width: 1023px) {
+    width: 180px;
+  }
 `
