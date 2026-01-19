@@ -63,6 +63,9 @@ const RegistrationForm = () => {
     if (response.ok) {
       setApiStatus(apiStatusConstants.success)
       console.log('User registered successfully')
+
+      const displayName = firstName.charAt(0).toUpperCase() + firstName.slice(1)
+      localStorage.setItem('dealhive_username', displayName)
     } else {
       setApiStatus(apiStatusConstants.failure)
       const data = await response.json()

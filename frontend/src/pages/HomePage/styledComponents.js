@@ -80,7 +80,6 @@ export const Banner = styled.div`
   justify-content: space-between;
 
   width: 100%;
-  max-width: 1200px;
 
   @media screen and (max-width: 767px) {
     flex-direction: column;

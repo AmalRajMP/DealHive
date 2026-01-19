@@ -26,6 +26,44 @@ export const NavWrapper = styled.div`
   justify-content: space-between;
   padding: 0 16px;
 `
+export const Greeting = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  @media screen and (max-width: 640px) {
+    gap: 4px;
+  }
+`
+export const GreetingText = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+  margin: 0;
+  white-space: nowrap;
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
+`
+export const GreetingIcon = styled.div`
+  display: flex;
+  align-items: center;
+  color: #1e40af;
+  font-size: 18px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 640px) {
+    font-size: 20px;
+  }
+`
 
 export const NavIcons = styled.div`
   display: flex;
