@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { MdLockOutline, MdEmail } from 'react-icons/md'
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
@@ -23,6 +23,11 @@ const LoginForm = () => {
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
   const [errorMsg, setErrorMsg] = useState('')
 
+  const navigate = useNavigate()
+
+  const token = localStorage.getItem('authToken')
+  if (token) return <Navigate to="/home" />
+
   const onChangeEmailID = (event) => {
     setErrorMsg('')
     setEmailID(event.target.value)
@@ -31,8 +36,6 @@ const LoginForm = () => {
     setErrorMsg('')
     setPassword(event.target.value)
   }
-
-  const navigate = useNavigate()
 
   const submitForm = async (event) => {
     event.preventDefault()
@@ -117,7 +120,8 @@ const LoginForm = () => {
           )}
           <Button type="submit">LOGIN</Button>
           <SignupPrompt>
-            Don’t have an account? <SignupLink href="/register">Sign up</SignupLink>
+            Don’t have an account?{' '}
+            <SignupLink href="/register">Sign up</SignupLink>
           </SignupPrompt>
         </FormContainer>
       )}
