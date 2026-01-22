@@ -6,6 +6,9 @@ import Header from '../../components/Navbar'
 
 import ai_banner_icon from '../../assets/shopping.svg'
 
+import { ThreeDots } from 'react-loader-spinner'
+import { MdErrorOutline } from 'react-icons/md'
+
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
 import { filterCategories } from '../../constants/filterCategories'
@@ -30,6 +33,10 @@ import {
   BannerRight,
   BannerIcon,
   BannerButton,
+  LoaderContainer,
+  FailureContainer,
+  FailureText,
+  RetryButton,
 } from './styledComponents'
 
 const HomePage = () => {
@@ -40,32 +47,32 @@ const HomePage = () => {
   const [productsList, setProductsList] = useState([])
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
-  console.log(apiStatus)
-  useEffect(() => {
-    const getProductsList = async () => {
-      try {
-        setApiStatus(apiStatusConstants.inProgress)
+  const getProductsList = async () => {
+    try {
+      setApiStatus(apiStatusConstants.inProgress)
 
-        const url = 'http://localhost:5000/api/products'
+      const url = 'http://localhost:5000/api/products'
 
-        const response = await fetch(url)
-        const data = await response.json()
+      const response = await fetch(url)
+      const data = await response.json()
 
-        if (response.ok) {
-          const products = data.products
-          console.log('new products')
-          console.log(products)
-          setProductsList(products)
-          setApiStatus(apiStatusConstants.success)
-          console.log(apiStatus)
-        } else {
-          setApiStatus(apiStatusConstants.failure)
-          console.log(apiStatus)
-        }
-      } catch (error) {
+      if (response.ok) {
+        const products = data.products
+        console.log('new products')
+        console.log(products)
+        setProductsList(products)
+        setApiStatus(apiStatusConstants.success)
+        console.log(apiStatus)
+      } else {
         setApiStatus(apiStatusConstants.failure)
+        console.log(apiStatus)
       }
+    } catch (error) {
+      setApiStatus(apiStatusConstants.failure)
     }
+  }
+
+  useEffect(() => {
     getProductsList()
   }, [])
 
@@ -83,30 +90,6 @@ const HomePage = () => {
 
   const getProductsByCategories = (products, categories) =>
     products.filter((product) => categories.includes(product.category))
-
-  const beautyProducts = productsList.filter(
-    (product) => product.category === 'beauty'
-  )
-
-  const electronicsProducts = getProductsByCategories(
-    productsList,
-    ELECTRONICS_CATEGORIES
-  )
-
-  const fashionProducts = getProductsByCategories(
-    productsList,
-    FASHION_CATEGORIES
-  )
-
-  const groceriesProducts = getProductsByCategories(
-    productsList,
-    GROCERIES_CATEGORIES
-  )
-
-  const recommendedProducts = productsList.slice(0, 10).map((eachItem) => ({
-    ...eachItem,
-    isAiPick: true,
-  }))
 
   const isSearching = searchInput.trim() !== ''
   const isFiltering = activeFilterId !== 'all'
@@ -138,6 +121,88 @@ const HomePage = () => {
     resultsTitle = `Search results for "${searchInput}"`
   } else if (isFiltering) {
     resultsTitle = `Deals on ${formatTitle(activeFilterId)}`
+  }
+
+  const renderLoadingView = () => (
+    <LoaderContainer>
+      <ThreeDots color="#1e40af" height="50" width="50" radius="9" />
+    </LoaderContainer>
+  )
+
+  const renderFailureView = () => (
+    <FailureContainer>
+      <MdErrorOutline size={50} />
+      <FailureText>Failed to load products. Please try again.</FailureText>
+      <RetryButton onClick={() => getProductsList}>Retry</RetryButton>
+    </FailureContainer>
+  )
+
+  const renderSuccessView = () => {
+    const beautyProducts = productsList.filter(
+      (product) => product.category.toLowerCase() === 'beauty'
+    )
+
+    const electronicsProducts = getProductsByCategories(
+      productsList,
+      ELECTRONICS_CATEGORIES
+    )
+
+    const fashionProducts = getProductsByCategories(
+      productsList,
+      FASHION_CATEGORIES
+    )
+
+    const groceriesProducts = getProductsByCategories(
+      productsList,
+      GROCERIES_CATEGORIES
+    )
+
+    const recommendedProducts = productsList.slice(0, 10).map((eachItem) => ({
+      ...eachItem,
+      isAiPick: true,
+    }))
+
+    return (
+      <>
+        {showFilteredResults ? (
+          <CategorySection
+            title={resultsTitle}
+            products={filteredProducts}
+            layout="grid"
+          />
+        ) : (
+          <>
+            <div ref={dealsRef}>
+              <CategorySection title="Beauty Picks" products={beautyProducts} />
+            </div>
+            <CategorySection
+              title="Electronics"
+              products={electronicsProducts}
+            />
+            <CategorySection title="Fashion" products={fashionProducts} />
+            <CategorySection title="Groceries" products={groceriesProducts} />
+            <CategorySection
+              title="Recommended for you"
+              subtitle="Curated using AI to match your interests"
+              products={recommendedProducts}
+            />
+          </>
+        )}
+      </>
+    )
+  }
+
+  const renderProducts = () => {
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return renderLoadingView()
+      case apiStatusConstants.success:
+        return renderSuccessView()
+      case apiStatusConstants.failure:
+        return renderFailureView()
+      default:
+        return null
+    }
   }
 
   return (
@@ -181,31 +246,7 @@ const HomePage = () => {
             />
           ))}
         </FiltersWrapper>
-
-        {showFilteredResults ? (
-          <CategorySection
-            title={resultsTitle}
-            products={filteredProducts}
-            layout="grid"
-          />
-        ) : (
-          <>
-            <div ref={dealsRef}>
-              <CategorySection title="Beauty Picks" products={beautyProducts} />
-            </div>
-            <CategorySection
-              title="Electronics"
-              products={electronicsProducts}
-            />
-            <CategorySection title="Fashion" products={fashionProducts} />
-            <CategorySection title="Groceries" products={groceriesProducts} />
-            <CategorySection
-              title="Recommended for you"
-              subtitle="Curated using AI to match your interests"
-              products={recommendedProducts}
-            />
-          </>
-        )}
+        {renderProducts()}
       </MainContainer>
     </>
   )

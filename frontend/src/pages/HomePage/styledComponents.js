@@ -139,3 +139,37 @@ export const BannerIcon = styled.img`
     width: 180px;
   }
 `
+
+export const LoaderContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const FailureContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #1e40af;
+`
+
+export const FailureText = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 8px;
+`
+
+export const RetryButton = styled.button`
+  margin-top: 14px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+`
