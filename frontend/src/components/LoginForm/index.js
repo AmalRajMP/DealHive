@@ -56,6 +56,7 @@ const LoginForm = () => {
     if (response.ok) {
       setApiStatus(apiStatusConstants.success)
       localStorage.setItem('authToken', data.token)
+      localStorage.setItem('dealhive_username', data.firstName)
       console.log(data.token)
       navigate('/home')
     } else {

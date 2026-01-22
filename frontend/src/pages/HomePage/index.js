@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import FilterItem from '../../components/FilterItem'
 import CategorySection from '../../components/CategorySection'
@@ -41,7 +42,7 @@ const HomePage = () => {
   const [activeFilterId, setActiveFilterId] = useState('all')
 
   const onExploreDeals = () => {
-    dealsRef.current?.scrollIntoView({ behaviour: 'smooth' })
+    dealsRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const onSearchProduct = (event) => {
