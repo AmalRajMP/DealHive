@@ -84,6 +84,7 @@ export const WebsiteLogo = styled.img`
   width: 160px;
   margin: -120px 0px;
   outline: none;
+  cursor: pointer;
 
   @media screen and (max-width: 767px) {
     height: 130px;

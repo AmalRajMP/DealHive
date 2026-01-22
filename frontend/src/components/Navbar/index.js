@@ -17,10 +17,14 @@ import {
   LogoutButton,
 } from './styledComponents'
 
-const firstName = localStorage.getItem('dealhive_username')
-
 const Header = () => {
   const navigate = useNavigate()
+  const firstName = localStorage.getItem('dealhive_username')
+
+  const onClickLogo = () => {
+    navigate('/home')
+  }
+
   const onClickLogout = () => {
     localStorage.removeItem('authToken')
     localStorage.removeItem('dealhive_username')
@@ -29,7 +33,11 @@ const Header = () => {
   return (
     <Navbar>
       <NavWrapper>
-        <WebsiteLogo src={Website_Logo} alt="website-logo" />
+        <WebsiteLogo
+          src={Website_Logo}
+          alt="website-logo"
+          onClick={onClickLogo}
+        />
 
         <Greeting>
           <GreetingIcon>
