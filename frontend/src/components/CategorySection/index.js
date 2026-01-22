@@ -14,7 +14,7 @@ const CategorySection = ({ title, subtitle, products, layout = 'row' }) => (
 
     <ProductsList layout={layout}>
       {products.map((eachItem) => (
-        <ProductItem key={eachItem.id} productDetails={eachItem} />
+        <ProductItem key={eachItem._id} productDetails={eachItem} />
       ))}
     </ProductsList>
   </SectionContainer>

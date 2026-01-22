@@ -1,10 +1,12 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 import FilterItem from '../../components/FilterItem'
 import CategorySection from '../../components/CategorySection'
 import Header from '../../components/Navbar'
 
 import ai_banner_icon from '../../assets/shopping.svg'
+
+import apiStatusConstants from '../../constants/apiStatusConstants'
 
 import { filterCategories } from '../../constants/filterCategories'
 import {
@@ -14,8 +16,6 @@ import {
 } from '../../constants/categories'
 
 import { BsSearch } from 'react-icons/bs'
-
-import productsData from '../../data/products.json'
 
 import {
   MainContainer,
@@ -32,13 +32,42 @@ import {
   BannerButton,
 } from './styledComponents'
 
-const allProducts = productsData
-
 const HomePage = () => {
   const dealsRef = useRef(null)
 
   const [searchInput, setSearchInput] = useState('')
   const [activeFilterId, setActiveFilterId] = useState('all')
+  const [productsList, setProductsList] = useState([])
+  const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+
+  console.log(apiStatus)
+  useEffect(() => {
+    const getProductsList = async () => {
+      try {
+        setApiStatus(apiStatusConstants.inProgress)
+
+        const url = 'http://localhost:5000/api/products'
+
+        const response = await fetch(url)
+        const data = await response.json()
+
+        if (response.ok) {
+          const products = data.products
+          console.log('new products')
+          console.log(products)
+          setProductsList(products)
+          setApiStatus(apiStatusConstants.success)
+          console.log(apiStatus)
+        } else {
+          setApiStatus(apiStatusConstants.failure)
+          console.log(apiStatus)
+        }
+      } catch (error) {
+        setApiStatus(apiStatusConstants.failure)
+      }
+    }
+    getProductsList()
+  }, [])
 
   const onExploreDeals = () => {
     dealsRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -55,26 +84,26 @@ const HomePage = () => {
   const getProductsByCategories = (products, categories) =>
     products.filter((product) => categories.includes(product.category))
 
-  const beautyProducts = allProducts.filter(
+  const beautyProducts = productsList.filter(
     (product) => product.category === 'beauty'
   )
 
   const electronicsProducts = getProductsByCategories(
-    allProducts,
+    productsList,
     ELECTRONICS_CATEGORIES
   )
 
   const fashionProducts = getProductsByCategories(
-    allProducts,
+    productsList,
     FASHION_CATEGORIES
   )
 
   const groceriesProducts = getProductsByCategories(
-    allProducts,
+    productsList,
     GROCERIES_CATEGORIES
   )
 
-  const recommendedProducts = allProducts.slice(0, 10).map((eachItem) => ({
+  const recommendedProducts = productsList.slice(0, 10).map((eachItem) => ({
     ...eachItem,
     isAiPick: true,
   }))
@@ -83,7 +112,7 @@ const HomePage = () => {
   const isFiltering = activeFilterId !== 'all'
   const showFilteredResults = isSearching || isFiltering
 
-  let filteredProducts = allProducts
+  let filteredProducts = productsList
 
   if (isFiltering) {
     filteredProducts = filteredProducts.filter(
