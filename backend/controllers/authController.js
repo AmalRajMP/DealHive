@@ -4,51 +4,61 @@ const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 
 const registerUser = async (req, res) => {
-  const { firstName, lastName, emailID, contactNo, password } = req.body
+  try {
+    const { firstName, lastName, emailID, contactNo, password } = req.body
 
-  const existingUser = await User.findOne({ emailID })
-  if (existingUser) {
-    return res.status(400).json({ message: 'Email already exists' })
+    const existingUser = await User.findOne({ emailID })
+    if (existingUser) {
+      return res.status(400).json({ message: 'Email already exists' })
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    await User.create({
+      firstName,
+      lastName,
+      emailID,
+      contactNo,
+      password: hashedPassword,
+    })
+
+    res.status(201).json({ message: 'User registered successfully' })
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' })
   }
-
-  const hashedPassword = await bcrypt.hash(password, 10)
-
-  await User.create({
-    firstName,
-    lastName,
-    emailID,
-    contactNo,
-    password: hashedPassword,
-  })
-
-  res.status(201).json({ message: 'User registered successfully' })
 }
 
 const loginUser = async (req, res) => {
-  const { emailID, password } = req.body
+  try {
+    const { emailID, password } = req.body
 
-  const user = await User.findOne({ emailID })
+    const user = await User.findOne({ emailID })
 
-  if (!user) {
-    return res.status(400).json({ message: 'Invalid email or password' })
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid email or password' })
+    }
+
+    const isSame = await bcrypt.compare(password, user.password)
+
+    if (!isSame) {
+      return res.status(400).json({ message: 'Invalid email or password' })
+    }
+
+    const token = jwt.sign(
+      {
+        id: user._id,
+        emailID: user.emailID,
+      },
+      process.env.JWT_SECRET || 'default_secret_key',
+      { expiresIn: '1h' }
+    )
+
+    return res
+      .status(200)
+      .json({ message: 'Login successful', token, firstName: user.firstName })
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' })
   }
-
-  const isSame = await bcrypt.compare(password, user.password)
-
-  if (!isSame) {
-    return res.status(400).json({ message: 'Invalid email or password' })
-  }
-
-  const token = jwt.sign(
-    {
-      id: user._id,
-      emailID: user.emailID,
-    },
-    process.env.JWT_SECRET || 'default_secret_key',
-    { expiresIn: '1h' }
-  )
-
-  return res.status(200).json({ message: 'Login successful', token })
 }
 
 module.exports = { registerUser, loginUser }
