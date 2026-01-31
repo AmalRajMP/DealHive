@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import {
   ProductCard,
   ImageWrapper,
@@ -13,6 +15,7 @@ import {
 const ProductItem = (props) => {
   const { productDetails } = props
   const {
+    _id,
     title,
     thumbnail,
     originalPrice,
@@ -22,20 +25,22 @@ const ProductItem = (props) => {
   } = productDetails
 
   return (
-    <ProductCard>
-      <ImageWrapper>
-        <ProductImage src={thumbnail} alt={title} />
-        <DiscountBadge>{discountPercent}% OFF</DiscountBadge>
-        {isAiPick && <AIPickBadge>AI Pick</AIPickBadge>}
-      </ImageWrapper>
+    <Link to={`/products/${_id}`} style={{ textDecoration: 'none' }}>
+      <ProductCard>
+        <ImageWrapper>
+          <ProductImage src={thumbnail} alt={title} />
+          <DiscountBadge>{discountPercent}% OFF</DiscountBadge>
+          {isAiPick && <AIPickBadge>AI Pick</AIPickBadge>}
+        </ImageWrapper>
 
-      <ProductTitle>{title}</ProductTitle>
+        <ProductTitle>{title}</ProductTitle>
 
-      <PriceRow>
-        <DiscountPrice>₹{discountPrice}</DiscountPrice>
-        <OriginalPrice>₹{originalPrice}</OriginalPrice>
-      </PriceRow>
-    </ProductCard>
+        <PriceRow>
+          <DiscountPrice>₹{discountPrice}</DiscountPrice>
+          <OriginalPrice>₹{originalPrice}</OriginalPrice>
+        </PriceRow>
+      </ProductCard>
+    </Link>
   )
 }
 

@@ -3,6 +3,7 @@ import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import LandingPage from './pages/LandingPage'
 import HomePage from './pages/HomePage'
+import ProductItemDetails from './components/ProductItemDetails'
 import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => (
@@ -24,6 +25,14 @@ const App = () => (
       element={
         <ProtectedRoute>
           <HomePage />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/products/:id"
+      element={
+        <ProtectedRoute>
+          <ProductItemDetails />
         </ProtectedRoute>
       }
     />

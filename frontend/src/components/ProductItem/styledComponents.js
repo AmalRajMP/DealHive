@@ -10,6 +10,7 @@ export const ProductCard = styled.div`
   flex-direction: column;
   box-shadow: 0 6px 18px rgba(30, 64, 175, 0.08);
   box-sizing: border-box;
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
