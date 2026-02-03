@@ -1,7 +1,9 @@
 import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 import Header from '../../components/Navbar'
+
+import CartContext from '../../context/CartContext'
 
 import { ThreeDots } from 'react-loader-spinner'
 import { MdErrorOutline } from 'react-icons/md'
@@ -35,6 +37,8 @@ const ProductItemDetails = () => {
 
   const [productDetails, setProductDetails] = useState({})
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+
+  const { addToCart } = useContext(CartContext)
 
   const getProductDetails = async () => {
     try {
@@ -100,8 +104,13 @@ const ProductItemDetails = () => {
           <Description>{productDetails.description}</Description>
 
           <ButtonGroup>
-            <AddToCartButton>Add to Cart</AddToCartButton>
-            <BuyNowButton>Buy Now</BuyNowButton>
+            <AddToCartButton
+              type="button"
+              onClick={() => addToCart(productDetails)}
+            >
+              Add to Cart
+            </AddToCartButton>
+            <BuyNowButton type="button">Buy Now</BuyNowButton>
           </ButtonGroup>
         </DetailsSection>
       </Card>
