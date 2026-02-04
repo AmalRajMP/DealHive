@@ -82,22 +82,56 @@ const App = () => {
     }
   }
 
-  const increaseQuantity = (id) => {
+  const increaseQuantity = async (id) => {
     setCartList((prevCartList) =>
       prevCartList.map((item) =>
         item._id === id ? { ...item, quantity: item.quantity + 1 } : item,
       ),
     )
+
+    try {
+      const url = 'http://localhost:5000/api/cart/update-quantity'
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem('userId'),
+          productId: id,
+          change: 1,
+        }),
+      }
+      await fetch(url, options)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
-  const decreaseQuantity = (id) => {
+  const decreaseQuantity = async (id) => {
     setCartList((prevCartList) =>
-      prevCartList
-        .map((item) =>
-          item._id === id ? { ...item, quantity: item.quantity - 1 } : item,
-        )
-        .filter((item) => item.quantity > 0),
+      prevCartList.map((item) =>
+        item._id === id ? { ...item, quantity: item.quantity - 1 } : item,
+      ),
     )
+
+    try {
+      const url = 'http://localhost:5000/api/cart/update-quantity'
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem('userId'),
+          productId: id,
+          change: -1,
+        }),
+      }
+      await fetch(url, options)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return (
