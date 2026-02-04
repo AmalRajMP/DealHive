@@ -40,6 +40,13 @@ const ProductItemDetails = () => {
 
   const { addToCart } = useContext(CartContext)
 
+  const formattedCartProduct = {
+    _id: productDetails._id,
+    title: productDetails.title,
+    image: productDetails.thumbnail,
+    price: productDetails.discountPrice,
+  }
+
   const getProductDetails = async () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
@@ -106,10 +113,15 @@ const ProductItemDetails = () => {
           <ButtonGroup>
             <AddToCartButton
               type="button"
-              onClick={() => addToCart(productDetails)}
+              onClick={() => {
+                console.log('ADDING TO CART:', formattedCartProduct)
+
+                addToCart(formattedCartProduct)
+              }}
             >
               Add to Cart
             </AddToCartButton>
+
             <BuyNowButton type="button">Buy Now</BuyNowButton>
           </ButtonGroup>
         </DetailsSection>

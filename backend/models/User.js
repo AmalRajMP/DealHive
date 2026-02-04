@@ -22,6 +22,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cartList: {
+    type: [
+      {
+        productId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Product',
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+        },
+      },
+    ],
+    default: [],
+  },
 })
 
 const User = mongoose.model('User', userSchema)

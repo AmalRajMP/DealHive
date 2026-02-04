@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage'
@@ -7,11 +7,16 @@ import LandingPage from './pages/LandingPage'
 import HomePage from './pages/HomePage'
 import ProductItemDetails from './components/ProductItemDetails'
 import ProtectedRoute from './components/ProtectedRoute'
+import CartPage from './pages/CartPage'
 
 import CartContext from './context/CartContext'
 
 const App = () => {
   const [cartList, setCartList] = useState([])
+
+  useEffect(() => {
+    console.log('CART UPDATED:', cartList)
+  }, [cartList])
 
   const addToCart = (product) => {
     setCartList((prevCartList) => {
@@ -97,6 +102,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProductItemDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <CartPage />
             </ProtectedRoute>
           }
         />
