@@ -59,10 +59,27 @@ const App = () => {
     }
   }
 
-  const removeFromCart = (id) => {
+  const removeFromCart = async (id) => {
     setCartList((prevCartList) =>
       prevCartList.filter((item) => item._id !== id),
     )
+
+    try {
+      const url = 'http://localhost:5000/api/cart/remove'
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem('userId'),
+          productId: id,
+        }),
+      }
+      await fetch(url, options)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   const increaseQuantity = (id) => {
