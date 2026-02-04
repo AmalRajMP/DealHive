@@ -39,4 +39,32 @@ router.post('/remove', async (req, res) => {
   await user.save()
   res.json(user.cartList)
 })
+
+router.post('/update-quantity', async (req, res) => {
+  const { userId, productId, change } = req.body
+
+  const user = await User.findById(userId)
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' })
+  }
+
+  const item = user.cartList.find(
+    (item) => item.productId.toString() === productId,
+  )
+  if (!item) {
+    return res.status(404).json({ message: 'Item not found in cart' })
+  }
+
+  item.quantity += change
+
+  if (item.quantity <= 0) {
+    user.cartList = user.cartList.filter(
+      (item) => item.productId.toString() !== productId,
+    )
+  }
+
+  await user.save()
+  res.json(user.cartList)
+})
+
 module.exports = router
