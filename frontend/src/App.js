@@ -18,7 +18,7 @@ const App = () => {
     console.log('CART UPDATED:', cartList)
   }, [cartList])
 
-  const addToCart = (product) => {
+  const addToCart = async (product) => {
     setCartList((prevCartList) => {
       const isItemPresent = prevCartList.find(
         (item) => item._id === product._id,
@@ -40,6 +40,23 @@ const App = () => {
         },
       ]
     })
+
+    try {
+      const url = 'http://localhost:5000/api/cart/add'
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem('userId'),
+          productId: product._id,
+        }),
+      }
+      await fetch(url, options)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   const removeFromCart = (id) => {
