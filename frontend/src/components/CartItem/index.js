@@ -1,5 +1,9 @@
 import { useContext } from 'react'
+
+import { FaTrash } from 'react-icons/fa'
+
 import CartContext from '../../context/CartContext'
+
 import {
   ItemContainer,
   ItemImage,
@@ -26,7 +30,6 @@ const CartItem = ({ item }) => {
       <ItemInfo>
         <Title>{title}</Title>
         <Price>₹ {discountPrice}</Price>
-
         <QuantityContainer>
           <QtyButton onClick={() => decreaseQuantity(productId._id)}>
             -
@@ -36,11 +39,10 @@ const CartItem = ({ item }) => {
             +
           </QtyButton>
         </QuantityContainer>
-
-        <RemoveButton onClick={() => removeFromCart(productId._id)}>
-          Remove
-        </RemoveButton>
       </ItemInfo>
+      <RemoveButton onClick={() => removeFromCart(productId._id)}>
+        <FaTrash size={14} />
+      </RemoveButton>
     </ItemContainer>
   )
 }
