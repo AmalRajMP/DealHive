@@ -1,6 +1,9 @@
 import { useEffect, useContext } from 'react'
 import CartContext from '../../context/CartContext'
+
 import CartItem from '../../components/CartItem'
+
+import Navbar from '../../components/Navbar'
 
 import {
   CartContainer,
@@ -21,14 +24,18 @@ const CartPage = () => {
   }
 
   return (
-    <CartContainer>
-      <CartHeading>My Cart</CartHeading>
-      <CartList>
-        {cartList.map((item) => (
-          <CartItem key={item.productId._id} item={item} />
-        ))}
-      </CartList>
-    </CartContainer>
+    <>
+      <Navbar />
+
+      <CartContainer>
+        <CartHeading>My Cart</CartHeading>
+        <CartList>
+          {cartList.map((item) => (
+            <CartItem key={item.productId._id} item={item} />
+          ))}
+        </CartList>
+      </CartContainer>
+    </>
   )
 }
 
