@@ -1,10 +1,14 @@
-import { useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import CartContext from '../../context/CartContext'
 import CartItem from '../../components/CartItem'
 import { CartContainer, CartList, EmptyView } from './styledComponents'
 
 const CartPage = () => {
-  const { cartList } = useContext(CartContext)
+  const { cartList, fetchCart } = useContext(CartContext)
+
+  useEffect(() => {
+    fetchCart()
+  }, [])
 
   if (cartList.length === 0) {
     return <EmptyView>Your cart is empty</EmptyView>
@@ -14,7 +18,7 @@ const CartPage = () => {
     <CartContainer>
       <CartList>
         {cartList.map((item) => (
-          <CartItem key={item._id} item={item} />
+          <CartItem key={item.productId._id} item={item} />
         ))}
       </CartList>
     </CartContainer>

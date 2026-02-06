@@ -16,23 +16,30 @@ const CartItem = ({ item }) => {
   const { removeFromCart, increaseQuantity, decreaseQuantity } =
     useContext(CartContext)
 
-  const { _id, title, image, price, quantity } = item
+  const { _id, quantity, productId } = item
+  const { title, thumbnail, discountPrice } = productId
 
   return (
     <ItemContainer>
-      <ItemImage src={image} alt={title} />
+      <ItemImage src={thumbnail} alt={title} />
 
       <ItemInfo>
         <Title>{title}</Title>
-        <Price>₹ {price}</Price>
+        <Price>₹ {discountPrice}</Price>
 
         <QuantityContainer>
-          <QtyButton onClick={() => decreaseQuantity(_id)}>-</QtyButton>
+          <QtyButton onClick={() => decreaseQuantity(productId._id)}>
+            -
+          </QtyButton>
           <QtyText>{quantity}</QtyText>
-          <QtyButton onClick={() => increaseQuantity(_id)}>+</QtyButton>
+          <QtyButton onClick={() => increaseQuantity(productId._id)}>
+            +
+          </QtyButton>
         </QuantityContainer>
 
-        <RemoveButton onClick={() => removeFromCart(_id)}>Remove</RemoveButton>
+        <RemoveButton onClick={() => removeFromCart(productId._id)}>
+          Remove
+        </RemoveButton>
       </ItemInfo>
     </ItemContainer>
   )

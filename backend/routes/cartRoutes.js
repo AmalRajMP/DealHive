@@ -2,6 +2,20 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params
+    const user = await User.findById(userId).populate('cartList.productId')
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+    res.json(user.cartList)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Failed to fetch cart' })
+  }
+})
 router.post('/add', async (req, res) => {
   const { userId, productId } = req.body
 

@@ -33,29 +33,27 @@ const loginUser = async (req, res) => {
     const { emailID, password } = req.body
 
     const user = await User.findOne({ emailID })
-
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' })
     }
 
     const isSame = await bcrypt.compare(password, user.password)
-
     if (!isSame) {
       return res.status(400).json({ message: 'Invalid email or password' })
     }
 
     const token = jwt.sign(
-      {
-        id: user._id,
-        emailID: user.emailID,
-      },
+      { id: user._id, emailID: user.emailID },
       process.env.JWT_SECRET || 'default_secret_key',
-      { expiresIn: '1h' }
+      { expiresIn: '1h' },
     )
 
-    return res
-      .status(200)
-      .json({ message: 'Login successful', token, firstName: user.firstName })
+    return res.status(200).json({
+      message: 'Login successful',
+      token,
+      userId: user._id,
+      firstName: user.firstName,
+    })
   } catch (err) {
     res.status(500).json({ message: 'Server error' })
   }

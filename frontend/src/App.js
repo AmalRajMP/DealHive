@@ -18,29 +18,17 @@ const App = () => {
     console.log('CART UPDATED:', cartList)
   }, [cartList])
 
+  const fetchCart = async () => {
+    const userId = localStorage.getItem('userId')
+    if (!userId) return
+
+    const res = await fetch(`http://localhost:5000/api/cart/user/${userId}`)
+
+    const data = await res.json()
+    setCartList(data)
+  }
+
   const addToCart = async (product) => {
-    setCartList((prevCartList) => {
-      const isItemPresent = prevCartList.find(
-        (item) => item._id === product._id,
-      )
-
-      if (isItemPresent) {
-        return prevCartList.map((item) =>
-          item._id === product._id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        )
-      }
-
-      return [
-        ...prevCartList,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ]
-    })
-
     try {
       const url = 'http://localhost:5000/api/cart/add'
       const options = {
@@ -54,16 +42,13 @@ const App = () => {
         }),
       }
       await fetch(url, options)
+      fetchCart()
     } catch (e) {
       console.error(e)
     }
   }
 
   const removeFromCart = async (id) => {
-    setCartList((prevCartList) =>
-      prevCartList.filter((item) => item._id !== id),
-    )
-
     try {
       const url = 'http://localhost:5000/api/cart/remove'
       const options = {
@@ -77,18 +62,13 @@ const App = () => {
         }),
       }
       await fetch(url, options)
+      fetchCart()
     } catch (e) {
       console.error(e)
     }
   }
 
   const increaseQuantity = async (id) => {
-    setCartList((prevCartList) =>
-      prevCartList.map((item) =>
-        item._id === id ? { ...item, quantity: item.quantity + 1 } : item,
-      ),
-    )
-
     try {
       const url = 'http://localhost:5000/api/cart/update-quantity'
       const options = {
@@ -103,18 +83,13 @@ const App = () => {
         }),
       }
       await fetch(url, options)
+      fetchCart()
     } catch (e) {
       console.error(e)
     }
   }
 
   const decreaseQuantity = async (id) => {
-    setCartList((prevCartList) =>
-      prevCartList.map((item) =>
-        item._id === id ? { ...item, quantity: item.quantity - 1 } : item,
-      ),
-    )
-
     try {
       const url = 'http://localhost:5000/api/cart/update-quantity'
       const options = {
@@ -129,6 +104,7 @@ const App = () => {
         }),
       }
       await fetch(url, options)
+      fetchCart()
     } catch (e) {
       console.error(e)
     }
@@ -138,6 +114,7 @@ const App = () => {
     <CartContext.Provider
       value={{
         cartList,
+        fetchCart,
         addToCart,
         removeFromCart,
         increaseQuantity,
