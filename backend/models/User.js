@@ -37,6 +37,17 @@ const userSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  wishList: {
+    type: [
+      {
+        productId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Product',
+        },
+      },
+    ],
+    default: [],
+  },
 })
 
 const User = mongoose.model('User', userSchema)
