@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
-  padding: 12px;
+  padding: 80px 12px;
   display: flex;
   justify-content: center;
 `
@@ -43,6 +43,7 @@ export const DetailsSection = styled.div`
 
   @media screen and (min-width: 769px) {
     gap: 12px;
+    padding-top: 10px;
   }
 `
 

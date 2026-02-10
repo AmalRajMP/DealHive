@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
+import HomeHeader from '../../components/HomeHeader'
 import FeatureItem from '../../components/FeatureItem'
 
-import Website_Logo from '../../assets/Website_Logo.png'
 import CartImage from '../../assets/CartImage.png'
 import Desktop_CartImage from '../../assets/Desktop_CartImage.jpg'
 import Testimonial_Avatar from '../../assets/Testimonial_Avatar.jpg'
@@ -20,12 +20,6 @@ import { FaSquareXTwitter } from 'react-icons/fa6'
 
 import {
   MainContainer,
-  Navbar,
-  WebsiteLogo,
-  AuthContainer,
-  LoginButton,
-  SignUpButton,
-  SectionWrapper,
   HeroSection,
   HeroImage,
   HeroDesktopImage,
@@ -77,25 +71,14 @@ const featuresList = [
 
 const LandingPage = () => {
   const navigate = useNavigate()
-
-  const goToLogin = () => {
-    navigate('/login')
-  }
-
   const goToRegiter = () => {
     navigate('/register')
   }
 
   return (
-    <MainContainer>
-      <Navbar>
-        <WebsiteLogo src={Website_Logo} alt="website-logo" />
-        <AuthContainer>
-          <LoginButton onClick={goToLogin}>Login</LoginButton>
-          <SignUpButton onClick={goToRegiter}>Sign Up</SignUpButton>
-        </AuthContainer>
-      </Navbar>
-      <SectionWrapper>
+    <>
+      <HomeHeader />
+      <MainContainer>
         <HeroSection>
           <HeroImage src={CartImage} alt="cart" />
           <HeroSectionDetails>
@@ -167,8 +150,8 @@ const LandingPage = () => {
             </a>
           </SocialLinks>
         </Footer>
-      </SectionWrapper>
-    </MainContainer>
+      </MainContainer>
+    </>
   )
 }
 

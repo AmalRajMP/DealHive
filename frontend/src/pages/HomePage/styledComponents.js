@@ -2,11 +2,10 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
   min-height: 100vh;
-  width: 100%;
   background: linear-gradient(180deg, #e8f3ff 0%, #dbeeff 50%, #f5faff 100%);
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 80px 15px 15px 15px;
 
   @media screen and (max-width: 767px) {
     padding: 10px;
@@ -85,6 +84,7 @@ export const Banner = styled.div`
     flex-direction: column;
     text-align: center;
     padding: 22px 16px;
+    margin-top: 70px;
   }
 `
 

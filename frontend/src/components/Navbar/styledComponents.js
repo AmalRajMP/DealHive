@@ -7,6 +7,11 @@ export const Navbar = styled.nav`
   justify-content: center;
   align-items: center;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
   background-color: #f8fbff;
   box-shadow: 0 2px 8px rgba(94, 169, 250, 0.15);
   border-radius: 14px;

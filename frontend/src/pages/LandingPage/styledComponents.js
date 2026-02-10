@@ -2,81 +2,14 @@ import styled, { keyframes } from 'styled-components'
 
 export const MainContainer = styled.div`
   min-height: 100vh;
-  background-color: #f7f8fc;
-  display: flex;
-  flex-direction: column;
-`
-/* Header */
-
-export const Navbar = styled.nav`
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
-
-  @media (max-width: 768px) {
-    height: 55px;
-    padding: 0px 15px 0px 0px;
-  }
-`
-
-export const WebsiteLogo = styled.img`
-  height: 160px;
-  width: auto;
-  margin-top: -10px;
-  object-fit: contain;
-
-  @media (max-width: 768px) {
-    height: 120px;
-  }
-`
-
-export const AuthContainer = styled.div`
-  display: flex;
-  gap: 20px;
-
-  @media (max-width: 768px) {
-    gap: 25px;
-  }
-`
-export const LoginButton = styled.button`
-  background-color: transparent;
-  color: #4a86e7ff;
-  font-size: 15px;
-  font-weight: 500;
-  border-width: 0px;
-  margin-top: -10px;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-`
-export const SignUpButton = styled.button`
-  background: linear-gradient(90deg, #4a86e7 0%, #3ac4e7 100%);
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 500;
-  border-width: 0px;
-  margin-top: -10px;
-  border-radius: 25px;
-  padding: 8px 16px;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`
-
-export const SectionWrapper = styled.div`
-  flex: 1;
+  width: 100%;
   background: linear-gradient(90deg, #4a86e7 0%, #3ac4e7 100%);
   display: flex;
   flex-direction: column;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   margin-top: -6px;
+  padding-top: 80px;
 
   @media screen and (min-width: 768px) {
     background: #ffffff;
@@ -199,7 +132,9 @@ export const HeroButton = styled.button`
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-position 0.4s ease-in-out, transform 0.2s;
+  transition:
+    background-position 0.4s ease-in-out,
+    transform 0.2s;
 
   &:hover {
     background-position: right center; /* Slide effect */
