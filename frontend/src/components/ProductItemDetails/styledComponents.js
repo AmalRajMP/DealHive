@@ -20,12 +20,21 @@ export const Card = styled.div`
 `
 
 export const ImageSection = styled.div`
+  width: 260px;
+  height: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+  }
 `
 
 export const ProductImage = styled.img`
+  height: 100%;
   width: 100%;
   max-width: 260px;
   border-radius: 8px;

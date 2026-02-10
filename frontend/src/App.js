@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage'
@@ -9,158 +8,49 @@ import ProductItemDetails from './components/ProductItemDetails'
 import ProtectedRoute from './components/ProtectedRoute'
 import CartPage from './pages/CartPage'
 
-import CartContext from './context/CartContext'
+import { CartProvider } from './context/CartContext'
 
-const App = () => {
-  const [cartList, setCartList] = useState([])
-
-  useEffect(() => {
-    console.log('CART UPDATED:', cartList)
-  }, [cartList])
-
-  const fetchCart = async () => {
-    const userId = localStorage.getItem('userId')
-    if (!userId) return
-
-    const res = await fetch(`http://localhost:5000/api/cart/user/${userId}`)
-
-    const data = await res.json()
-    setCartList(data)
-  }
-
-  const addToCart = async (product) => {
-    try {
-      const url = 'http://localhost:5000/api/cart/add'
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
-          productId: product._id,
-        }),
-      }
-      await fetch(url, options)
-      fetchCart()
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  const removeFromCart = async (id) => {
-    try {
-      const url = 'http://localhost:5000/api/cart/remove'
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
-          productId: id,
-        }),
-      }
-      await fetch(url, options)
-      fetchCart()
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  const increaseQuantity = async (id) => {
-    try {
-      const url = 'http://localhost:5000/api/cart/update-quantity'
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
-          productId: id,
-          change: 1,
-        }),
-      }
-      await fetch(url, options)
-      fetchCart()
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  const decreaseQuantity = async (id) => {
-    try {
-      const url = 'http://localhost:5000/api/cart/update-quantity'
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
-          productId: id,
-          change: -1,
-        }),
-      }
-      await fetch(url, options)
-      fetchCart()
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  return (
-    <CartContext.Provider
-      value={{
-        cartList,
-        fetchCart,
-        addToCart,
-        removeFromCart,
-        increaseQuantity,
-        decreaseQuantity,
-      }}
-    >
-      <Routes>
-        <Route
-          path="/"
-          element={
-            localStorage.getItem('authToken') ? (
-              <Navigate to="/home" />
-            ) : (
-              <LandingPage />
-            )
-          }
-        />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <HomePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/products/:id"
-          element={
-            <ProtectedRoute>
-              <ProductItemDetails />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/cart"
-          element={
-            <ProtectedRoute>
-              <CartPage />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </CartContext.Provider>
-  )
-}
+const App = () => (
+  <CartProvider>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          localStorage.getItem('authToken') ? (
+            <Navigate to="/home" />
+          ) : (
+            <LandingPage />
+          )
+        }
+      />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegistrationPage />} />
+      <Route
+        path="/home"
+        element={
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/products/:id"
+        element={
+          <ProtectedRoute>
+            <ProductItemDetails />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <ProtectedRoute>
+            <CartPage />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  </CartProvider>
+)
 
 export default App

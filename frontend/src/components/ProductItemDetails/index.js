@@ -39,7 +39,7 @@ const ProductItemDetails = () => {
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
   const { addToCart } = useContext(CartContext)
-
+  
   const formattedCartProduct = {
     _id: productDetails._id,
     title: productDetails.title,
