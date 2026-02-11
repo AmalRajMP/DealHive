@@ -6,8 +6,9 @@ export const CartContainer = styled.div`
   max-width: 900px;
   margin: auto;
 `
+
 export const CartHeading = styled.h1`
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
   padding-bottom: 12px;
@@ -15,20 +16,15 @@ export const CartHeading = styled.h1`
   color: #1f2933;
 
   @media (max-width: 768px) {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  @media (max-width: 480px) {
     font-size: 20px;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
   }
 `
 
 export const CartList = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
+
   display: flex;
   flex-direction: column;
   gap: 16px;

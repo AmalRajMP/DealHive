@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
-import { FiShoppingCart, FiUser, FiLogOut } from 'react-icons/fi'
+import { FiShoppingCart, FiLogOut } from 'react-icons/fi'
+import { AiOutlineHeart } from 'react-icons/ai'
 import { BsStars } from 'react-icons/bs'
 
 import Website_Logo from '../../assets/Website_Logo.png'
@@ -21,15 +22,16 @@ const Header = () => {
   const navigate = useNavigate()
   const firstName = localStorage.getItem('dealhive_username')
 
-  const onClickLogo = () => {
-    navigate('/home')
-  }
+  const onClickLogo = () => navigate('/home')
+  const onClickCart = () => navigate('/cart')
+  const onClickWishlist = () => navigate('/wishlist')
 
   const onClickLogout = () => {
     localStorage.removeItem('authToken')
     localStorage.removeItem('dealhive_username')
     navigate('/login', { replace: true })
   }
+
   return (
     <Navbar>
       <NavWrapper>
@@ -43,17 +45,16 @@ const Header = () => {
           <GreetingIcon>
             <BsStars />
           </GreetingIcon>
-
           <GreetingText>Hi, {firstName ? firstName : 'Guest'}</GreetingText>
         </Greeting>
 
         <NavIcons>
-          <NavIconButton>
-            <FiShoppingCart />
+          <NavIconButton onClick={onClickWishlist}>
+            <AiOutlineHeart />
           </NavIconButton>
 
-          <NavIconButton>
-            <FiUser />
+          <NavIconButton onClick={onClickCart}>
+            <FiShoppingCart />
           </NavIconButton>
 
           <LogoutButton onClick={onClickLogout}>
@@ -65,4 +66,5 @@ const Header = () => {
     </Navbar>
   )
 }
+
 export default Header

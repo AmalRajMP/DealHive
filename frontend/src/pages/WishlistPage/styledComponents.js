@@ -1,18 +1,22 @@
 import styled from 'styled-components'
 
 export const WishlistContainer = styled.div`
-  padding: 80px 12px;
+  min-height: 100vh;
+  padding: 80px 24px;
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
 `
 
 export const WishlistHeading = styled.h1`
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+  color: #1f2933;
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 20px;
   }
 `
 
@@ -23,7 +27,7 @@ export const WishlistList = styled.ul`
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 `
 
 export const EmptyView = styled.p`
