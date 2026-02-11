@@ -20,6 +20,7 @@ export const Card = styled.div`
 `
 
 export const ImageSection = styled.div`
+  position: relative;
   width: 260px;
   height: 260px;
   display: flex;
@@ -159,6 +160,28 @@ export const AddToCartButton = styled.button`
 
   @media (max-width: 768px) {
     width: 100%;
+  }
+`
+
+export const WishlistButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: rgb(255, 255, 255);
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    transform: scale(1.05);
   }
 `
 

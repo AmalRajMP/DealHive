@@ -8,10 +8,8 @@ import ProductItemDetails from './components/ProductItemDetails'
 import ProtectedRoute from './components/ProtectedRoute'
 import CartPage from './pages/CartPage'
 
-import { CartProvider } from './context/CartContext'
 
 const App = () => (
-  <CartProvider>
     <Routes>
       <Route
         path="/"
@@ -50,7 +48,6 @@ const App = () => (
         }
       />
     </Routes>
-  </CartProvider>
 )
 
 export default App

@@ -4,9 +4,11 @@ import { useState, useEffect, useContext } from 'react'
 import Header from '../../components/Navbar'
 
 import CartContext from '../../context/CartContext'
+import WishlistContext from '../../context/WishlistContext'
 
 import { ThreeDots } from 'react-loader-spinner'
 import { MdErrorOutline } from 'react-icons/md'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
@@ -25,6 +27,7 @@ import {
   Description,
   ButtonGroup,
   AddToCartButton,
+  WishlistButton,
   BuyNowButton,
   LoaderContainer,
   FailureContainer,
@@ -37,14 +40,32 @@ const ProductItemDetails = () => {
 
   const [productDetails, setProductDetails] = useState({})
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+  const [isWishlisted, setIsWishlisted] = useState(false)
 
   const { addToCart } = useContext(CartContext)
-  
+  const { addToWishList, removeFromWishList } = useContext(WishlistContext)
+
   const formattedCartProduct = {
     _id: productDetails._id,
     title: productDetails.title,
     image: productDetails.thumbnail,
     price: productDetails.discountPrice,
+  }
+
+  const formattedWishlistProduct = {
+    _id: productDetails._id,
+    title: productDetails.title,
+    image: productDetails.thumbnail,
+    price: productDetails.discountPrice,
+  }
+
+  const onToggleWishlist = () => {
+    if (isWishlisted) {
+      removeFromWishList(productDetails._id)
+    } else {
+      addToWishList(formattedWishlistProduct)
+    }
+    setIsWishlisted((prev) => !prev)
   }
 
   const getProductDetails = async () => {
@@ -92,6 +113,14 @@ const ProductItemDetails = () => {
             src={productDetails.thumbnail}
             alt={productDetails.title}
           />
+
+          <WishlistButton type="button" onClick={onToggleWishlist}>
+            {isWishlisted ? (
+              <AiFillHeart size={22} color="#e11d48" />
+            ) : (
+              <AiOutlineHeart size={22} color="#1e40af" />
+            )}
+          </WishlistButton>
         </ImageSection>
 
         <DetailsSection>
