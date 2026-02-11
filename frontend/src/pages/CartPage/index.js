@@ -17,24 +17,23 @@ const CartPage = () => {
 
   useEffect(() => {
     fetchCart()
-  }, [])
-
-  if (cartList.length === 0) {
-    return <EmptyView>Your cart is empty</EmptyView>
-  }
+  }, [fetchCart])
 
   return (
     <>
       <Navbar />
-
-      <CartContainer>
-        <CartHeading>My Cart</CartHeading>
-        <CartList>
-          {cartList.map((item) => (
-            <CartItem key={item.productId._id} item={item} />
-          ))}
-        </CartList>
-      </CartContainer>
+      {cartList.length === 0 ? (
+        <EmptyView>Your cart is empty</EmptyView>
+      ) : (
+        <CartContainer>
+          <CartHeading>My Cart</CartHeading>
+          <CartList>
+            {cartList.map((item) => (
+              <CartItem key={item.productId._id} item={item} />
+            ))}
+          </CartList>
+        </CartContainer>
+      )}
     </>
   )
 }

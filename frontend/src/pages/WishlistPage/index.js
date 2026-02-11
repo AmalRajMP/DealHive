@@ -17,25 +17,24 @@ const WishlistPage = () => {
 
   useEffect(() => {
     fetchWishlist()
-  }, [])
-
-  if (wishList.length === 0) {
-    return <EmptyView>Your wishlist is empty</EmptyView>
-  }
+  }, [fetchWishlist])
 
   return (
     <>
       <Navbar />
+      {wishList.length === 0 ? (
+        <EmptyView>Your wishlist is empty</EmptyView>
+      ) : (
+        <WishlistContainer>
+          <WishlistHeading>My Wishlist</WishlistHeading>
 
-      <WishlistContainer>
-        <WishlistHeading>My Wishlist</WishlistHeading>
-
-        <WishlistList>
-          {wishList.map((item) => (
-            <WishlistItem key={item.productId._id} item={item} />
-          ))}
-        </WishlistList>
-      </WishlistContainer>
+          <WishlistList>
+            {wishList.map((item) => (
+              <WishlistItem key={item.productId._id} item={item} />
+            ))}
+          </WishlistList>
+        </WishlistContainer>
+      )}
     </>
   )
 }

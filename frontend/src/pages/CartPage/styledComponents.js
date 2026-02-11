@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
+  min-height: 100vh;
   padding: 80px 24px;
   max-width: 900px;
   margin: auto;
@@ -33,9 +34,13 @@ export const CartList = styled.ul`
   gap: 16px;
 `
 
-export const EmptyView = styled.div`
-  margin-top: 60px;
-  text-align: center;
+export const EmptyView = styled.p`
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-size: 18px;
-  color: #475569;
+  font-weight: 500;
+  color: #555;
 `
