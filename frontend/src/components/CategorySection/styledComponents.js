@@ -19,26 +19,23 @@ export const SectionSubtitle = styled.p`
   margin-bottom: 14px;
   line-height: 1.4;
 `
+
 export const ProductsList = styled.div`
-  display: flex;
-  gap: 16px;
   width: 100%;
+  gap: 16px;
 
-  ${({ layout }) =>
-    layout === 'grid'
-      ? `
-        flex-wrap: wrap;
-        overflow-x: unset;
-      `
-      : `
-        flex-wrap: nowrap;
-        overflow-x: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  overflow-x: hidden;
 
-        /* Hide scrollbar but keep scroll */
-        &::-webkit-scrollbar {
-          display: none;
-        }
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      `}
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @media screen and (min-width: 769px) {
+    gap: 20px;
+  }
 `

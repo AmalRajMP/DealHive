@@ -5,10 +5,12 @@ export const MainContainer = styled.div`
   background: linear-gradient(180deg, #e8f3ff 0%, #dbeeff 50%, #f5faff 100%);
   display: flex;
   flex-direction: column;
+
+  /* navbar-safe padding */
   padding: 80px 15px 15px 15px;
 
   @media screen and (max-width: 767px) {
-    padding: 10px;
+    padding: 80px 8px;
   }
 `
 
@@ -26,7 +28,7 @@ export const SearchbarWrapper = styled.div`
 
   @media screen and (max-width: 767px) {
     max-width: 100%;
-    margin: 10px;
+    margin: 10px auto;
   }
 `
 
@@ -47,14 +49,12 @@ export const SearchInput = styled.input`
   outline: none;
 `
 
-// Filters Section
 export const FiltersWrapper = styled.div`
   display: flex;
   align-items: center;
   overflow-x: auto;
   gap: 12px;
   padding: 10px 12px;
-
   width: 100%;
   white-space: nowrap;
 
@@ -66,7 +66,6 @@ export const FiltersWrapper = styled.div`
   -ms-overflow-style: none;
 `
 
-// Banner
 export const Banner = styled.div`
   background: linear-gradient(135deg, #25c0eb, #5b9aff);
   border-radius: 20px;
@@ -77,19 +76,17 @@ export const Banner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
     text-align: center;
     padding: 22px 16px;
-    margin-top: 70px;
   }
 `
 
 export const BannerLeft = styled.div`
-  max-width: 500px; /* slightly wider for large screens */
+  max-width: 500px;
 `
 
 export const BannerTitle = styled.h1`

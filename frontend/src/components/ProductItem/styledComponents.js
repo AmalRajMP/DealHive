@@ -1,17 +1,22 @@
 import styled from 'styled-components'
 
 export const ProductCard = styled.div`
+  height: 215px;
   width: 158px;
   flex-shrink: 0;
   background-color: #ffffff;
   border-radius: 14px;
   padding: 10px;
+
   display: flex;
   flex-direction: column;
+
   box-shadow: 0 6px 18px rgba(30, 64, 175, 0.08);
   box-sizing: border-box;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-4px);

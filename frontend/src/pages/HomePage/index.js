@@ -168,7 +168,7 @@ const HomePage = () => {
           <CategorySection
             title={resultsTitle}
             products={filteredProducts}
-            layout="grid"
+            
           />
         ) : (
           <>
