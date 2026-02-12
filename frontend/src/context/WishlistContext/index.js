@@ -8,15 +8,19 @@ export const WishlistProvider = ({ children }) => {
   const fetchWishlist = async () => {
     try {
       const userId = localStorage.getItem('userId')
-      if (!userId) return
+      if (!userId) {
+        setWishList([])
+        return
+      }
 
       const res = await fetch(
         `http://localhost:5000/api/wishlist/user/${userId}`,
       )
       const data = await res.json()
-      setWishList(data)
+      setWishList(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Fetch wishlist failed:', error)
+      setWishList([])
     }
   }
 
@@ -30,25 +34,27 @@ export const WishlistProvider = ({ children }) => {
           productId: product._id,
         }),
       })
+
       const data = await res.json()
-      setWishList(data)
+      setWishList(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Add to wishlist failed:', error)
     }
   }
 
-  const removeFromWishList = async (id) => {
+  const removeFromWishList = async (productId) => {
     try {
       const res = await fetch('http://localhost:5000/api/wishlist/remove', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           userId: localStorage.getItem('userId'),
-          productId: id,
+          productId,
         }),
       })
+
       const data = await res.json()
-      setWishList(data)
+      setWishList(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Remove from wishlist failed:', error)
     }
