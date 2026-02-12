@@ -17,6 +17,11 @@ import {
   CartList,
   EmptyView,
   EmptyImage,
+  OrderSummary,
+  SummaryRow,
+  SummaryLabel,
+  SummaryValue,
+  PlaceOrderButton,
   LoaderContainer,
   FailureContainer,
   FailureImage,
@@ -27,6 +32,12 @@ import {
 const CartPage = () => {
   const { cartList, fetchCart } = useContext(CartContext)
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+
+  const totalPrice = cartList.reduce(
+    (accumulator, currentItem) =>
+      accumulator + currentItem.quantity * currentItem.productId.discountPrice,
+    0,
+  )
 
   const getCart = async () => {
     try {
@@ -72,11 +83,27 @@ const CartPage = () => {
     return (
       <CartContainer>
         <CartHeading>My Cart</CartHeading>
+
         <CartList>
           {cartList.map((item) => (
             <CartItem key={item.productId._id} item={item} />
           ))}
         </CartList>
+
+        {/* ORDER SUMMARY */}
+        <OrderSummary>
+          <SummaryRow>
+            <SummaryLabel>Total Items</SummaryLabel>
+            <SummaryValue>{cartList.length}</SummaryValue>
+          </SummaryRow>
+
+          <SummaryRow>
+            <SummaryLabel>Grand Total</SummaryLabel>
+            <SummaryValue>₹{totalPrice}</SummaryValue>
+          </SummaryRow>
+
+          <PlaceOrderButton>Place Order</PlaceOrderButton>
+        </OrderSummary>
       </CartContainer>
     )
   }
