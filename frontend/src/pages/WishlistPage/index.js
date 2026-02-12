@@ -1,40 +1,103 @@
-import { useEffect, useContext } from 'react'
-
+import { useEffect, useContext, useState } from 'react'
 import WishlistContext from '../../context/WishlistContext'
 
 import WishlistItem from '../../components/WishlistItem'
 import Navbar from '../../components/Navbar'
+
+import { ThreeDots } from 'react-loader-spinner'
+
+import apiStatusConstants from '../../constants/apiStatusConstants'
 
 import {
   WishlistContainer,
   WishlistHeading,
   WishlistList,
   EmptyView,
+  EmptyImage,
+  LoaderContainer,
+  FailureContainer,
+  FailureImage,
+  FailureText,
+  RetryButton,
 } from './styledComponents'
 
 const WishlistPage = () => {
   const { wishList, fetchWishlist } = useContext(WishlistContext)
+  const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+
+  const getWishlist = async () => {
+    try {
+      setApiStatus(apiStatusConstants.inProgress)
+      await fetchWishlist()
+      setApiStatus(apiStatusConstants.success)
+    } catch (error) {
+      setApiStatus(apiStatusConstants.failure)
+    }
+  }
 
   useEffect(() => {
-    fetchWishlist()
-  }, [fetchWishlist])
+    getWishlist()
+  }, [])
+
+  const renderLoadingView = () => (
+    <LoaderContainer>
+      <ThreeDots color="#1e40af" height="50" width="50" radius="9" />
+    </LoaderContainer>
+  )
+
+  const renderFailureView = () => (
+    <FailureContainer>
+      <FailureImage
+        src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-error-view-img.png"
+        alt="failure view"
+      />
+      <FailureText>Failed to load wishlist items</FailureText>
+      <RetryButton onClick={getWishlist}>Retry</RetryButton>
+    </FailureContainer>
+  )
+
+  const renderSuccessView = () => {
+    if (wishList.length === 0) {
+      return (
+        <EmptyView>
+          <EmptyImage
+            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-empty-wishlist-img.png"
+            alt="empty wishlist"
+          />
+          <p>Your wishlist is empty</p>
+        </EmptyView>
+      )
+    }
+
+    return (
+      <WishlistContainer>
+        <WishlistHeading>My Wishlist</WishlistHeading>
+        <WishlistList>
+          {wishList.map((item) => (
+            <WishlistItem key={item.productId._id} item={item} />
+          ))}
+        </WishlistList>
+      </WishlistContainer>
+    )
+  }
+
+  const renderWishlistPage = () => {
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return renderLoadingView()
+      case apiStatusConstants.success:
+        return renderSuccessView()
+      case apiStatusConstants.failure:
+        return renderFailureView()
+      default:
+        return null
+    }
+  }
 
   return (
     <>
       <Navbar />
-      {wishList.length === 0 ? (
-        <EmptyView>Your wishlist is empty</EmptyView>
-      ) : (
-        <WishlistContainer>
-          <WishlistHeading>My Wishlist</WishlistHeading>
-
-          <WishlistList>
-            {wishList.map((item) => (
-              <WishlistItem key={item.productId._id} item={item} />
-            ))}
-          </WishlistList>
-        </WishlistContainer>
-      )}
+      {renderWishlistPage()}
     </>
   )
 }

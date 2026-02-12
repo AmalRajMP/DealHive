@@ -21,7 +21,7 @@ export const WishlistHeading = styled.h1`
 `
 
 export const WishlistList = styled.ul`
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 
@@ -30,13 +30,87 @@ export const WishlistList = styled.ul`
   gap: 16px;
 `
 
-export const EmptyView = styled.p`
-  min-height: 70vh;
+export const LoaderContainer = styled.div`
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+`
 
-  font-size: 18px;
-  font-weight: 500;
-  color: #555;
+export const FailureContainer = styled.div`
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+`
+
+export const FailureImage = styled.img`
+  width: 180px;
+  max-width: 70%;
+
+  @media (min-width: 768px) {
+    width: 200px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 300px;
+  }
+`
+
+export const FailureText = styled.p`
+  font-size: 14px;
+  color: #475569;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+`
+
+export const RetryButton = styled.button`
+  padding: 8px 16px;
+  background-color: #1e40af;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`
+
+export const EmptyView = styled.div`
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  color: #475569;
+
+  font-size: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 20px;
+  }
+`
+
+export const EmptyImage = styled.img`
+  width: 180px;
+  max-width: 70%;
+
+  @media (min-width: 768px) {
+    width: 200px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 300px;
+  }
 `
