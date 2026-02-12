@@ -9,6 +9,8 @@ import { MdErrorOutline } from 'react-icons/md'
 
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
+import empty_cart from '../../assets/empty_cart.svg'
+
 import {
   CartContainer,
   CartHeading,
@@ -61,10 +63,7 @@ const CartPage = () => {
     if (cartList.length === 0) {
       return (
         <EmptyView>
-          <EmptyImage
-            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-empty-cart-img.png"
-            alt="empty cart"
-          />
+          <EmptyImage src={empty_cart} alt="empty cart" />
           <p>Your cart is empty</p>
         </EmptyView>
       )

@@ -23,7 +23,7 @@ export const Navbar = styled.nav`
 
 export const NavWrapper = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
 
   display: flex;
   align-items: center;

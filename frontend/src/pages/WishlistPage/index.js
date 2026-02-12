@@ -8,6 +8,8 @@ import { ThreeDots } from 'react-loader-spinner'
 
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
+import empty_wishlist from '../../assets/empty_wishlist.svg'
+
 import {
   WishlistContainer,
   WishlistHeading,
@@ -60,10 +62,7 @@ const WishlistPage = () => {
     if (wishList.length === 0) {
       return (
         <EmptyView>
-          <EmptyImage
-            src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-empty-wishlist-img.png"
-            alt="empty wishlist"
-          />
+          <EmptyImage src={empty_wishlist} alt="empty wishlist" />
           <p>Your wishlist is empty</p>
         </EmptyView>
       )
