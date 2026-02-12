@@ -2,9 +2,18 @@ import styled from 'styled-components'
 
 export const WishlistContainer = styled.div`
   min-height: 100vh;
-  padding: 80px 24px;
-  max-width: 900px;
+  max-width: 1100px;
   margin: auto;
+
+  padding: 80px 16px 140px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    padding: 100px 24px;
+  }
 `
 
 export const WishlistHeading = styled.h1`
@@ -28,6 +37,61 @@ export const WishlistList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 16px;
+`
+export const WishlistActionBar = styled.div`
+  width: fit-content;
+  margin-top: 32px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  gap: 12px;
+
+  @media (min-width: 768px) {
+    position: static;
+  }
+
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 16px 16px 0 0;
+    justify-content: space-around;
+    z-index: 100;
+  }
+`
+
+export const ActionButton = styled.button`
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  background-color: ${({ primary }) => (primary ? '#1e40af' : '#e5e7eb')};
+  color: ${({ primary }) => (primary ? '#ffffff' : '#1f2933')};
+
+  ${({ danger }) =>
+    danger &&
+    `
+    background-color: #fee2e2;
+    color: #b91c1c;
+  `}
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 `
 
 export const LoaderContainer = styled.div`

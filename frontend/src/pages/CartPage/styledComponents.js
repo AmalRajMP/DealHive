@@ -117,8 +117,6 @@ export const PlaceOrderButton = styled.button`
   }
 `
 
-/* ---------- STATES ---------- */
-
 export const LoaderContainer = styled.div`
   min-height: 80vh;
   display: flex;

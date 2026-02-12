@@ -14,6 +14,8 @@ import {
   WishlistContainer,
   WishlistHeading,
   WishlistList,
+  WishlistActionBar,
+  ActionButton,
   EmptyView,
   EmptyImage,
   LoaderContainer,
@@ -75,6 +77,10 @@ const WishlistPage = () => {
           {wishList.map((item) => (
             <WishlistItem key={item.productId._id} item={item} />
           ))}
+          <WishlistActionBar>
+            <ActionButton primary>Move All to Cart</ActionButton>
+            <ActionButton danger>Clear Wishlist</ActionButton>
+          </WishlistActionBar>
         </WishlistList>
       </WishlistContainer>
     )
