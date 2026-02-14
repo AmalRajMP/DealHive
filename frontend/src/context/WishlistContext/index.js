@@ -5,17 +5,24 @@ const WishlistContext = createContext()
 export const WishlistProvider = ({ children }) => {
   const [wishList, setWishList] = useState([])
 
+  const getAuthHeader = () => {
+    const token = localStorage.getItem('authToken')
+    return {
+      authorization: `Bearer ${token}`,
+    }
+  }
   const fetchWishlist = async () => {
     try {
-      const userId = localStorage.getItem('userId')
-      if (!userId) {
+      const token = localStorage.getItem('authToken')
+      if (!token) {
         setWishList([])
         return
       }
-
-      const res = await fetch(
-        `http://localhost:5000/api/wishlist/user/${userId}`,
-      )
+      const url = 'http://localhost:5000/api/wishlist'
+      const options = {
+        headers: getAuthHeader(),
+      }
+      const res = await fetch(url, options)
       const data = await res.json()
       setWishList(Array.isArray(data) ? data : [])
     } catch (error) {
@@ -26,14 +33,15 @@ export const WishlistProvider = ({ children }) => {
 
   const addToWishList = async (product) => {
     try {
-      const res = await fetch('http://localhost:5000/api/wishlist/add', {
+      const url = 'http://localhost:5000/api/wishlist/add'
+      const options = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
           productId: product._id,
         }),
-      })
+      }
+      const res = await fetch(url, options)
 
       const data = await res.json()
       setWishList(Array.isArray(data) ? data : [])
@@ -44,14 +52,16 @@ export const WishlistProvider = ({ children }) => {
 
   const removeFromWishList = async (productId) => {
     try {
-      const res = await fetch('http://localhost:5000/api/wishlist/remove', {
+      const url = 'http://localhost:5000/api/wishlist/remove'
+      const options = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
           productId,
         }),
-      })
+      }
+
+      const res = await fetch(url, options)
 
       const data = await res.json()
       setWishList(Array.isArray(data) ? data : [])

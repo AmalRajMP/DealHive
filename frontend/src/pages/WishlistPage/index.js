@@ -43,6 +43,32 @@ const WishlistPage = () => {
     getWishlist()
   }, [])
 
+  const onClearWishList = async () => {
+    const token = localStorage.getItem('authToken')
+    if (!token) {
+      console.log('User not authenticated')
+      return
+    }
+
+    try {
+      const url = 'http://localhost:5000/api/wishlist/clear'
+      const options = {
+        method: 'POST',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+
+      const response = await fetch(url, options)
+      if (response.ok) {
+        await getWishlist()
+        console.log('Wishlist cleared')
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   const renderLoadingView = () => (
     <LoaderContainer>
       <ThreeDots color="#1e40af" height="50" width="50" radius="9" />
@@ -79,7 +105,9 @@ const WishlistPage = () => {
           ))}
           <WishlistActionBar>
             <ActionButton primary>Move All to Cart</ActionButton>
-            <ActionButton danger>Clear Wishlist</ActionButton>
+            <ActionButton danger onClick={onClearWishList}>
+              Clear Wishlist
+            </ActionButton>
           </WishlistActionBar>
         </WishlistList>
       </WishlistContainer>

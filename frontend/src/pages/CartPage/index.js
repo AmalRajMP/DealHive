@@ -90,7 +90,6 @@ const CartPage = () => {
           ))}
         </CartList>
 
-        {/* ORDER SUMMARY */}
         <OrderSummary>
           <SummaryRow>
             <SummaryLabel>Total Items</SummaryLabel>
