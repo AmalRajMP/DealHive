@@ -38,12 +38,16 @@ import {
 const ProductItemDetails = () => {
   const { id } = useParams()
 
+  const { addToCart } = useContext(CartContext)
+  const { wishList, addToWishList, removeFromWishList } =
+    useContext(WishlistContext)
+
+  const isWishListed = wishList?.some(
+    (item) => String(item.productId?._id) === String(id),
+  )
+
   const [productDetails, setProductDetails] = useState({})
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
-  const [isWishlisted, setIsWishlisted] = useState(false)
-
-  const { addToCart } = useContext(CartContext)
-  const { addToWishList, removeFromWishList } = useContext(WishlistContext)
 
   const formattedCartProduct = {
     _id: productDetails._id,
@@ -60,12 +64,11 @@ const ProductItemDetails = () => {
   }
 
   const onToggleWishlist = () => {
-    if (isWishlisted) {
+    if (isWishListed) {
       removeFromWishList(productDetails._id)
     } else {
       addToWishList(formattedWishlistProduct)
     }
-    setIsWishlisted((prev) => !prev)
   }
 
   const getProductDetails = async () => {
@@ -115,7 +118,7 @@ const ProductItemDetails = () => {
           />
 
           <WishlistButton type="button" onClick={onToggleWishlist}>
-            {isWishlisted ? (
+            {isWishListed ? (
               <AiFillHeart size={22} color="#e11d48" />
             ) : (
               <AiOutlineHeart size={22} color="#1e40af" />
