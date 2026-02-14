@@ -28,7 +28,30 @@ export const CartProvider = ({ children }) => {
           productId: product._id,
         }),
       })
-      fetchCart()
+      await fetchCart()
+    } catch (error) {
+      console.error('Add to cart failed:', error)
+    }
+  }
+
+  const addMultipleToCart = async (wishList) => {
+    try {
+      const userId = localStorage.getItem('userId')
+      if (!userId) return
+
+      const formattedWishList = wishList.map((item) => ({
+        productId: item.productId._id,
+      }))
+
+      const url = 'http://localhost:5000/api/cart/add-multiple'
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, wishList: formattedWishList }),
+      }
+
+      await fetch(url, options)
+      await fetchCart()
     } catch (error) {
       console.error('Add to cart failed:', error)
     }
@@ -44,7 +67,7 @@ export const CartProvider = ({ children }) => {
           productId: id,
         }),
       })
-      fetchCart()
+      await fetchCart()
     } catch (error) {
       console.error('Remove from cart failed:', error)
     }
@@ -61,7 +84,7 @@ export const CartProvider = ({ children }) => {
           change: 1,
         }),
       })
-      fetchCart()
+      await fetchCart()
     } catch (error) {
       console.error('Increase quantity failed:', error)
     }
@@ -78,7 +101,7 @@ export const CartProvider = ({ children }) => {
           change: -1,
         }),
       })
-      fetchCart()
+      await fetchCart()
     } catch (error) {
       console.error('Decrease quantity failed:', error)
     }
@@ -94,6 +117,7 @@ export const CartProvider = ({ children }) => {
         cartList,
         fetchCart,
         addToCart,
+        addMultipleToCart,
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,

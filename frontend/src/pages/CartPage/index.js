@@ -39,6 +39,8 @@ const CartPage = () => {
     0,
   )
 
+  const totalItems = cartList.reduce((sum, item) => sum + item.quantity, 0)
+
   const getCart = async () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
@@ -93,7 +95,7 @@ const CartPage = () => {
         <OrderSummary>
           <SummaryRow>
             <SummaryLabel>Total Items</SummaryLabel>
-            <SummaryValue>{cartList.length}</SummaryValue>
+            <SummaryValue>{totalItems}</SummaryValue>
           </SummaryRow>
 
           <SummaryRow>

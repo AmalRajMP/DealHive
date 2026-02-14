@@ -1,5 +1,7 @@
 import { useEffect, useContext, useState } from 'react'
+
 import WishlistContext from '../../context/WishlistContext'
+import CartContext from '../../context/CartContext'
 
 import WishlistItem from '../../components/WishlistItem'
 import Navbar from '../../components/Navbar'
@@ -27,6 +29,8 @@ import {
 
 const WishlistPage = () => {
   const { wishList, fetchWishlist } = useContext(WishlistContext)
+  const { addMultipleToCart } = useContext(CartContext)
+
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
   const getWishlist = async () => {
@@ -43,7 +47,7 @@ const WishlistPage = () => {
     getWishlist()
   }, [])
 
-  const onClearWishList = async () => {
+  const clearWishList = async () => {
     const token = localStorage.getItem('authToken')
     if (!token) {
       console.log('User not authenticated')
@@ -64,6 +68,15 @@ const WishlistPage = () => {
         await getWishlist()
         console.log('Wishlist cleared')
       }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const onAddAllToCart = async () => {
+    try {
+      await addMultipleToCart(wishList)
+      await clearWishList()
     } catch (e) {
       console.log(e)
     }
@@ -104,8 +117,10 @@ const WishlistPage = () => {
             <WishlistItem key={item.productId._id} item={item} />
           ))}
           <WishlistActionBar>
-            <ActionButton primary>Move All to Cart</ActionButton>
-            <ActionButton danger onClick={onClearWishList}>
+            <ActionButton primary onClick={onAddAllToCart}>
+              Move All to Cart
+            </ActionButton>
+            <ActionButton danger onClick={clearWishList}>
               Clear Wishlist
             </ActionButton>
           </WishlistActionBar>

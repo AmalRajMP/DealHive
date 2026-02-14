@@ -42,6 +42,34 @@ const addToCart = async (req, res) => {
   }
 }
 
+const addMultipleToCart = async (req, res) => {
+  try {
+    const { userId, wishList } = req.body
+
+    const user = await User.findById(userId)
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+
+    for (const wishListItem of wishList) {
+      const item = user.cartList.find(
+        (item) => item.productId.toString() === wishListItem.productId,
+      )
+
+      if (item) {
+        item.quantity += 1
+      } else {
+        user.cartList.push({ productId: wishListItem.productId, quantity: 1 })
+      }
+    }
+    await user.save()
+    await user.populate('cartList.productId')
+    res.json(user.cartList)
+  } catch (e) {
+    res.status(500).json({ message: 'Failed adding multiple products to cart' })
+  }
+}
+
 const removeFromCart = async (req, res) => {
   try {
     const { userId, productId } = req.body
@@ -95,4 +123,10 @@ const updateQuantity = async (req, res) => {
   }
 }
 
-module.exports = { getCart, addToCart, removeFromCart, updateQuantity }
+module.exports = {
+  getCart,
+  addToCart,
+  addMultipleToCart,
+  removeFromCart,
+  updateQuantity,
+}
