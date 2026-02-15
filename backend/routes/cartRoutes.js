@@ -1,5 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const authenticateUser = require('../middleware/authenticateUser')
+
+router.use(authenticateUser)
 
 const {
   getCart,
@@ -9,7 +12,7 @@ const {
   updateQuantity,
 } = require('../controllers/cartController')
 
-router.get('/user/:userId', getCart)
+router.get('/', getCart)
 
 router.post('/add', addToCart)
 

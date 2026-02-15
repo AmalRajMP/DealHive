@@ -2,7 +2,7 @@ const User = require('../models/User')
 
 const getCart = async (req, res) => {
   try {
-    const { userId } = req.params
+    const userId = req.user.id
     const user = await User.findById(userId).populate('cartList.productId')
 
     if (!user) {
@@ -17,7 +17,8 @@ const getCart = async (req, res) => {
 
 const addToCart = async (req, res) => {
   try {
-    const { userId, productId } = req.body
+    const userId = req.user.id
+    const { productId } = req.body
 
     const user = await User.findById(userId)
     if (!user) {
@@ -44,7 +45,8 @@ const addToCart = async (req, res) => {
 
 const addMultipleToCart = async (req, res) => {
   try {
-    const { userId, wishList } = req.body
+    const userId = req.user.id
+    const { wishList } = req.body
 
     const user = await User.findById(userId)
     if (!user) {
@@ -72,7 +74,8 @@ const addMultipleToCart = async (req, res) => {
 
 const removeFromCart = async (req, res) => {
   try {
-    const { userId, productId } = req.body
+    const userId = req.user.id
+    const { productId } = req.body
 
     const user = await User.findById(userId)
     if (!user) {
@@ -93,7 +96,8 @@ const removeFromCart = async (req, res) => {
 
 const updateQuantity = async (req, res) => {
   try {
-    const { userId, productId, change } = req.body
+    const userId = req.user.id
+    const { productId, change } = req.body
 
     const user = await User.findById(userId)
     if (!user) {

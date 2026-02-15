@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 
+import authFetch from '../../utils/authFetch'
+
 const CartContext = createContext()
 
 export const CartProvider = ({ children }) => {
@@ -7,10 +9,8 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async () => {
     try {
-      const userId = localStorage.getItem('userId')
-      if (!userId) return
+      const res = await authFetch('http://localhost:5000/api/cart')
 
-      const res = await fetch(`http://localhost:5000/api/cart/user/${userId}`)
       const data = await res.json()
       setCartList(data)
     } catch (error) {
@@ -20,11 +20,10 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = async (product) => {
     try {
-      await fetch('http://localhost:5000/api/cart/add', {
+      await authFetch('http://localhost:5000/api/cart/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
           productId: product._id,
         }),
       })
@@ -36,9 +35,6 @@ export const CartProvider = ({ children }) => {
 
   const addMultipleToCart = async (wishList) => {
     try {
-      const userId = localStorage.getItem('userId')
-      if (!userId) return
-
       const formattedWishList = wishList.map((item) => ({
         productId: item.productId._id,
       }))
@@ -47,10 +43,10 @@ export const CartProvider = ({ children }) => {
       const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId, wishList: formattedWishList }),
+        body: JSON.stringify({ wishList: formattedWishList }),
       }
 
-      await fetch(url, options)
+      await authFetch(url, options)
       await fetchCart()
     } catch (error) {
       console.error('Add to cart failed:', error)
@@ -59,14 +55,14 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (id) => {
     try {
-      await fetch('http://localhost:5000/api/cart/remove', {
+      await authFetch('http://localhost:5000/api/cart/remove', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
           productId: id,
         }),
       })
+
       await fetchCart()
     } catch (error) {
       console.error('Remove from cart failed:', error)
@@ -75,15 +71,15 @@ export const CartProvider = ({ children }) => {
 
   const increaseQuantity = async (id) => {
     try {
-      await fetch('http://localhost:5000/api/cart/update-quantity', {
+      await authFetch('http://localhost:5000/api/cart/update-quantity', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
           productId: id,
           change: 1,
         }),
       })
+
       await fetchCart()
     } catch (error) {
       console.error('Increase quantity failed:', error)
@@ -92,15 +88,15 @@ export const CartProvider = ({ children }) => {
 
   const decreaseQuantity = async (id) => {
     try {
-      await fetch('http://localhost:5000/api/cart/update-quantity', {
+      await authFetch('http://localhost:5000/api/cart/update-quantity', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: localStorage.getItem('userId'),
           productId: id,
           change: -1,
         }),
       })
+
       await fetchCart()
     } catch (error) {
       console.error('Decrease quantity failed:', error)
