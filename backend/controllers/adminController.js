@@ -8,5 +8,13 @@ const addProduct = async (req, res) => {
     res.status(400).json({ error: err.message })
   }
 }
+const getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find()
+    res.json(products)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
 
-module.exports = { addProduct }
+module.exports = { addProduct, getAllProducts }
