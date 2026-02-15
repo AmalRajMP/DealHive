@@ -44,6 +44,7 @@ const LoginForm = () => {
     const url = 'http://localhost:5000/api/auth/login'
     const options = {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         emailID,
