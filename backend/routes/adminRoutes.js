@@ -12,7 +12,10 @@ const {
   updateProduct,
 } = require('../controllers/adminController')
 
-const { getAllOrders } = require('../controllers/orderController')
+const {
+  getAllOrders,
+  updateOrderStatus,
+} = require('../controllers/orderController')
 
 router.get('/test', authenticateUser, adminOnly, (req, res) => {
   res.json({ message: 'Admin access granted' })
@@ -29,5 +32,7 @@ router.put('/products/:id', authenticateUser, adminOnly, updateProduct)
 router.delete('/products/:id', authenticateUser, adminOnly, deleteProduct)
 
 router.get('/orders', authenticateUser, adminOnly, getAllOrders)
+
+router.put('/orders/:id/status', authenticateUser, adminOnly, updateOrderStatus)
 
 module.exports = router

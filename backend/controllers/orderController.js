@@ -66,4 +66,21 @@ const getAllOrders = async (req, res) => {
   }
 }
 
-module.exports = { checkoutCart, getMyOrders, getAllOrders }
+const updateOrderStatus = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id)
+
+    if (!order) {
+      return res.status(404).json({ error: 'Order not found' })
+    }
+
+    order.status = req.body.status
+    await order.save()
+
+    res.json(order)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
+module.exports = { checkoutCart, getMyOrders, getAllOrders, updateOrderStatus }
