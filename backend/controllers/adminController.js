@@ -31,4 +31,23 @@ const deleteProduct = async (req, res) => {
   }
 }
 
-module.exports = { addProduct, getAllProducts, deleteProduct }
+const updateProduct = async (req, res) => {
+  try {
+    const id = req.params.id
+
+    const product = await Product.findById(id)
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' })
+    }
+
+    Object.assign(product, req.body)
+
+    await product.save()
+    res.json(product)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
+module.exports = { addProduct, getAllProducts, deleteProduct, updateProduct }
