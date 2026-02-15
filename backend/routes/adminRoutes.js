@@ -4,7 +4,11 @@ const router = express.Router()
 const authenticateUser = require('../middleware/authenticateUser')
 const adminOnly = require('../middleware/adminOnly')
 
-const { addProduct, getAllProducts } = require('../controllers/adminController')
+const {
+  addProduct,
+  getAllProducts,
+  deleteProduct,
+} = require('../controllers/adminController')
 
 router.get('/test', authenticateUser, adminOnly, (req, res) => {
   res.json({ message: 'Admin access granted' })
@@ -12,5 +16,6 @@ router.get('/test', authenticateUser, adminOnly, (req, res) => {
 
 router.post('/product', authenticateUser, adminOnly, addProduct)
 router.get('/products', authenticateUser, adminOnly, getAllProducts)
+router.delete('/product/:id', authenticateUser, adminOnly, deleteProduct)
 
 module.exports = router
