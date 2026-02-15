@@ -5,7 +5,7 @@ const addProduct = async (req, res) => {
     const product = await Product.create(req.body)
     res.status(201).json(product)
   } catch (err) {
-    res.status(500).json({ error: 'Failed to add product' })
+    res.status(400).json({ error: err.message })
   }
 }
 

@@ -43,13 +43,13 @@ const loginUser = async (req, res) => {
     }
 
     const accessToken = jwt.sign(
-      { id: user._id, emailID: user.emailID },
+      { id: user._id, emailID: user.emailID, role: user.role },
       process.env.JWT_SECRET || 'default_secret_key',
       { expiresIn: '1h' },
     )
 
     const refreshToken = jwt.sign(
-      { id: user._id },
+      { id: user.id, role: user.role },
       process.env.REFRESH_SECRET || 'refresh_secret',
       { expiresIn: '7d' },
     )
@@ -83,7 +83,7 @@ const refreshAccessToken = async (req, res) => {
     }
 
     const newAccessToken = jwt.sign(
-      { id: user.id },
+      { id: user.id, role: user.role },
       process.env.JWT_SECRET || 'default_secret_key',
       { expiresIn: '1h' },
     )

@@ -4,6 +4,8 @@ require('dotenv').config()
 const connectDB = require('./config/db')
 const cookieParser = require('cookie-parser')
 
+const adminRoutes = require('./routes/adminRoutes')
+
 const app = express()
 app.use(express.json())
 app.use(
@@ -21,6 +23,7 @@ app.use('/api/auth', require('./routes/authRoutes'))
 app.use('/api/products', require('./routes/productRoutes'))
 app.use('/api/cart', require('./routes/cartRoutes'))
 app.use('/api/wishlist', require('./routes/wishRoutes'))
+app.use('/admin', adminRoutes)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
