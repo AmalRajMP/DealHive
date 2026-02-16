@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import authFetch from '../../utils/authFetch'
 
 import {
   Container,
   Title,
+  AddBtn,
   Card,
   Info,
   ProductTitle,
@@ -24,6 +27,8 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([])
   const [editingProduct, setEditingProduct] = useState(null)
   const [form, setForm] = useState({})
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -68,6 +73,9 @@ const AdminProducts = () => {
   return (
     <Container>
       <Title>Admin Products</Title>
+      <AddBtn onClick={() => navigate('/admin/add-product')}>
+        + Add Product
+      </AddBtn>
 
       {products.map((p) => {
         console.log(p)

@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import CartPage from './pages/CartPage'
 import WishlistPage from './pages/WishlistPage'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import AddProduct from './pages/admin/AddProduct'
 
 const App = () => (
   <Routes>
@@ -56,7 +57,8 @@ const App = () => (
         </ProtectedRoute>
       }
     />
-    <Route path="/admin/*" element={<AdminDashboard />} />{' '}
+    <Route path="/admin/*" element={<AdminDashboard />} />
+    <Route path="/admin/add-product" element={<AddProduct />} />
   </Routes>
 )
 

@@ -8,6 +8,20 @@ export const Title = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
 `
+export const AddBtn = styled.button`
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 500;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+`
 
 export const Card = styled.div`
   border: 1px solid #e5e7eb;
@@ -81,7 +95,7 @@ export const Actions = styled.div`
 export const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
