@@ -98,8 +98,8 @@ const AdminProducts = () => {
         )
       })}
       {editingProduct && (
-        <ModalOverlay>
-          <ModalBox>
+        <ModalOverlay onClick={() => setEditingProduct(null)}>
+          <ModalBox onClick={(e) => e.stopPropagation()}>
             <h3>Edit Product</h3>
 
             <Input
