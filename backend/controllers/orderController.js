@@ -1,5 +1,6 @@
 const Order = require('../models/Order')
 const User = require('../models/User')
+const logActivity = require('../utils/logActivity')
 
 const checkoutCart = async (req, res) => {
   try {
@@ -30,6 +31,12 @@ const checkoutCart = async (req, res) => {
       totalAmount: total,
       address: req.body.address,
       status: 'pending',
+    })
+
+    await logActivity(userId, 'Placed Order', {
+      orderId: order._id,
+      totalAmount: total,
+      itemCount: items.length,
     })
 
     user.cartList = []
@@ -74,9 +81,13 @@ const updateOrderStatus = async (req, res) => {
       return res.status(404).json({ error: 'Order not found' })
     }
 
-    console.log(req.body)
     order.status = req.body.status
     await order.save()
+
+    await logActivity(order.user, 'Order Status Updated', {
+      orderId: order._id,
+      newStatus: order.status,
+    })
 
     res.json(order)
   } catch (err) {
