@@ -1,4 +1,7 @@
 import { useState } from 'react'
+
+import authFetch from '../../../utils/authFetch'
+
 import {
   Container,
   Title,
@@ -14,6 +17,41 @@ const AddProduct = () => {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async () => {
+    const discountPercent = Math.round(
+      ((form.originalPrice - form.discountPrice) / form.originalPrice) * 100,
+    )
+
+    const productData = {
+      ...form,
+      originalPrice: Number(form.originalPrice),
+      discountPrice: Number(form.discountPrice),
+      discountPercent,
+      rating: 0,
+      reviews: [],
+      images: [form.thumbnail],
+      serviceCenters: [],
+    }
+
+    console.log('Sending:', productData)
+
+    const res = await authFetch('http://localhost:5000/admin/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(productData),
+    })
+
+    const data = await res.json()
+    console.log('Response:', data)
+
+    if (!res.ok) {
+      alert(data.error || data.message || 'Failed to add product')
+      return
+    }
+
+    alert('Product added successfully')
   }
 
   return (
@@ -56,7 +94,9 @@ const AddProduct = () => {
           onChange={handleChange}
         />
 
-        <Button type="button">Add Product</Button>
+        <Button type="button" onClick={handleSubmit}>
+          Add Product
+        </Button>
       </Form>
     </Container>
   )
