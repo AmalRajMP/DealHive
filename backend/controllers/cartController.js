@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const logActivity = require('../utils/logActivity')
 
 const getCart = async (req, res) => {
   try {
@@ -36,6 +37,9 @@ const addToCart = async (req, res) => {
     }
 
     await user.save()
+
+    await logActivity(userId, 'Added To Cart', { productId })
+
     await user.populate('cartList.productId')
     res.json(user.cartList)
   } catch (e) {
@@ -64,7 +68,13 @@ const addMultipleToCart = async (req, res) => {
         user.cartList.push({ productId: wishListItem.productId, quantity: 1 })
       }
     }
+
     await user.save()
+
+    await logActivity(userId, 'Added Multiple To Cart', {
+      count: wishList.length,
+    })
+
     await user.populate('cartList.productId')
     res.json(user.cartList)
   } catch (e) {
@@ -87,6 +97,9 @@ const removeFromCart = async (req, res) => {
     )
 
     await user.save()
+
+    await logActivity(userId, 'Removed From Cart', { productId })
+
     await user.populate('cartList.productId')
     res.json(user.cartList)
   } catch (e) {
@@ -120,6 +133,12 @@ const updateQuantity = async (req, res) => {
     }
 
     await user.save()
+
+    await logActivity(userId, 'Updated Cart Quantity', {
+      productId,
+      change,
+    })
+
     await user.populate('cartList.productId')
     res.json(user.cartList)
   } catch (e) {
