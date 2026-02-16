@@ -60,3 +60,21 @@ export const Category = styled.p`
   font-size: 13px;
   color: #9ca3af;
 `
+export const EditBtn = styled.button`
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+`
+
+export const Actions = styled.div`
+  display: flex;
+  align-items: center;
+`

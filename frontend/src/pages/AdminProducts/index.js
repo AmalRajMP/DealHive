@@ -12,6 +12,8 @@ import {
   ProductImage,
   Left,
   Category,
+  EditBtn,
+  Actions,
 } from './styledComponents'
 
 const AdminProducts = () => {
@@ -52,7 +54,11 @@ const AdminProducts = () => {
               </Info>
             </Left>
 
-            <DeleteBtn onClick={() => deleteProduct(p._id)}>Delete</DeleteBtn>
+            <Actions>
+              <EditBtn onClick={() => console.log('Edit', p._id)}>Edit</EditBtn>
+
+              <DeleteBtn onClick={() => deleteProduct(p._id)}>Delete</DeleteBtn>
+            </Actions>
           </Card>
         )
       })}
