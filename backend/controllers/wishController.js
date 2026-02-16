@@ -1,9 +1,13 @@
 const User = require('../models/User')
+const logActivity = require('../utils/logActivity')
 
 const clearWishList = async (req, res) => {
   try {
     const userId = req.user.id
+
     await User.updateOne({ _id: userId }, { $set: { wishList: [] } })
+
+    await logActivity(userId, 'Cleared Wishlist')
 
     res.status(200).json({ message: 'Wishlist cleared successfully' })
   } catch (e) {
@@ -30,7 +34,7 @@ const addToWishList = async (req, res) => {
   try {
     const userId = req.user.id
     const { productId } = req.body
-    console.log("Added to cart")
+
     const user = await User.findById(userId)
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
@@ -44,6 +48,8 @@ const addToWishList = async (req, res) => {
 
     if (!item) {
       user.wishList.push({ productId })
+
+      await logActivity(userId, 'Added To Wishlist', { productId })
     }
 
     await user.save()
@@ -71,6 +77,9 @@ const removeFromWishList = async (req, res) => {
     )
 
     await user.save()
+
+    await logActivity(userId, 'Removed From Wishlist', { productId })
+
     await user.populate('wishList.productId')
     res.status(200).json(user.wishList)
   } catch (e) {
