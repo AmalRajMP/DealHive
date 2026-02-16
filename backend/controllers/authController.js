@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
+const logActivity = require('../utils/logActivity')
+
 const bcrypt = require('bcryptjs')
 
 const registerUser = async (req, res) => {
@@ -14,13 +16,15 @@ const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    await User.create({
+    const newUser = await User.create({
       firstName,
       lastName,
       emailID,
       contactNo,
       password: hashedPassword,
     })
+
+    await logActivity(newUser._id, 'Registered')
 
     res.status(201).json({ message: 'User registered successfully' })
   } catch (err) {
@@ -41,6 +45,8 @@ const loginUser = async (req, res) => {
     if (!isSame) {
       return res.status(400).json({ message: 'Invalid email or password' })
     }
+
+    await logActivity(user._id, 'Login')
 
     const accessToken = jwt.sign(
       { id: user._id, emailID: user.emailID, role: user.role },
