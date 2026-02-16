@@ -1,10 +1,8 @@
 const authFetch = async (url, options = {}) => {
   const { headers = {}, ...rest } = options
-  const BASE = 'http://localhost:5000'
-
   let token = localStorage.getItem('authToken')
 
-  let res = await fetch(BASE + url, {
+  let res = await fetch(url, {
     ...rest,
     headers: {
       ...headers,
@@ -23,7 +21,7 @@ const authFetch = async (url, options = {}) => {
       const data = await refreshRes.json()
       localStorage.setItem('authToken', data.token)
 
-      return fetch(BASE + url, {
+      return fetch(url, {
         ...rest,
         headers: {
           ...headers,

@@ -29,7 +29,7 @@ const checkoutCart = async (req, res) => {
       items,
       totalAmount: total,
       address: req.body.address,
-      status: 'placed',
+      status: 'pending',
     })
 
     user.cartList = []
@@ -74,6 +74,7 @@ const updateOrderStatus = async (req, res) => {
       return res.status(404).json({ error: 'Order not found' })
     }
 
+    console.log(req.body)
     order.status = req.body.status
     await order.save()
 
