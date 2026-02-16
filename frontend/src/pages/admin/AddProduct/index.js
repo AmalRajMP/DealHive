@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import authFetch from '../../../utils/authFetch'
 
@@ -13,6 +14,7 @@ import {
 } from './styledComponents'
 
 const AddProduct = () => {
+  const navigate = useNavigate()
   const [form, setForm] = useState({})
 
   const handleChange = (e) => {
@@ -52,6 +54,7 @@ const AddProduct = () => {
     }
 
     alert('Product added successfully')
+    navigate('/admin/products')
   }
 
   return (
