@@ -8,6 +8,7 @@ import ProductItemDetails from './components/ProductItemDetails'
 import ProtectedRoute from './components/ProtectedRoute'
 import CartPage from './pages/CartPage'
 import WishlistPage from './pages/WishlistPage'
+import AdminDashboard from './pages/admin/AdminDashboard'
 
 const App = () => (
   <Routes>
@@ -55,6 +56,7 @@ const App = () => (
         </ProtectedRoute>
       }
     />
+    <Route path="/admin/*" element={<AdminDashboard />} />{' '}
   </Routes>
 )
 
