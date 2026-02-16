@@ -78,3 +78,33 @@ export const Actions = styled.div`
   display: flex;
   align-items: center;
 `
+export const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ModalBox = styled.div`
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 350px;
+`
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+`
+
+export const SaveBtn = styled.button`
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+`
