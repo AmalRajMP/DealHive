@@ -3,6 +3,14 @@ import authFetch from '../../utils/authFetch'
 
 import { Container, Title, Card, Text } from './styledComponents'
 
+const statusColor = {
+  pending: 'gray',
+  placed: 'blue',
+  shipped: 'orange',
+  delivered: 'green',
+  cancelled: 'red',
+}
+
 const AdminOrders = () => {
   const [orders, setOrders] = useState([])
 
@@ -45,6 +53,9 @@ const AdminOrders = () => {
       {orders.map((order) => (
         <Card key={order._id}>
           <Text>Order ID: {order._id}</Text>
+          <Text style={{ color: statusColor[order.status] }}>
+            Status: {order.status}
+          </Text>
           <select
             value={order.status}
             onChange={(event) => onChangeStatus(event, order)}
