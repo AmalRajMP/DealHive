@@ -53,6 +53,20 @@ const userSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  preferences: {
+    categories: [{ type: String }],
+    brands: [{ type: String }],
+    priceRange: {
+      min: { type: Number, default: 0 },
+      max: { type: Number, default: 100000 },
+    },
+    interactions: [
+      {
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+        weight: Number,
+      },
+    ],
+  },
 })
 
 const User = mongoose.model('User', userSchema)
