@@ -48,5 +48,3 @@ def recommend_for_user(user_id, top_n=5):
 
     return recommendation_scores.head(top_n)
 
-# test
-print(recommend_for_user(1))
