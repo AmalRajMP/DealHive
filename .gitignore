@@ -1,1 +1,9 @@
+venv/
+__pycache__/
+*.pyc
 .env
+datasets/
+ai/datasets/
+ai/models/
+node_modules/
+ai/recommender_model.pkl
