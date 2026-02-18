@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 # load data
 df = pd.read_csv("datasets/products.csv")
 
+
 # select useful features
 features = df[[
     "price_original",
