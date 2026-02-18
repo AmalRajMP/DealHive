@@ -41,9 +41,7 @@ const addToWishList = async (req, res) => {
     }
 
     const item = user.wishList.find(
-      (item) =>
-        item.productId._id?.toString() === productId ||
-        item.productId.toString() === productId,
+      (item) => item.productId.toString() === productId,
     )
 
     if (!item) {
@@ -71,9 +69,7 @@ const removeFromWishList = async (req, res) => {
     }
 
     user.wishList = user.wishList.filter(
-      (item) =>
-        item.productId._id?.toString() !== productId &&
-        item.productId.toString() !== productId,
+      (item) => item.productId.toString() !== productId,
     )
 
     await user.save()
