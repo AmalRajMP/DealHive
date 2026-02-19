@@ -7,6 +7,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
 from product_similarity import get_similar_products
+from collaborative_filter import get_collaborative_recommendations
 from xai_model import model_predict
 
 # ----------------------------
@@ -20,7 +21,7 @@ load_dotenv("../backend/.env")
 model = joblib.load("models/recommender_model.pkl")
 
 # ----------------------------
-# SHAP BACKGROUND + EXPLAINER (GLOBAL CACHE)
+# SHAP BACKGROUND + EXPLAINER
 # ----------------------------
 background = np.array([
     [0, 0, 0],
@@ -143,28 +144,19 @@ def generate_reason_text(explanation, product):
         )
 
     if price and price < 1000:
-        reasons.append(
-            "Matches your preference for budget-friendly items"
-        )
+        reasons.append("Matches your preference for budget-friendly items")
+
     elif price and price > 2000:
-        reasons.append(
-            "Fits your interest in premium products"
-        )
+        reasons.append("Fits your interest in premium products")
 
     if explanation["similarity"] > 0.4:
-        reasons.append(
-            "Similar to items you recently viewed or added to cart"
-        )
+        reasons.append("Similar to items you recently viewed or added to cart")
 
     if explanation["location"] > 0.2:
-        reasons.append(
-            "Service support is available near your location"
-        )
+        reasons.append("Service support is available near your location")
 
     if not reasons:
-        reasons.append(
-            "Recommended based on your activity and preferences"
-        )
+        reasons.append("Recommended based on your activity and preferences")
 
     return reasons[:2]
 
@@ -187,7 +179,7 @@ def recommend_live(user_id):
     prob = model.predict_proba(user_features)[0][1]
 
     # ----------------------------
-    # Cold start (no history)
+    # Cold start
     # ----------------------------
     if not product_ids:
 
@@ -206,13 +198,12 @@ def recommend_live(user_id):
         }
 
     # ----------------------------
-    # Get similar products
+    # Content-based recommendations
     # ----------------------------
     last_product = product_ids[-1]
 
     try:
         recommended = get_similar_products(last_product)
-
         if not recommended:
             recommended = get_fallback_products()
 
@@ -220,6 +211,24 @@ def recommend_live(user_id):
         recommended = get_fallback_products()
 
     recommended = convert_objectids(recommended)
+
+    # ----------------------------
+    # Collaborative recommendations
+    # ----------------------------
+    collab_ids = get_collaborative_recommendations(user_id)
+
+    if collab_ids:
+
+        collab_products = list(
+            products_col.find({
+                "_id": {"$in": [ObjectId(i) for i in collab_ids]}
+            })
+        )
+
+        for p in collab_products:
+            p["similarity_score"] = 0.3
+
+        recommended.extend(collab_products)
 
     # ----------------------------
     # Hybrid ranking
@@ -240,11 +249,15 @@ def recommend_live(user_id):
         product["final_score"] = final_score
         scored_products.append(product)
 
+    # SORT AFTER LOOP
     recommended = sorted(
         scored_products,
         key=lambda x: x["final_score"],
         reverse=True
     )
+
+    # CONVERT AFTER SORT
+    recommended = convert_objectids(recommended)
 
     # ----------------------------
     # SHAP explanation
