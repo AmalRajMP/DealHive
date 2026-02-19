@@ -20,7 +20,18 @@ load_dotenv("../backend/.env")
 model = joblib.load("models/recommender_model.pkl")
 
 # ----------------------------
-# MongoDB connection (Atlas)
+# SHAP BACKGROUND + EXPLAINER (GLOBAL CACHE)
+# ----------------------------
+background = np.array([
+    [0, 0, 0],
+    [0.5, 0.2, 0.1],
+    [1, 1, 1]
+])
+
+explainer = shap.Explainer(model_predict, background)
+
+# ----------------------------
+# MongoDB connection
 # ----------------------------
 MONGO_URI = os.getenv("MONGO_URI")
 
@@ -34,7 +45,7 @@ interactions_col = db["useractivities"]
 products_col = db["products"]
 
 # ----------------------------
-# Action scoring (normalized)
+# Action scoring
 # ----------------------------
 action_score_map = {
     "view": 1,
@@ -49,7 +60,7 @@ action_score_map = {
 }
 
 # ----------------------------
-# Recursive ObjectId Converter
+# Convert ObjectId → string
 # ----------------------------
 def convert_objectids(obj):
     if isinstance(obj, list):
@@ -63,20 +74,16 @@ def convert_objectids(obj):
 
 
 # ----------------------------
-# Build feature vector from Mongo logs
+# Build user feature vector
 # ----------------------------
 def build_user_features(user_id):
-
-    print("User ID received:", user_id)
 
     try:
         user_object_id = ObjectId(user_id)
     except Exception:
         return None, None
 
-    logs = list(interactions_col.find({"user": user_object_id}))
-
-    print("Logs found:", logs)
+    logs = list(interactions_col.find({"user": user_object_id}).limit(50))
 
     if not logs:
         return None, None
@@ -92,17 +99,10 @@ def build_user_features(user_id):
     product_ids = []
 
     for log in logs:
-        print("Log document:", log)
-
         if "meta" in log and isinstance(log["meta"], dict):
             pid = log["meta"].get("productId")
-
-            if pid is None:
-                continue
-
-            product_ids.append(str(pid))
-
-    print("Extracted product_ids:", product_ids)
+            if pid:
+                product_ids.append(str(pid))
 
     features = {
         "user_total_interactions": total_interactions,
@@ -111,6 +111,7 @@ def build_user_features(user_id):
     }
 
     return pd.DataFrame([features]), product_ids
+
 
 # ----------------------------
 # Fallback products
@@ -121,9 +122,8 @@ def get_fallback_products(limit=5):
 
 
 # ----------------------------
-# Live Recommendation
+# Generate explanation text
 # ----------------------------
-
 def generate_reason_text(explanation, product):
 
     reasons = []
@@ -166,9 +166,14 @@ def generate_reason_text(explanation, product):
             "Recommended based on your activity and preferences"
         )
 
-    return reasons[:2]  # ← only top 2 reasons
+    return reasons[:2]
 
+
+# ----------------------------
+# MAIN RECOMMENDER FUNCTION
+# ----------------------------
 def recommend_live(user_id):
+
     user_features, product_ids = build_user_features(user_id)
 
     if user_features is None:
@@ -182,10 +187,10 @@ def recommend_live(user_id):
     prob = model.predict_proba(user_features)[0][1]
 
     # ----------------------------
-    # Recommendation Logic
+    # Cold start (no history)
     # ----------------------------
-
     if not product_ids:
+
         explanation = {
             "similarity": 0.0,
             "interaction": 0.0,
@@ -200,6 +205,9 @@ def recommend_live(user_id):
             "explanation": explanation
         }
 
+    # ----------------------------
+    # Get similar products
+    # ----------------------------
     last_product = product_ids[-1]
 
     try:
@@ -214,25 +222,40 @@ def recommend_live(user_id):
     recommended = convert_objectids(recommended)
 
     # ----------------------------
-    # SHAP EXPLANATION
+    # Hybrid ranking
     # ----------------------------
+    scored_products = []
 
-    background = np.array([
-        [0,0,0],
-        [0.5,0.2,0.1],
-        [1,1,1]
+    for product in recommended:
+
+        raw_sim = product.get("similarity_score", 0)
+        similarity_score = (raw_sim + 1) / 2
+        model_score = float(prob)
+
+        final_score = (
+            similarity_score * 0.85 +
+            model_score * 0.15
+        )
+
+        product["final_score"] = final_score
+        scored_products.append(product)
+
+    recommended = sorted(
+        scored_products,
+        key=lambda x: x["final_score"],
+        reverse=True
+    )
+
+    # ----------------------------
+    # SHAP explanation
+    # ----------------------------
+    interaction_score = min(len(product_ids) / 10, 1)
+
+    avg_similarity = np.mean([
+        p.get("similarity_score", 0) for p in recommended
     ])
 
-    explainer = shap.Explainer(model_predict, background)
-
-    # Real interaction score
-    interaction_score = len(product_ids) / 10
-    interaction_score = min(interaction_score, 1)
-
-    # SHAP input = [similarity, interaction, location]
-    similarity_score = 1.0   # temporary placeholder for similarity result
-
-    sample = np.array([[similarity_score, interaction_score, 0.5]])
+    sample = np.array([[avg_similarity, interaction_score, 0.5]])
 
     shap_values = explainer(sample)
 
@@ -243,15 +266,17 @@ def recommend_live(user_id):
     }
 
     # ----------------------------
-    # FINAL RESPONSE
+    # Attach reasons
     # ----------------------------
     for product in recommended:
         product["why"] = generate_reason_text(explanation, product)
 
+    # ----------------------------
+    # Final response
+    # ----------------------------
     return {
         "user": user_id,
         "interest_score": float(prob),
         "recommended_products": recommended,
         "explanation": explanation
     }
-
