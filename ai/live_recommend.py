@@ -85,7 +85,7 @@ def build_user_features(user_id):
 
     logs = list(interactions_col.find({"user": user_object_id}).limit(50))
 
-    # 🔹 no interactions → cold start
+    # cold start user
     if not logs:
         return None, [], {
             "fav_category": None,
@@ -217,6 +217,7 @@ def recommend_live(user_id):
             "recommendations": {
                 "contentBased": [],
                 "collaborative": [],
+                "recent": [],
                 "trending": trending,
                 "hybrid": trending
             },
@@ -267,6 +268,17 @@ def recommend_live(user_id):
             p["source"] = "collaborative"
 
         recommended.extend(collab_products)
+
+    # ---------------- RECENTLY VIEWED ----------------
+    recent_ids = product_ids[-5:]
+
+    recent_products = list(
+        products_col.find({
+            "_id": {"$in": [ObjectId(i) for i in recent_ids]}
+        })
+    )
+
+    recent_products = convert_objectids(recent_products)
 
     # ---------------- RANKING ----------------
     scored_products = []
@@ -327,6 +339,7 @@ def recommend_live(user_id):
         "recommendations": {
             "contentBased": content_based,
             "collaborative": collaborative,
+            "recent": recent_products,
             "trending": trending,
             "hybrid": recommended
         },

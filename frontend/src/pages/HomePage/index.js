@@ -188,6 +188,23 @@ const HomePage = () => {
       GROCERIES_CATEGORIES,
     )
 
+    {
+      recommendData?.recommendations?.recent?.length > 0 && (
+        <CategorySection
+          title="Recently Viewed"
+          products={recommendData.recommendations.recent}
+        />
+      )
+    }
+    {
+      recommendData?.recommendations?.trending?.length > 0 && (
+        <CategorySection
+          title="Trending Now"
+          products={recommendData.recommendations.trending}
+        />
+      )
+    }
+
     const hybridProductsRaw =
       recommendData?.recommendations?.hybrid ||
       recommendData?.recommendations?.contentBased ||
@@ -233,6 +250,19 @@ const HomePage = () => {
             />
             <CategorySection title="Fashion" products={fashionProducts} />
             <CategorySection title="Groceries" products={groceriesProducts} />
+            {recommendData?.recommendations?.recent?.length > 0 && (
+              <CategorySection
+                title="Recently Viewed"
+                products={recommendData.recommendations.recent}
+              />
+            )}
+
+            {recommendData?.recommendations?.trending?.length > 0 && (
+              <CategorySection
+                title="Trending Now"
+                products={recommendData.recommendations.trending}
+              />
+            )}
             {hybridProducts.length > 0 && (
               <CategorySection
                 title="Recommended for you"
