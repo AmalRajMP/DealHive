@@ -47,6 +47,11 @@ const HomePage = () => {
   const [productsList, setProductsList] = useState([])
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
+  const [recommendData, setRecommendData] = useState(null)
+  const [recommendStatus, setRecommendStatus] = useState(
+    apiStatusConstants.initial,
+  )
+
   const getProductsList = async () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
@@ -59,7 +64,6 @@ const HomePage = () => {
       if (response.ok) {
         const products = data.products
         console.log('new products')
-        console.log(products)
         setProductsList(products)
         setApiStatus(apiStatusConstants.success)
         console.log(apiStatus)
@@ -72,8 +76,34 @@ const HomePage = () => {
     }
   }
 
+  const getRecommendations = async () => {
+    try {
+      setRecommendStatus(apiStatusConstants.inProgress)
+
+      const userId = localStorage.getItem('userId')
+
+      if (!userId) return
+
+      const response = await fetch(`http://localhost:5001/recommend/${userId}`)
+      console.log('STATUS:', response.status)
+      const data = await response.json()
+
+      if (response.ok) {
+        console.log(data)
+        setRecommendData(data)
+        setRecommendStatus(apiStatusConstants.success)
+      } else {
+        setRecommendStatus(apiStatusConstants.failure)
+      }
+    } catch (err) {
+      console.log('FETCH ERROR:', err)
+      setRecommendStatus(apiStatusConstants.failure)
+    }
+  }
+
   useEffect(() => {
     getProductsList()
+    getRecommendations()
   }, [])
 
   const onExploreDeals = () => {
@@ -99,13 +129,13 @@ const HomePage = () => {
 
   if (isFiltering) {
     filteredProducts = filteredProducts.filter(
-      (product) => product.category === activeFilterId
+      (product) => product.category === activeFilterId,
     )
   }
 
   if (isSearching) {
     filteredProducts = filteredProducts.filter((product) =>
-      product.title.toLowerCase().includes(searchInput.trim().toLowerCase())
+      product.title.toLowerCase().includes(searchInput.trim().toLowerCase()),
     )
   }
 
@@ -115,7 +145,7 @@ const HomePage = () => {
 
   if (isSearching && isFiltering) {
     resultsTitle = `Results for "${searchInput}" in ${formatTitle(
-      activeFilterId
+      activeFilterId,
     )}`
   } else if (isSearching) {
     resultsTitle = `Search results for "${searchInput}"`
@@ -138,38 +168,60 @@ const HomePage = () => {
   )
 
   const renderSuccessView = () => {
+    console.log('RECOMMEND DATA:', recommendData)
     const beautyProducts = productsList.filter(
-      (product) => product.category.toLowerCase() === 'beauty'
+      (product) => product.category.toLowerCase() === 'beauty',
     )
 
     const electronicsProducts = getProductsByCategories(
       productsList,
-      ELECTRONICS_CATEGORIES
+      ELECTRONICS_CATEGORIES,
     )
 
     const fashionProducts = getProductsByCategories(
       productsList,
-      FASHION_CATEGORIES
+      FASHION_CATEGORIES,
     )
 
     const groceriesProducts = getProductsByCategories(
       productsList,
-      GROCERIES_CATEGORIES
+      GROCERIES_CATEGORIES,
     )
 
-    const recommendedProducts = productsList.slice(0, 10).map((eachItem) => ({
-      ...eachItem,
-      isAiPick: true,
+    const hybridProductsRaw =
+      recommendData?.recommendations?.hybrid ||
+      recommendData?.recommendations?.contentBased ||
+      recommendData?.recommendations?.collaborative ||
+      []
+
+    const hybridProducts = hybridProductsRaw.map((product) => ({
+      ...product,
+      thumbnail: product.thumbnail || product.image,
+      discountPrice: product.discountPrice || product.price,
+      originalPrice: product.originalPrice || product.price,
     }))
 
+    let aiSubtitle = 'Recommended for you'
+
+    if (recommendData?.explanation) {
+      const exp = recommendData.explanation
+
+      const strongestSignal = Object.keys(exp).reduce((a, b) =>
+        exp[a] > exp[b] ? a : b,
+      )
+
+      const explanationMap = {
+        interaction: 'Based on your activity',
+        similarity: 'Users with similar taste liked these',
+        location: 'Trending near your location',
+      }
+
+      aiSubtitle = explanationMap[strongestSignal] || 'Personalized for you'
+    }
     return (
       <>
         {showFilteredResults ? (
-          <CategorySection
-            title={resultsTitle}
-            products={filteredProducts}
-            
-          />
+          <CategorySection title={resultsTitle} products={filteredProducts} />
         ) : (
           <>
             <div ref={dealsRef}>
@@ -181,11 +233,13 @@ const HomePage = () => {
             />
             <CategorySection title="Fashion" products={fashionProducts} />
             <CategorySection title="Groceries" products={groceriesProducts} />
-            <CategorySection
-              title="Recommended for you"
-              subtitle="Curated using AI to match your interests"
-              products={recommendedProducts}
-            />
+            {hybridProducts.length > 0 && (
+              <CategorySection
+                title="Recommended for you"
+                subtitle={aiSubtitle}
+                products={hybridProducts}
+              />
+            )}
           </>
         )}
       </>

@@ -21,9 +21,10 @@ const ProductItem = (props) => {
     originalPrice,
     discountPrice,
     discountPercent,
-    isAiPick,
+    why,
   } = productDetails
 
+  const isAiPick = !!why
   return (
     <Link to={`/products/${_id}`} style={{ textDecoration: 'none' }}>
       <ProductCard>
@@ -34,7 +35,7 @@ const ProductItem = (props) => {
         </ImageWrapper>
 
         <ProductTitle>{title}</ProductTitle>
-
+        {why && <p style={{ fontSize: 12, color: '#64748b' }}>{why}</p>}
         <PriceRow>
           <DiscountPrice>₹{discountPrice}</DiscountPrice>
           <OriginalPrice>₹{originalPrice}</OriginalPrice>
