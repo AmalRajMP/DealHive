@@ -10,6 +10,8 @@ import {
   PriceRow,
   DiscountPrice,
   OriginalPrice,
+  WhyText,
+  FallbackTag,
 } from './styledComponents'
 
 const ProductItem = (props) => {
@@ -35,7 +37,7 @@ const ProductItem = (props) => {
         </ImageWrapper>
 
         <ProductTitle>{title}</ProductTitle>
-        {why && <p style={{ fontSize: 12, color: '#64748b' }}>{why}</p>}
+        {why && <WhyText>{why}</WhyText>}
         <PriceRow>
           <DiscountPrice>₹{discountPrice}</DiscountPrice>
           <OriginalPrice>₹{originalPrice}</OriginalPrice>
