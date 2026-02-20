@@ -85,8 +85,13 @@ def build_user_features(user_id):
 
     logs = list(interactions_col.find({"user": user_object_id}).limit(50))
 
+    # 🔹 no interactions → cold start
     if not logs:
-        return None, None, None
+        return None, [], {
+            "fav_category": None,
+            "avg_price": None,
+            "interaction_count": 0
+        }
 
     df = pd.DataFrame(logs)
 
@@ -133,8 +138,10 @@ def build_user_features(user_id):
 # ----------------------------
 # Fallback products
 # ----------------------------
-def get_fallback_products(limit=5):
-    products = list(products_col.find().limit(limit))
+def get_fallback_products(limit=12):
+    products = list(
+        products_col.find().sort("rating", -1).limit(limit)
+    )
     return convert_objectids(products)
 
 
@@ -156,13 +163,11 @@ def generate_reason(product, explanation, profile):
         key=lambda k: {"similarity": similarity, "interaction": interaction, "location": location}[k]
     )
 
-    # ---------------- collaborative ----------------
     if source == "collaborative":
         if category:
             return f"Users who explored {category} also chose this"
         return "Users with similar activity chose this"
 
-    # ---------------- interaction strongest ----------------
     if strongest == "interaction":
 
         if profile["fav_category"] and category == profile["fav_category"]:
@@ -176,7 +181,6 @@ def generate_reason(product, explanation, profile):
 
         return "Because you interacted with similar items"
 
-    # ---------------- similarity strongest ----------------
     if strongest == "similarity":
 
         if category:
@@ -184,19 +188,8 @@ def generate_reason(product, explanation, profile):
 
         return "Similar to items you viewed"
 
-    # ---------------- location strongest ----------------
     if strongest == "location":
         return "Service available near your location"
-
-    # ---------------- secondary fallbacks ----------------
-    if profile["fav_category"] and category:
-        return f"Recommended based on your interest in {category}"
-
-    if price and price < 800:
-        return "Popular in budget range"
-
-    if price and price > 3000:
-        return "Popular among premium buyers"
 
     return "Trending among shoppers"
 
@@ -208,17 +201,7 @@ def recommend_live(user_id):
 
     user_features, product_ids, profile = build_user_features(user_id)
 
-    if user_features is None:
-        return {"error": "No interactions for user"}
-
-    user_features = user_features.reindex(
-        columns=model.feature_names_in_,
-        fill_value=0
-    )
-
-    prob = model.predict_proba(user_features)[0][1]
-
-    # ---------------- Cold start users ----------------
+    # ---------------- COLD START USERS ----------------
     if not product_ids:
 
         trending = get_fallback_products()
@@ -229,21 +212,31 @@ def recommend_live(user_id):
         return {
             "user": user_id,
             "userType": "new",
-            "interest_score": float(prob),
+            "interest_score": 0,
 
             "recommendations": {
                 "contentBased": [],
                 "collaborative": [],
                 "trending": trending,
-                "hybrid": []
+                "hybrid": trending
             },
 
             "explanation": {
-                "note": "New user recommendations based on popularity"
+                "similarity": 0,
+                "interaction": 0,
+                "location": 1
             }
         }
 
-    # ---------------- Content recommendations ----------------
+    # ---------------- MODEL PREDICTION ----------------
+    user_features = user_features.reindex(
+        columns=model.feature_names_in_,
+        fill_value=0
+    )
+
+    prob = model.predict_proba(user_features)[0][1]
+
+    # ---------------- CONTENT BASED ----------------
     last_product = product_ids[-1]
 
     try:
@@ -258,7 +251,7 @@ def recommend_live(user_id):
     for p in recommended:
         p["source"] = "content"
 
-    # ---------------- Collaborative ----------------
+    # ---------------- COLLABORATIVE ----------------
     collab_ids = get_collaborative_recommendations(user_id)
 
     if collab_ids:
@@ -275,7 +268,7 @@ def recommend_live(user_id):
 
         recommended.extend(collab_products)
 
-    # ---------------- Ranking ----------------
+    # ---------------- RANKING ----------------
     scored_products = []
     interaction_score = min(len(product_ids) / 10, 1)
 
@@ -301,11 +294,11 @@ def recommend_live(user_id):
         scored_products,
         key=lambda x: x["final_score"],
         reverse=True
-    )[:12]   # limit results for UI
+    )[:12]
 
     recommended = convert_objectids(recommended)
 
-    # ---------------- SHAP explanation ----------------
+    # ---------------- SHAP EXPLANATION ----------------
     avg_similarity = np.mean([
         p.get("similarity_score", 0) for p in recommended
     ])
@@ -319,11 +312,9 @@ def recommend_live(user_id):
         "location": float(shap_values.values[0][2])
     }
 
-    # attach explanations
     for product in recommended:
         product["why"] = generate_reason(product, explanation, profile)
 
-    # split groups
     content_based = [p for p in recommended if p.get("source") == "content"]
     collaborative = [p for p in recommended if p.get("source") == "collaborative"]
     trending = get_fallback_products()

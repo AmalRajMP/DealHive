@@ -11,7 +11,6 @@ import {
   DiscountPrice,
   OriginalPrice,
   WhyText,
-  FallbackTag,
 } from './styledComponents'
 
 const ProductItem = (props) => {
