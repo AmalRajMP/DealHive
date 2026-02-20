@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from live_recommend import recommend_live
+import json
 
 app = Flask(__name__)
 
@@ -10,7 +11,10 @@ def recommend(user_id):
     if isinstance(result, str):
         return jsonify({"error": result})
 
-    return jsonify(result)
+    return app.response_class(
+        json.dumps(result, indent=2),
+        mimetype="application/json"
+    )
 
 if __name__ == "__main__":
     app.run(port=5001)

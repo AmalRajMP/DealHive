@@ -35,7 +35,6 @@ explainer = shap.Explainer(model_predict, background)
 # MongoDB connection
 # ----------------------------
 MONGO_URI = os.getenv("MONGO_URI")
-
 if not MONGO_URI:
     raise ValueError("MONGO_URI not found in .env file")
 
@@ -82,12 +81,12 @@ def build_user_features(user_id):
     try:
         user_object_id = ObjectId(user_id)
     except Exception:
-        return None, None
+        return None, None, None
 
     logs = list(interactions_col.find({"user": user_object_id}).limit(50))
 
     if not logs:
-        return None, None
+        return None, None, None
 
     df = pd.DataFrame(logs)
 
@@ -98,12 +97,23 @@ def build_user_features(user_id):
     purchase_count = (df["score"] >= 5).sum()
 
     product_ids = []
+    categories = []
+    prices = []
 
     for log in logs:
         if "meta" in log and isinstance(log["meta"], dict):
+
             pid = log["meta"].get("productId")
             if pid:
                 product_ids.append(str(pid))
+
+            cat = log["meta"].get("category")
+            if cat:
+                categories.append(cat)
+
+            price = log["meta"].get("price")
+            if price:
+                prices.append(price)
 
     features = {
         "user_total_interactions": total_interactions,
@@ -111,7 +121,13 @@ def build_user_features(user_id):
             purchase_count / total_interactions if total_interactions > 0 else 0
     }
 
-    return pd.DataFrame([features]), product_ids
+    profile = {
+        "fav_category": max(set(categories), key=categories.count) if categories else None,
+        "avg_price": np.mean(prices) if prices else None,
+        "interaction_count": total_interactions
+    }
+
+    return pd.DataFrame([features]), product_ids, profile
 
 
 # ----------------------------
@@ -123,42 +139,66 @@ def get_fallback_products(limit=5):
 
 
 # ----------------------------
-# Generate explanation text
+# EXPLANATION ENGINE
 # ----------------------------
-def generate_reason_text(explanation, product):
+def generate_reason(product, explanation, profile):
 
-    reasons = []
+    similarity = explanation["similarity"]
+    interaction = explanation["interaction"]
+    location = explanation["location"]
 
-    category = product.get("category", "")
-    price = product.get("discountPrice", 0)
-    title = product.get("title", "this product")
+    category = product.get("category")
+    price = product.get("discountPrice")
+    source = product.get("source")
 
-    if explanation["interaction"] > 0.5:
-        reasons.append(
-            f"You showed strong interest in products similar to {title}"
-        )
+    strongest = max(
+        {"similarity": similarity, "interaction": interaction, "location": location},
+        key=lambda k: {"similarity": similarity, "interaction": interaction, "location": location}[k]
+    )
 
-    if category:
-        reasons.append(
-            f"You often explore {category} products"
-        )
+    # ---------------- collaborative ----------------
+    if source == "collaborative":
+        if category:
+            return f"Users who explored {category} also chose this"
+        return "Users with similar activity chose this"
 
-    if price and price < 1000:
-        reasons.append("Matches your preference for budget-friendly items")
+    # ---------------- interaction strongest ----------------
+    if strongest == "interaction":
 
-    elif price and price > 2000:
-        reasons.append("Fits your interest in premium products")
+        if profile["fav_category"] and category == profile["fav_category"]:
+            return f"Because you often browse {category}"
 
-    if explanation["similarity"] > 0.4:
-        reasons.append("Similar to items you recently viewed or added to cart")
+        if profile["avg_price"] and price and price <= profile["avg_price"]:
+            return "Because it matches your usual price range"
 
-    if explanation["location"] > 0.2:
-        reasons.append("Service support is available near your location")
+        if category:
+            return f"Because you viewed {category} products"
 
-    if not reasons:
-        reasons.append("Recommended based on your activity and preferences")
+        return "Because you interacted with similar items"
 
-    return reasons[:2]
+    # ---------------- similarity strongest ----------------
+    if strongest == "similarity":
+
+        if category:
+            return f"Similar to {category} items you explored"
+
+        return "Similar to items you viewed"
+
+    # ---------------- location strongest ----------------
+    if strongest == "location":
+        return "Service available near your location"
+
+    # ---------------- secondary fallbacks ----------------
+    if profile["fav_category"] and category:
+        return f"Recommended based on your interest in {category}"
+
+    if price and price < 800:
+        return "Popular in budget range"
+
+    if price and price > 3000:
+        return "Popular among premium buyers"
+
+    return "Trending among shoppers"
 
 
 # ----------------------------
@@ -166,7 +206,7 @@ def generate_reason_text(explanation, product):
 # ----------------------------
 def recommend_live(user_id):
 
-    user_features, product_ids = build_user_features(user_id)
+    user_features, product_ids, profile = build_user_features(user_id)
 
     if user_features is None:
         return {"error": "No interactions for user"}
@@ -178,43 +218,47 @@ def recommend_live(user_id):
 
     prob = model.predict_proba(user_features)[0][1]
 
-    # ----------------------------
-    # Cold start
-    # ----------------------------
+    # ---------------- Cold start users ----------------
     if not product_ids:
 
-        explanation = {
-            "similarity": 0.0,
-            "interaction": 0.0,
-            "location": 0.0,
-            "note": "Fallback recommendations (no product history)"
-        }
+        trending = get_fallback_products()
+
+        for p in trending:
+            p["why"] = "Popular among shoppers right now"
 
         return {
             "user": user_id,
+            "userType": "new",
             "interest_score": float(prob),
-            "recommended_products": get_fallback_products(),
-            "explanation": explanation
+
+            "recommendations": {
+                "contentBased": [],
+                "collaborative": [],
+                "trending": trending,
+                "hybrid": []
+            },
+
+            "explanation": {
+                "note": "New user recommendations based on popularity"
+            }
         }
 
-    # ----------------------------
-    # Content-based recommendations
-    # ----------------------------
+    # ---------------- Content recommendations ----------------
     last_product = product_ids[-1]
 
     try:
         recommended = get_similar_products(last_product)
         if not recommended:
             recommended = get_fallback_products()
-
     except Exception:
         recommended = get_fallback_products()
 
     recommended = convert_objectids(recommended)
 
-    # ----------------------------
-    # Collaborative recommendations
-    # ----------------------------
+    for p in recommended:
+        p["source"] = "content"
+
+    # ---------------- Collaborative ----------------
     collab_ids = get_collaborative_recommendations(user_id)
 
     if collab_ids:
@@ -227,13 +271,13 @@ def recommend_live(user_id):
 
         for p in collab_products:
             p["similarity_score"] = 0.3
+            p["source"] = "collaborative"
 
         recommended.extend(collab_products)
 
-    # ----------------------------
-    # Hybrid ranking
-    # ----------------------------
+    # ---------------- Ranking ----------------
     scored_products = []
+    interaction_score = min(len(product_ids) / 10, 1)
 
     for product in recommended:
 
@@ -246,30 +290,27 @@ def recommend_live(user_id):
             model_score * 0.15
         )
 
+        confidence = round((similarity_score + interaction_score) / 2, 3)
+
         product["final_score"] = final_score
+        product["confidence"] = confidence
+
         scored_products.append(product)
 
-    # SORT AFTER LOOP
     recommended = sorted(
         scored_products,
         key=lambda x: x["final_score"],
         reverse=True
-    )
+    )[:12]   # limit results for UI
 
-    # CONVERT AFTER SORT
     recommended = convert_objectids(recommended)
 
-    # ----------------------------
-    # SHAP explanation
-    # ----------------------------
-    interaction_score = min(len(product_ids) / 10, 1)
-
+    # ---------------- SHAP explanation ----------------
     avg_similarity = np.mean([
         p.get("similarity_score", 0) for p in recommended
     ])
 
     sample = np.array([[avg_similarity, interaction_score, 0.5]])
-
     shap_values = explainer(sample)
 
     explanation = {
@@ -278,18 +319,26 @@ def recommend_live(user_id):
         "location": float(shap_values.values[0][2])
     }
 
-    # ----------------------------
-    # Attach reasons
-    # ----------------------------
+    # attach explanations
     for product in recommended:
-        product["why"] = generate_reason_text(explanation, product)
+        product["why"] = generate_reason(product, explanation, profile)
 
-    # ----------------------------
-    # Final response
-    # ----------------------------
+    # split groups
+    content_based = [p for p in recommended if p.get("source") == "content"]
+    collaborative = [p for p in recommended if p.get("source") == "collaborative"]
+    trending = get_fallback_products()
+
     return {
         "user": user_id,
+        "userType": "existing",
         "interest_score": float(prob),
-        "recommended_products": recommended,
+
+        "recommendations": {
+            "contentBased": content_based,
+            "collaborative": collaborative,
+            "trending": trending,
+            "hybrid": recommended
+        },
+
         "explanation": explanation
     }
