@@ -98,6 +98,29 @@ export const WhyText = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #475569 0%,
+    #60a5fa 25%,
+    #3b82f6 40%,
+    #2563eb 50%,
+    #3b82f6 60%,
+    #60a5fa 75%,
+    #475569 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerMove 3.5s linear infinite;
+
+  @keyframes shimmerMove {
+    to {
+      background-position: 200% center;
+    }
+  }
 `
 export const FallbackTag = styled.span`
   font-size: 11px;
