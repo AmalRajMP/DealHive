@@ -3,6 +3,7 @@ import joblib
 import os
 import shap
 import numpy as np
+import math
 from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
@@ -10,339 +11,357 @@ from product_similarity import get_similar_products
 from collaborative_filter import get_collaborative_recommendations
 from xai_model import model_predict
 
-# ----------------------------
-# Load environment variables
-# ----------------------------
+# =================================================
+# LOAD ENV + DATABASE
+# =================================================
+
 load_dotenv("../backend/.env")
 
-# ----------------------------
-# Load trained model
-# ----------------------------
-model = joblib.load("models/recommender_model.pkl")
-
-# ----------------------------
-# SHAP BACKGROUND + EXPLAINER
-# ----------------------------
-background = np.array([
-    [0, 0, 0],
-    [0.5, 0.2, 0.1],
-    [1, 1, 1]
-])
-
-explainer = shap.Explainer(model_predict, background)
-
-# ----------------------------
-# MongoDB connection
-# ----------------------------
 MONGO_URI = os.getenv("MONGO_URI")
-if not MONGO_URI:
-    raise ValueError("MONGO_URI not found in .env file")
-
 client = MongoClient(MONGO_URI)
 db = client["dealhive_db"]
 
 interactions_col = db["useractivities"]
 products_col = db["products"]
+orders_col = db["orders"]
 
-# ----------------------------
-# Action scoring
-# ----------------------------
-action_score_map = {
-    "view": 1,
-    "search": 2,
-    "wishlist": 3,
-    "added to wishlist": 3,
-    "add to cart": 4,
-    "added to cart": 4,
-    "purchase": 5,
-    "purchased": 5,
-    "placed order": 5
-}
+# =================================================
+# LOAD MODEL
+# =================================================
 
-# ----------------------------
-# Convert ObjectId → string
-# ----------------------------
+model = joblib.load("models/recommender_model.pkl")
+
+background = np.array([
+    [0,0,0],
+    [0.5,0.2,0.1],
+    [1,1,1]
+])
+
+explainer = shap.Explainer(model_predict, background, algorithm="permutation")
+
+# =================================================
+# UTILS
+# =================================================
+
 def convert_objectids(obj):
-    if isinstance(obj, list):
-        return [convert_objectids(item) for item in obj]
-    elif isinstance(obj, dict):
-        return {key: convert_objectids(value) for key, value in obj.items()}
-    elif isinstance(obj, ObjectId):
+    if isinstance(obj,list):
+        return [convert_objectids(i) for i in obj]
+    if isinstance(obj,dict):
+        return {k:convert_objectids(v) for k,v in obj.items()}
+    if isinstance(obj,ObjectId):
         return str(obj)
-    else:
-        return obj
+    return obj
 
 
-# ----------------------------
-# Build user feature vector
-# ----------------------------
+def clean_nan(obj):
+    if isinstance(obj, dict):
+        return {k: clean_nan(v) for k,v in obj.items()}
+    if isinstance(obj, list):
+        return [clean_nan(v) for v in obj]
+    if isinstance(obj, float) and math.isnan(obj):
+        return None
+    return obj
+
+
+def deduplicate(products):
+    seen=set()
+    unique=[]
+    for p in products:
+        pid=str(p.get("_id"))
+        if pid not in seen:
+            seen.add(pid)
+            unique.append(p)
+    return unique
+
+
+# =================================================
+# TRENDING
+# =================================================
+
+def get_trending_products(limit=20):
+
+    pipeline = [
+        {"$match":{"meta.productId":{"$exists":True}}},
+        {"$group":{"_id":"$meta.productId","count":{"$sum":1}}},
+        {"$sort":{"count":-1}},
+        {"$limit":limit}
+    ]
+
+    ids=[i["_id"] for i in interactions_col.aggregate(pipeline)]
+
+    if not ids:
+        return []
+
+    products=list(products_col.find({"_id":{"$in":ids}}))
+
+    for p in products:
+        p["source"]="trending"
+        p["why"]="Popular among users right now"
+
+    return products
+
+
+# =================================================
+# USER PROFILE BUILDER
+# =================================================
+
 def build_user_features(user_id):
 
     try:
-        user_object_id = ObjectId(user_id)
-    except Exception:
-        return None, None, None
+        uid = ObjectId(user_id)
+    except:
+        return None, [], {"products":{}, "categories":{}}
 
-    logs = list(interactions_col.find({"user": user_object_id}).limit(50))
+    logs=list(
+        interactions_col
+        .find({"user":uid})
+        .sort("_id",-1)
+        .limit(200)
+    )
 
-    # cold start user
     if not logs:
-        return None, [], {
-            "fav_category": None,
-            "avg_price": None,
-            "interaction_count": 0
-        }
+        return None, [], {"products":{}, "categories":{}}
 
-    df = pd.DataFrame(logs)
-
-    df["action"] = df["action"].astype(str).str.lower().str.strip()
-    df["score"] = df["action"].map(action_score_map).fillna(0)
-
-    total_interactions = len(df)
-    purchase_count = (df["score"] >= 5).sum()
-
-    product_ids = []
-    categories = []
-    prices = []
+    product_ids=[]
+    product_actions={}
+    category_actions={}
 
     for log in logs:
-        if "meta" in log and isinstance(log["meta"], dict):
 
-            pid = log["meta"].get("productId")
-            if pid:
-                product_ids.append(str(pid))
+        action=str(log.get("action","")).lower()
+        meta=log.get("meta",{})
 
-            cat = log["meta"].get("category")
-            if cat:
-                categories.append(cat)
+        pid=meta.get("productId")
+        name=None
+        cat=None
 
-            price = log["meta"].get("price")
-            if price:
-                prices.append(price)
+        if pid:
+            try:
+                pid=ObjectId(pid)
+                product_ids.append(pid)
 
-    features = {
-        "user_total_interactions": total_interactions,
+                prod=products_col.find_one({"_id":pid},{"title":1,"category":1})
+                if prod:
+                    name=prod.get("title")
+                    cat=str(prod.get("category","")).lower()
+            except:
+                pass
+
+        # ---------- PRODUCT ACTION ----------
+        if name:
+            product_actions.setdefault(name,[]).append(action)
+
+        # ---------- CATEGORY ACTION ----------
+        if cat:
+            category_actions.setdefault(cat,[]).append(action)
+
+        # ---------- ORDER PURCHASE ----------
+        if "order" in action and "orderId" in meta:
+
+            order = orders_col.find_one({"_id":ObjectId(meta["orderId"])})
+
+            if order:
+                for item in order.get("items",[]):
+
+                    try:
+                        prod=products_col.find_one(
+                            {"_id":ObjectId(item["product"])},
+                            {"title":1,"category":1}
+                        )
+
+                        if prod:
+                            pname=prod["title"]
+                            pcat=str(prod.get("category","")).lower()
+
+                            product_actions.setdefault(pname,[]).append("purchase")
+                            category_actions.setdefault(pcat,[]).append("purchase")
+
+                    except:
+                        pass
+
+    features=pd.DataFrame([{
+        "user_total_interactions":len(logs),
         "user_purchase_ratio":
-            purchase_count / total_interactions if total_interactions > 0 else 0
+            sum(1 for log in logs if "order" in str(log.get("action","")).lower())
+            / len(logs)
+    }])
+
+    return features, product_ids, {
+        "products":product_actions,
+        "categories":category_actions
     }
 
-    profile = {
-        "fav_category": max(set(categories), key=categories.count) if categories else None,
-        "avg_price": np.mean(prices) if prices else None,
-        "interaction_count": total_interactions
-    }
 
-    return pd.DataFrame([features]), product_ids, profile
-
-
-# ----------------------------
-# Fallback products
-# ----------------------------
-def get_fallback_products(limit=12):
-    products = list(
-        products_col.find().sort("rating", -1).limit(limit)
-    )
-    return convert_objectids(products)
-
-
-# ----------------------------
+# =================================================
 # EXPLANATION ENGINE
-# ----------------------------
-def generate_reason(product, explanation, profile):
+# =================================================
 
-    similarity = explanation["similarity"]
-    interaction = explanation["interaction"]
-    location = explanation["location"]
+def action_reason(action,name,mode="product"):
 
-    category = product.get("category")
-    price = product.get("discountPrice")
-    source = product.get("source")
+    if mode=="product":
 
-    strongest = max(
-        {"similarity": similarity, "interaction": interaction, "location": location},
-        key=lambda k: {"similarity": similarity, "interaction": interaction, "location": location}[k]
-    )
+        if "purchase" in action:
+            return f"You purchased {name} before"
 
-    if source == "collaborative":
-        if category:
-            return f"Users who explored {category} also chose this"
-        return "Users with similar activity chose this"
+        if "cart" in action:
+            return f"Because you added {name} to cart"
 
-    if strongest == "interaction":
+        if "wishlist" in action:
+            return f"Because you saved {name}"
 
-        if profile["fav_category"] and category == profile["fav_category"]:
-            return f"Because you often browse {category}"
+        if "view" in action:
+            return f"Because you viewed {name}"
 
-        if profile["avg_price"] and price and price <= profile["avg_price"]:
-            return "Because it matches your usual price range"
+    else:
 
-        if category:
-            return f"Because you viewed {category} products"
+        if "purchase" in action:
+            return f"Because you often buy {name} products"
 
-        return "Because you interacted with similar items"
+        if "cart" in action:
+            return f"Because you add {name} items to cart"
 
-    if strongest == "similarity":
+        if "wishlist" in action:
+            return f"Because you save {name} products"
 
-        if category:
-            return f"Similar to {category} items you explored"
+        if "view" in action:
+            return f"Because you viewed {name} products"
 
-        return "Similar to items you viewed"
-
-    if strongest == "location":
-        return "Service available near your location"
-
-    return "Trending among shoppers"
+    return None
 
 
-# ----------------------------
-# MAIN RECOMMENDER FUNCTION
-# ----------------------------
+def get_behavior_reason(product,profile):
+
+    title=product.get("title")
+    category=str(product.get("category","")).lower()
+
+    # ---------- PRODUCT MATCH ----------
+    actions=profile["products"].get(title)
+    if actions:
+        for p in ["purchase","cart","wishlist","view"]:
+            for act in actions:
+                if p in act:
+                    return action_reason(act,title,"product")
+
+    # ---------- CATEGORY MATCH ----------
+    cat_actions=profile["categories"].get(category)
+    if cat_actions:
+        for p in ["purchase","cart","wishlist","view"]:
+            for act in cat_actions:
+                if p in act:
+                    return action_reason(act,category,"category")
+
+    return None
+
+
+def build_explanation(reason,count,source):
+
+    if source=="trending":
+        return "Popular among users right now"
+
+    if reason:
+        return reason
+
+    if source=="collaborative":
+        return "Users with similar interests liked this"
+
+    if count>40:
+        return "Recommended because you frequently shop on DealHive"
+
+    if count>15:
+        return "Recommended based on your activity"
+
+    return "Recommended for you"
+
+
+# =================================================
+# MAIN ENGINE
+# =================================================
+
 def recommend_live(user_id):
 
-    user_features, product_ids, profile = build_user_features(user_id)
+    features, product_ids, profile = build_user_features(user_id)
 
-    # ---------------- COLD START USERS ----------------
+    # ---------- NEW USER ----------
     if not product_ids:
 
-        trending = get_fallback_products()
-
-        for p in trending:
-            p["why"] = "Popular among shoppers right now"
+        trending=get_trending_products()
 
         return {
-            "user": user_id,
-            "userType": "new",
-            "interest_score": 0,
-
-            "recommendations": {
-                "contentBased": [],
-                "collaborative": [],
-                "recent": [],
-                "trending": trending,
-                "hybrid": trending
-            },
-
-            "explanation": {
-                "similarity": 0,
-                "interaction": 0,
-                "location": 1
+            "user":user_id,
+            "userType":"new",
+            "recommendations":{
+                "recent":[],
+                "trending":convert_objectids(trending),
+                "hybrid":[]
             }
         }
 
-    # ---------------- MODEL PREDICTION ----------------
-    user_features = user_features.reindex(
-        columns=model.feature_names_in_,
-        fill_value=0
-    )
-
-    prob = model.predict_proba(user_features)[0][1]
-
-    # ---------------- CONTENT BASED ----------------
-    last_product = product_ids[-1]
-
+    # ---------- MODEL SCORE ----------
     try:
-        recommended = get_similar_products(last_product)
-        if not recommended:
-            recommended = get_fallback_products()
-    except Exception:
-        recommended = get_fallback_products()
+        features=features.reindex(columns=model.feature_names_in_,fill_value=0)
+        prob=float(model.predict_proba(features)[0][1])
+    except:
+        prob=0.5
 
-    recommended = convert_objectids(recommended)
+    # ---------- CONTENT ----------
+    last=product_ids[0]
+    content=get_similar_products(last) or []
 
-    for p in recommended:
-        p["source"] = "content"
+    for p in content:
+        p["source"]="content"
 
-    # ---------------- COLLABORATIVE ----------------
-    collab_ids = get_collaborative_recommendations(user_id)
+    # ---------- COLLAB ----------
+    collab_ids=get_collaborative_recommendations(user_id)
 
+    collab=[]
     if collab_ids:
+        collab=list(products_col.find({
+            "_id":{"$in":[ObjectId(i) for i in collab_ids]}
+        }))
 
-        collab_products = list(
-            products_col.find({
-                "_id": {"$in": [ObjectId(i) for i in collab_ids]}
-            })
-        )
+    for p in collab:
+        p["similarity_score"]=0.3
+        p["source"]="collaborative"
 
-        for p in collab_products:
-            p["similarity_score"] = 0.3
-            p["source"] = "collaborative"
+    # ---------- MERGE ----------
+    rec = deduplicate(content + collab)
 
-        recommended.extend(collab_products)
+    if not rec:
+        rec=get_trending_products()
 
-    # ---------------- RECENTLY VIEWED ----------------
-    recent_ids = product_ids[-5:]
+    # ---------- RANK ----------
+    scored=[]
+    interaction_count=len(product_ids)
 
-    recent_products = list(
-        products_col.find({
-            "_id": {"$in": [ObjectId(i) for i in recent_ids]}
-        })
-    )
+    for p in rec:
 
-    recent_products = convert_objectids(recent_products)
+        sim=(p.get("similarity_score",0)+1)/2
+        score=(sim*0.8)+(prob*0.2)
 
-    # ---------------- RANKING ----------------
-    scored_products = []
-    interaction_score = min(len(product_ids) / 10, 1)
+        p["final_score"]=round(score,4)
+        scored.append(p)
 
-    for product in recommended:
+    scored=sorted(scored,key=lambda x:x["final_score"],reverse=True)
 
-        raw_sim = product.get("similarity_score", 0)
-        similarity_score = (raw_sim + 1) / 2
-        model_score = float(prob)
+    # ---------- FINAL ----------
+    final=[]
 
-        final_score = (
-            similarity_score * 0.85 +
-            model_score * 0.15
-        )
+    for p in scored:
 
-        confidence = round((similarity_score + interaction_score) / 2, 3)
+        reason=get_behavior_reason(p,profile)
+        p["why"]=build_explanation(reason,interaction_count,p.get("source"))
+        final.append(p)
 
-        product["final_score"] = final_score
-        product["confidence"] = confidence
+        if len(final)==20:
+            break
 
-        scored_products.append(product)
-
-    recommended = sorted(
-        scored_products,
-        key=lambda x: x["final_score"],
-        reverse=True
-    )[:12]
-
-    recommended = convert_objectids(recommended)
-
-    # ---------------- SHAP EXPLANATION ----------------
-    avg_similarity = np.mean([
-        p.get("similarity_score", 0) for p in recommended
-    ])
-
-    sample = np.array([[avg_similarity, interaction_score, 0.5]])
-    shap_values = explainer(sample)
-
-    explanation = {
-        "similarity": float(shap_values.values[0][0]),
-        "interaction": float(shap_values.values[0][1]),
-        "location": float(shap_values.values[0][2])
-    }
-
-    for product in recommended:
-        product["why"] = generate_reason(product, explanation, profile)
-
-    content_based = [p for p in recommended if p.get("source") == "content"]
-    collaborative = [p for p in recommended if p.get("source") == "collaborative"]
-    trending = get_fallback_products()
-
-    return {
-        "user": user_id,
-        "userType": "existing",
-        "interest_score": float(prob),
-
-        "recommendations": {
-            "contentBased": content_based,
-            "collaborative": collaborative,
-            "recent": recent_products,
-            "trending": trending,
-            "hybrid": recommended
-        },
-
-        "explanation": explanation
-    }
+    return clean_nan({
+        "user":user_id,
+        "userType":"existing",
+        "interest_score":prob,
+        "recommendations":{
+            "recent":convert_objectids(content[:10]),
+            "trending":convert_objectids(get_trending_products(10)),
+            "hybrid":convert_objectids(final)
+        }
+    })
