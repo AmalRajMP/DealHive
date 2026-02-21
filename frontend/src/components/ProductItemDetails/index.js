@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
 
 import Header from '../../components/Navbar'
+import CategorySection from '../../components/CategorySection'
 
 import CartContext from '../../context/CartContext'
 import WishlistContext from '../../context/WishlistContext'
@@ -49,6 +50,12 @@ const ProductItemDetails = () => {
   const [productDetails, setProductDetails] = useState({})
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
+  const [similarProducts, setSimilarProducts] = useState([])
+  const [similarStatus, setSimilarStatus] = useState(apiStatusConstants.initial)
+
+  const [recommendedProducts, setRecommendedProducts] = useState([])
+  const [recommendedStatus, setRecommendedStatus] = useState(apiStatusConstants.initial)
+
   const formattedCartProduct = {
     _id: productDetails._id,
     title: productDetails.title,
@@ -64,111 +71,181 @@ const ProductItemDetails = () => {
   }
 
   const onToggleWishlist = () => {
-    if (isWishListed) {
-      removeFromWishList(productDetails._id)
-    } else {
-      addToWishList(formattedWishlistProduct)
-    }
+    if (isWishListed) removeFromWishList(productDetails._id)
+    else addToWishList(formattedWishlistProduct)
   }
 
   const getProductDetails = async () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
 
-      const url = `http://localhost:5000/api/products/${id}`
-      const response = await fetch(url)
+      const response = await fetch(`http://localhost:5000/api/products/${id}`)
       const data = await response.json()
 
       if (response.ok) {
         setProductDetails(data.productDetails)
         setApiStatus(apiStatusConstants.success)
-      } else {
-        setApiStatus(apiStatusConstants.failure)
-      }
-    } catch (error) {
+      } else setApiStatus(apiStatusConstants.failure)
+    } catch {
       setApiStatus(apiStatusConstants.failure)
+    }
+  }
+
+  const getSimilarProducts = async () => {
+    try {
+      setSimilarStatus(apiStatusConstants.inProgress)
+
+      const response = await fetch(
+        `http://localhost:5001/recommend/similar/${id}`,
+      )
+      const data = await response.json()
+
+      if (response.ok) {
+        setSimilarProducts(data.products || [])
+        setSimilarStatus(apiStatusConstants.success)
+      } else setSimilarStatus(apiStatusConstants.failure)
+    } catch {
+      setSimilarStatus(apiStatusConstants.failure)
+    }
+  }
+
+  const getRecommendedProducts = async () => {
+    try {
+      setRecommendedStatus(apiStatusConstants.inProgress)
+
+      const userId = localStorage.getItem('userId')
+      if (!userId) {
+        setRecommendedStatus(apiStatusConstants.success)
+        return
+      }
+
+      const response = await fetch(`http://localhost:5001/recommend/${userId}`)
+      const data = await response.json()
+
+      if (response.ok) {
+        const list =
+          data.recommendations?.hybrid ||
+          data.recommendations?.contentBased ||
+          data.recommendations?.collaborative ||
+          data.recommendations?.trending ||
+          []
+
+        const formatted = list.map((p) => ({
+          ...p,
+          thumbnail: p.thumbnail || p.image,
+          discountPrice: p.discountPrice || p.price,
+          originalPrice: p.originalPrice || p.price,
+        }))
+
+        setRecommendedProducts(formatted)
+        setRecommendedStatus(apiStatusConstants.success)
+      } else setRecommendedStatus(apiStatusConstants.failure)
+    } catch {
+      setRecommendedStatus(apiStatusConstants.failure)
     }
   }
 
   useEffect(() => {
     getProductDetails()
+    getSimilarProducts()
+    getRecommendedProducts()
   }, [id])
 
-  const renderLoadingView = () => (
+  const renderLoader = () => (
     <LoaderContainer>
-      <ThreeDots color="#1e40af" height="50" width="50" radius="9" />
+      <ThreeDots height="50" width="50" />
     </LoaderContainer>
   )
 
-  const renderFailureView = () => (
+  const renderFailure = () => (
     <FailureContainer>
       <MdErrorOutline size={50} />
-      <FailureText>Failed to load product details.</FailureText>
+      <FailureText>Failed to load product.</FailureText>
       <RetryButton onClick={getProductDetails}>Retry</RetryButton>
     </FailureContainer>
   )
 
-  const renderSuccessView = () => (
-    <Page>
-      <Card>
-        <ImageSection>
-          <ProductImage
-            src={productDetails.thumbnail}
-            alt={productDetails.title}
+  const renderProduct = () => (
+    <>
+      <Page>
+        <Card>
+          <ImageSection>
+            <ProductImage
+              src={productDetails.thumbnail}
+              alt={productDetails.title}
+            />
+
+            <WishlistButton type="button" onClick={onToggleWishlist}>
+              {isWishListed ? (
+                <AiFillHeart size={22} color="#e11d48" />
+              ) : (
+                <AiOutlineHeart size={22} color="#1e40af" />
+              )}
+            </WishlistButton>
+          </ImageSection>
+
+          <DetailsSection>
+            <Title>{productDetails.title}</Title>
+
+            <Brand>
+              Brand: <span>{productDetails.brand}</span>
+            </Brand>
+
+            <Rating>⭐ {productDetails.rating} / 5</Rating>
+
+            <PriceRow>
+              <DiscountPrice>₹{productDetails.discountPrice}</DiscountPrice>
+              <OriginalPrice>₹{productDetails.originalPrice}</OriginalPrice>
+            </PriceRow>
+
+            <Description>{productDetails.description}</Description>
+
+            <ButtonGroup>
+              <AddToCartButton
+                type="button"
+                onClick={() => addToCart(formattedCartProduct)}
+              >
+                Add to Cart
+              </AddToCartButton>
+
+              <BuyNowButton type="button">Buy Now</BuyNowButton>
+            </ButtonGroup>
+          </DetailsSection>
+        </Card>
+      </Page>
+
+      {similarStatus === apiStatusConstants.inProgress && renderLoader()}
+
+      {similarStatus === apiStatusConstants.success &&
+        similarProducts.length > 0 && (
+          <CategorySection
+            title="Similar Products"
+            subtitle="Based on this item"
+            products={similarProducts}
           />
+        )}
 
-          <WishlistButton type="button" onClick={onToggleWishlist}>
-            {isWishListed ? (
-              <AiFillHeart size={22} color="#e11d48" />
-            ) : (
-              <AiOutlineHeart size={22} color="#1e40af" />
-            )}
-          </WishlistButton>
-        </ImageSection>
+      {recommendedStatus === apiStatusConstants.inProgress && renderLoader()}
 
-        <DetailsSection>
-          <Title>{productDetails.title}</Title>
-
-          <Brand>
-            Brand: <span>{productDetails.brand}</span>
-          </Brand>
-
-          <Rating>⭐ {productDetails.rating} / 5</Rating>
-
-          <PriceRow>
-            <DiscountPrice>₹{productDetails.discountPrice}</DiscountPrice>
-            <OriginalPrice>₹{productDetails.originalPrice}</OriginalPrice>
-          </PriceRow>
-
-          <Description>{productDetails.description}</Description>
-
-          <ButtonGroup>
-            <AddToCartButton
-              type="button"
-              onClick={() => {
-                console.log('ADDING TO CART:', formattedCartProduct)
-
-                addToCart(formattedCartProduct)
-              }}
-            >
-              Add to Cart
-            </AddToCartButton>
-
-            <BuyNowButton type="button">Buy Now</BuyNowButton>
-          </ButtonGroup>
-        </DetailsSection>
-      </Card>
-    </Page>
+      {recommendedStatus === apiStatusConstants.success &&
+        recommendedProducts.length > 0 && (
+          <CategorySection
+            title="Recommended For You"
+            subtitle="Personalized picks"
+            products={recommendedProducts}
+          />
+        )}
+    </>
   )
 
-  const renderProductDetails = () => {
+  const renderSwitch = () => {
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
-        return renderLoadingView()
+        return renderLoader()
       case apiStatusConstants.success:
-        return renderSuccessView()
+        return renderProduct()
       case apiStatusConstants.failure:
-        return renderFailureView()
+        return renderFailure()
       default:
         return null
     }
@@ -177,7 +254,7 @@ const ProductItemDetails = () => {
   return (
     <>
       <Header />
-      {renderProductDetails()}
+      {renderSwitch()}
     </>
   )
 }
