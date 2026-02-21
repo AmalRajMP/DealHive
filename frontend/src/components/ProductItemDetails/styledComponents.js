@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
-  padding: 80px 12px;
+  padding: 80px 40px 10px 20px;
   display: flex;
   justify-content: center;
 `
@@ -11,6 +11,7 @@ export const Card = styled.div`
   max-width: 900px;
   display: flex;
   gap: 20px;
+  margin-bottom: 6px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -50,7 +51,8 @@ export const DetailsSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-
+  justify-content: center;
+  
   @media screen and (min-width: 769px) {
     gap: 12px;
     padding-top: 10px;

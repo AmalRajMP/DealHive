@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import styled from 'styled-components'
 
 import FilterItem from '../../components/FilterItem'
 import CategorySection from '../../components/CategorySection'
@@ -39,6 +40,47 @@ import {
   RetryButton,
 } from './styledComponents'
 
+/* ================= LOADER STYLES ================= */
+
+const RecommendationLoaderBox = styled.div`
+  width: 100%;
+  min-height: 190px;
+  margin: 10px 0 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.35s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+
+const LoaderTitle = styled.p`
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+`
+
+const LoaderSub = styled.span`
+  font-size: 13px;
+  color: #3b82f6;
+  margin-top: 4px;
+`
+
+/* ================================================= */
+
 const HomePage = () => {
   const dealsRef = useRef(null)
 
@@ -73,7 +115,10 @@ const HomePage = () => {
       setRecommendStatus(apiStatusConstants.inProgress)
 
       const userId = localStorage.getItem('userId')
-      if (!userId) return
+      if (!userId) {
+        setRecommendStatus(apiStatusConstants.success)
+        return
+      }
 
       const response = await fetch(`http://localhost:5001/recommend/${userId}`)
       const data = await response.json()
@@ -96,7 +141,6 @@ const HomePage = () => {
     dealsRef.current?.scrollIntoView({ behavior: 'smooth' })
 
   const onSearchProduct = (e) => setSearchInput(e.target.value)
-
   const onChangeActiveFilter = (id) => setActiveFilterId(id)
 
   const getProductsByCategories = (products, categories) =>
@@ -150,14 +194,17 @@ const HomePage = () => {
   const beautyProducts = productsList.filter(
     (p) => p.category.toLowerCase() === 'beauty',
   )
+
   const electronicsProducts = getProductsByCategories(
     productsList,
     ELECTRONICS_CATEGORIES,
   )
+
   const fashionProducts = getProductsByCategories(
     productsList,
     FASHION_CATEGORIES,
   )
+
   const groceriesProducts = getProductsByCategories(
     productsList,
     GROCERIES_CATEGORIES,
@@ -181,7 +228,7 @@ const HomePage = () => {
 
   const renderLoadingView = () => (
     <LoaderContainer>
-      <ThreeDots height="50" width="50" />
+      <ThreeDots height="50" width="50" color="#2563eb" />
     </LoaderContainer>
   )
 
@@ -193,6 +240,14 @@ const HomePage = () => {
     </FailureContainer>
   )
 
+  const renderRecommendationLoader = () => (
+    <RecommendationLoaderBox>
+      <ThreeDots height="40" width="40" color="#2563eb" />
+      <LoaderTitle>Finding deals you'll love...</LoaderTitle>
+      <LoaderSub>AI is analyzing your interests</LoaderSub>
+    </RecommendationLoaderBox>
+  )
+
   const renderSuccessView = () => {
     if (showFilteredResults)
       return (
@@ -201,28 +256,41 @@ const HomePage = () => {
 
     return (
       <>
-        {nearbyProducts.length > 0 && (
-          <CategorySection
-            title="Service Near You"
-            subtitle="Products with nearby support centers"
-            products={nearbyProducts}
-          />
-        )}
+        {recommendStatus === apiStatusConstants.inProgress &&
+          renderRecommendationLoader()}
 
-        {!isNewUser && hybridProducts.length > 0 && (
-          <CategorySection
-            title="Recommended for you"
-            subtitle={aiSubtitle}
-            products={hybridProducts}
-          />
-        )}
+        {recommendStatus === apiStatusConstants.success && (
+          <>
+            {nearbyProducts.length > 0 && (
+              <CategorySection
+                title="Service Near You"
+                subtitle="Products with nearby support centers"
+                products={nearbyProducts}
+              />
+            )}
 
-        {recentProducts.length > 0 && (
-          <CategorySection title="Recently Viewed" products={recentProducts} />
-        )}
+            {!isNewUser && hybridProducts.length > 0 && (
+              <CategorySection
+                title="Recommended for you"
+                subtitle={aiSubtitle}
+                products={hybridProducts}
+              />
+            )}
 
-        {(isNewUser || trendingProducts.length > 0) && (
-          <CategorySection title="Trending Now" products={trendingProducts} />
+            {recentProducts.length > 0 && (
+              <CategorySection
+                title="Recently Viewed"
+                products={recentProducts}
+              />
+            )}
+
+            {(isNewUser || trendingProducts.length > 0) && (
+              <CategorySection
+                title="Trending Now"
+                products={trendingProducts}
+              />
+            )}
+          </>
         )}
 
         <div ref={dealsRef}>
@@ -230,9 +298,7 @@ const HomePage = () => {
         </div>
 
         <CategorySection title="Electronics" products={electronicsProducts} />
-
         <CategorySection title="Fashion" products={fashionProducts} />
-
         <CategorySection title="Groceries" products={groceriesProducts} />
       </>
     )
