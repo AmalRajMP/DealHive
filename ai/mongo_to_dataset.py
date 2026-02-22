@@ -3,21 +3,18 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
-# ======================
-# LOAD ENV
-# ======================
 load_dotenv("../backend/.env")
 
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client["dealhive_db"]
 
-# ======================
-# FETCH DATA
-# ======================
+#Fetching user activity logs
+
 logs = list(db.useractivities.find({
     "meta.productId": {"$exists": True}
 }))
 
+#Stores each product in the db to a dict with key (productId) and value (product_details)
 products = {
     str(p["_id"]): p
     for p in db.products.find()
@@ -27,9 +24,9 @@ rows = []
 
 for log in logs:
 
-    pid = str(log["meta"]["productId"])
+    pid = str(log["meta"]["productId"]) #Extracts productId
 
-    product = products.get(pid, {})
+    product = products.get(pid, {}) #Stores product having pid as productId
 
     rows.append({
         "user_id": str(log["user"]),
@@ -43,10 +40,10 @@ for log in logs:
 
 df = pd.DataFrame(rows)
 
-df["action"] = df["action"].str.lower().str.strip()
+#Convert action field to have only lower case letter without any trailing spaces
+df["action"] = df["action"].str.lower().str.strip() 
 
 os.makedirs("datasets", exist_ok=True)
 df.to_csv("datasets/mongo_dataset.csv", index=False)
 
-print("Dataset rebuilt with product features")
 print("Shape:", df.shape)
