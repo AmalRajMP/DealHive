@@ -170,3 +170,39 @@ export const RetryButton = styled.button`
   cursor: pointer;
   font-weight: 500;
 `
+export const RecommendationLoaderBox = styled.div`
+  width: 100%;
+  min-height: 190px;
+  margin: 10px 0 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.35s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+
+export const LoaderTitle = styled.p`
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+`
+
+export const LoaderSub = styled.span`
+  font-size: 13px;
+  color: #3b82f6;
+  margin-top: 4px;
+`

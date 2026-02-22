@@ -20,7 +20,7 @@ export const ProductCard = styled.div`
 
   @media (min-width: 768px) {
     width: 200px;
-    min-height: 240px;
+    min-height: 240px;   
   }
 
   @media (min-width: 1200px) {

@@ -2,27 +2,20 @@ import random
 import pandas as pd
 from pymongo import MongoClient
 from datetime import datetime, timedelta
-import os
-from dotenv import load_dotenv
+import os #To interact with the OS
+from dotenv import load_dotenv #To read environment variables
 from bson import ObjectId
 
-# =========================
-# LOAD ENV
-# =========================
+#Load env vars
 load_dotenv(os.path.join(os.path.dirname(__file__), "../backend/.env"))
 
-print("Mongo URI =", os.getenv("MONGO_URI"))
+#print("Mongo URI =", os.getenv("MONGO_URI"))
 
-# =========================
-# CONFIG
-# =========================
 NUM_USERS = 500
 INTERACTIONS_PER_USER = 120
 START_DATE = datetime.utcnow() - timedelta(days=90)
 
-# =========================
-# CONNECT DB
-# =========================
+#Connect to DB
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client["dealhive_db"]
 
@@ -31,17 +24,13 @@ products = list(db["products"].find())
 if not products:
     raise Exception("No products found in DB")
 
-categories = list(set(p.get("category") or "Unknown" for p in products))
-brands = list(set(p.get("brand") or "Generic" for p in products))
+categories = list(set(p.get("category") or "Unknown" for p in products)) #Stores all the categories in a list
+brands = list(set(p.get("brand") or "Generic" for p in products)) #Stores all the brands in a list
 
-# =========================
-# CREATE REAL USER IDS
-# =========================
+#Generates a list of 500 unique MongoDB-style user IDs.
 user_ids = [ObjectId() for _ in range(NUM_USERS)]
 
-# =========================
-# USER PROFILE GENERATOR
-# =========================
+#Create random user behavior
 def create_user_profile():
     return {
         "fav_category": random.choice(categories),
@@ -49,9 +38,7 @@ def create_user_profile():
         "budget": random.choice([5000, 10000, 20000, 50000])
     }
 
-# =========================
-# ACTION LOGIC
-# =========================
+#Chooses user action according to the score
 def choose_action(score_boost):
 
     if score_boost >= 0.6:
@@ -82,24 +69,25 @@ csv_rows = []
 for user_index in range(NUM_USERS):
 
     user_id = user_ids[user_index]
-    profile = create_user_profile()
+    profile = create_user_profile() #Generates random user profile
 
-    # user prefers certain products more often
+    #Generates each user's fav products pool
     preferred_products = random.sample(products, k=min(20, len(products)))
 
+    #To similate multiple actions for the user
     for _ in range(INTERACTIONS_PER_USER):
-
-        # bias toward preferred products
         if random.random() < 0.65:
-            product = random.choice(preferred_products)
+            product = random.choice(preferred_products) #choose any product from the prefered products
         else:
-            product = random.choice(products)
+            product = random.choice(products) #choose any other product
 
-        price = float(product.get("discountPrice") or product.get("price") or 0)
+        #Store the price of the selected product
+        price = float(product.get("discountPrice") or product.get("price") or 0) 
 
         score_boost = 0
 
-        # preference boosts
+        #If the products features matches user's preferences, increase the score
+        #We will use this score to set the action (View/Purchase/Add to cart ...)
         if (product.get("category") or "Unknown") == profile["fav_category"]:
             score_boost += 0.25
 
@@ -109,7 +97,7 @@ for user_index in range(NUM_USERS):
         if price <= profile["budget"]:
             score_boost += 0.2
 
-        action = choose_action(score_boost)
+        action = choose_action(score_boost) #Stores the generated action
 
         timestamp = START_DATE + timedelta(days=random.randint(0, 90))
 
@@ -117,12 +105,13 @@ for user_index in range(NUM_USERS):
         mongo_logs.append({
             "user": user_id,
             "action": action,
+            #Container for more product infos
             "meta": {
                 "productId": product["_id"]
             },
             "createdAt": timestamp,
             "updatedAt": timestamp,
-            "__v": 0,
+            "__v": 0, #0 indicates new record
             "isSynthetic": True
         })
 
@@ -137,22 +126,16 @@ for user_index in range(NUM_USERS):
             "timestamp": timestamp
         })
 
-# =========================
-# INSERT INTO MONGODB
-# =========================
-print("Inserting logs into MongoDB...")
+#Insert logs into mongoDB
 
 db["useractivities"].insert_many(mongo_logs)
 
 print("Inserted:", len(mongo_logs), "documents")
 
-# =========================
-# SAVE CSV BACKUP
-# =========================
-df = pd.DataFrame(csv_rows)
+df = pd.DataFrame(csv_rows) #Converts to table format
 
-os.makedirs("datasets", exist_ok=True)
-df.to_csv("datasets/synthetic_interactions.csv", index=False)
+os.makedirs("datasets", exist_ok=True) #Creates a directory if not exists
+df.to_csv("datasets/synthetic_interactions.csv", index=False) #index = False means do not store indexes
 
 print("CSV dataset saved")
 print("Total rows:", len(df))

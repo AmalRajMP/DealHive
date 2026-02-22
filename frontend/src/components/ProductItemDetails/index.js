@@ -34,6 +34,9 @@ import {
   FailureContainer,
   FailureText,
   RetryButton,
+  RecommendationLoaderBox,
+  LoaderTitle,
+  LoaderSub,
 } from './styledComponents'
 
 const ProductItemDetails = () => {
@@ -54,7 +57,24 @@ const ProductItemDetails = () => {
   const [similarStatus, setSimilarStatus] = useState(apiStatusConstants.initial)
 
   const [recommendedProducts, setRecommendedProducts] = useState([])
-  const [recommendedStatus, setRecommendedStatus] = useState(apiStatusConstants.initial)
+  const [recommendedStatus, setRecommendedStatus] = useState(
+    apiStatusConstants.initial,
+  )
+
+  const renderRecommendationLoader = () => (
+    <RecommendationLoaderBox>
+      <ThreeDots height="40" width="40" color="#2563eb" />
+      <LoaderTitle>Finding deals you'll love...</LoaderTitle>
+      <LoaderSub>AI is analyzing your interests</LoaderSub>
+    </RecommendationLoaderBox>
+  )
+  const renderSimilarProductsLoader = () => (
+    <RecommendationLoaderBox>
+      <ThreeDots height="40" width="40" color="#2563eb" />
+      <LoaderTitle>Finding similar items...</LoaderTitle>
+      <LoaderSub>Analyzing this product</LoaderSub>
+    </RecommendationLoaderBox>
+  )
 
   const formattedCartProduct = {
     _id: productDetails._id,
@@ -153,7 +173,7 @@ const ProductItemDetails = () => {
 
   const renderLoader = () => (
     <LoaderContainer>
-      <ThreeDots height="50" width="50" />
+      <ThreeDots height="50" width="50" color="#2563eb" />
     </LoaderContainer>
   )
 
@@ -214,7 +234,8 @@ const ProductItemDetails = () => {
         </Card>
       </Page>
 
-      {similarStatus === apiStatusConstants.inProgress && renderLoader()}
+      {similarStatus === apiStatusConstants.inProgress &&
+        renderSimilarProductsLoader()}
 
       {similarStatus === apiStatusConstants.success &&
         similarProducts.length > 0 && (
@@ -225,7 +246,8 @@ const ProductItemDetails = () => {
           />
         )}
 
-      {recommendedStatus === apiStatusConstants.inProgress && renderLoader()}
+      {recommendedStatus === apiStatusConstants.inProgress &&
+        renderRecommendationLoader()}
 
       {recommendedStatus === apiStatusConstants.success &&
         recommendedProducts.length > 0 && (

@@ -1,13 +1,12 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
-  padding: 80px 40px 10px 20px;
+  padding: 80px 15px 10px 15px;
   display: flex;
   justify-content: center;
 `
 
 export const Card = styled.div`
-  width: 100%;
   max-width: 900px;
   display: flex;
   gap: 20px;
@@ -52,7 +51,7 @@ export const DetailsSection = styled.div`
   flex-direction: column;
   gap: 8px;
   justify-content: center;
-  
+
   @media screen and (min-width: 769px) {
     gap: 12px;
     padding-top: 10px;
@@ -238,4 +237,59 @@ export const RetryButton = styled.button`
   color: white;
   cursor: pointer;
   font-weight: 500;
+`
+export const RecommendationLoaderBox = styled.div`
+  width: 100%;
+  min-height: 170px;
+  margin: 10px 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  animation: fadeIn 0.5s ease;
+
+  /* soft ambient glow */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.12),
+      rgba(37, 99, 235, 0.05) 40%,
+      transparent 75%
+    );
+    filter: blur(25px);
+    z-index: -1;
+  }
+
+  /* edge blending mask */
+  -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
+  mask-image: radial-gradient(circle, black 70%, transparent 100%);
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+export const LoaderTitle = styled.p`
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+`
+
+export const LoaderSub = styled.span`
+  font-size: 13px;
+  color: #3b82f6;
+  margin-top: 4px;
 `
