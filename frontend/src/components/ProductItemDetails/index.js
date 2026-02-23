@@ -37,6 +37,14 @@ import {
   RecommendationLoaderBox,
   LoaderTitle,
   LoaderSub,
+  Section,
+  SectionTitle,
+  ReviewCard,
+  ReviewerName,
+  ReviewRating,
+  ReviewComment,
+  ServiceList,
+  ServiceItem,
 } from './styledComponents'
 
 const ProductItemDetails = () => {
@@ -226,6 +234,31 @@ const ProductItemDetails = () => {
 
               <Description>{productDetails.description}</Description>
 
+              {reviews.length > 0 && (
+                <Section>
+                  <SectionTitle>Customer Reviews</SectionTitle>
+
+                  {reviews.map((review, index) => (
+                    <ReviewCard key={index}>
+                      <ReviewerName>{review.reviewerName}</ReviewerName>
+                      <ReviewRating>⭐ {review.rating} / 5</ReviewRating>
+                      <ReviewComment>{review.comment}</ReviewComment>
+                    </ReviewCard>
+                  ))}
+                </Section>
+              )}
+
+              {isServiceable && serviceCenters.length > 0 && (
+                <Section>
+                  <SectionTitle>Available Service Centers</SectionTitle>
+
+                  <ServiceList>
+                    {serviceCenters.map((center, index) => (
+                      <ServiceItem key={index}>{center}</ServiceItem>
+                    ))}
+                  </ServiceList>
+                </Section>
+              )}
               <ButtonGroup>
                 <AddToCartButton
                   type="button"
