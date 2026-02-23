@@ -293,3 +293,44 @@ export const LoaderSub = styled.span`
   color: #3b82f6;
   margin-top: 4px;
 `
+export const Section = styled.div`
+  margin-top: 32px;
+`
+
+export const SectionTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1e293b;
+`
+
+export const ReviewCard = styled.div`
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+`
+
+export const ReviewerName = styled.p`
+  font-weight: 600;
+  margin-bottom: 4px;
+`
+
+export const ReviewRating = styled.p`
+  font-size: 14px;
+  color: #f59e0b;
+  margin-bottom: 4px;
+`
+
+export const ReviewComment = styled.p`
+  font-size: 14px;
+  color: #475569;
+`
+
+export const ServiceList = styled.ul`
+  padding-left: 18px;
+`
+
+export const ServiceItem = styled.li`
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 6px;
+`
