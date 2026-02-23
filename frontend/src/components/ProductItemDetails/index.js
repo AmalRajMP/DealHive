@@ -45,6 +45,7 @@ import {
   ReviewComment,
   ServiceList,
   ServiceItem,
+  ProductLayout,
 } from './styledComponents'
 
 const ProductItemDetails = () => {
@@ -202,75 +203,76 @@ const ProductItemDetails = () => {
     return (
       <>
         <Page>
-          <Card>
-            <ImageSection>
-              <ProductImage
-                src={productDetails.thumbnail}
-                alt={productDetails.title}
-              />
+          <ProductLayout>
+            <Card>
+              <ImageSection>
+                <ProductImage
+                  src={productDetails.thumbnail}
+                  alt={productDetails.title}
+                />
 
-              <WishlistButton type="button" onClick={onToggleWishlist}>
-                {isWishListed ? (
-                  <AiFillHeart size={22} color="#e11d48" />
-                ) : (
-                  <AiOutlineHeart size={22} color="#1e40af" />
+                <WishlistButton type="button" onClick={onToggleWishlist}>
+                  {isWishListed ? (
+                    <AiFillHeart size={22} color="#e11d48" />
+                  ) : (
+                    <AiOutlineHeart size={22} color="#1e40af" />
+                  )}
+                </WishlistButton>
+              </ImageSection>
+
+              <DetailsSection>
+                <Title>{productDetails.title}</Title>
+
+                <Brand>
+                  Brand: <span>{productDetails.brand}</span>
+                </Brand>
+
+                <Rating>⭐ {productDetails.rating} / 5</Rating>
+
+                <PriceRow>
+                  <DiscountPrice>₹{productDetails.discountPrice}</DiscountPrice>
+                  <OriginalPrice>₹{productDetails.originalPrice}</OriginalPrice>
+                </PriceRow>
+
+                <Description>{productDetails.description}</Description>
+
+                {isServiceable && serviceCenters.length > 0 && (
+                  <Section>
+                    <SectionTitle>Available Service Centers</SectionTitle>
+
+                    <ServiceList>
+                      {serviceCenters.map((center, index) => (
+                        <ServiceItem key={index}>{center}</ServiceItem>
+                      ))}
+                    </ServiceList>
+                  </Section>
                 )}
-              </WishlistButton>
-            </ImageSection>
+                <ButtonGroup>
+                  <AddToCartButton
+                    type="button"
+                    onClick={() => addToCart(formattedCartProduct)}
+                  >
+                    Add to Cart
+                  </AddToCartButton>
 
-            <DetailsSection>
-              <Title>{productDetails.title}</Title>
+                  <BuyNowButton type="button">Buy Now</BuyNowButton>
+                </ButtonGroup>
+              </DetailsSection>
+            </Card>
+            {reviews.length > 0 && (
+              <Section>
+                <SectionTitle>Customer Reviews</SectionTitle>
 
-              <Brand>
-                Brand: <span>{productDetails.brand}</span>
-              </Brand>
-
-              <Rating>⭐ {productDetails.rating} / 5</Rating>
-
-              <PriceRow>
-                <DiscountPrice>₹{productDetails.discountPrice}</DiscountPrice>
-                <OriginalPrice>₹{productDetails.originalPrice}</OriginalPrice>
-              </PriceRow>
-
-              <Description>{productDetails.description}</Description>
-
-              {reviews.length > 0 && (
-                <Section>
-                  <SectionTitle>Customer Reviews</SectionTitle>
-
-                  {reviews.map((review, index) => (
-                    <ReviewCard key={index}>
-                      <ReviewerName>{review.reviewerName}</ReviewerName>
-                      <ReviewRating>⭐ {review.rating} / 5</ReviewRating>
-                      <ReviewComment>{review.comment}</ReviewComment>
-                    </ReviewCard>
-                  ))}
-                </Section>
-              )}
-
-              {isServiceable && serviceCenters.length > 0 && (
-                <Section>
-                  <SectionTitle>Available Service Centers</SectionTitle>
-
-                  <ServiceList>
-                    {serviceCenters.map((center, index) => (
-                      <ServiceItem key={index}>{center}</ServiceItem>
-                    ))}
-                  </ServiceList>
-                </Section>
-              )}
-              <ButtonGroup>
-                <AddToCartButton
-                  type="button"
-                  onClick={() => addToCart(formattedCartProduct)}
-                >
-                  Add to Cart
-                </AddToCartButton>
-
-                <BuyNowButton type="button">Buy Now</BuyNowButton>
-              </ButtonGroup>
-            </DetailsSection>
-          </Card>
+                {reviews.map((review, index) => (
+                  <ReviewCard key={index}>
+                    <ReviewerName>{review.reviewerName}</ReviewerName>
+                    <ReviewRating>⭐ {review.rating} / 5</ReviewRating>
+                    <ReviewComment>{review.comment}</ReviewComment>
+                  </ReviewCard>
+                ))}
+              </Section>
+            )}
+          </ProductLayout>
         </Page>
 
         {similarStatus === apiStatusConstants.inProgress &&

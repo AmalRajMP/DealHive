@@ -334,3 +334,15 @@ export const ServiceItem = styled.li`
   color: #334155;
   margin-bottom: 6px;
 `
+
+export const ProductLayout = styled.div`
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+`
+
+export const ReviewSectionWrapper = styled.div`
+  flex: 1;
+  min-width: 280px;
+`
