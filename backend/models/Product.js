@@ -45,6 +45,10 @@ const productSchema = new mongoose.Schema({
       comment: String,
     },
   ],
+  isServiceable: {
+    type: Boolean,
+    default: false,
+  },
   serviceCenters: [{ type: String }],
 })
 

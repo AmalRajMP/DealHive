@@ -1,15 +1,23 @@
 import pandas as pd
 import os
-import joblib
 
-from sklearn.model_selection import train_test_split
+#To save the trained ML models and load them later
+import joblib 
+
+#For splitting the data for training and testing
+from sklearn.model_selection import train_test_split 
+
+# ML model that uses multiple decision trees and predicts the final class by majority vote
 from sklearn.ensemble import RandomForestClassifier
+
+#To evaluate model performance
 from sklearn.metrics import accuracy_score, classification_report, roc_auc_score
+
+# Used to balance the dataset by resampling classes
+# Example: class 0 → 100 samples, class 1 → 100 samples
 from sklearn.utils import resample
 
-# ----------------------------
-# LOAD DATASET
-# ----------------------------
+#Load dataset from the /datasets folder
 DATA_PATH = os.path.join("datasets", "mongo_dataset.csv")
 
 if not os.path.exists(DATA_PATH):
@@ -17,9 +25,6 @@ if not os.path.exists(DATA_PATH):
 
 df = pd.read_csv(DATA_PATH)
 
-# ----------------------------
-# CLEAN ACTION COLUMN
-# ----------------------------
 action_map = {
     "viewed product": 1,
     "view": 1,
@@ -31,42 +36,51 @@ action_map = {
     "purchased": 5
 }
 
+# Clean action column to ensure consistent formatting before mapping to numeric scores
 df["action"] = df["action"].astype(str).str.lower().str.strip()
+
+# Create a new column 'action_score' by mapping actions to their corresponding numeric scores
 df["action_score"] = df["action"].map(action_map).fillna(0)
 
-# ----------------------------
-# SORT BY TIME
-# ----------------------------
+# sort by time
+
+# Convert timestamp column from string to datetime for time-based operations
 df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+# Sort by timestamp and reset the index to start from 0
 df = df.sort_values("timestamp").reset_index(drop=True)
 
-# ----------------------------
-# RECENCY FEATURE
-# ----------------------------
+# Recency feature
+
+# Create a column storing previous interaction timestamp for each user
 df["prev_time"] = df.groupby("user_id")["timestamp"].shift(1)
 
+# Calculate time gap between current and previous interaction
 df["recency_seconds"] = (
     df["timestamp"] - df["prev_time"]
 ).dt.total_seconds()
 
+# Fill missing recency values with median time gap
 df["recency_seconds"] = df["recency_seconds"].fillna(
     df["recency_seconds"].median()
 )
 
-# ----------------------------
-# CATEGORY AFFINITY
-# ----------------------------
-df["user_cat_count"] = df.groupby(["user_id", "category"]).cumcount()
+# Count how many previous interactions this user has had with this category
+df["user_cat_count"] = df.groupby(["user_id", "category"]).cumcount() # .cumcount() counts prev rows
+
+# Count total number of previous interactions performed by this user
 df["user_total_prev"] = df.groupby("user_id").cumcount()
 
+# Calculate user's preference strength for this category
+# (category interactions ÷ total interactions)
+# replace(0,1) prevents division by zero for first interaction
 df["user_category_affinity"] = (
     df["user_cat_count"] /
     df["user_total_prev"].replace(0, 1)
 )
 
-# ----------------------------
-# TARGET VARIABLE
-# ----------------------------
+# Create target variable (what the model predicts)
+# Label = 1 if action is purchase (action_score == 5), else 0
 df["label"] = (df["action_score"] == 5).astype(int)
 
 # ----------------------------
