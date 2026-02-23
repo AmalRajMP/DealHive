@@ -298,15 +298,20 @@ export const Section = styled.div`
 `
 
 export const SectionTitle = styled.h3`
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
   color: #1e293b;
+  letter-spacing: 0.3px;
 `
 
 export const ReviewCard = styled.div`
   padding: 12px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #f1f5f9;
+
+  &:last-child {
+    border-bottom: none;
+  }
 `
 
 export const ReviewerName = styled.p`
@@ -326,13 +331,26 @@ export const ReviewComment = styled.p`
 `
 
 export const ServiceList = styled.ul`
-  padding-left: 18px;
+  padding-left: 0;
+  list-style: none;
 `
 
 export const ServiceItem = styled.li`
   font-size: 14px;
   color: #334155;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+
+  background: #f8fafc;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:before {
+    content: '📍';
+  }
 `
 
 export const ProductLayout = styled.div`
@@ -344,5 +362,17 @@ export const ProductLayout = styled.div`
 
 export const ReviewSectionWrapper = styled.div`
   flex: 1;
-  min-width: 280px;
+  min-width: 300px;
+  max-width: 380px;
+
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-top: 20px;
+  }
 `
