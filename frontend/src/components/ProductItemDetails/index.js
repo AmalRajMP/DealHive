@@ -46,6 +46,7 @@ import {
   ServiceList,
   ServiceItem,
   ProductLayout,
+  ReviewSectionWrapper,
 } from './styledComponents'
 
 const ProductItemDetails = () => {
@@ -236,17 +237,6 @@ const ProductItemDetails = () => {
 
                 <Description>{productDetails.description}</Description>
 
-                {isServiceable && serviceCenters.length > 0 && (
-                  <Section>
-                    <SectionTitle>Available Service Centers</SectionTitle>
-
-                    <ServiceList>
-                      {serviceCenters.map((center, index) => (
-                        <ServiceItem key={index}>{center}</ServiceItem>
-                      ))}
-                    </ServiceList>
-                  </Section>
-                )}
                 <ButtonGroup>
                   <AddToCartButton
                     type="button"
@@ -259,19 +249,33 @@ const ProductItemDetails = () => {
                 </ButtonGroup>
               </DetailsSection>
             </Card>
-            {reviews.length > 0 && (
-              <Section>
-                <SectionTitle>Customer Reviews</SectionTitle>
+            <ReviewSectionWrapper>
+              {reviews.length > 0 && (
+                <Section>
+                  <SectionTitle>Customer Reviews</SectionTitle>
 
-                {reviews.map((review, index) => (
-                  <ReviewCard key={index}>
-                    <ReviewerName>{review.reviewerName}</ReviewerName>
-                    <ReviewRating>⭐ {review.rating} / 5</ReviewRating>
-                    <ReviewComment>{review.comment}</ReviewComment>
-                  </ReviewCard>
-                ))}
-              </Section>
-            )}
+                  {reviews.map((review, index) => (
+                    <ReviewCard key={index}>
+                      <ReviewerName>{review.reviewerName}</ReviewerName>
+                      <ReviewRating>⭐ {review.rating} / 5</ReviewRating>
+                      <ReviewComment>{review.comment}</ReviewComment>
+                    </ReviewCard>
+                  ))}
+                </Section>
+              )}
+
+              {isServiceable && serviceCenters.length > 0 && (
+                <Section>
+                  <SectionTitle>Available Service Centers</SectionTitle>
+
+                  <ServiceList>
+                    {serviceCenters.map((center, index) => (
+                      <ServiceItem key={index}>{center}</ServiceItem>
+                    ))}
+                  </ServiceList>
+                </Section>
+              )}
+            </ReviewSectionWrapper>
           </ProductLayout>
         </Page>
 
