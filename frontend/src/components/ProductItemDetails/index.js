@@ -185,80 +185,87 @@ const ProductItemDetails = () => {
     </FailureContainer>
   )
 
-  const renderProduct = () => (
-    <>
-      <Page>
-        <Card>
-          <ImageSection>
-            <ProductImage
-              src={productDetails.thumbnail}
-              alt={productDetails.title}
+  const renderProduct = () => {
+    const {
+      reviews = [],
+      serviceCenters = [],
+      isServiceable = false,
+    } = productDetails
+    return (
+      <>
+        <Page>
+          <Card>
+            <ImageSection>
+              <ProductImage
+                src={productDetails.thumbnail}
+                alt={productDetails.title}
+              />
+
+              <WishlistButton type="button" onClick={onToggleWishlist}>
+                {isWishListed ? (
+                  <AiFillHeart size={22} color="#e11d48" />
+                ) : (
+                  <AiOutlineHeart size={22} color="#1e40af" />
+                )}
+              </WishlistButton>
+            </ImageSection>
+
+            <DetailsSection>
+              <Title>{productDetails.title}</Title>
+
+              <Brand>
+                Brand: <span>{productDetails.brand}</span>
+              </Brand>
+
+              <Rating>⭐ {productDetails.rating} / 5</Rating>
+
+              <PriceRow>
+                <DiscountPrice>₹{productDetails.discountPrice}</DiscountPrice>
+                <OriginalPrice>₹{productDetails.originalPrice}</OriginalPrice>
+              </PriceRow>
+
+              <Description>{productDetails.description}</Description>
+
+              <ButtonGroup>
+                <AddToCartButton
+                  type="button"
+                  onClick={() => addToCart(formattedCartProduct)}
+                >
+                  Add to Cart
+                </AddToCartButton>
+
+                <BuyNowButton type="button">Buy Now</BuyNowButton>
+              </ButtonGroup>
+            </DetailsSection>
+          </Card>
+        </Page>
+
+        {similarStatus === apiStatusConstants.inProgress &&
+          renderSimilarProductsLoader()}
+
+        {similarStatus === apiStatusConstants.success &&
+          similarProducts.length > 0 && (
+            <CategorySection
+              title="Similar Products"
+              subtitle="Based on this item"
+              products={similarProducts}
             />
+          )}
 
-            <WishlistButton type="button" onClick={onToggleWishlist}>
-              {isWishListed ? (
-                <AiFillHeart size={22} color="#e11d48" />
-              ) : (
-                <AiOutlineHeart size={22} color="#1e40af" />
-              )}
-            </WishlistButton>
-          </ImageSection>
+        {recommendedStatus === apiStatusConstants.inProgress &&
+          renderRecommendationLoader()}
 
-          <DetailsSection>
-            <Title>{productDetails.title}</Title>
-
-            <Brand>
-              Brand: <span>{productDetails.brand}</span>
-            </Brand>
-
-            <Rating>⭐ {productDetails.rating} / 5</Rating>
-
-            <PriceRow>
-              <DiscountPrice>₹{productDetails.discountPrice}</DiscountPrice>
-              <OriginalPrice>₹{productDetails.originalPrice}</OriginalPrice>
-            </PriceRow>
-
-            <Description>{productDetails.description}</Description>
-
-            <ButtonGroup>
-              <AddToCartButton
-                type="button"
-                onClick={() => addToCart(formattedCartProduct)}
-              >
-                Add to Cart
-              </AddToCartButton>
-
-              <BuyNowButton type="button">Buy Now</BuyNowButton>
-            </ButtonGroup>
-          </DetailsSection>
-        </Card>
-      </Page>
-
-      {similarStatus === apiStatusConstants.inProgress &&
-        renderSimilarProductsLoader()}
-
-      {similarStatus === apiStatusConstants.success &&
-        similarProducts.length > 0 && (
-          <CategorySection
-            title="Similar Products"
-            subtitle="Based on this item"
-            products={similarProducts}
-          />
-        )}
-
-      {recommendedStatus === apiStatusConstants.inProgress &&
-        renderRecommendationLoader()}
-
-      {recommendedStatus === apiStatusConstants.success &&
-        recommendedProducts.length > 0 && (
-          <CategorySection
-            title="Recommended For You"
-            subtitle="Personalized picks"
-            products={recommendedProducts}
-          />
-        )}
-    </>
-  )
+        {recommendedStatus === apiStatusConstants.success &&
+          recommendedProducts.length > 0 && (
+            <CategorySection
+              title="Recommended For You"
+              subtitle="Personalized picks"
+              products={recommendedProducts}
+            />
+          )}
+      </>
+    )
+  }
 
   const renderSwitch = () => {
     switch (apiStatus) {
