@@ -77,14 +77,24 @@ export const ItemRow = styled.div`
     border-bottom: none;
   }
 `
-
-export const Total = styled.h4`
-  margin-top: 16px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #0f172a;
+export const Total = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 `
 
+export const TotalLabel = styled.span`
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+`
+
+export const TotalAmount = styled.span`
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+`
 export const QuantityBadge = styled.span`
   background-color: #e2e8f0;
   color: #334155;
@@ -100,16 +110,17 @@ export const BottomRow = styled.div`
   margin-top: 18px;
 `
 export const StatusSelect = styled.select`
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
   border: 1px solid #cbd5e1;
-  background-color: #ffffff;
-  font-size: 13px;
+  background-color: #f8fafc;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   outline: none;
 
   &:focus {
     border-color: #2563eb;
+    background-color: #ffffff;
   }
 `

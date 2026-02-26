@@ -13,6 +13,8 @@ import {
   Strong,
   ItemRow,
   Total,
+  TotalLabel,
+  TotalAmount,
   BottomRow,
   StatusSelect,
 } from './styledComponents'
@@ -118,7 +120,10 @@ const AdminOrders = () => {
             <span>{order.address}</span>
           </Section>
           <BottomRow>
-            <Total>₹ {order.totalAmount}</Total>
+            <Total>
+              <TotalLabel>Total Amount</TotalLabel>
+              <TotalAmount>₹ {order.totalAmount.toLocaleString()}</TotalAmount>
+            </Total>
 
             <StatusSelect
               value={order.status}
