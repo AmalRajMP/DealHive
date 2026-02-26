@@ -52,7 +52,7 @@ const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user.id })
       .populate('user', 'firstName lastName emailID')
-      .populate('items.product', 'name image price')
+      .populate('items.product', 'title thumbnail discountPrice')
       .sort({ createdAt: -1 })
 
     res.json(orders)
@@ -65,9 +65,9 @@ const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find()
       .populate('user', 'firstName lastName emailID')
-      .populate('items.product', 'name image price')
+      .populate('items.product', 'title thumbnail discountPrice')
       .sort({ createdAt: -1 })
-
+    console.log(JSON.stringify(orders[0], null, 2))
     res.json(orders)
   } catch (err) {
     res.status(500).json({ error: err.message })

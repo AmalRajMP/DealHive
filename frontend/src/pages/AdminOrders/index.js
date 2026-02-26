@@ -13,6 +13,8 @@ import {
   Strong,
   ItemRow,
   Total,
+  BottomRow,
+  StatusSelect,
 } from './styledComponents'
 
 const statusColor = {
@@ -78,42 +80,57 @@ const AdminOrders = () => {
           </TopRow>
 
           <Section>
-            <Strong>Customer:</Strong>
-            <span>
-              {order.user
-                ? `${order.user.firstName ? order.user.firstName : ''} ${order.user.lastName ? order.user.lastName : ''} (${order.user.emailID})`
-                : 'User deleted'}
-            </span>
+            <Strong>Items:</Strong>
+
+            {order.items.map((item, index) => (
+              <ItemRow key={index}>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
+                >
+                  <img
+                    src={item.product?.thumbnail}
+                    alt={item.product?.title}
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      objectFit: 'cover',
+                      borderRadius: '8px',
+                    }}
+                  />
+
+                  <div>
+                    <strong>{item.product?.title || 'Product removed'}</strong>
+                    <div style={{ fontSize: '12px', color: '#64748b' }}>
+                      Qty: {item.quantity}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ fontWeight: 500 }}>
+                  ₹ {item.price * item.quantity}
+                </div>
+              </ItemRow>
+            ))}
           </Section>
 
           <Section>
             <Strong>Address:</Strong>
             <span>{order.address}</span>
           </Section>
+          <BottomRow>
+            <Total>₹ {order.totalAmount}</Total>
 
-          <Section>
-            <Strong>Items:</Strong>
-            {order.items.map((item, index) => (
-              <ItemRow key={index}>
-                <span>{item.product?.name}</span>
-                <span>x {item.quantity}</span>
-                <span>₹ {item.price}</span>
-              </ItemRow>
-            ))}
-          </Section>
-
-          <Total>₹ {order.totalAmount}</Total>
-
-          <select
-            value={order.status}
-            onChange={(event) => onChangeStatus(event, order)}
-          >
-            <option value="pending">Pending</option>
-            <option value="placed">Placed</option>
-            <option value="shipped">Shipped</option>
-            <option value="delivered">Delivered</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
+            <StatusSelect
+              value={order.status}
+              onChange={(event) => onChangeStatus(event, order)}
+            >
+              <option value="pending">Pending</option>
+              <option value="placed">Placed</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </StatusSelect>
+          </BottomRow>
         </Card>
       ))}
     </Container>

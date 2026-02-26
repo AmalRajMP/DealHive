@@ -1,19 +1,31 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 20px;
+  padding: 30px;
+  background: #f8fafc;
+  min-height: 100vh;
 `
 
 export const Title = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
 `
 
 export const Card = styled.div`
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background: white;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  }
 `
 
 export const TopRow = styled.div`
@@ -24,34 +36,80 @@ export const TopRow = styled.div`
 
 export const OrderId = styled.h3`
   margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
 `
 
 export const SmallText = styled.p`
-  margin: 3px 0;
+  margin: 4px 0;
   font-size: 12px;
-  color: gray;
+  color: #64748b;
 `
 
 export const Status = styled.span`
+  font-size: 12px;
   font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: #fef3c7;
+  color: #92400e;
 `
 
 export const Section = styled.div`
-  margin: 10px 0;
+  margin: 16px 0;
 `
 
 export const Strong = styled.span`
   font-weight: 600;
   margin-right: 6px;
+  color: #0f172a;
 `
 
 export const ItemRow = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  margin: 4px 0;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+
+  &:last-child {
+    border-bottom: none;
+  }
 `
 
 export const Total = styled.h4`
-  margin-top: 10px;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+`
+
+export const QuantityBadge = styled.span`
+  background-color: #e2e8f0;
+  color: #334155;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-left: 10px;
+`
+export const BottomRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+`
+export const StatusSelect = styled.select`
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+
+  &:focus {
+    border-color: #2563eb;
+  }
 `
