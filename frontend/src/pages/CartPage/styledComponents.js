@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
-  min-height: 100vh;
   max-width: 1100px;
-  margin: auto;
-
-  padding: 80px 16px 140px;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
 
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
 
-  @media (min-width: 768px) {
-    grid-template-columns: 2fr 1fr;
-    padding: 100px 24px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 90px 16px 120px;
   }
 `
 
@@ -26,10 +24,6 @@ export const CartHeading = styled.h1`
   color: #1f2933;
 
   grid-column: 1 / -1;
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-  }
 `
 
 export const CartList = styled.ul`
@@ -42,8 +36,6 @@ export const CartList = styled.ul`
   gap: 16px;
 `
 
-/* ---------- ORDER SUMMARY ---------- */
-
 export const OrderSummary = styled.div`
   background-color: #ffffff;
   border-radius: 14px;
@@ -54,15 +46,11 @@ export const OrderSummary = styled.div`
   flex-direction: column;
   gap: 16px;
 
-  /* Desktop sticky */
-  @media (min-width: 768px) {
-    position: sticky;
-    top: 100px;
-    height: fit-content;
-  }
+  position: sticky;
+  top: 100px;
+  height: fit-content;
 
-  /* Mobile fixed bottom */
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -92,7 +80,7 @@ export const SummaryValue = styled.p`
   color: #0f172a;
 `
 
-export const PlaceOrderButton = styled.button`
+export const CheckoutButton = styled.button`
   margin-top: 8px;
   padding: 14px;
   background: linear-gradient(135deg, #1e40af, #2563eb);
@@ -134,26 +122,13 @@ export const FailureContainer = styled.div`
 `
 
 export const FailureImage = styled.img`
-  width: 180px;
-  max-width: 70%;
-
-  @media (min-width: 768px) {
-    width: 220px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 300px;
-  }
+  width: 220px;
 `
 
 export const FailureText = styled.p`
-  font-size: 14px;
+  font-size: 16px;
   color: #475569;
   text-align: center;
-
-  @media (min-width: 768px) {
-    font-size: 16px;
-  }
 `
 
 export const RetryButton = styled.button`
@@ -175,23 +150,9 @@ export const EmptyView = styled.div`
   gap: 16px;
   color: #475569;
   text-align: center;
-
   font-size: 16px;
-
-  @media (min-width: 768px) {
-    font-size: 18px;
-  }
 `
 
 export const EmptyImage = styled.img`
-  width: 180px;
-  max-width: 70%;
-
-  @media (min-width: 768px) {
-    width: 220px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 300px;
-  }
+  width: 220px;
 `

@@ -1,14 +1,13 @@
 import { useEffect, useContext, useState } from 'react'
-import CartContext from '../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
+import CartContext from '../../context/CartContext'
 import CartItem from '../../components/CartItem'
 import Navbar from '../../components/Navbar'
 
 import { ThreeDots } from 'react-loader-spinner'
-import { MdErrorOutline } from 'react-icons/md'
 
 import apiStatusConstants from '../../constants/apiStatusConstants'
-
 import empty_cart from '../../assets/empty_cart.svg'
 
 import {
@@ -21,7 +20,7 @@ import {
   SummaryRow,
   SummaryLabel,
   SummaryValue,
-  PlaceOrderButton,
+  CheckoutButton,
   LoaderContainer,
   FailureContainer,
   FailureImage,
@@ -32,6 +31,7 @@ import {
 const CartPage = () => {
   const { cartList, fetchCart } = useContext(CartContext)
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+  const navigate = useNavigate()
 
   const totalPrice = cartList.reduce(
     (accumulator, currentItem) =>
@@ -40,30 +40,6 @@ const CartPage = () => {
   )
 
   const totalItems = cartList.reduce((sum, item) => sum + item.quantity, 0)
-
-  const handlePlaceOrder = async () => {
-    try {
-      const token = localStorage.getItem('authToken')
-
-      const res = await fetch('http://localhost:5000/api/orders/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          address: 'Default Address',
-        }),
-      })
-
-      if (!res.ok) throw new Error('Order failed')
-
-      await fetchCart()
-      alert('Order placed successfully')
-    } catch (err) {
-      alert('Failed to place order')
-    }
-  }
 
   const getCart = async () => {
     try {
@@ -127,9 +103,9 @@ const CartPage = () => {
             <SummaryValue>₹{totalPrice}</SummaryValue>
           </SummaryRow>
 
-          <PlaceOrderButton onClick={handlePlaceOrder}>
-            Place Order
-          </PlaceOrderButton>
+          <CheckoutButton onClick={() => navigate('/checkout')}>
+            Checkout
+          </CheckoutButton>
         </OrderSummary>
       </CartContainer>
     )
