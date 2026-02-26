@@ -2,6 +2,23 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+export const ProductList = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
 `
 
 export const Stats = styled.p`

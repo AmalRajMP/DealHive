@@ -3,7 +3,17 @@ import styled from 'styled-components'
 export const Container = styled.div`
   padding: 30px;
   background: #f8fafc;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
 `
 
 export const Title = styled.h2`

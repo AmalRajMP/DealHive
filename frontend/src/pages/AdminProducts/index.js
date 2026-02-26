@@ -25,6 +25,7 @@ import {
   Input,
   SaveBtn,
   SearchInput,
+  ProductList,
 } from './styledComponents'
 
 const AdminProducts = () => {
@@ -99,34 +100,37 @@ const AdminProducts = () => {
           />
         </RightSection>
       </HeaderRow>
-      {searchResults.map((p) => {
-        console.log(p)
-        return (
-          <Card key={p._id}>
-            <Left>
-              <ProductImage src={p.thumbnail} alt={p.title} />
+      <ProductList>
+        {searchResults.map((p) => {
+          return (
+            <Card key={p._id}>
+              <Left>
+                <ProductImage src={p.thumbnail} alt={p.title} />
 
-              <Info>
-                <ProductTitle>{p.title}</ProductTitle>
-                <Price>₹ {p.discountPrice}</Price>
-                <Category>{p.category}</Category>
-              </Info>
-            </Left>
+                <Info>
+                  <ProductTitle>{p.title}</ProductTitle>
+                  <Price>₹ {p.discountPrice}</Price>
+                  <Category>{p.category}</Category>
+                </Info>
+              </Left>
 
-            <Actions>
-              <EditBtn
-                onClick={() => {
-                  setEditingProduct(p)
-                  setForm(p)
-                }}
-              >
-                Edit
-              </EditBtn>
-              <DeleteBtn onClick={() => deleteProduct(p._id)}>Delete</DeleteBtn>
-            </Actions>
-          </Card>
-        )
-      })}
+              <Actions>
+                <EditBtn
+                  onClick={() => {
+                    setEditingProduct(p)
+                    setForm(p)
+                  }}
+                >
+                  Edit
+                </EditBtn>
+                <DeleteBtn onClick={() => deleteProduct(p._id)}>
+                  Delete
+                </DeleteBtn>
+              </Actions>
+            </Card>
+          )
+        })}
+      </ProductList>
       {editingProduct && (
         <ModalOverlay onClick={() => setEditingProduct(null)}>
           <ModalBox onClick={(e) => e.stopPropagation()}>
