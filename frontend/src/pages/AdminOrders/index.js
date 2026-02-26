@@ -3,7 +3,9 @@ import authFetch from '../../utils/authFetch'
 
 import {
   Container,
+  PageHeader,
   Title,
+  SubTitle,
   Card,
   TopRow,
   OrderId,
@@ -22,14 +24,6 @@ import {
   AddressLine,
   AddressPhone,
 } from './styledComponents'
-
-const statusColor = {
-  pending: 'gray',
-  placed: 'blue',
-  shipped: 'orange',
-  delivered: 'green',
-  cancelled: 'red',
-}
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([])
@@ -68,7 +62,10 @@ const AdminOrders = () => {
 
   return (
     <Container>
-      <Title>Orders</Title>
+      <PageHeader>
+        <Title>Orders</Title>
+        <SubTitle>{orders.length} orders</SubTitle>
+      </PageHeader>
 
       {orders.map((order) => (
         <Card key={order._id}>
@@ -80,9 +77,7 @@ const AdminOrders = () => {
               </SmallText>
             </div>
 
-            <Status style={{ color: statusColor[order.status] }}>
-              {order.status.toUpperCase()}
-            </Status>
+            <Status status={order.status}>{order.status.toUpperCase()}</Status>
           </TopRow>
 
           <Section>

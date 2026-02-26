@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import {
   Page,
+  PageHeader,
+  SubTitle,
   Title,
   UsersContainer,
   UserCard,
@@ -33,7 +35,10 @@ const AdminUsers = () => {
 
   return (
     <Page>
-      <Title>Manage Users</Title>
+      <PageHeader>
+        <Title>Users</Title>
+        <SubTitle>{users.length} users</SubTitle>
+      </PageHeader>
 
       <UsersContainer>
         {users.map((user) => (

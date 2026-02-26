@@ -16,11 +16,20 @@ export const Container = styled.div`
   }
 `
 
-export const Title = styled.h2`
-  margin-bottom: 24px;
-  font-size: 24px;
-  font-weight: 700;
+export const PageHeader = styled.div`
+  margin-bottom: 30px;
+`
+
+export const Title = styled.h1`
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 6px;
   color: #0f172a;
+`
+
+export const SubTitle = styled.p`
+  font-size: 14px;
+  color: #64748b;
 `
 
 export const Card = styled.div`
@@ -62,10 +71,41 @@ export const Status = styled.span`
   font-weight: 600;
   padding: 6px 14px;
   border-radius: 999px;
-  background-color: #fef3c7;
-  color: #92400e;
-`
 
+  background-color: ${({ status }) => {
+    switch (status) {
+      case 'pending':
+        return '#fef3c7'
+      case 'placed':
+        return '#dbeafe'
+      case 'shipped':
+        return '#fed7aa'
+      case 'delivered':
+        return '#dcfce7'
+      case 'cancelled':
+        return '#fee2e2'
+      default:
+        return '#e2e8f0'
+    }
+  }};
+
+  color: ${({ status }) => {
+    switch (status) {
+      case 'pending':
+        return '#92400e'
+      case 'placed':
+        return '#1e40af'
+      case 'shipped':
+        return '#9a3412'
+      case 'delivered':
+        return '#166534'
+      case 'cancelled':
+        return '#991b1b'
+      default:
+        return '#334155'
+    }
+  }};
+`
 export const Section = styled.div`
   margin: 16px 0;
 `

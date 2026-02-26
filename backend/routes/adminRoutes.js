@@ -10,6 +10,7 @@ const {
   getProductById,
   deleteProduct,
   updateProduct,
+  getAllUsers,
 } = require('../controllers/adminController')
 
 const {
@@ -34,5 +35,7 @@ router.delete('/products/:id', authenticateUser, adminOnly, deleteProduct)
 router.get('/orders', authenticateUser, adminOnly, getAllOrders)
 
 router.put('/orders/:id/status', authenticateUser, adminOnly, updateOrderStatus)
+
+router.get('/users', authenticateUser, adminOnly, getAllUsers)
 
 module.exports = router

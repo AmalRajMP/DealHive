@@ -84,7 +84,7 @@ const AdminProducts = () => {
     <Container>
       <HeaderRow>
         <div>
-          <Title>Manage Products</Title>
+          <Title>Products</Title>
           <Stats>{products.length} products</Stats>
         </div>
 

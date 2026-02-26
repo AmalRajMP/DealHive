@@ -1,4 +1,5 @@
 const Product = require('../models/Product')
+const User = require('../models/User')
 
 const addProduct = async (req, res) => {
   try {
@@ -64,10 +65,20 @@ const updateProduct = async (req, res) => {
   }
 }
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().select('-password')
+    res.json(users)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
 module.exports = {
   addProduct,
   getAllProducts,
   getProductById,
   deleteProduct,
   updateProduct,
+  getAllUsers,
 }

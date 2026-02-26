@@ -1,16 +1,25 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
-  padding: 40px;
   height: 100%;
   display: flex;
   flex-direction: column;
 `
 
-export const Title = styled.h2`
-  font-size: 30px;
+export const PageHeader = styled.div`
+  margin-bottom: 30px;
+`
+
+export const Title = styled.h1`
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 25px;
+  margin-bottom: 6px;
+  color: #0f172a;
+`
+
+export const SubTitle = styled.p`
+  font-size: 14px;
+  color: #64748b;
 `
 
 export const UsersContainer = styled.div`
@@ -23,24 +32,22 @@ export const UsersContainer = styled.div`
 `
 
 export const UserCard = styled.div`
-  background: linear-gradient(145deg, #ffffff, #f9fbfd);
-  padding: 22px 28px;
-  border-radius: 16px;
-  margin-bottom: 20px;
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 14px;
+  margin-bottom: 18px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border: 1px solid #eef2f7;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-
-  transition: all 0.25s ease;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
-    border-color: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
   }
 `
 

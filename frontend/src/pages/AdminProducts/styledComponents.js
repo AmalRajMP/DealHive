@@ -9,7 +9,6 @@ export const Container = styled.div`
 export const ProductList = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding-right: 6px;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -27,10 +26,10 @@ export const Stats = styled.p`
   margin: 6px 0 0 0;
 `
 export const Title = styled.h1`
-  font-size: 30px;
-  font-weight: 700;
-  color: #0f172a;
+  font-size: 32px;
+  font-weight: 600;
   margin: 0;
+  color: #0f172a;
 `
 export const AddBtn = styled.button`
   background: #2563eb;
@@ -48,24 +47,38 @@ export const AddBtn = styled.button`
 `
 
 export const Card = styled.div`
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
 `
 
 export const Info = styled.div``
 
 export const ProductTitle = styled.h4`
   margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #0f172a;
 `
 
 export const Price = styled.p`
-  margin: 5px 0 0 0;
-  color: #6b7280;
+  margin: 4px 0 0 0;
+  font-weight: 500;
+  color: #334155;
 `
 
 export const DeleteBtn = styled.button`
