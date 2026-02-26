@@ -20,7 +20,7 @@ export const ProductCard = styled.div`
 
   @media (min-width: 768px) {
     width: 200px;
-    min-height: 240px;   
+    min-height: 240px;
   }
 
   @media (min-width: 1200px) {
@@ -121,6 +121,15 @@ export const WhyText = styled.p`
       background-position: 200% center;
     }
   }
+`
+export const RatingText = styled.p`
+  font-size: 13px;
+  color: #f59e0b; 
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 `
 export const FallbackTag = styled.span`
   font-size: 11px;

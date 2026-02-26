@@ -11,6 +11,8 @@ import {
   DiscountPrice,
   OriginalPrice,
   WhyText,
+  RatingText,
+  ReviewCount,
 } from './styledComponents'
 
 const ProductItem = (props) => {
@@ -23,6 +25,8 @@ const ProductItem = (props) => {
     discountPrice,
     discountPercent,
     why,
+    rating,
+    reviewCount,
   } = productDetails
 
   const isAiPick = !!why
@@ -36,7 +40,13 @@ const ProductItem = (props) => {
         </ImageWrapper>
 
         <ProductTitle>{title}</ProductTitle>
-        {why && <WhyText>{why}</WhyText>}
+        {why ? (
+          <WhyText>{why}</WhyText>
+        ) : rating ? (
+          <RatingText>⭐ {rating}</RatingText>
+        ) : (
+          <WhyText>Trending product</WhyText>
+        )}
         <PriceRow>
           <DiscountPrice>₹{discountPrice}</DiscountPrice>
           <OriginalPrice>₹{originalPrice}</OriginalPrice>

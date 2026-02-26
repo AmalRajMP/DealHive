@@ -51,7 +51,7 @@ def similar(product_id):
             p["why"] = "Similar product"
             p.pop("similarity_score", None)
 
-        products = convert_objectids(products)  # ✅ MUST
+        products = convert_objectids(products) 
 
         return jsonify({
             "type": "similar",
