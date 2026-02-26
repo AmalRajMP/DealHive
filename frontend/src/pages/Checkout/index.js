@@ -23,11 +23,14 @@ import {
   SummaryCard,
   ItemsContainer,
   TotalContainer,
+  SuccessWrapper,
+  SuccessCard,
+  SuccessIcon,
+  SuccessTitle,
+  SuccessText,
 } from './styledComponents'
 
 const Checkout = () => {
-  const navigate = useNavigate()
-
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -40,6 +43,9 @@ const Checkout = () => {
   const [error, setError] = useState('')
   const [cartItems, setCartItems] = useState([])
   const [total, setTotal] = useState(0)
+  const [orderSuccess, setOrderSuccess] = useState(false)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -57,9 +63,7 @@ const Checkout = () => {
         }
 
         const data = await response.json()
-
         const cart = data || []
-        console.log('CART DATA:', cart)
 
         setCartItems(cart)
 
@@ -111,10 +115,28 @@ const Checkout = () => {
         throw new Error('Order failed')
       }
 
-      navigate('/orders-success')
+      setOrderSuccess(true)
     } catch (err) {
       setError('Something went wrong. Try again.')
     }
+  }
+
+  if (orderSuccess) {
+    return (
+      <>
+        <Navbar />
+        <SuccessWrapper>
+          <SuccessCard>
+            <SuccessIcon>✓</SuccessIcon>
+            <SuccessTitle>Order Placed Successfully</SuccessTitle>
+            <SuccessText>
+              Thank you for your purchase. Your order has been confirmed.
+            </SuccessText>
+            <Button onClick={() => navigate('/')}>Continue Shopping</Button>
+          </SuccessCard>
+        </SuccessWrapper>
+      </>
+    )
   }
 
   return (
@@ -126,6 +148,7 @@ const Checkout = () => {
             <h1>Checkout</h1>
             <p>Review your order and complete your purchase</p>
           </HeaderSection>
+
           <ContentGrid>
             <SummaryCard>
               <SectionTitle>Order Summary</SectionTitle>

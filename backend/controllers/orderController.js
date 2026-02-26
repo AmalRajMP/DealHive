@@ -29,7 +29,14 @@ const checkoutCart = async (req, res) => {
       user: userId,
       items,
       totalAmount: total,
-      address: req.body.address,
+      address: {
+        fullName: req.body.fullName,
+        phone: req.body.phone,
+        addressLine: req.body.addressLine,
+        city: req.body.city,
+        state: req.body.state,
+        pincode: req.body.pincode,
+      },
       status: 'pending',
     })
 

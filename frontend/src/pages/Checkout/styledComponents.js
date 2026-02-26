@@ -173,3 +173,45 @@ export const TotalContainer = styled.div`
   justify-content: space-between;
   font-size: 20px;
 `
+export const SuccessWrapper = styled.div`
+  min-height: 100vh;
+  background: linear-gradient(to right, #f8fafc, #eef2f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`
+
+export const SuccessCard = styled.div`
+  background: white;
+  padding: 50px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  max-width: 420px;
+  width: 100%;
+`
+
+export const SuccessIcon = styled.div`
+  width: 90px;
+  height: 90px;
+  background: #22c55e;
+  color: white;
+  font-size: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px auto;
+`
+
+export const SuccessTitle = styled.h2`
+  font-size: 22px;
+  margin-bottom: 10px;
+`
+
+export const SuccessText = styled.p`
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+`
