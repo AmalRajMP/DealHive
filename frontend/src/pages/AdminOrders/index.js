@@ -17,6 +17,10 @@ import {
   TotalAmount,
   BottomRow,
   StatusSelect,
+  AddressBox,
+  AddressName,
+  AddressLine,
+  AddressPhone,
 } from './styledComponents'
 
 const statusColor = {
@@ -116,9 +120,23 @@ const AdminOrders = () => {
           </Section>
 
           <Section>
-            <Strong>Address:</Strong>
-            <span>{order.address}</span>
+            <Strong>Delivery Address</Strong>
+
+            <AddressBox>
+              <AddressName>{order.address?.fullName}</AddressName>
+
+              <AddressLine>{order.address?.addressLine}</AddressLine>
+
+              <AddressLine>
+                {order.address?.city}, {order.address?.state}
+              </AddressLine>
+
+              <AddressLine>PIN: {order.address?.pincode}</AddressLine>
+
+              <AddressPhone>📞 {order.address?.phone}</AddressPhone>
+            </AddressBox>
           </Section>
+
           <BottomRow>
             <Total>
               <TotalLabel>Total Amount</TotalLabel>

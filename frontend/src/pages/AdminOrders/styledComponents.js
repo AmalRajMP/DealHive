@@ -124,3 +124,28 @@ export const StatusSelect = styled.select`
     background-color: #ffffff;
   }
 `
+export const AddressBox = styled.div`
+  margin-top: 10px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  line-height: 1.6;
+`
+
+export const AddressName = styled.div`
+  font-weight: 600;
+  font-size: 15px;
+  color: #0f172a;
+`
+
+export const AddressLine = styled.div`
+  color: #475569;
+`
+
+export const AddressPhone = styled.div`
+  margin-top: 6px;
+  font-size: 13px;
+  color: #334155;
+`
