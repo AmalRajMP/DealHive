@@ -15,7 +15,7 @@ export const AddBtn = styled.button`
   padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
-  margin-bottom: 20px;
+
   font-weight: 500;
 
   &:hover {
@@ -121,4 +121,28 @@ export const SaveBtn = styled.button`
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
+`
+export const SearchInput = styled.input`
+  width: 320px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  }
+`
+export const HeaderRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`
+export const RightSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
 `

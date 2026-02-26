@@ -12,7 +12,6 @@ import {
   OriginalPrice,
   WhyText,
   RatingText,
-  ReviewCount,
 } from './styledComponents'
 
 const ProductItem = (props) => {
@@ -26,7 +25,6 @@ const ProductItem = (props) => {
     discountPercent,
     why,
     rating,
-    reviewCount,
   } = productDetails
 
   const isAiPick = !!why

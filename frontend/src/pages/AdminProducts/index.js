@@ -5,6 +5,8 @@ import authFetch from '../../utils/authFetch'
 
 import {
   Container,
+  HeaderRow,
+  RightSection,
   Title,
   AddBtn,
   Card,
@@ -21,12 +23,14 @@ import {
   ModalBox,
   Input,
   SaveBtn,
+  SearchInput,
 } from './styledComponents'
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([])
   const [editingProduct, setEditingProduct] = useState(null)
   const [form, setForm] = useState({})
+  const [searchTerm, setSearchTerm] = useState('')
 
   const navigate = useNavigate()
 
@@ -70,14 +74,28 @@ const AdminProducts = () => {
     setProducts((prev) => prev.filter((p) => p._id !== id))
   }
 
+  const searchResults = products.filter((p) =>
+    p.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  )
+
   return (
     <Container>
-      <Title>Admin Products</Title>
-      <AddBtn onClick={() => navigate('/admin/add-product')}>
-        + Add Product
-      </AddBtn>
+      <HeaderRow>
+        <Title>Admin Products</Title>
 
-      {products.map((p) => {
+        <RightSection>
+          <AddBtn onClick={() => navigate('/admin/add-product')}>
+            + Add Product
+          </AddBtn>
+
+          <SearchInput
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </RightSection>
+      </HeaderRow>
+      {searchResults.map((p) => {
         console.log(p)
         return (
           <Card key={p._id}>
