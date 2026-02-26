@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import AdminOrders from '../../AdminOrders'
 import AdminProducts from '../../AdminProducts'
+import AdminUsers from '../../AdminUsers'
 
 import {
   Container,
@@ -23,6 +24,7 @@ const AdminDashboard = () => {
         <MenuItem onClick={() => navigate('/admin/products')}>
           Products
         </MenuItem>
+        <MenuItem onClick={() => navigate('/admin/users')}>Users</MenuItem>
       </Sidebar>
 
       <Content>
@@ -30,6 +32,7 @@ const AdminDashboard = () => {
           <Routes>
             <Route path="orders" element={<AdminOrders />} />
             <Route path="products" element={<AdminProducts />} />
+            <Route path="users" element={<AdminUsers />} />
           </Routes>
         </Content>
       </Content>
