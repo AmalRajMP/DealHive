@@ -10,6 +10,7 @@ import CartPage from './pages/CartPage'
 import WishlistPage from './pages/WishlistPage'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AddProduct from './pages/admin/AddProduct'
+import Checkout from './pages/Checkout'
 
 const App = () => (
   <Routes>
@@ -57,6 +58,7 @@ const App = () => (
         </ProtectedRoute>
       }
     />
+    <Route path="/checkout" element={<Checkout />} />
     <Route path="/admin/*" element={<AdminDashboard />} />
     <Route path="/admin/add-product" element={<AddProduct />} />
   </Routes>
