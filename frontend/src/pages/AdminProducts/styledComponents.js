@@ -4,9 +4,16 @@ export const Container = styled.div`
   padding: 20px;
 `
 
-export const Title = styled.h2`
-  font-size: 24px;
-  margin-bottom: 20px;
+export const Stats = styled.p`
+  font-size: 14px;
+  color: #64748b;
+  margin: 6px 0 0 0;
+`
+export const Title = styled.h1`
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
 `
 export const AddBtn = styled.button`
   background: #2563eb;

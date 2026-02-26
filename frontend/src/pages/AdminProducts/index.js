@@ -7,6 +7,7 @@ import {
   Container,
   HeaderRow,
   RightSection,
+  Stats,
   Title,
   AddBtn,
   Card,
@@ -81,7 +82,10 @@ const AdminProducts = () => {
   return (
     <Container>
       <HeaderRow>
-        <Title>Admin Products</Title>
+        <div>
+          <Title>Manage Products</Title>
+          <Stats>{products.length} products</Stats>
+        </div>
 
         <RightSection>
           <AddBtn onClick={() => navigate('/admin/add-product')}>
