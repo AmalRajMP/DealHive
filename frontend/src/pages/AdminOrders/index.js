@@ -1,7 +1,19 @@
 import { useEffect, useState } from 'react'
 import authFetch from '../../utils/authFetch'
 
-import { Container, Title, Card, Text } from './styledComponents'
+import {
+  Container,
+  Title,
+  Card,
+  TopRow,
+  OrderId,
+  SmallText,
+  Status,
+  Section,
+  Strong,
+  ItemRow,
+  Total,
+} from './styledComponents'
 
 const statusColor = {
   pending: 'gray',
@@ -52,10 +64,46 @@ const AdminOrders = () => {
 
       {orders.map((order) => (
         <Card key={order._id}>
-          <Text>Order ID: {order._id}</Text>
-          <Text style={{ color: statusColor[order.status] }}>
-            Status: {order.status}
-          </Text>
+          <TopRow>
+            <div>
+              <OrderId>Order #{order._id.slice(-6)}</OrderId>
+              <SmallText>
+                {new Date(order.createdAt).toLocaleString()}
+              </SmallText>
+            </div>
+
+            <Status style={{ color: statusColor[order.status] }}>
+              {order.status.toUpperCase()}
+            </Status>
+          </TopRow>
+
+          <Section>
+            <Strong>Customer:</Strong>
+            <span>
+              {order.user
+                ? `${order.user.firstName ? order.user.firstName : ''} ${order.user.lastName ? order.user.lastName : ''} (${order.user.emailID})`
+                : 'User deleted'}
+            </span>
+          </Section>
+
+          <Section>
+            <Strong>Address:</Strong>
+            <span>{order.address}</span>
+          </Section>
+
+          <Section>
+            <Strong>Items:</Strong>
+            {order.items.map((item, index) => (
+              <ItemRow key={index}>
+                <span>{item.product?.name}</span>
+                <span>x {item.quantity}</span>
+                <span>₹ {item.price}</span>
+              </ItemRow>
+            ))}
+          </Section>
+
+          <Total>₹ {order.totalAmount}</Total>
+
           <select
             value={order.status}
             onChange={(event) => onChangeStatus(event, order)}

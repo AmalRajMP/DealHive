@@ -51,7 +51,8 @@ const checkoutCart = async (req, res) => {
 const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user.id })
-      .populate('items.product')
+      .populate('user', 'firstName lastName emailID')
+      .populate('items.product', 'name image price')
       .sort({ createdAt: -1 })
 
     res.json(orders)
@@ -63,8 +64,8 @@ const getMyOrders = async (req, res) => {
 const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find()
-      .populate('user', 'firstName emailID')
-      .populate('items.product')
+      .populate('user', 'firstName lastName emailID')
+      .populate('items.product', 'name image price')
       .sort({ createdAt: -1 })
 
     res.json(orders)
