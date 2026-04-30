@@ -74,7 +74,7 @@ for user_index in range(NUM_USERS):
     #Generates each user's fav products pool
     preferred_products = random.sample(products, k=min(20, len(products)))
 
-    #To similate multiple actions for the user
+    #To simulate multiple actions for the user
     for _ in range(INTERACTIONS_PER_USER):
         if random.random() < 0.65:
             product = random.choice(preferred_products) #choose any product from the prefered products

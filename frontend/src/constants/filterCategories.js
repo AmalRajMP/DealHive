@@ -3,7 +3,7 @@ export const filterCategories = [
   { id: 'fragrances', name: 'Fragrances' },
   { id: 'furniture', name: 'Furniture' },
   { id: 'groceries', name: 'Groceries' },
-  { id: 'kitchen-accessories', name: 'Kitchen Accessories' },
+  { id: 'kitchen-accessories', name: 'Kitchen' },
   { id: 'laptops', name: 'Laptops' },
   { id: 'mens-shirts', name: 'Men’s Shirts' },
   { id: 'mens-shoes', name: 'Men’s Shoes' },

@@ -4,9 +4,8 @@ const logActivity = require('../utils/logActivity')
 const getCart = async (req, res) => {
   try {
     const userId = req.user.id
+    console.log("User ID from token:", userId)
     const user = await User.findById(userId).populate('cartList.productId')
-
-    console.log('REQ USER:', req.user)
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
@@ -22,7 +21,6 @@ const addToCart = async (req, res) => {
   try {
     const userId = req.user.id
     const { productId } = req.body
-    console.log('REQ USER:', req.user)
 
     const user = await User.findById(userId)
     if (!user) {

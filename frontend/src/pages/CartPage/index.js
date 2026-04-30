@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from 'react'
+import { useEffect, useContext, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import CartContext from '../../context/CartContext'
@@ -38,10 +38,9 @@ const CartPage = () => {
       accumulator + currentItem.quantity * currentItem.productId.discountPrice,
     0,
   )
-
   const totalItems = cartList.reduce((sum, item) => sum + item.quantity, 0)
 
-  const getCart = async () => {
+  const getCart = useCallback(async () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
       await fetchCart()
@@ -49,11 +48,11 @@ const CartPage = () => {
     } catch (error) {
       setApiStatus(apiStatusConstants.failure)
     }
-  }
+  }, [fetchCart])
 
   useEffect(() => {
     getCart()
-  }, [])
+  }, [getCart])
 
   const renderLoadingView = () => (
     <LoaderContainer>

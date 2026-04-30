@@ -90,7 +90,7 @@ df["user_avg_price"] = df.groupby("user_id")["price"].transform("mean")
 df["price_diff_from_avg"] = abs(df["price"] - df["user_avg_price"])
 
 # =====================================================
-# 🔥 STRONG BEHAVIOR FEATURES (IMPORTANT SECTION)
+# STRONG BEHAVIOR FEATURES (IMPORTANT SECTION)
 # =====================================================
 
 # total actions by user so far

@@ -55,7 +55,7 @@ def get_similar_users(user_id, matrix, top_n=5):
         return []
 
     user_vector = matrix.loc[user_id].values.reshape(1, -1)
-
+ 
     similarities = cosine_similarity(user_vector, matrix.values)[0]
 
     scores = list(zip(matrix.index, similarities))
