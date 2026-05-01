@@ -71,7 +71,7 @@ const featuresList = [
 
 const LandingPage = () => {
   const navigate = useNavigate()
-  const goToRegiter = () => {
+  const goToRegister = () => {
     navigate('/register')
   }
 
@@ -87,7 +87,7 @@ const LandingPage = () => {
               Personalized deals and recommendations for every shopper.
             </HeroSubTitle>
             <HeroButtonContainer>
-              <HeroButton onClick={goToRegiter}>Get Started</HeroButton>
+              <HeroButton onClick={goToRegister}>Get Started</HeroButton>
               <HeroLink>Learn More</HeroLink>
             </HeroButtonContainer>
           </HeroSectionDetails>
@@ -113,7 +113,7 @@ const LandingPage = () => {
                 DealHive changed how I shop! Save much time and money!
               </TestimonialDescription>
               <TestimonialSubtext>
-                <ProfileName>--Sarra K</ProfileName>, Frequent Shopper
+                <ProfileName>Sarra K</ProfileName>, Frequent Shopper
               </TestimonialSubtext>
             </TestimonialDetails>
           </TestimonialSection>

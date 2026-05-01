@@ -14,11 +14,14 @@ export const FeatureCard = styled.div`
   border-radius: 10px;
   border: 1px solid rgba(30, 136, 229, 0.08);
 
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 
   @media screen and (min-width: 768px) {
     height: 180px;
-    width: 400px;
+    flex: 1;
+    min-width: 360px;
     flex-direction: column;
     justify-content: center;
     gap: 30px;

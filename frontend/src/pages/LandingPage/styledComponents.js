@@ -20,7 +20,6 @@ export const MainContainer = styled.div`
 /* Hero Section */
 
 export const HeroSection = styled.div`
-  height: 40%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -63,14 +62,14 @@ export const HeroImage = styled.img`
 `
 
 export const HeroDesktopImage = styled.img`
-  height: 400px;
-  width: 450px;
+  height: auto;
+  width: clamp(250px, 40vw, 450px);
   margin: -30px -30px 0px 0px;
   z-index: -1;
   pointer-events: none;
   animation: ${floatAnimation} 4s ease-in-out infinite;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
 `
@@ -169,7 +168,6 @@ export const HeroLink = styled.a`
 /* Features Section */
 
 export const FeaturesSection = styled.div`
-  height: 50%;
   width: 100%;
   background-color: #f7f8fc;
   display: flex;
@@ -224,13 +222,14 @@ export const TestimonialSection = styled.div`
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.08);
 
   @media screen and (min-width: 768px) {
-    width: 1230px;
+    width: 100%;
+    max-width: 1110px;
     padding: 15px;
   }
 `
 export const TestimonialAvatar = styled.img`
   min-height: 40px;
-  min-width: 40px;
+  min-width: 408x;
   max-height: 50px;
   max-width: 50px;
   margin-right: 15px;
@@ -294,7 +293,7 @@ export const Footer = styled.footer`
     align-items: center;
     align-self: center;
     z-index: 10;
-    padding-top: 42px;
+    padding: 20px 0;
   }
 `
 
