@@ -14,7 +14,8 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import apiStatusConstants from '../../constants/apiStatusConstants'
 
 import {
-  Page,
+  ProductDetailsPage,
+  ProductDetailsSection,
   Card,
   ImageSection,
   ProductImage,
@@ -203,7 +204,7 @@ const ProductItemDetails = () => {
     } = productDetails
     return (
       <>
-        <Page>
+        <ProductDetailsSection>
           <ProductLayout>
             <Card>
               <ImageSection>
@@ -277,7 +278,7 @@ const ProductItemDetails = () => {
               )}
             </ReviewSectionWrapper>
           </ProductLayout>
-        </Page>
+        </ProductDetailsSection>
 
         {similarStatus === apiStatusConstants.inProgress &&
           renderSimilarProductsLoader()}
@@ -322,7 +323,7 @@ const ProductItemDetails = () => {
   return (
     <>
       <Header />
-      {renderSwitch()}
+      <ProductDetailsPage>{renderSwitch()}</ProductDetailsPage>
     </>
   )
 }

@@ -3,6 +3,11 @@ import styled from 'styled-components'
 export const SectionContainer = styled.div`
   width: 100%;
   margin-top: 12px;
+  padding: 0px 3px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0px 15px;
+  }
 `
 
 export const SectionTitle = styled.h2`
@@ -25,11 +30,11 @@ export const ProductsList = styled.div`
   flex-wrap: wrap;
   gap: 15px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     margin-left: 10px;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     gap: 20px;
   }
 `

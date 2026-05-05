@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
   min-height: 100vh;
-  background: linear-gradient(180deg, #e8f3ff 0%, #dbeeff 50%, #f5faff 100%);
+  background: linear-gradient(180deg, #f8fcff 0%, #f2f8ff 45%, #edf6ff 100%);
+
   display: flex;
   flex-direction: column;
 
@@ -172,20 +173,21 @@ export const RetryButton = styled.button`
 `
 export const RecommendationLoaderBox = styled.div`
   width: 100%;
-  min-height: 190px;
+  min-height: 170px;
   margin: 10px 0 20px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.35s ease;
+
+  position: relative;
+  animation: fadeIn 0.5s ease;
 
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(6px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;

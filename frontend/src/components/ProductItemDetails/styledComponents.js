@@ -1,7 +1,18 @@
 import styled from 'styled-components'
 
-export const Page = styled.div`
-  padding: 80px 15px 10px 15px;
+export const ProductDetailsPage = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f8fcff 0%, #f2f8ff 45%, #edf6ff 100%);
+
+  padding: 80px 15px 15px 15px;
+
+  @media screen and (max-width: 767px) {
+    padding: 80px 8px;
+  }
+`
+export const ProductDetailsSection = styled.div`
   display: flex;
   justify-content: center;
 `
@@ -250,25 +261,6 @@ export const RecommendationLoaderBox = styled.div`
 
   position: relative;
   animation: fadeIn 0.5s ease;
-
-  /* soft ambient glow */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -40px;
-    background: radial-gradient(
-      circle,
-      rgba(37, 99, 235, 0.12),
-      rgba(37, 99, 235, 0.05) 40%,
-      transparent 75%
-    );
-    filter: blur(25px);
-    z-index: -1;
-  }
-
-  /* edge blending mask */
-  -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
-  mask-image: radial-gradient(circle, black 70%, transparent 100%);
 
   @keyframes fadeIn {
     from {
