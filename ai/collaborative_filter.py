@@ -19,13 +19,19 @@ interactions_col = db["useractivities"]
 # BUILD USER-ITEM MATRIX
 # ----------------------------
 def build_matrix():
-
+    action_weights = {
+        "viewed product": 1,
+        "added to wishlist": 3,
+        "added to cart": 5,
+        "placed order": 8
+    }
+    
     logs = list(interactions_col.find())
 
     if not logs:
         return None, None
 
-    data = []
+    interaction_scores = {}
 
     for log in logs:
 
@@ -35,22 +41,37 @@ def build_matrix():
         if "meta" in log and isinstance(log["meta"], dict):
             product = log["meta"].get("productId")
 
-        if product:
-            data.append([user, str(product)])
+        # if product:
+        #     data.append([user, str(product)])
 
-    df = pd.DataFrame(data, columns=["user", "product"])
+        action = str(log.get("action", "")).lower().strip()
+        weight = action_weights.get(action, 0)
+
+        key = (user, str(product))
+
+        existing_weight = interaction_scores.get(key, 0)
+        interaction_scores[key] = max(existing_weight, weight)
+    data = []
+
+    for (user, product), score in interaction_scores.items():
+        data.append([user, product, score])
+
+    df = pd.DataFrame(data, columns=["user", "product", "score"])
 
     # create interaction matrix
-    matrix = pd.crosstab(df["user"], df["product"])
+    matrix = df.pivot_table(
+        index = "user",
+        columns = "product",
+        values = "score",
+        fill_value = 0
+    )
 
     return matrix, df
-
 
 # ----------------------------
 # FIND SIMILAR USERS
 # ----------------------------
 def get_similar_users(user_id, matrix, top_n=5):
-
     if user_id not in matrix.index:
         return []
 
@@ -64,8 +85,9 @@ def get_similar_users(user_id, matrix, top_n=5):
 
     similar_users = [u for u, s in scores[1:top_n+1]]
 
-    return similar_users
+    print(matrix.head())
 
+    return similar_users
 
 # ----------------------------
 # RECOMMEND PRODUCTS
