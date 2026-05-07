@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
+from sklearn.feature_extraction.text import TfidfVectorizer
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
@@ -23,10 +24,19 @@ def build_similarity_engine():
     global DF_CACHE, SIM_MATRIX
 
     products = list(products_col.find())
+    
     if not products:
         raise ValueError("No products found")
 
     df = pd.DataFrame(products)
+
+    df["text_features"] = (
+        df["title"].fillna("" + " " + df["description"].fillna(""))
+    )
+    
+    vectorizer = TfidfVectorizer(stop_words="english")
+    text_vectors = vectorizer.fit_transform(df["text_features"])
+    text_sim = cosine_similarity(text_vectors)
 
     features = df[
         ["rating", "originalPrice", "discountPrice", "discountPercent"]
@@ -47,7 +57,7 @@ def build_similarity_engine():
     sim = cosine_similarity(scaled)
 
     DF_CACHE = df.reset_index(drop=True)
-    SIM_MATRIX = sim
+    SIM_MATRIX = (sim * 0.6) + (text_sim * 0.4)
 
 
 build_similarity_engine()

@@ -333,10 +333,23 @@ def recommend_live(user_id):
     scored=[]
     interaction_count=len(product_ids)
 
+    latest_order = orders_col.find_one(
+        {"user": ObjectId(user_id)},
+         sort=[("createdAt", -1)]
+    )
+
+    user_city = None
+    if latest_order and latest_order.get("address"):
+        user_city = latest_order["address"].get("city")
+
     for p in rec:
 
+        service_boost = 0
+        if user_city and user_city in p.get("serviceCenters", []):
+            service_boost = 0.15
+
         sim=(p.get("similarity_score",0)+1)/2
-        score=(sim*0.8)+(prob*0.2)
+        score=(sim*0.7)+(prob*0.2)+service_boost
 
         p["final_score"]=round(score,4)
         scored.append(p)
