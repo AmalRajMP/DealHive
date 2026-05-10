@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useCallback } from 'react'
 
 import authFetch from '../../utils/authFetch'
 
@@ -7,16 +7,21 @@ const CartContext = createContext()
 export const CartProvider = ({ children }) => {
   const [cartList, setCartList] = useState([])
 
-  const fetchCart = async () => {
+  const fetchCart = useCallback(async () => {
     try {
       const res = await authFetch('http://localhost:5000/api/cart')
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch cart')
+      }
 
       const data = await res.json()
       setCartList(data)
     } catch (error) {
       console.error('Fetch cart failed:', error)
+      throw error
     }
-  }
+  }, [])
 
   const addToCart = async (product) => {
     try {
@@ -102,10 +107,6 @@ export const CartProvider = ({ children }) => {
       console.error('Decrease quantity failed:', error)
     }
   }
-
-  useEffect(() => {
-    fetchCart()
-  }, [])
 
   return (
     <CartContext.Provider

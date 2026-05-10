@@ -79,7 +79,36 @@ const Checkout = () => {
       }
     }
 
+    const fetchUserDetails = async () => {
+      try {
+        const token = localStorage.getItem('authToken')
+
+        const response = await fetch('http://localhost:5000/api/users/me', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user details')
+        }
+
+        const data = await response.json()
+        setFormData({
+          fullName: data.firstName + ' ' + data.lastName,
+          phone: data.contactNo,
+          addressLine: data.address?.addressLine || '',
+          city: data.address?.city || '',
+          state: data.address?.state || '',
+          pincode: data.address?.pincode || '',
+        })
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
     fetchCart()
+    fetchUserDetails()
   }, [])
 
   const handleChange = (e) => {

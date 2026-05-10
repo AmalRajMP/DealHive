@@ -4,11 +4,11 @@ def model_predict(X):
     results = []
     for row in X:
         similarity = row[0]   # Product similarity score
-        interaction = row[1]  # User interaction / preference score
-        location = row[2]     # Location-based score (e.g., nearby service center)
+        purchase_prob = row[1]  # Purchase probability score
+        service_boost = row[2]     # Location-based score (e.g., nearby service center)
 
         # Calculate final recommendation score by summing all feature scores
-        score = similarity + interaction + location
+        score = (similarity * 0.7) + (purchase_prob * 0.2) + service_boost
         results.append(score)
 
     return np.array(results)
