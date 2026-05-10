@@ -103,7 +103,9 @@ const ProductItemDetails = () => {
 
   const onToggleWishlist = () => {
     if (isWishListed) removeFromWishList(productDetails._id)
-    else addToWishList(formattedWishlistProduct)
+    else {
+      addToWishList(formattedWishlistProduct)
+    }
   }
 
   const getProductDetails = async () => {
