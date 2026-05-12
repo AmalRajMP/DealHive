@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import authFetch from '../../utils/authFetch'
 
-import { FiShoppingCart, FiLogOut } from 'react-icons/fi'
+import { FiShoppingCart, FiLogOut, FiUser } from 'react-icons/fi'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsStars } from 'react-icons/bs'
 
@@ -27,6 +27,7 @@ const Header = () => {
   const onClickLogo = () => navigate('/home')
   const onClickCart = () => navigate('/cart')
   const onClickWishlist = () => navigate('/wishlist')
+  const onClickProfile = () => navigate('/profile')
 
   const onClickLogout = async () => {
     try {
@@ -65,6 +66,10 @@ const Header = () => {
 
           <NavIconButton onClick={onClickCart}>
             <FiShoppingCart />
+          </NavIconButton>
+
+          <NavIconButton onClick={onClickProfile}>
+            <FiUser />
           </NavIconButton>
 
           <LogoutButton onClick={onClickLogout}>

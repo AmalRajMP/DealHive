@@ -11,6 +11,7 @@ import WishlistPage from './pages/WishlistPage'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AddProduct from './pages/admin/AddProduct'
 import Checkout from './pages/Checkout'
+import UserDetails from './pages/UserDetails'
 
 const App = () => (
   <Routes>
@@ -61,6 +62,7 @@ const App = () => (
     <Route path="/checkout" element={<Checkout />} />
     <Route path="/admin/*" element={<AdminDashboard />} />
     <Route path="/admin/add-product" element={<AddProduct />} />
+    <Route path="/profile" element={<UserDetails />} />
   </Routes>
 )
 
