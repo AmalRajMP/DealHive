@@ -49,11 +49,49 @@ const UserDetails = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
+  const onClickSave = async () => {
+    try {
+      const token = localStorage.getItem('authToken')
+
+      const url = 'http://localhost:5000/api/users/me'
+      const options = {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+
+      const response = await fetch(url, options)
+      if (!response.ok) {
+        throw Error('Failed to update user details')
+      }
+
+      const data = await response.json()
+      const formattedData = {
+        fullName: `${data.updatedUserDetails.firstName} ${data.updatedUserDetails.lastName}`,
+        email: data.updatedUserDetails.emailID,
+        phone: data.updatedUserDetails.contactNo,
+        address: {
+          addressLine: data.updatedUserDetails.address?.addressLine,
+          city: data.updatedUserDetails.address?.city,
+          state: data.updatedUserDetails.address?.state,
+          pincode: data.updatedUserDetails.address?.pincode,
+        },
+      }
+      setUserDetails(formattedData)
+      setIsEditing(false)
+      console.log('User details updated successfully')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   useEffect(() => {
     const getUserDetails = async () => {
       try {
         const token = localStorage.getItem('authToken')
-        console.log(token)
 
         const url = 'http://localhost:5000/api/users/me'
         const options = {
@@ -162,7 +200,9 @@ const UserDetails = () => {
                     Cancel
                   </CancelButton>
 
-                  <SaveButton type="button">Save Changes</SaveButton>
+                  <SaveButton type="button" onClick={onClickSave}>
+                    Save Changes
+                  </SaveButton>
                 </ActionButtonsContainer>
               )}
             </ProfileHeader>
