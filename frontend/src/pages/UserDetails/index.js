@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Header from '../../components/Navbar'
 
 import { ThreeDots } from 'react-loader-spinner'
+import { FiEdit2 } from 'react-icons/fi'
 
 import {
   UserDetailsPage,
@@ -11,6 +12,11 @@ import {
   Value,
   LoaderContainer,
   ProfileHeader,
+  EditButton,
+  ActionButtonsContainer,
+  CancelButton,
+  SaveButton,
+  InputBox,
   ProfileAvatar,
   ProfileInfo,
   ProfileName,
@@ -27,7 +33,21 @@ const UserDetails = () => {
     phone: '',
     address: {},
   })
+  const [isEditing, setIsEditing] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    addressLine: '',
+    city: '',
+    state: '',
+    pincode: '',
+  })
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value })
+  }
 
   useEffect(() => {
     const getUserDetails = async () => {
@@ -90,9 +110,61 @@ const UserDetails = () => {
               <ProfileAvatar>{fullName?.charAt(0).toUpperCase()}</ProfileAvatar>
 
               <ProfileInfo>
-                <ProfileName>{fullName}</ProfileName>
-                <ProfileEmail>{email}</ProfileEmail>
+                {isEditing ? (
+                  <InputBox
+                    isHeaderInput
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <ProfileName>{fullName}</ProfileName>
+                )}
+                {isEditing ? (
+                  <InputBox
+                    isHeaderInput
+                    type="text"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <ProfileEmail>{email}</ProfileEmail>
+                )}
               </ProfileInfo>
+
+              {!isEditing ? (
+                <EditButton
+                  type="button"
+                  onClick={() => {
+                    setIsEditing(true)
+                    setFormData({
+                      fullName,
+                      email,
+                      phone,
+                      addressLine: address?.addressLine,
+                      city: address?.city,
+                      state: address?.state,
+                      pincode: address?.pincode,
+                    })
+                  }}
+                >
+                  <FiEdit2 />
+                  Edit Profile
+                </EditButton>
+              ) : (
+                <ActionButtonsContainer>
+                  <CancelButton
+                    type="button"
+                    onClick={() => setIsEditing(false)}
+                  >
+                    Cancel
+                  </CancelButton>
+
+                  <SaveButton type="button">Save Changes</SaveButton>
+                </ActionButtonsContainer>
+              )}
             </ProfileHeader>
 
             <SectionHeading>Personal Information</SectionHeading>
@@ -100,12 +172,30 @@ const UserDetails = () => {
             <DetailsGrid>
               <DetailBox>
                 <Key>Phone</Key>
-                <Value>{phone}</Value>
+                {isEditing ? (
+                  <InputBox
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <Value>{phone}</Value>
+                )}
               </DetailBox>
 
               <DetailBox>
                 <Key>Email</Key>
-                <Value>{email}</Value>
+                {isEditing ? (
+                  <InputBox
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <Value>{email}</Value>
+                )}
               </DetailBox>
             </DetailsGrid>
 
@@ -114,22 +204,58 @@ const UserDetails = () => {
             <DetailsGrid>
               <DetailBox>
                 <Key>Address</Key>
-                <Value>{address?.addressLine}</Value>
+                {isEditing ? (
+                  <InputBox
+                    type="text"
+                    name="addressLine"
+                    value={formData.addressLine}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <Value>{address?.addressLine}</Value>
+                )}
               </DetailBox>
 
               <DetailBox>
                 <Key>City</Key>
-                <Value>{address?.city}</Value>
+                {isEditing ? (
+                  <InputBox
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <Value>{address?.city}</Value>
+                )}
               </DetailBox>
 
               <DetailBox>
                 <Key>State</Key>
-                <Value>{address?.state}</Value>
+                {isEditing ? (
+                  <InputBox
+                    type="text"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <Value>{address?.state}</Value>
+                )}
               </DetailBox>
 
               <DetailBox>
                 <Key>Pincode</Key>
-                <Value>{address?.pincode}</Value>
+                {isEditing ? (
+                  <InputBox
+                    type="text"
+                    name="pincode"
+                    value={formData.pincode}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <Value>{address?.pincode}</Value>
+                )}
               </DetailBox>
             </DetailsGrid>
           </ProfileCard>

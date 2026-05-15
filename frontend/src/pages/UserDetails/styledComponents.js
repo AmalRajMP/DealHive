@@ -49,6 +49,88 @@ export const ProfileHeader = styled.div`
   }
 `
 
+export const EditButton = styled.button`
+  background-color: #ffffff;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #eff6ff;
+  }
+`
+export const ActionButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    margin-top: 16px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+`
+export const CancelButton = styled.button`
+  background-color: transparent;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: #f8fafc;
+  }
+`
+
+export const SaveButton = styled.button`
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+`
+
+export const InputBox = styled.input`
+  width: ${(props) => (props.isHeaderInput ? '320px' : '100%')};
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Roboto';
+  color: #1e293b;
+  background-color: #ffffff;
+  outline: none;
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: #2563eb;
+    box-shadow: 0px 0px 4px rgba(37, 99, 235, 0.3);
+  }
+`
+
 export const ProfileAvatar = styled.div`
   width: 85px;
   height: 85px;
@@ -72,6 +154,7 @@ export const ProfileAvatar = styled.div`
 export const ProfileInfo = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 `
 
 export const ProfileName = styled.h1`
