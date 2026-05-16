@@ -7,7 +7,7 @@ export const CartContainer = styled.div`
   padding: 100px 24px 60px;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 32px;
+  gap: 25px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

@@ -15,6 +15,7 @@ import empty_wishlist from '../../assets/empty_wishlist.svg'
 import {
   WishlistContainer,
   WishlistHeading,
+  WishlistContent,
   WishlistList,
   WishlistActionBar,
   ActionButton,
@@ -112,19 +113,24 @@ const WishlistPage = () => {
     return (
       <WishlistContainer>
         <WishlistHeading>My Wishlist</WishlistHeading>
-        <WishlistList>
-          {wishList.map((item) => (
-            <WishlistItem key={item.productId._id} item={item} />
-          ))}
+
+        <WishlistContent>
+          <WishlistList>
+            {wishList.map((item) => (
+              <WishlistItem key={item.productId._id} item={item} />
+            ))}
+          </WishlistList>
+
           <WishlistActionBar>
             <ActionButton primary onClick={onAddAllToCart}>
               Move All to Cart
             </ActionButton>
+
             <ActionButton danger onClick={clearWishList}>
               Clear Wishlist
             </ActionButton>
           </WishlistActionBar>
-        </WishlistList>
+        </WishlistContent>
       </WishlistContainer>
     )
   }
