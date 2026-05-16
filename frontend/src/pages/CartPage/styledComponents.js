@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
+  height: 100vh;
   max-width: 1100px;
   margin: 0 auto;
   padding: 100px 24px 60px;
-
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
@@ -18,8 +18,8 @@ export const CartContainer = styled.div`
 export const CartHeading = styled.h1`
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
   border-bottom: 2px solid #e2e8f0;
   color: #1f2933;
 
@@ -27,13 +27,41 @@ export const CartHeading = styled.h1`
 `
 
 export const CartList = styled.ul`
+  height: 500px;
   list-style: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow-y: auto;
+
+  /* scrollbar styling */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  @media (max-width: 768px) {
+    height: 450px;
+    padding-bottom: 10px;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+  }
 `
 
 export const OrderSummary = styled.div`
@@ -56,7 +84,7 @@ export const OrderSummary = styled.div`
     left: 0;
     right: 0;
     z-index: 100;
-
+    align-self: flex-end;
     border-radius: 16px 16px 0 0;
     padding: 16px 20px;
   }

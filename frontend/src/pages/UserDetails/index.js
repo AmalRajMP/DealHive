@@ -117,7 +117,6 @@ const UserDetails = () => {
             pincode: data.address?.pincode,
           },
         }
-        console.log(formattedData)
         setUserDetails(formattedData)
         setIsLoading(false)
       } catch (e) {
