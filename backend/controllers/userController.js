@@ -47,7 +47,7 @@ const updateUserDetails = async (req, res) => {
         },
       },
       { new: true },
-    ).select('-password')
+    )
 
     if (!updatedUser) {
       return res.status(404).json({
