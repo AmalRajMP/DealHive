@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 
-import Header from '../../components/Navbar'
+import Header from "../../components/Navbar"
 
-import { ThreeDots } from 'react-loader-spinner'
-import { FiEdit2 } from 'react-icons/fi'
+import { ThreeDots } from "react-loader-spinner"
+import { FiEdit2 } from "react-icons/fi"
+
+import BASE_URL from "../../config/api"
 
 import {
   UserDetailsPage,
@@ -24,25 +26,25 @@ import {
   SectionHeading,
   DetailsGrid,
   DetailBox,
-} from './styledComponents'
+} from "./styledComponents"
 
 const UserDetails = () => {
   const [userDetails, setUserDetails] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
+    fullName: "",
+    email: "",
+    phone: "",
     address: {},
   })
   const [isEditing, setIsEditing] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    addressLine: '',
-    city: '',
-    state: '',
-    pincode: '',
+    fullName: "",
+    email: "",
+    phone: "",
+    addressLine: "",
+    city: "",
+    state: "",
+    pincode: "",
   })
 
   const handleChange = (event) => {
@@ -51,21 +53,21 @@ const UserDetails = () => {
 
   const onClickSave = async () => {
     try {
-      const token = localStorage.getItem('authToken')
+      const token = localStorage.getItem("authToken")
 
-      const url = 'http://localhost:5000/api/users/me'
+      const url = `${BASE_URL}/api/users/me`
       const options = {
-        method: 'PUT',
+        method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       }
 
       const response = await fetch(url, options)
       if (!response.ok) {
-        throw Error('Failed to update user details')
+        throw Error("Failed to update user details")
       }
 
       const data = await response.json()
@@ -82,7 +84,7 @@ const UserDetails = () => {
       }
       setUserDetails(formattedData)
       setIsEditing(false)
-      console.log('User details updated successfully')
+      console.log("User details updated successfully")
     } catch (e) {
       console.log(e)
     }
@@ -91,11 +93,11 @@ const UserDetails = () => {
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-        const token = localStorage.getItem('authToken')
+        const token = localStorage.getItem("authToken")
 
-        const url = 'http://localhost:5000/api/users/me'
+        const url = `${BASE_URL}/api/users/me`
         const options = {
-          method: 'GET',
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -103,7 +105,7 @@ const UserDetails = () => {
 
         const response = await fetch(url, options)
         if (!response.ok) {
-          throw Error('Failed to fetch user details')
+          throw Error("Failed to fetch user details")
         }
         const data = await response.json()
         const formattedData = {

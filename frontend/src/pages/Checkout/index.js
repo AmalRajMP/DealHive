@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
-import Navbar from '../../components/Navbar'
+import Navbar from "../../components/Navbar"
+
+import BASE_URL from "../../config/api"
 
 import {
   PageContainer,
@@ -28,19 +30,19 @@ import {
   SuccessIcon,
   SuccessTitle,
   SuccessText,
-} from './styledComponents'
+} from "./styledComponents"
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
-    addressLine: '',
-    city: '',
-    state: '',
-    pincode: '',
+    fullName: "",
+    phone: "",
+    addressLine: "",
+    city: "",
+    state: "",
+    pincode: "",
   })
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
   const [cartItems, setCartItems] = useState([])
   const [total, setTotal] = useState(0)
   const [orderSuccess, setOrderSuccess] = useState(false)
@@ -50,16 +52,16 @@ const Checkout = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const token = localStorage.getItem('authToken')
+        const token = localStorage.getItem("authToken")
 
-        const response = await fetch('http://localhost:5000/api/cart', {
+        const response = await fetch(`${BASE_URL}/api/cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
 
         if (!response.ok) {
-          throw new Error('Failed to fetch cart')
+          throw new Error("Failed to fetch cart")
         }
 
         const data = await response.json()
@@ -81,26 +83,26 @@ const Checkout = () => {
 
     const fetchUserDetails = async () => {
       try {
-        const token = localStorage.getItem('authToken')
+        const token = localStorage.getItem("authToken")
 
-        const response = await fetch('http://localhost:5000/api/users/me', {
+        const response = await fetch(`${BASE_URL}/api/users/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
 
         if (!response.ok) {
-          throw new Error('Failed to fetch user details')
+          throw new Error("Failed to fetch user details")
         }
 
         const data = await response.json()
         setFormData({
-          fullName: data.firstName + ' ' + data.lastName,
+          fullName: data.firstName + " " + data.lastName,
           phone: data.contactNo,
-          addressLine: data.address?.addressLine || '',
-          city: data.address?.city || '',
-          state: data.address?.state || '',
-          pincode: data.address?.pincode || '',
+          addressLine: data.address?.addressLine || "",
+          city: data.address?.city || "",
+          state: data.address?.state || "",
+          pincode: data.address?.pincode || "",
         })
       } catch (err) {
         console.error(err)
@@ -121,32 +123,29 @@ const Checkout = () => {
     const { fullName, phone, addressLine, city, state, pincode } = formData
 
     if (!fullName || !phone || !addressLine || !city || !state || !pincode) {
-      setError('Please fill all fields')
+      setError("Please fill all fields")
       return
     }
 
     try {
-      const token = localStorage.getItem('authToken')
+      const token = localStorage.getItem("authToken")
 
-      const response = await fetch(
-        'http://localhost:5000/api/orders/checkout',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(formData),
+      const response = await fetch(`${BASE_URL}/api/orders/checkout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      )
+        body: JSON.stringify(formData),
+      })
 
       if (!response.ok) {
-        throw new Error('Order failed')
+        throw new Error("Order failed")
       }
 
       setOrderSuccess(true)
     } catch (err) {
-      setError('Something went wrong. Try again.')
+      setError("Something went wrong. Try again.")
     }
   }
 
@@ -161,7 +160,7 @@ const Checkout = () => {
             <SuccessText>
               Thank you for your purchase. Your order has been confirmed.
             </SuccessText>
-            <Button onClick={() => navigate('/')}>Continue Shopping</Button>
+            <Button onClick={() => navigate("/")}>Continue Shopping</Button>
           </SuccessCard>
         </SuccessWrapper>
       </>

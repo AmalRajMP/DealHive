@@ -1,16 +1,18 @@
-import { useEffect, useContext, useState } from 'react'
+import { useEffect, useContext, useState } from "react"
 
-import WishlistContext from '../../context/WishlistContext'
-import CartContext from '../../context/CartContext'
+import WishlistContext from "../../context/WishlistContext"
+import CartContext from "../../context/CartContext"
 
-import WishlistItem from '../../components/WishlistItem'
-import Navbar from '../../components/Navbar'
+import WishlistItem from "../../components/WishlistItem"
+import Navbar from "../../components/Navbar"
 
-import { ThreeDots } from 'react-loader-spinner'
+import { ThreeDots } from "react-loader-spinner"
 
-import apiStatusConstants from '../../constants/apiStatusConstants'
+import apiStatusConstants from "../../constants/apiStatusConstants"
 
-import empty_wishlist from '../../assets/empty_wishlist.svg'
+import empty_wishlist from "../../assets/empty_wishlist.svg"
+
+import BASE_URL from "../../config/api"
 
 import {
   WishlistContainer,
@@ -26,7 +28,7 @@ import {
   FailureImage,
   FailureText,
   RetryButton,
-} from './styledComponents'
+} from "./styledComponents"
 
 const WishlistPage = () => {
   const { wishList, fetchWishlist } = useContext(WishlistContext)
@@ -49,16 +51,16 @@ const WishlistPage = () => {
   }, [])
 
   const clearWishList = async () => {
-    const token = localStorage.getItem('authToken')
+    const token = localStorage.getItem("authToken")
     if (!token) {
-      console.log('User not authenticated')
+      console.log("User not authenticated")
       return
     }
 
     try {
-      const url = 'http://localhost:5000/api/wishlist/clear'
+      const url = `${BASE_URL}/api/wishlist/clear`
       const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -67,7 +69,7 @@ const WishlistPage = () => {
       const response = await fetch(url, options)
       if (response.ok) {
         await getWishlist()
-        console.log('Wishlist cleared')
+        console.log("Wishlist cleared")
       }
     } catch (e) {
       console.log(e)

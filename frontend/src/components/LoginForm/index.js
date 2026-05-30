@@ -1,7 +1,9 @@
-import { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
-import { MdLockOutline, MdEmail } from 'react-icons/md'
-import apiStatusConstants from '../../constants/apiStatusConstants'
+import { useState } from "react"
+import { Navigate, useNavigate } from "react-router-dom"
+import { MdLockOutline, MdEmail } from "react-icons/md"
+import apiStatusConstants from "../../constants/apiStatusConstants"
+
+import BASE_URL from "../../config/api"
 
 import {
   FormContainer,
@@ -14,26 +16,26 @@ import {
   Button,
   SignupPrompt,
   SignupLink,
-} from './styledComponents'
-import { ThreeDots } from 'react-loader-spinner'
+} from "./styledComponents"
+import { ThreeDots } from "react-loader-spinner"
 
 const LoginForm = () => {
-  const [emailID, setEmailID] = useState('')
-  const [password, setPassword] = useState('')
+  const [emailID, setEmailID] = useState("")
+  const [password, setPassword] = useState("")
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState("")
 
   const navigate = useNavigate()
 
-  const token = localStorage.getItem('authToken')
+  const token = localStorage.getItem("authToken")
   if (token) return <Navigate to="/home" />
 
   const onChangeEmailID = (event) => {
-    setErrorMsg('')
+    setErrorMsg("")
     setEmailID(event.target.value)
   }
   const onChangePassword = (event) => {
-    setErrorMsg('')
+    setErrorMsg("")
     setPassword(event.target.value)
   }
 
@@ -41,11 +43,11 @@ const LoginForm = () => {
     event.preventDefault()
     setApiStatus(apiStatusConstants.inProgress)
 
-    const url = 'http://localhost:5000/api/auth/login'
+    const url = `${BASE_URL}/api/auth/login`
     const options = {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         emailID,
         password,
@@ -56,12 +58,12 @@ const LoginForm = () => {
     const data = await response.json()
     if (response.ok) {
       setApiStatus(apiStatusConstants.success)
-      localStorage.setItem('authToken', data.token)
-      localStorage.setItem('dealhive_username', data.firstName)
-      localStorage.setItem('userId', data.userId)
+      localStorage.setItem("authToken", data.token)
+      localStorage.setItem("dealhive_username", data.firstName)
+      localStorage.setItem("userId", data.userId)
 
       console.log(data.token)
-      navigate('/home')
+      navigate("/home")
     } else {
       setApiStatus(apiStatusConstants.failure)
       setErrorMsg(data.message)
@@ -76,14 +78,14 @@ const LoginForm = () => {
             type="text"
             name="fake_username"
             autoComplete="off"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           />
 
           <input
             type="password"
             name="fake_password"
             autoComplete="new-password"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           />
 
           <Heading>Login</Heading>
@@ -100,7 +102,7 @@ const LoginForm = () => {
               onChange={onChangeEmailID}
               autoComplete="off"
             />
-            {emailID && !emailID.includes('@') && (
+            {emailID && !emailID.includes("@") && (
               <ErrorMsg>Please enter a valid email</ErrorMsg>
             )}
           </InputContainer>
@@ -124,7 +126,7 @@ const LoginForm = () => {
           )}
           <Button type="submit">LOGIN</Button>
           <SignupPrompt>
-            Don’t have an account?{' '}
+            Don’t have an account?{" "}
             <SignupLink href="/register">Sign up</SignupLink>
           </SignupPrompt>
         </FormContainer>

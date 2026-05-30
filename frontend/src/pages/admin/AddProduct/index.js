@@ -1,7 +1,9 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-import authFetch from '../../../utils/authFetch'
+import authFetch from "../../../utils/authFetch"
+
+import BASE_URL from "../../../config/api"
 
 import {
   Container,
@@ -11,7 +13,7 @@ import {
   TextArea,
   Select,
   Button,
-} from './styledComponents'
+} from "./styledComponents"
 
 const AddProduct = () => {
   const navigate = useNavigate()
@@ -37,24 +39,24 @@ const AddProduct = () => {
       serviceCenters: [],
     }
 
-    console.log('Sending:', productData)
+    console.log("Sending:", productData)
 
-    const res = await authFetch('http://localhost:5000/admin/products', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await authFetch(`${BASE_URL}/admin/products`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(productData),
     })
 
     const data = await res.json()
-    console.log('Response:', data)
+    console.log("Response:", data)
 
     if (!res.ok) {
-      alert(data.error || data.message || 'Failed to add product')
+      alert(data.error || data.message || "Failed to add product")
       return
     }
 
-    alert('Product added successfully')
-    navigate('/admin/products')
+    alert("Product added successfully")
+    navigate("/admin/products")
   }
 
   return (

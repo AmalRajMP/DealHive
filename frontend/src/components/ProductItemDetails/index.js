@@ -1,17 +1,18 @@
-import { useParams } from 'react-router-dom'
-import { useState, useEffect, useContext } from 'react'
+import { useParams } from "react-router-dom"
+import { useState, useEffect, useContext } from "react"
 
-import Header from '../../components/Navbar'
-import CategorySection from '../../components/CategorySection'
+import Header from "../../components/Navbar"
+import CategorySection from "../../components/CategorySection"
 
-import CartContext from '../../context/CartContext'
-import WishlistContext from '../../context/WishlistContext'
+import CartContext from "../../context/CartContext"
+import WishlistContext from "../../context/WishlistContext"
 
-import { ThreeDots } from 'react-loader-spinner'
-import { MdErrorOutline } from 'react-icons/md'
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { ThreeDots } from "react-loader-spinner"
+import { MdErrorOutline } from "react-icons/md"
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
-import apiStatusConstants from '../../constants/apiStatusConstants'
+import apiStatusConstants from "../../constants/apiStatusConstants"
+import BASE_URL from "../../config/api"
 
 import {
   ProductDetailsPage,
@@ -48,7 +49,7 @@ import {
   ServiceItem,
   ProductLayout,
   ReviewSectionWrapper,
-} from './styledComponents'
+} from "./styledComponents"
 
 const ProductItemDetails = () => {
   const { id } = useParams()
@@ -112,7 +113,7 @@ const ProductItemDetails = () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
 
-      const response = await fetch(`http://localhost:5000/api/products/${id}`)
+      const response = await fetch(`${BASE_URL}/api/products/${id}`)
       const data = await response.json()
 
       if (response.ok) {
@@ -146,7 +147,7 @@ const ProductItemDetails = () => {
     try {
       setRecommendedStatus(apiStatusConstants.inProgress)
 
-      const userId = localStorage.getItem('userId')
+      const userId = localStorage.getItem("userId")
       if (!userId) {
         setRecommendedStatus(apiStatusConstants.success)
         return

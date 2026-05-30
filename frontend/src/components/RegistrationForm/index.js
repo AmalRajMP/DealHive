@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { FaRegUser, FaPhoneAlt } from 'react-icons/fa'
-import { MdEmail, MdLockOutline, MdDone } from 'react-icons/md'
-import apiStatusConstants from '../../constants/apiStatusConstants'
-import { ThreeDots } from 'react-loader-spinner'
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { FaRegUser, FaPhoneAlt } from "react-icons/fa"
+import { MdEmail, MdLockOutline, MdDone } from "react-icons/md"
+import apiStatusConstants from "../../constants/apiStatusConstants"
+import { ThreeDots } from "react-loader-spinner"
+
+import BASE_URL from "../../config/api"
 
 import {
   FormContainer,
@@ -20,15 +22,15 @@ import {
   SuccessMsg,
   SuccessSubMsg,
   GoToLoginBtn,
-} from './styledComponents'
+} from "./styledComponents"
 
 const RegistrationForm = () => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [emailID, setEmailID] = useState('')
-  const [contactNo, setContactNo] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [emailID, setEmailID] = useState("")
+  const [contactNo, setContactNo] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
   const navigate = useNavigate()
@@ -46,10 +48,10 @@ const RegistrationForm = () => {
 
     setApiStatus(apiStatusConstants.inProgress)
 
-    const url = 'http://localhost:5000/api/auth/register'
+    const url = `${BASE_URL}/api/auth/register`
     const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         firstName,
         lastName,
@@ -62,7 +64,7 @@ const RegistrationForm = () => {
     const response = await fetch(url, options)
     if (response.ok) {
       setApiStatus(apiStatusConstants.success)
-      console.log('User registered successfully')
+      console.log("User registered successfully")
     } else {
       setApiStatus(apiStatusConstants.failure)
       const data = await response.json()
@@ -78,14 +80,14 @@ const RegistrationForm = () => {
             type="text"
             name="fake_username"
             autoComplete="off"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           />
 
           <input
             type="password"
             name="fake_password"
             autoComplete="new-password"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           />
 
           <Heading>Register</Heading>
@@ -135,7 +137,7 @@ const RegistrationForm = () => {
               required
               autoComplete="off"
             />
-            {emailID && !emailID.includes('@') && (
+            {emailID && !emailID.includes("@") && (
               <ErrorMsg>Please enter a valid email</ErrorMsg>
             )}
           </InputContainer>
@@ -228,7 +230,7 @@ const RegistrationForm = () => {
           <SuccessMsg>Registration Successful</SuccessMsg>
           <SuccessSubMsg>You can now log in to your account.</SuccessSubMsg>
 
-          <GoToLoginBtn onClick={() => navigate('/login')}>
+          <GoToLoginBtn onClick={() => navigate("/login")}>
             Go to Login
           </GoToLoginBtn>
         </SuccessViewContainer>

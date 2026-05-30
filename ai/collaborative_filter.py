@@ -85,8 +85,6 @@ def get_similar_users(user_id, matrix, top_n=5):
 
     similar_users = [u for u, s in scores[1:top_n+1]]
 
-    print(matrix.head())
-
     return similar_users
 
 # ----------------------------

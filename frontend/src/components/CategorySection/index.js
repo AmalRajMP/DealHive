@@ -15,7 +15,6 @@ const CategorySection = ({
   products,
   layout = "row",
 }) => {
-  console.log("CategorySection loading:", isLoading)
   return (
     <SectionContainer>
       <SectionTitle>{title}</SectionTitle>

@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "npm start",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Backend",
+      "type": "shell",
+      "command": "nodemon server.js",
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "AI",
+      "type": "shell",
+      "command": "python app.py",
+      "options": {
+        "cwd": "${workspaceFolder}/ai"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Start DealHive",
+      "dependsOn": ["Frontend", "Backend", "AI"]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import authFetch from '../../utils/authFetch'
+import { useEffect, useState } from "react"
+import authFetch from "../../utils/authFetch"
+import BASE_URL from "../../config/api"
 
 import {
   Container,
@@ -23,7 +24,7 @@ import {
   AddressName,
   AddressLine,
   AddressPhone,
-} from './styledComponents'
+} from "./styledComponents"
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([])
@@ -31,7 +32,7 @@ const AdminOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const url = 'http://localhost:5000/admin/orders'
+        const url = `${BASE_URL}/admin/orders`
         const res = await authFetch(url)
         const data = await res.json()
         setOrders(data)
@@ -45,10 +46,10 @@ const AdminOrders = () => {
 
   const onChangeStatus = async (event, order) => {
     const newStatus = event.target.value
-    const url = `http://localhost:5000/admin/orders/${order._id}/status`
+    const url = `${BASE_URL}/admin/orders/${order._id}/status`
     const options = {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
     }
     await authFetch(url, options)
@@ -86,22 +87,22 @@ const AdminOrders = () => {
             {order.items.map((item, index) => (
               <ItemRow key={index}>
                 <div
-                  style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
+                  style={{ display: "flex", alignItems: "center", gap: "12px" }}
                 >
                   <img
                     src={item.product?.thumbnail}
                     alt={item.product?.title}
                     style={{
-                      width: '50px',
-                      height: '50px',
-                      objectFit: 'cover',
-                      borderRadius: '8px',
+                      width: "50px",
+                      height: "50px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
                     }}
                   />
 
                   <div>
-                    <strong>{item.product?.title || 'Product removed'}</strong>
-                    <div style={{ fontSize: '12px', color: '#64748b' }}>
+                    <strong>{item.product?.title || "Product removed"}</strong>
+                    <div style={{ fontSize: "12px", color: "#64748b" }}>
                       Qty: {item.quantity}
                     </div>
                   </div>

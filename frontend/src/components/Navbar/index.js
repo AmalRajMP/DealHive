@@ -1,12 +1,13 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
-import authFetch from '../../utils/authFetch'
+import authFetch from "../../utils/authFetch"
+import BASE_URL from "../../config/api"
 
-import { FiShoppingCart, FiLogOut, FiUser } from 'react-icons/fi'
-import { AiOutlineHeart } from 'react-icons/ai'
-import { BsStars } from 'react-icons/bs'
+import { FiShoppingCart, FiLogOut, FiUser } from "react-icons/fi"
+import { AiOutlineHeart } from "react-icons/ai"
+import { BsStars } from "react-icons/bs"
 
-import Website_Logo from '../../assets/Website_Logo.png'
+import Website_Logo from "../../assets/Website_Logo.png"
 
 import {
   Navbar,
@@ -18,28 +19,28 @@ import {
   GreetingText,
   GreetingIcon,
   LogoutButton,
-} from './styledComponents'
+} from "./styledComponents"
 
 const Header = () => {
   const navigate = useNavigate()
-  const firstName = localStorage.getItem('dealhive_username')
+  const firstName = localStorage.getItem("dealhive_username")
 
-  const onClickLogo = () => navigate('/home')
-  const onClickCart = () => navigate('/cart')
-  const onClickWishlist = () => navigate('/wishlist')
-  const onClickProfile = () => navigate('/profile')
+  const onClickLogo = () => navigate("/home")
+  const onClickCart = () => navigate("/cart")
+  const onClickWishlist = () => navigate("/wishlist")
+  const onClickProfile = () => navigate("/profile")
 
   const onClickLogout = async () => {
     try {
-      await authFetch('http://localhost:5000/api/auth/logout', {
-        method: 'POST',
+      await authFetch(`${BASE_URL}/api/auth/logout`, {
+        method: "POST",
       })
     } catch (err) {
-      console.error('Logout failed:', err)
+      console.error("Logout failed:", err)
     } finally {
-      localStorage.removeItem('authToken')
-      localStorage.removeItem('dealhive_username')
-      navigate('/login', { replace: true })
+      localStorage.removeItem("authToken")
+      localStorage.removeItem("dealhive_username")
+      navigate("/login", { replace: true })
     }
   }
 
@@ -56,7 +57,7 @@ const Header = () => {
           <GreetingIcon>
             <BsStars />
           </GreetingIcon>
-          <GreetingText>Hi, {firstName ? firstName : 'Guest'}</GreetingText>
+          <GreetingText>Hi, {firstName ? firstName : "Guest"}</GreetingText>
         </Greeting>
 
         <NavIcons>

@@ -1,24 +1,26 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from "react"
 
-import FilterItem from '../../components/FilterItem'
-import CategorySection from '../../components/CategorySection'
-import Header from '../../components/Navbar'
+import FilterItem from "../../components/FilterItem"
+import CategorySection from "../../components/CategorySection"
+import Header from "../../components/Navbar"
 
-import ai_banner_icon from '../../assets/shopping.svg'
+import ai_banner_icon from "../../assets/shopping.svg"
 
-import { ThreeDots } from 'react-loader-spinner'
-import { MdErrorOutline } from 'react-icons/md'
+import { ThreeDots } from "react-loader-spinner"
+import { MdErrorOutline } from "react-icons/md"
 
-import apiStatusConstants from '../../constants/apiStatusConstants'
+import apiStatusConstants from "../../constants/apiStatusConstants"
 
-import { filterCategories } from '../../constants/filterCategories'
+import { filterCategories } from "../../constants/filterCategories"
 import {
   ELECTRONICS_CATEGORIES,
   FASHION_CATEGORIES,
   GROCERIES_CATEGORIES,
-} from '../../constants/categories'
+} from "../../constants/categories"
 
-import { BsSearch } from 'react-icons/bs'
+import { BsSearch } from "react-icons/bs"
+
+import BASE_URL from "../../config/api"
 
 import {
   MainContainer,
@@ -40,13 +42,13 @@ import {
   RecommendationLoaderBox,
   LoaderTitle,
   LoaderSub,
-} from './styledComponents'
+} from "./styledComponents"
 
 const HomePage = () => {
   const dealsRef = useRef(null)
 
-  const [searchInput, setSearchInput] = useState('')
-  const [activeFilterId, setActiveFilterId] = useState('all')
+  const [searchInput, setSearchInput] = useState("")
+  const [activeFilterId, setActiveFilterId] = useState("all")
   const [productsList, setProductsList] = useState([])
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
 
@@ -59,7 +61,7 @@ const HomePage = () => {
     try {
       setApiStatus(apiStatusConstants.inProgress)
 
-      const response = await fetch('http://localhost:5000/api/products')
+      const response = await fetch(`${BASE_URL}/api/products`)
       const data = await response.json()
 
       if (response.ok) {
@@ -75,7 +77,7 @@ const HomePage = () => {
     try {
       setRecommendStatus(apiStatusConstants.inProgress)
 
-      const userId = localStorage.getItem('userId')
+      const userId = localStorage.getItem("userId")
       if (!userId) {
         setRecommendStatus(apiStatusConstants.success)
         return
@@ -99,7 +101,7 @@ const HomePage = () => {
   }, [])
 
   const onExploreDeals = () =>
-    dealsRef.current?.scrollIntoView({ behavior: 'smooth' })
+    dealsRef.current?.scrollIntoView({ behavior: "smooth" })
 
   const onSearchProduct = (e) => setSearchInput(e.target.value)
   const onChangeActiveFilter = (id) => setActiveFilterId(id)
@@ -107,8 +109,8 @@ const HomePage = () => {
   const getProductsByCategories = (products, categories) =>
     products.filter((p) => categories.includes(p.category))
 
-  const isSearching = searchInput.trim() !== ''
-  const isFiltering = activeFilterId !== 'all'
+  const isSearching = searchInput.trim() !== ""
+  const isFiltering = activeFilterId !== "all"
   const showFilteredResults = isSearching || isFiltering
 
   let filteredProducts = productsList
@@ -125,7 +127,7 @@ const HomePage = () => {
 
   const formatTitle = (text) => text.charAt(0).toUpperCase() + text.slice(1)
 
-  let resultsTitle = ''
+  let resultsTitle = ""
   if (isSearching && isFiltering)
     resultsTitle = `Results for "${searchInput}" in ${formatTitle(
       activeFilterId,
@@ -153,7 +155,7 @@ const HomePage = () => {
   const isNewUser = hybridProducts.length === 0
 
   const beautyProducts = productsList.filter(
-    (p) => p.category.toLowerCase() === 'beauty',
+    (p) => p.category.toLowerCase() === "beauty",
   )
 
   const electronicsProducts = getProductsByCategories(
@@ -171,7 +173,7 @@ const HomePage = () => {
     GROCERIES_CATEGORIES,
   )
 
-  let aiSubtitle = 'Recommended for you'
+  let aiSubtitle = "Recommended for you"
   if (recommendData?.explanation) {
     const exp = recommendData.explanation
     const strongest = Object.keys(exp).reduce((a, b) =>
@@ -179,9 +181,9 @@ const HomePage = () => {
     )
 
     const map = {
-      interaction: 'Based on your activity',
-      similarity: 'Users like you loved these',
-      location: 'Popular near your area',
+      interaction: "Based on your activity",
+      similarity: "Users like you loved these",
+      location: "Popular near your area",
     }
 
     aiSubtitle = map[strongest] || aiSubtitle
@@ -212,7 +214,11 @@ const HomePage = () => {
   const renderSuccessView = () => {
     if (showFilteredResults)
       return (
-        <CategorySection title={resultsTitle} products={filteredProducts} />
+        <CategorySection
+          isLoading={apiStatus === apiStatusConstants.inProgress}
+          title={resultsTitle}
+          products={filteredProducts}
+        />
       )
 
     return (
@@ -224,6 +230,7 @@ const HomePage = () => {
           <>
             {nearbyProducts.length > 0 && (
               <CategorySection
+                isLoading={apiStatus === apiStatusConstants.inProgress}
                 title="Service Near You"
                 subtitle="Products with nearby support centers"
                 products={nearbyProducts}
@@ -232,6 +239,7 @@ const HomePage = () => {
 
             {!isNewUser && hybridProducts.length > 0 && (
               <CategorySection
+                isLoading={apiStatus === apiStatusConstants.inProgress}
                 title="Recommended for you"
                 subtitle={aiSubtitle}
                 products={hybridProducts}
@@ -240,6 +248,7 @@ const HomePage = () => {
 
             {recentProducts.length > 0 && (
               <CategorySection
+                isLoading={apiStatus === apiStatusConstants.inProgress}
                 title="Recently Viewed"
                 products={recentProducts}
               />
@@ -247,6 +256,7 @@ const HomePage = () => {
 
             {(isNewUser || trendingProducts.length > 0) && (
               <CategorySection
+                isLoading={apiStatus === apiStatusConstants.inProgress}
                 title="Trending Now"
                 products={trendingProducts}
               />
@@ -255,12 +265,28 @@ const HomePage = () => {
         )}
 
         <div ref={dealsRef}>
-          <CategorySection title="Beauty Picks" products={beautyProducts} />
+          <CategorySection
+            isLoading={apiStatus === apiStatusConstants.inProgress}
+            title="Beauty Picks"
+            products={beautyProducts}
+          />
         </div>
 
-        <CategorySection title="Electronics" products={electronicsProducts} />
-        <CategorySection title="Fashion" products={fashionProducts} />
-        <CategorySection title="Groceries" products={groceriesProducts} />
+        <CategorySection
+          isLoading={apiStatus === apiStatusConstants.inProgress}
+          title="Electronics"
+          products={electronicsProducts}
+        />
+        <CategorySection
+          isLoading={apiStatus === apiStatusConstants.inProgress}
+          title="Fashion"
+          products={fashionProducts}
+        />
+        <CategorySection
+          isLoading={apiStatus === apiStatusConstants.inProgress}
+          title="Groceries"
+          products={groceriesProducts}
+        />
       </>
     )
   }

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-import authFetch from '../../utils/authFetch'
+import authFetch from "../../utils/authFetch"
+import BASE_URL from "../../config/api"
 
 import {
   Container,
@@ -26,19 +27,19 @@ import {
   SaveBtn,
   SearchInput,
   ProductList,
-} from './styledComponents'
+} from "./styledComponents"
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([])
   const [editingProduct, setEditingProduct] = useState(null)
   const [form, setForm] = useState({})
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState("")
 
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await authFetch('http://localhost:5000/admin/products')
+      const res = await authFetch(`${BASE_URL}/admin/products`)
       const data = await res.json()
       setProducts(data)
     }
@@ -47,10 +48,10 @@ const AdminProducts = () => {
 
   const updateProduct = async () => {
     const res = await authFetch(
-      `http://localhost:5000/admin/products/${editingProduct._id}`,
+      `${BASE_URL}/admin/products/${editingProduct._id}`,
       {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       },
     )
@@ -69,8 +70,8 @@ const AdminProducts = () => {
   }
 
   const deleteProduct = async (id) => {
-    await authFetch(`http://localhost:5000/admin/products/${id}`, {
-      method: 'DELETE',
+    await authFetch(`${BASE_URL}/admin/products/${id}`, {
+      method: "DELETE",
     })
 
     setProducts((prev) => prev.filter((p) => p._id !== id))
@@ -89,7 +90,7 @@ const AdminProducts = () => {
         </div>
 
         <RightSection>
-          <AddBtn onClick={() => navigate('/admin/add-product')}>
+          <AddBtn onClick={() => navigate("/admin/add-product")}>
             + Add Product
           </AddBtn>
 
@@ -138,19 +139,19 @@ const AdminProducts = () => {
 
             <Input
               name="title"
-              value={form.title || ''}
+              value={form.title || ""}
               onChange={handleChange}
             />
 
             <Input
               name="discountPrice"
-              value={form.discountPrice || ''}
+              value={form.discountPrice || ""}
               onChange={handleChange}
             />
 
             <Input
               name="category"
-              value={form.category || ''}
+              value={form.category || ""}
               onChange={handleChange}
             />
 

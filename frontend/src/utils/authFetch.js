@@ -1,6 +1,8 @@
+import BASE_URL from "../config/api"
+
 const authFetch = async (url, options = {}) => {
   const { headers = {}, ...rest } = options
-  let token = localStorage.getItem('authToken')
+  let token = localStorage.getItem("authToken")
 
   let res = await fetch(url, {
     ...rest,
@@ -8,18 +10,18 @@ const authFetch = async (url, options = {}) => {
       ...headers,
       Authorization: `Bearer ${token}`,
     },
-    credentials: 'include',
+    credentials: "include",
   })
 
   if (res.status === 401) {
-    const refreshRes = await fetch('http://localhost:5000/api/auth/refresh', {
-      method: 'POST',
-      credentials: 'include',
+    const refreshRes = await fetch(`${BASE_URL}/api/auth/refresh`, {
+      method: "POST",
+      credentials: "include",
     })
 
     if (refreshRes.ok) {
       const data = await refreshRes.json()
-      localStorage.setItem('authToken', data.token)
+      localStorage.setItem("authToken", data.token)
 
       return fetch(url, {
         ...rest,
@@ -27,7 +29,7 @@ const authFetch = async (url, options = {}) => {
           ...headers,
           Authorization: `Bearer ${data.token}`,
         },
-        credentials: 'include',
+        credentials: "include",
       })
     }
   }

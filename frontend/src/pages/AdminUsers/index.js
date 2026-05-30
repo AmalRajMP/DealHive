@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from "react"
+import axios from "axios"
+import BASE_URL from "../../config/api"
 
 import {
   Page,
@@ -12,16 +13,16 @@ import {
   Name,
   Info,
   RoleBadge,
-} from './styledComponents'
+} from "./styledComponents"
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const token = localStorage.getItem('authToken')
+      const token = localStorage.getItem("authToken")
 
-      const res = await axios.get('http://localhost:5000/admin/users', {
+      const res = await axios.get(`${BASE_URL}/admin/users`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
