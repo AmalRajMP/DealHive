@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const SectionContainer = styled.div`
   width: 100%;
@@ -37,4 +37,9 @@ export const ProductsList = styled.div`
   @media screen and (min-width: 768px) {
     gap: 20px;
   }
+`
+export const ProductSkeleton = styled.div`
+  width: 170px;
+  min-height: 220px;
+  background-color: red;
 `
