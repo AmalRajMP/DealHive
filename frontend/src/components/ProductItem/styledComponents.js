@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const ProductCard = styled.div`
-  width: 170px;
+  width: 160px;
   min-height: 220px;
   flex-shrink: 0;
   background-color: #ffffff;
@@ -124,7 +124,7 @@ export const WhyText = styled.p`
 `
 export const RatingText = styled.p`
   font-size: 13px;
-  color: #f59e0b; 
+  color: #f59e0b;
   font-weight: 500;
   margin: 0 0 10px 0;
   display: flex;
