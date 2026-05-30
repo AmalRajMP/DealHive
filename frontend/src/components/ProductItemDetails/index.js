@@ -13,6 +13,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai"
 
 import apiStatusConstants from "../../constants/apiStatusConstants"
 import BASE_URL from "../../config/api"
+import AI_BASE_URL from "../../config/aiConfig"
 
 import {
   ProductDetailsPage,
@@ -129,9 +130,7 @@ const ProductItemDetails = () => {
     try {
       setSimilarStatus(apiStatusConstants.inProgress)
 
-      const response = await fetch(
-        `http://localhost:5001/recommend/similar/${id}`,
-      )
+      const response = await fetch(`${AI_BASE_URL}/recommend/similar/${id}`)
       const data = await response.json()
 
       if (response.ok) {
@@ -153,7 +152,7 @@ const ProductItemDetails = () => {
         return
       }
 
-      const response = await fetch(`http://localhost:5001/recommend/${userId}`)
+      const response = await fetch(`${AI_BASE_URL}/recommend/${userId}`)
       const data = await response.json()
 
       if (response.ok) {

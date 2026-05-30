@@ -21,6 +21,7 @@ import {
 import { BsSearch } from "react-icons/bs"
 
 import BASE_URL from "../../config/api"
+import AI_BASE_URL from "../../config/aiConfig"
 
 import {
   MainContainer,
@@ -83,7 +84,7 @@ const HomePage = () => {
         return
       }
 
-      const response = await fetch(`http://localhost:5001/recommend/${userId}`)
+      const response = await fetch(`${AI_BASE_URL}/recommend/${userId}`)
       const data = await response.json()
 
       if (response.ok) {
