@@ -4,6 +4,7 @@ from live_recommend import recommend_live
 from product_similarity import get_similar_products
 
 import math
+import os 
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
@@ -63,6 +64,7 @@ def similar(product_id):
             "error": "similar_engine_failed",
             "message": str(e)
         }), 500
-    
+
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port)
