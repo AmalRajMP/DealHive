@@ -26,18 +26,19 @@ export const SectionSubtitle = styled.p`
 
 export const ProductsList = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-
-  @media screen and (max-width: 767px) {
-    margin-left: 10px;
-  }
+  padding: 0 10px;
 
   @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    padding: 0;
   }
 `
+
 export const ProductSkeleton = styled.div`
   width: 170px;
   min-height: 220px;

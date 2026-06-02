@@ -9,16 +9,17 @@ const shimmer = keyframes`
     background-position: 200% 0;
   }
 `
+
 const shimmerStyles = css`
   background: linear-gradient(90deg, #e5e7eb 25%, #f8fafc 50%, #e5e7eb 75%);
   background-size: 200% 100%;
-  animation: ${shimmer} 1.5s infinite;
+  animation: ${shimmer} 1.5s linear infinite;
 `
 
 export const ProductCard = styled.div`
-  width: 160px;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 220px;
-  flex-shrink: 0;
   border-radius: 16px;
   padding: 12px;
   display: flex;
@@ -27,12 +28,12 @@ export const ProductCard = styled.div`
 
   @media (min-width: 768px) {
     width: 200px;
-    min-height: 240px;
+    min-height: 250px;
   }
 
   @media (min-width: 1200px) {
-    width: 220px;
-    min-height: 260px;
+    width: 266px;
+    min-height: 310px;
   }
 `
 
@@ -48,7 +49,7 @@ export const ImageWrapper = styled.div`
   margin-bottom: 12px;
 
   @media (min-width: 1200px) {
-    height: 150px;
+    height: 170px;
   }
 `
 
@@ -60,8 +61,8 @@ export const ProductImage = styled.div`
 `
 
 export const ProductTitle = styled.div`
-  height: 38px;
-  width: 75%;
+  height: 42px;
+  width: 80%;
   ${shimmerStyles}
   border-radius: 4px;
   margin-bottom: 8px;
@@ -69,7 +70,7 @@ export const ProductTitle = styled.div`
 
 export const ExplanationText = styled.div`
   height: 28px;
-  width: 50%;
+  width: 60%;
   ${shimmerStyles}
   border-radius: 4px;
   margin-bottom: 12px;
@@ -83,25 +84,25 @@ export const PriceRow = styled.div`
 `
 
 export const DiscountPrice = styled.div`
-  height: 22px;
-  width: 60px;
+  height: 24px;
+  width: 70px;
   ${shimmerStyles}
   border-radius: 4px;
 
-  @media screen and (min-width: 1024px) {
-    height: 26px;
-    width: 62px;
+  @media (min-width: 1200px) {
+    height: 28px;
+    width: 80px;
   }
 `
 
 export const OriginalPrice = styled.div`
-  height: 20px;
-  width: 45px;
+  height: 18px;
+  width: 55px;
   ${shimmerStyles}
   border-radius: 4px;
 
-  @media screen and (min-width: 1024px) {
-    height: 22px;
-    width: 50px;
+  @media (min-width: 1200px) {
+    height: 20px;
+    width: 60px;
   }
 `

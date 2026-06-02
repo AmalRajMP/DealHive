@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
 export const ProductCard = styled.div`
-  width: 160px;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 220px;
-  flex-shrink: 0;
   background-color: #ffffff;
   border-radius: 16px;
   padding: 12px;
@@ -20,12 +20,12 @@ export const ProductCard = styled.div`
 
   @media (min-width: 768px) {
     width: 200px;
-    min-height: 240px;
+    min-height: 250px;
   }
 
   @media (min-width: 1200px) {
-    width: 220px;
-    min-height: 260px;
+    width: 266px;
+    min-height: 310px;
   }
 `
 
@@ -40,7 +40,7 @@ export const ImageWrapper = styled.div`
   justify-content: center;
 
   @media (min-width: 1200px) {
-    height: 150px;
+    height: 170px;
   }
 `
 
@@ -78,21 +78,25 @@ export const ProductTitle = styled.p`
   font-size: 14px;
   font-weight: 500;
   color: #0f172a;
-  margin: 8px 0 2px;
-  line-height: 1.35;
-  height: 38px;
+  margin: 10px 0 4px;
+  line-height: 1.4;
+  height: 42px;
 
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  @media (min-width: 1200px) {
+    font-size: 15px;
+  }
 `
 
 export const WhyText = styled.p`
   font-size: 12px;
   color: #64748b;
-  margin: 0 0 10px 0;
-  line-height: 1.35;
+  margin: 0 0 10px;
+  line-height: 1.4;
 
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -121,16 +125,26 @@ export const WhyText = styled.p`
       background-position: 200% center;
     }
   }
+
+  @media (min-width: 1200px) {
+    font-size: 13px;
+  }
 `
+
 export const RatingText = styled.p`
   font-size: 13px;
   color: #f59e0b;
   font-weight: 500;
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   display: flex;
   align-items: center;
   gap: 6px;
+
+  @media (min-width: 1200px) {
+    font-size: 14px;
+  }
 `
+
 export const FallbackTag = styled.span`
   font-size: 11px;
   font-weight: 600;
@@ -147,13 +161,14 @@ export const PriceRow = styled.div`
   gap: 8px;
   margin-top: auto;
 `
+
 export const DiscountPrice = styled.span`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #1e40af;
 
-  @media screen and (min-width: 1024px) {
-    font-size: 17px;
+  @media (min-width: 1200px) {
+    font-size: 20px;
   }
 `
 
@@ -162,7 +177,7 @@ export const OriginalPrice = styled.span`
   color: #94a3b8;
   text-decoration: line-through;
 
-  @media screen and (min-width: 1024px) {
-    font-size: 13px;
+  @media (min-width: 1200px) {
+    font-size: 14px;
   }
 `
