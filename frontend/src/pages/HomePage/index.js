@@ -190,12 +190,6 @@ const HomePage = () => {
     aiSubtitle = map[strongest] || aiSubtitle
   }
 
-  const renderLoadingView = () => (
-    <LoaderContainer>
-      <ThreeDots height="50" width="50" color="#2563eb" />
-    </LoaderContainer>
-  )
-
   const renderFailureView = () => (
     <FailureContainer>
       <MdErrorOutline size={50} />
@@ -294,14 +288,10 @@ const HomePage = () => {
 
   const renderProducts = () => {
     switch (apiStatus) {
-      case apiStatusConstants.inProgress:
-        return renderLoadingView()
-      case apiStatusConstants.success:
-        return renderSuccessView()
       case apiStatusConstants.failure:
         return renderFailureView()
       default:
-        return null
+        return renderSuccessView()
     }
   }
 
