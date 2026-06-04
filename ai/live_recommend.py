@@ -15,7 +15,7 @@ from xai_model import model_predict
 # LOAD ENV + DATABASE
 # =================================================
 
-load_dotenv("../backend/.env")
+load_dotenv(".env")
 
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)

@@ -7,7 +7,7 @@ from dotenv import load_dotenv #To read environment variables
 from bson import ObjectId
 
 #Load env vars
-load_dotenv(os.path.join(os.path.dirname(__file__), "../backend/.env"))
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 #print("Mongo URI =", os.getenv("MONGO_URI"))
 

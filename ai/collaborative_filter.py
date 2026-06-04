@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 # ----------------------------
 # ENV
 # ----------------------------
-load_dotenv("../backend/.env")
+load_dotenv(".env")
 
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client["dealhive_db"]

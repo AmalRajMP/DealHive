@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
-load_dotenv("../backend/.env")
+load_dotenv(".env")
 
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client["dealhive_db"]
