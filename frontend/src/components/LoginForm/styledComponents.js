@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const FormContainer = styled.form`
   min-height: auto;
@@ -16,6 +16,50 @@ export const Heading = styled.h1`
   font-size: 24px;
   text-align: center;
 `
+export const DemoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+  background-color: #f5f9ff;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  padding: 12px;
+`
+export const DemoContainerHeading = styled.h1`
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
+export const DemoCredential = styled.p`
+  margin-bottom: 4px;
+  font-size: 14px;
+`
+
+export const DemoLabel = styled.p`
+  font-weight: 600;
+`
+export const DemoButton = styled.button`
+  width: 100%;
+  height: 42px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid #3b82f6;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+`
+
 export const Label = styled.label`
   color: #666666;
   font-size: 13px;

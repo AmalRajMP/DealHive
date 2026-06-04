@@ -4,10 +4,16 @@ import { MdLockOutline, MdEmail } from "react-icons/md"
 import apiStatusConstants from "../../constants/apiStatusConstants"
 
 import BASE_URL from "../../config/api"
+import { MdAccountCircle } from "react-icons/md"
 
 import {
   FormContainer,
   Heading,
+  DemoContainer,
+  DemoContainerHeading,
+  DemoCredential,
+  DemoLabel,
+  DemoButton,
   Label,
   InputContainer,
   Icon,
@@ -89,6 +95,26 @@ const LoginForm = () => {
           />
 
           <Heading>Login</Heading>
+          <DemoContainer>
+            <DemoContainerHeading>
+              <MdAccountCircle /> Demo Account
+            </DemoContainerHeading>
+            <DemoCredential>
+              <DemoLabel>Email: </DemoLabel>amal@gmail.com
+            </DemoCredential>
+            <DemoCredential>
+              <DemoLabel>Password: </DemoLabel>jiofi1234
+            </DemoCredential>
+          </DemoContainer>
+          <DemoButton
+            type="button"
+            onClick={() => {
+              setEmailID("amal@gmail.com")
+              setPassword("jiofi1234")
+            }}
+          >
+            Use Demo Account
+          </DemoButton>
           <Label htmlFor="emailID">Email ID</Label>
           <InputContainer>
             <Icon>
