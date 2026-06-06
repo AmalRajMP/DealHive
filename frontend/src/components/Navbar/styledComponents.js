@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const Navbar = styled.nav`
   width: 100%;
+  box-sizing: border-box;
   height: 70px;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,6 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: #f8fbff;
   box-shadow: 0 2px 8px rgba(94, 169, 250, 0.15);
 

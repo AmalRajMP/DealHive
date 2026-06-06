@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 import {
   ProductCard,
@@ -12,7 +12,7 @@ import {
   OriginalPrice,
   WhyText,
   RatingText,
-} from './styledComponents'
+} from "./styledComponents"
 
 const ProductItem = (props) => {
   const { productDetails } = props
@@ -29,7 +29,14 @@ const ProductItem = (props) => {
 
   const isAiPick = !!why
   return (
-    <Link to={`/products/${_id}`} style={{ textDecoration: 'none' }}>
+    <Link
+      to={`/products/${_id}`}
+      style={{
+        textDecoration: "none",
+        display: "block",
+        minWidth: 0,
+      }}
+    >
       <ProductCard>
         <ImageWrapper>
           <ProductImage src={thumbnail} alt={title} />

@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const MainContainer = styled.div`
   min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
   background: linear-gradient(180deg, #f8fcff 0%, #f2f8ff 45%, #edf6ff 100%);
-
   display: flex;
   flex-direction: column;
 

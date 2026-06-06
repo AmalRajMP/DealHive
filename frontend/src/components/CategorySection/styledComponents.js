@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const SectionContainer = styled.div`
   width: 100%;
+  box-sizing: border-box;
   margin-top: 12px;
   padding: 0px 3px;
 
@@ -26,8 +27,11 @@ export const SectionSubtitle = styled.p`
 
 export const ProductsList = styled.div`
   width: 100%;
+  box-sizing: border-box;
+
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 15px;
   padding: 0 10px;
 

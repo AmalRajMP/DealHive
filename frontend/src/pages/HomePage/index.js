@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react"
 import FilterItem from "../../components/FilterItem"
 import CategorySection from "../../components/CategorySection"
 import Header from "../../components/Navbar"
+import Chatbot from "../../components/Chatbot"
 
 import ai_banner_icon from "../../assets/shopping.svg"
 
@@ -52,6 +53,7 @@ const HomePage = () => {
   const [activeFilterId, setActiveFilterId] = useState("all")
   const [productsList, setProductsList] = useState([])
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
+  const [isChatEnabled, setIsChatEnabled] = useState(true)
 
   const [recommendData, setRecommendData] = useState(null)
   const [recommendStatus, setRecommendStatus] = useState(
@@ -341,6 +343,7 @@ const HomePage = () => {
 
         {renderProducts()}
       </MainContainer>
+      {/* <Chatbot /> */}
     </>
   )
 }

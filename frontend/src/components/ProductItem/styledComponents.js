@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ProductCard = styled.div`
-  width: 100%;
+  width: auto;
   box-sizing: border-box;
   min-height: 220px;
   background-color: #ffffff;
