@@ -209,3 +209,52 @@ export const LoaderSub = styled.span`
   color: #3b82f6;
   margin-top: 4px;
 `
+
+export const ChatButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 64px;
+  height: 64px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #ffffff;
+  font-size: 28px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  z-index: 1000;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 576px) {
+    width: 58px;
+    height: 58px;
+    font-size: 24px;
+
+    bottom: 16px;
+    right: 16px;
+  }
+`

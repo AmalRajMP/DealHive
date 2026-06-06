@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react"
 
+import { v4 as uuidv4 } from "uuid"
+
+import MessageItem from "../MessageItem"
+
 import { IoSend, IoClose } from "react-icons/io5"
 import { BsRobot } from "react-icons/bs"
 
@@ -18,9 +22,24 @@ import {
   SendButton,
 } from "./styledComponents"
 
-const Chatbot = () => {
+const Chatbot = ({ setIsChatEnabled }) => {
   const [userQuery, setUserQuery] = useState("")
   const [messages, setMessages] = useState([])
+
+  const onSubmitQuery = (event) => {
+    event.preventDefault()
+
+    if (userQuery.trim() === "") return
+
+    const query = {
+      id: uuidv4(),
+      text: userQuery,
+      sender: "user",
+    }
+
+    setMessages([...messages, query])
+    setUserQuery("")
+  }
 
   return (
     <ChatbotContainer>
@@ -36,14 +55,25 @@ const Chatbot = () => {
 
           <BotStatus>AI Shopping Assistant</BotStatus>
         </BotInfo>
-        <CloseButton type="button">
+        <CloseButton type="button" onClick={() => setIsChatEnabled(false)}>
           <IoClose />
         </CloseButton>
       </Header>
 
-      <MessagesContainer></MessagesContainer>
-      <UserInputContainer as="form">
-        <UserInputBox placeholder="Ask Nova about products..." />
+      <MessagesContainer>
+        {messages.map((eachMessage) => (
+          <li key={eachMessage.id}>
+            <MessageItem messageDetails={eachMessage} />
+          </li>
+        ))}
+      </MessagesContainer>
+      <UserInputContainer as="form" onSubmit={onSubmitQuery}>
+        <UserInputBox
+          type="text"
+          value={userQuery}
+          placeholder="Ask Nova about products..."
+          onChange={(e) => setUserQuery(e.target.value)}
+        />
         <SendButton type="submit">
           <IoSend />
         </SendButton>

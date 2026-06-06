@@ -65,12 +65,17 @@ export const BotStatus = styled.p`
   margin-top: 4px;
 `
 
-export const MessagesContainer = styled.div`
+export const MessagesContainer = styled.ul`
+  list-style-type: none;
+
   flex-grow: 1;
-  padding: 16px;
+  padding: 18px;
   overflow-y: auto;
 
-  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
 `
 export const UserInputContainer = styled.div`
   height: 70px;

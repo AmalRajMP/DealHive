@@ -20,6 +20,7 @@ import {
 } from "../../constants/categories"
 
 import { BsSearch } from "react-icons/bs"
+import { RiRobot2Line } from "react-icons/ri"
 
 import BASE_URL from "../../config/api"
 import AI_BASE_URL from "../../config/aiConfig"
@@ -44,6 +45,7 @@ import {
   RecommendationLoaderBox,
   LoaderTitle,
   LoaderSub,
+  ChatButton,
 } from "./styledComponents"
 
 const HomePage = () => {
@@ -343,7 +345,13 @@ const HomePage = () => {
 
         {renderProducts()}
       </MainContainer>
-      {/* <Chatbot /> */}
+      {isChatEnabled ? (
+        <Chatbot setIsChatEnabled={setIsChatEnabled} />
+      ) : (
+        <ChatButton onClick={() => setIsChatEnabled(true)}>
+          <RiRobot2Line />
+        </ChatButton>
+      )}
     </>
   )
 }
