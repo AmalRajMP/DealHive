@@ -28,6 +28,7 @@ app.use("/admin", adminRoutes)
 app.use("/api/orders", orderRoutes)
 app.use("/api/users", require("./routes/userRoutes"))
 app.use("/api/recommend", require("./routes/recommendRoutes"))
+app.use("/api/chat", require("./routes/chatRoutes"))
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

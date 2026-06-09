@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from "uuid"
 
 import MessageItem from "../MessageItem"
 
+import BASE_URL from "../../config/api"
+
 import { IoSend, IoClose } from "react-icons/io5"
 import { BsRobot } from "react-icons/bs"
 
@@ -26,7 +28,7 @@ const Chatbot = ({ setIsChatEnabled }) => {
   const [userQuery, setUserQuery] = useState("")
   const [messages, setMessages] = useState([])
 
-  const onSubmitQuery = (event) => {
+  const onSubmitQuery = async (event) => {
     event.preventDefault()
 
     if (userQuery.trim() === "") return
@@ -37,8 +39,33 @@ const Chatbot = ({ setIsChatEnabled }) => {
       sender: "user",
     }
 
-    setMessages([...messages, query])
+    setMessages((prev) => [...prev, query])
     setUserQuery("")
+
+    try {
+      const url = `${BASE_URL}/api/chat`
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: userQuery,
+        }),
+      }
+
+      const response = await fetch(url, options)
+      if (response.ok) {
+        const data = await response.json()
+        const botResponse = {
+          id: uuidv4(),
+          ...data,
+        }
+        setMessages((prev) => [...prev, botResponse])
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
