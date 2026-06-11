@@ -55,7 +55,7 @@ const HomePage = () => {
   const [activeFilterId, setActiveFilterId] = useState("all")
   const [productsList, setProductsList] = useState([])
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
-  const [isChatEnabled, setIsChatEnabled] = useState(true)
+  const [isChatEnabled, setIsChatEnabled] = useState(false)
 
   const [recommendData, setRecommendData] = useState(null)
   const [recommendStatus, setRecommendStatus] = useState(
