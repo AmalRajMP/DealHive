@@ -19,14 +19,31 @@ import {
   BotStatus,
   CloseButton,
   MessagesContainer,
+  QuickActionsContainer,
+  QuickActionButton,
   UserInputContainer,
   UserInputBox,
   SendButton,
 } from "./styledComponents"
 
+const quickActions = [
+  "🔥 Trending Products",
+  "💡 Get Recommendations",
+  "⚖️ Compare Products",
+  "🔍 Find a Product",
+]
+
 const Chatbot = ({ setIsChatEnabled }) => {
   const [userQuery, setUserQuery] = useState("")
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([
+    {
+      id: uuidv4(),
+      text: `👋 Hi! I'm Nova, 
+        your AI shopping assistant.
+        What product are you looking for today?`,
+      sender: "bot",
+    },
+  ])
 
   const onSubmitQuery = async (event) => {
     event.preventDefault()
@@ -68,6 +85,10 @@ const Chatbot = ({ setIsChatEnabled }) => {
     }
   }
 
+  const hasUserStartedChat = messages.some(
+    (message) => message.sender === "user",
+  )
+
   return (
     <ChatbotContainer>
       <Header>
@@ -94,6 +115,15 @@ const Chatbot = ({ setIsChatEnabled }) => {
           </li>
         ))}
       </MessagesContainer>
+
+      {!hasUserStartedChat && (
+        <QuickActionsContainer>
+          {quickActions.map((action) => (
+            <QuickActionButton key={action}>{action}</QuickActionButton>
+          ))}
+        </QuickActionsContainer>
+      )}
+
       <UserInputContainer as="form" onSubmit={onSubmitQuery}>
         <UserInputBox
           type="text"

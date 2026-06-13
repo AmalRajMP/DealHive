@@ -8,18 +8,23 @@ export const ChatbotContainer = styled.div`
   width: 90vw;
   max-width: 340px;
 
-  box-sizing: border-box;
-
   height: 70vh;
   min-height: 450px;
 
   display: flex;
   flex-direction: column;
 
-  background: #ffffff;
+  background: #fff;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  @media (min-width: 768px) {
+    max-width: 390px;
+    height: 80vh;
+    min-height: 550px;
+  }
 `
+
 export const Header = styled.div`
   height: 80px;
   padding: 0 18px;
@@ -77,6 +82,38 @@ export const MessagesContainer = styled.ul`
 
   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
 `
+export const QuickActionsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  max-width: 320px;
+
+  padding: 10px;
+`
+export const QuickActionButton = styled.button`
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  color: #2563eb;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`
+
 export const UserInputContainer = styled.div`
   height: 70px;
   width: 100%;

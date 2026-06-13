@@ -64,6 +64,8 @@ export const Message = styled.p`
   font-weight: 400;
   line-height: 1.5;
 
+  white-space: pre-line;
+
   margin: 0;
 
   border: ${(props) =>
