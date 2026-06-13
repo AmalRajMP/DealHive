@@ -29,6 +29,8 @@ export const Header = styled.div`
   height: 80px;
   padding: 0 18px;
 
+  flex-shrink: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
