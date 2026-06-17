@@ -125,15 +125,10 @@ const extractFilters = (userQuery) => {
   }
 
   return {
-    categories: matchingCategories,
+    categories: matchingCategories ? matchingCategories : null,
     minPrice: normalizedMinPrice ? normalizedMinPrice : null,
     maxPrice: normalizedMaxPrice ? normalizedMaxPrice : null,
   }
 }
 
 module.exports = { extractFilters }
-
-console.log(extractFilters("laptops from 30k to 50k"))
-console.log(extractFilters("women tops under 1000"))
-console.log(extractFilters("top under 1000"))
-console.log(extractFilters("laptop under 50000"))
