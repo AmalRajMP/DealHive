@@ -37,7 +37,10 @@ const extractFilters = (userQuery) => {
   const matchingCategories = filterCategories.filter(
     (eachCategory) =>
       lower.includes(eachCategory.name.toLowerCase()) ||
-      eachCategory.aliases?.some((alias) => lower.includes(alias)),
+      eachCategory.aliases?.some((alias) => {
+        const regex = new RegExp(`\\b${alias}\\b`)
+        return regex.test(lower)
+      }),
   )
 
   const matchedMinIndicator = minPriceIndicators.find((price) =>
@@ -68,26 +71,8 @@ const extractFilters = (userQuery) => {
     }
   }
 
-  let remainingText = null
-
-  if (matchedRangeIndicator) {
-    minPrice = lower
-      .slice(
-        rangeStartIndex + matchedRangeIndicator.start.length,
-        rangeEndIndex,
-      )
-      .trim()
-
-    maxPrice = lower
-      .slice(rangeEndIndex + matchedRangeIndicator.end.length)
-      .trim()
-  } else if (matchedMinIndicator) {
-    const index = lower.indexOf(matchedMinIndicator)
-    minPrice = lower.slice(index + matchedMinIndicator.length).trim()
-  } else if (matchedMaxIndicator) {
-    const index = lower.indexOf(matchedMaxIndicator)
-    maxPrice = lower.slice(index + matchedMaxIndicator.length).trim()
-  }
+  let normalizedMinPrice = null
+  let normalizedMaxPrice = null
 
   const normalizePrice = (price) => {
     let actualPrice
@@ -107,15 +92,48 @@ const extractFilters = (userQuery) => {
     return actualPrice
   }
 
+  const extractPrice = (text) => {
+    const priceMatch = text.match(/₹?\d[\d,]*(\.\d+)?k?/i)
+
+    return priceMatch ? normalizePrice(priceMatch[0]) : null
+  }
+
+  if (matchedRangeIndicator) {
+    const minPriceText = lower
+      .slice(
+        rangeStartIndex + matchedRangeIndicator.start.length,
+        rangeEndIndex,
+      )
+      .trim()
+
+    const maxPriceText = lower
+      .slice(rangeEndIndex + matchedRangeIndicator.end.length)
+      .trim()
+
+    normalizedMinPrice = extractPrice(minPriceText)
+    normalizedMaxPrice = extractPrice(maxPriceText)
+  } else if (matchedMinIndicator) {
+    const index = lower.indexOf(matchedMinIndicator)
+    const remainingText = lower.slice(index + matchedMinIndicator.length).trim()
+
+    normalizedMinPrice = extractPrice(remainingText)
+  } else if (matchedMaxIndicator) {
+    const index = lower.indexOf(matchedMaxIndicator)
+    const remainingText = lower.slice(index + matchedMaxIndicator.length).trim()
+
+    normalizedMaxPrice = extractPrice(remainingText)
+  }
+
   return {
     categories: matchingCategories,
-    minPrice: minPrice ? normalizePrice(minPrice) : null,
-    maxPrice: maxPrice ? normalizePrice(maxPrice) : null,
+    minPrice: normalizedMinPrice ? normalizedMinPrice : null,
+    maxPrice: normalizedMaxPrice ? normalizedMaxPrice : null,
   }
 }
 
-console.log(extractFilters("laptops under 50k"))
-console.log(extractFilters("laptops above 30k"))
-console.log(extractFilters("laptops between 30k and 50k"))
-
 module.exports = { extractFilters }
+
+console.log(extractFilters("laptops from 30k to 50k"))
+console.log(extractFilters("women tops under 1000"))
+console.log(extractFilters("top under 1000"))
+console.log(extractFilters("laptop under 50000"))
