@@ -36,7 +36,7 @@ export const ChatIcon = styled.div`
 `
 
 export const MessageBox = styled.div`
-  max-width: 75%;
+  max-width: ${(props) => (props.senderType === "bot" ? "90%" : "75%")};
 
   background: ${(props) =>
     props.senderType === "user"
@@ -70,4 +70,11 @@ export const Message = styled.p`
 
   border: ${(props) =>
     props.senderType === "bot" ? "1px solid #e2e8f0" : "none"};
+`
+export const ProductsContainer = styled.div`
+  margin-top: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `

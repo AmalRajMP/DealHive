@@ -4,7 +4,7 @@ const apiKey = process.env.GEMINI_API_KEY
 
 const ai = new GoogleGenAI({ apiKey })
 
-const getGeminiResponse = async (userQuery) => {
+const getGeminiResponse = async (prompt) => {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: `
@@ -20,7 +20,7 @@ const getGeminiResponse = async (userQuery) => {
     For questions unrelated to shopping, products, deals, or DealHive, politely say:
     "I can help with shopping, products, deals, and DealHive-related questions."
 
-    User query: ${userQuery}
+    User query: ${prompt}
     `,
   })
 
